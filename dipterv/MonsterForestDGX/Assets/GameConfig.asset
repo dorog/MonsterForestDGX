@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: 
+  exp: 500
+  aliveMonsters: 4
+  teleports: 5
+  baseSpells:
+  - {fileID: 11400000, guid: 98daaeb9848c2354799233c83004bbbf, type: 2}
+  - {fileID: 11400000, guid: e8b0832720fe931479a6860fa3618cb0, type: 2}
+  - {fileID: 11400000, guid: c033c4d8d72c18340ae1740555d01b91, type: 2}
+  - {fileID: 11400000, guid: cb72dfd7c54184b42b8e4575db870678, type: 2}
+  pets:
+  - {fileID: 5812343948825244384, guid: b5ea5ff87386830468341484f8de2853, type: 3}
+  - {fileID: 6310326573633760408, guid: 2609c5f3df922c146957e72f25c8a148, type: 3}
+  - {fileID: 5346369568621177650, guid: 64c305601a5fef94db5c6db4aafbeef2, type: 3}
+  - {fileID: 3441869854891632780, guid: 0c90877c7dedb784782ee27c3e30e62d, type: 3}
