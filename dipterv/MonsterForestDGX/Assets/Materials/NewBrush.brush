@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 12146, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: NewBrush
   m_EditorClassIdentifier: 
-  m_Mask: {fileID: 2800000, guid: ce2fd81c72f4b49a49f5e2b45909d284, type: 3}
+  m_Mask: {fileID: 2800000, guid: 3bfc82ddb8272404aa836168b0ee9f26, type: 3}
   m_Falloff:
     serializedVersion: 2
     m_Curve:
