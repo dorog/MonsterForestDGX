@@ -8,6 +8,7 @@ public class BattlePlace : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Enter: " + other.gameObject.name);
         if(other.gameObject.tag == "Player")
         {
             other.gameObject.transform.position = transform.position;

@@ -75,7 +75,7 @@ public class MonsterHealth : Health
         if(currentHp <= 0)
         {
             death = true;
-            hpSlider.gameObject.SetActive(false);
+            //hpSlider.gameObject.SetActive(false);
             StartCoroutine(monsterBodyDisappear.DisAppear());
         }
     }

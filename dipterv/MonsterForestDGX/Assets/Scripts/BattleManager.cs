@@ -9,7 +9,7 @@ public class BattleManager : MonoBehaviour
     public Player player;
     public SceneLoader sceneLoader;
     //public Text turn;
-    public GameObject turnGO;
+    //public GameObject turnGO;
     public int id;
 
     private GameObject battlePlace;
@@ -24,7 +24,7 @@ public class BattleManager : MonoBehaviour
         this.battlePlace = battlePlace;
 
         id = _id;
-        turnGO.SetActive(true);
+        //turnGO.SetActive(true);
         //turn.text = "Battle!";
 
         player.battleManager = this;
@@ -64,13 +64,13 @@ public class BattleManager : MonoBehaviour
 
     public void MonsterDied()
     {
-        turnGO.SetActive(false);
+        //turnGO.SetActive(false);
         player.BattleEnd(id);
     }
 
     public void PlayerDied()
     {
-        turnGO.SetActive(false);
+        //turnGO.SetActive(false);
 
         player.Died();
 
@@ -82,7 +82,7 @@ public class BattleManager : MonoBehaviour
 
     public void Run()
     {
-        turnGO.SetActive(false);
+        //turnGO.SetActive(false);
 
         monster.Disappear();
         player.Run();
@@ -91,7 +91,7 @@ public class BattleManager : MonoBehaviour
 
     public void FinishedTraining()
     {
-        turnGO.SetActive(false);
+        //turnGO.SetActive(false);
         battlePlace.SetActive(true);
     }
 }

@@ -24,7 +24,7 @@ public class HandPresence : MonoBehaviour
         }
         else
         {
-            Debug.LogError("There is no device with this characteristics! " + inputDeviceCharacteristics);
+            //Debug.LogError("There is no device with this characteristics! " + inputDeviceCharacteristics);
         }
     }
 

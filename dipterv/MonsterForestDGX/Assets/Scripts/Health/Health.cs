@@ -6,7 +6,7 @@ public abstract class Health : MonoBehaviour
     public float maxHp = 100f;
     public float currentHp;
     public Fighter fighter;
-    public Slider hpSlider;
+    //public Slider hpSlider;
     public Image hpImage;
     public Color lowColor;
     public Color fullColor;
