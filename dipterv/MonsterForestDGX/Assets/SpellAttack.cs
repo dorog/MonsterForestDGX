@@ -54,11 +54,11 @@ public class SpellAttack : PlayerSpell
 
     private void DamageMonster(Collision hit)
     {
-        MonsterHit monsterHit = hit.gameObject.GetComponent<MonsterHit>();
-        if (monsterHit != null)
+        ITarget target = hit.gameObject.GetComponent<ITarget>();
+        if (target != null)
         {
             SpellManager.GetInstance().AddXpForHit(coverage);
-            monsterHit.TakeDamage(dmg * coverage, elementType);
+            target.TakeDamage(dmg * coverage, elementType);
         }
     }
 }

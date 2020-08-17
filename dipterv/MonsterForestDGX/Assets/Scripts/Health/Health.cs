@@ -12,7 +12,7 @@ public abstract class Health : MonoBehaviour
     public Color fullColor;
     public Resistant resistant;
 
-    public void Awake()
+    public void Start()
     {
         currentHp = maxHp;
     }
@@ -44,7 +44,7 @@ public abstract class Health : MonoBehaviour
 
     public abstract void SetDamageBlock();
 
-    public void ResetHealth()
+    public virtual void ResetHealth()
     {
         currentHp = maxHp;
         SetUpHealth();

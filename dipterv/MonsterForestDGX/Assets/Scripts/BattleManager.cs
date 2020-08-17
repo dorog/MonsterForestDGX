@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
     public MonsterTurnEndDelegate monsterTurnStartDelegateEvent;
 
     public bool petEnable = true;
+    public bool resistantEnable = true;
 
     public void Battle(int _id, GameObject battlePlace)
     {

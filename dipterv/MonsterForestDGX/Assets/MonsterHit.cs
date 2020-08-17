@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MonsterHit : MonoBehaviour
+public class MonsterHit : MonoBehaviour, ITarget
 {
     public MonsterHealth health;
     public MonsterHitType monsterHitType;
