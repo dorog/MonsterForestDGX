@@ -10,6 +10,9 @@ public class GameConfig : ScriptableObject
     [Header("Monster Settings")]
     public int aliveMonsters;
 
+    [Header("Gate Settings")]
+    public int gatesState;
+
     [Header("Teleports Settings")]
     public int teleports;
 

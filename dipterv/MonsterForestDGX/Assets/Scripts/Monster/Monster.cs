@@ -178,4 +178,9 @@ public class Monster : Fighter, IEnemy
     {
         return GetComponent<MonsterHealth>();
     }
+
+    public bool IsMonster()
+    {
+        return true;
+    }
 }

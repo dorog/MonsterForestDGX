@@ -26,6 +26,7 @@ public class Player : Fighter
     private PetManager petManager;
     private SpellManager spellManager;
     private AliveMonstersManager aliveMonstersManager;
+    private GateManager gatesManager;
 
     public BattleLobby battleLobbyUI;
 
@@ -39,6 +40,7 @@ public class Player : Fighter
 
         petManager = PetManager.GetInstance();
         aliveMonstersManager = AliveMonstersManager.GetInstance();
+        gatesManager = GateManager.GetInstance();
         spellManager = SpellManager.GetInstance();
     }
 
@@ -63,7 +65,7 @@ public class Player : Fighter
         }
     }
 
-    public void BattleEnd(int id)
+    public void BattleEnd(int id, bool isMonster)
     {
         InBattle = false;
         playerHealth.BlockDown();
@@ -77,7 +79,15 @@ public class Player : Fighter
         }
 
         spellManager.Won();
-        aliveMonstersManager.Won(id);
+
+        if (isMonster)
+        {
+            aliveMonstersManager.Won(id);
+        }
+        else
+        {
+            gatesManager.Won(id);
+        }
     }
 
     public override void Die()

@@ -5,7 +5,7 @@ public class PlayerExperience : SingletonClass<PlayerExperience>
 {
     private float exp = 0;
     public SpellsUI spellsUI;
-    public Text expText;
+    //public Text expText;
 
     private void Awake()
     {

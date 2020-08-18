@@ -7,4 +7,5 @@ public interface IEnemy
     void React();
     void ResetMonster();
     Health GetHealth();
+    bool IsMonster();
 }

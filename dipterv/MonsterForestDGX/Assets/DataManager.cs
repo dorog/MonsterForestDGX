@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
+//TODO: inherit from singleton class?
 public class DataManager : MonoBehaviour
 {
     public readonly string fileName = "gameData.json";
@@ -87,6 +88,13 @@ public class DataManager : MonoBehaviour
         Save(gameData);
     }
 
+    public void SaveGateDeath(int id)
+    {
+        gameData.gatesState[id] = false;
+
+        Save(gameData);
+    }
+
     public void Won(List<ISpellPattern> spellPatterns, float exp)
     {
         gameData.exp = exp;
@@ -141,6 +149,11 @@ public class DataManager : MonoBehaviour
     public bool[] GetAliveMonsters()
     {
         return gameData.aliveMonsters;
+    }
+
+    public bool[] GetGatesState()
+    {
+        return gameData.gatesState;
     }
 
     public bool[] GetTeleportsState()

@@ -6,6 +6,7 @@ public class GameData
 {
     public int[] basePatternSpellLevels;
     public bool[] aliveMonsters;
+    public bool[] gatesState;
     public bool[] teleports;
     public bool[] availablePets;
     public float exp;
@@ -16,6 +17,7 @@ public class GameData
     public GameData(GameConfig gameConfig)
     {
         aliveMonsters = CreateArrayWithDefaultValue(gameConfig.aliveMonsters, true);
+        gatesState = CreateArrayWithDefaultValue(gameConfig.gatesState, true);
         teleports = CreateArrayWithDefaultValue(gameConfig.teleports, false);
         basePatternSpellLevels = CreateArrayWithDefaultValue(gameConfig.baseSpells.Length, 1);
         availablePets = CreateArrayWithDefaultValue(gameConfig.pets.Length, false);

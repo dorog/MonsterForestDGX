@@ -53,4 +53,9 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
         player.FinishedTraining();
         battleManager.FinishedTraining();
     }
+
+    public bool IsMonster()
+    {
+        return false;
+    }
 }

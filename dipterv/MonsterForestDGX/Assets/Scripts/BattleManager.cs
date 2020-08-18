@@ -11,6 +11,7 @@ public class BattleManager : MonoBehaviour
     //public Text turn;
     //public GameObject turnGO;
     public int id;
+    public bool isMonster;
 
     private GameObject battlePlace;
 
@@ -20,11 +21,12 @@ public class BattleManager : MonoBehaviour
     public bool petEnable = true;
     public bool resistantEnable = true;
 
-    public void Battle(int _id, GameObject battlePlace)
+    public void Battle(int _id, bool _isMonster, GameObject battlePlace)
     {
         this.battlePlace = battlePlace;
 
         id = _id;
+        isMonster = _isMonster;
         //turnGO.SetActive(true);
         //turn.text = "Battle!";
 
@@ -66,7 +68,7 @@ public class BattleManager : MonoBehaviour
     public void MonsterDied()
     {
         //turnGO.SetActive(false);
-        player.BattleEnd(id);
+        player.BattleEnd(id, isMonster);
     }
 
     public void PlayerDied()
