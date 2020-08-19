@@ -35,7 +35,7 @@ public class Paint : MonoBehaviour
 
                 lineRenderer.positionCount += 1;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, flattenedVector);
-                SpellManager.Guess(guess, player.CanAttack());
+                SpellManager.Guess(guess);
 
             }
             catch (Exception) { }
@@ -77,7 +77,7 @@ public class Paint : MonoBehaviour
         if (lineRenderer.positionCount != 0)
         {
             lineRenderer.positionCount = 0;
-            SpellResult spellResult = SpellManager.GetSpell(player.CanAttack());
+            SpellResult spellResult = SpellManager.GetSpell();
             if (spellResult == null)
             {
                 Debug.Log("Null");

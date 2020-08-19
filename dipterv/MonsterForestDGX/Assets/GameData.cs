@@ -10,7 +10,7 @@ public class GameData
     public bool[] teleports;
     public bool[] availablePets;
     public float exp;
-    public GameObject lastLocation = null;
+    public int lastLocation = -1;
 
     public GameData() { }
 
@@ -19,7 +19,7 @@ public class GameData
         aliveMonsters = CreateArrayWithDefaultValue(gameConfig.aliveMonsters, true);
         gatesState = CreateArrayWithDefaultValue(gameConfig.gatesState, true);
         teleports = CreateArrayWithDefaultValue(gameConfig.teleports, false);
-        basePatternSpellLevels = CreateArrayWithDefaultValue(gameConfig.baseSpells.Length, 1);
+        basePatternSpellLevels = CreateArrayWithDefaultValue(gameConfig.baseSpells.Length, 0);
         availablePets = CreateArrayWithDefaultValue(gameConfig.pets.Length, false);
         exp = gameConfig.exp;
     }

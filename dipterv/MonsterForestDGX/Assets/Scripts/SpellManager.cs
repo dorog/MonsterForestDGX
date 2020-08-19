@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SpellManager : SingletonClass<SpellManager>
 {
@@ -9,12 +8,8 @@ public class SpellManager : SingletonClass<SpellManager>
     public SpellPattern SpellPattern;
 
     private readonly List<ISpellPattern> attackPatterns = new List<ISpellPattern>();
-    private readonly List<ISpellPattern> defensePatterns = new List<ISpellPattern>();
 
     public Transform attackParent;
-    public Transform defenseParent;
-
-    private readonly int distanceDiff = 1100;
 
     private float lastCoverage = 0;
     private float castedCoverage = 0;
@@ -45,15 +40,13 @@ public class SpellManager : SingletonClass<SpellManager>
 
     private void CreatePatterns(List<BasePatternSpell> BasePaternSpells, List<int> levels, List<ISpellPattern> SpellPatterns, Transform parent, float extraHeigh = 0)
     {
-        int x = 0;
         for (int i = 0; i < BasePaternSpells.Count; i++)
         {
-            CreateSpellPattern(x, parent, BasePaternSpells[i], levels[i], SpellPatterns, extraHeigh);
-            x += distanceDiff;
+            CreateSpellPattern(BasePaternSpells[i], levels[i], SpellPatterns, extraHeigh);
         }
     }
 
-    private void CreateSpellPattern(int x, Transform parent, BasePatternSpell basePaternSpell, int level, List<ISpellPattern> SpellPatterns, float extraHeigh = 0)
+    private void CreateSpellPattern(BasePatternSpell basePaternSpell, int level, List<ISpellPattern> SpellPatterns, float extraHeigh = 0)
     {
         List<Vector2> points = new List<Vector2>();
         List<SpellPatternPoint> spellPatternPoints = basePaternSpell.SpellPatternPoints.GetPoints();
@@ -72,26 +65,22 @@ public class SpellManager : SingletonClass<SpellManager>
         SpellPatterns.Add(spellPattern);
     }
 
-    public void Guess(Vector2 point, bool canAttack)
+    public void Guess(Vector2 point)
     {
-        //feeder.text = "Guess: " + point.ToString();
-        //Debug.Log(point);
-        List<ISpellPattern> SpellPatterns = canAttack ? attackPatterns : defensePatterns;
-        foreach (var spellPattern in SpellPatterns)
+        foreach (var spellPattern in attackPatterns)
         {
             spellPattern.Guess(point);
         }
     }
 
-    public SpellResult GetSpell(bool canAttack)
+    public SpellResult GetSpell()
     {
-        List<ISpellPattern> SpellPatterns = canAttack ? attackPatterns : defensePatterns;
         int index = -1;
         float max = -1;
-        for (int i = 0; i < SpellPatterns.Count; i++)
+        for (int i = 0; i < attackPatterns.Count; i++)
         {
-            float result = SpellPatterns[i].GetResult();
-            float minCoverage = SpellPatterns[i].GetMinCoverage();
+            float result = attackPatterns[i].GetResult();
+            float minCoverage = attackPatterns[i].GetMinCoverage();
             if ((minCoverage <= result) && (result > max))
             {
                 index = i;
@@ -107,12 +96,12 @@ public class SpellManager : SingletonClass<SpellManager>
             SpellResult spellResult = new SpellResult
             {
                 id = index,
-                spell = SpellPatterns[index].GetSpell(),
+                spell = attackPatterns[index].GetSpell(),
                 coverage = max,
-                cooldown = SpellPatterns[index].GetCooldown()
+                cooldown = attackPatterns[index].GetCooldown()
             };
 
-            ElementType elementType = SpellPatterns[index].GetElementType();
+            ElementType elementType = attackPatterns[index].GetElementType();
             GameObject castEffect = null;
             for(int i = 0; i < castEffects.Length; i++)
             {
@@ -141,26 +130,6 @@ public class SpellManager : SingletonClass<SpellManager>
         {
             spellPattern.Reset();
         }
-
-        foreach (var spellPattern in defensePatterns)
-        {
-            spellPattern.Reset();
-        }
-    }
-
-    public void AddNewPattern(bool isAttack, SpellPatternPoints spellPatternPoints)
-    {
-
-    }
-
-    private void AddNewAttackPattern(SpellPatternPoints spellPatternPoints)
-    {
-
-    }
-
-    private void AddNewDefensePattern(SpellPatternPoints spellPatternPoints)
-    {
-
     }
 
     public void Won()
@@ -183,7 +152,6 @@ public class SpellManager : SingletonClass<SpellManager>
 
     public void SpellLeveledUp(int id)
     {
-        //TODO: Not only attacks!
         attackPatterns[id].LevelUp();
     }
 
@@ -197,7 +165,7 @@ public class SpellManager : SingletonClass<SpellManager>
         }
         else
         {
-            ElementType type = ElementType.Air;
+            ElementType type;
             switch (name)
             {
                 case "Fire":

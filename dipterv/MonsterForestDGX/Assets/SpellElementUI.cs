@@ -42,7 +42,6 @@ public class SpellElementUI : MonoBehaviour
 
     public void Refresh(int exp)
     {
-        spellPattern.LevelUp();
         SetupUI(id, spellPattern, spellElementInfoUI, exp);
     }
 
@@ -61,6 +60,6 @@ public class SpellElementUI : MonoBehaviour
     public void BuyOrUpdate()
     {
         DataManager dataManager = DataManager.GetInstance();
-        dataManager.LevelUpSpell(id,spellPattern.GetRequiredExpValue());
+        dataManager.LevelUpSpell(id, spellPattern.GetRequiredExpValue());
     }
 }

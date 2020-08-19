@@ -127,14 +127,14 @@ public class DataManager : MonoBehaviour
         return gameData.availablePets;
     }
 
-    public GameObject GetLastLocation()
+    public int GetLastLocation()
     {
         return gameData.lastLocation;
     }
 
-    public void SavePortLocation(GameObject lastLocation)
+    public void SavePortLocation(int id)
     {
-        gameData.lastLocation = lastLocation;
+        gameData.lastLocation = id;
 
         Save(gameData);
     }

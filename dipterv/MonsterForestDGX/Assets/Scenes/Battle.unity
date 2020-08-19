@@ -6682,7 +6682,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 2.6765e-41, z: 0, w: -1.2817793e+10}
+  m_BoundingSphereOverride: {x: 0, y: 3.4253e-41, z: 0, w: -2.59375}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -9520,6 +9520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: extraObjects.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7430444227610318338, guid: d8cd6fdbbee8a4e42ace32684ae889e4,
+        type: 3}
+      propertyPath: blockChance
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7430444227610318348, guid: d8cd6fdbbee8a4e42ace32684ae889e4,
         type: 3}
@@ -19591,7 +19596,13 @@ MonoBehaviour:
   player: {fileID: 1220643221}
   lastLocation: {fileID: 498585570}
   teleportsParent: {fileID: 6679297234002439572}
-  defaultLocation: {fileID: 982983583}
+  defaultLocation: {fileID: 542217200}
+  teleporPoints:
+  - {fileID: 542217200}
+  - {fileID: 1667081394}
+  - {fileID: 67297107}
+  - {fileID: 1233624563}
+  - {fileID: 982983583}
 --- !u!222 &1172046032697281175
 CanvasRenderer:
   m_ObjectHideFlags: 0

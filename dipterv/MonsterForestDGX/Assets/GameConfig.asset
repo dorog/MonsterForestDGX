@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
-  exp: 500
+  exp: 2000
   aliveMonsters: 4
   gatesState: 3
   teleports: 5

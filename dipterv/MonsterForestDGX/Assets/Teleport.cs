@@ -13,17 +13,27 @@ public class Teleport : MenuUI
 
     public GameObject defaultLocation;
 
+    public GameObject[] teleporPoints;
+
     public void Start()
     {
         dataManager = DataManager.GetInstance();
-        GameObject last = dataManager.GetLastLocation();
+
+        int lastTeleportId = dataManager.GetLastLocation();
+
+        GameObject last;
+        if (lastTeleportId == -1)
+        {
+            last = defaultLocation;
+        }
+        else
+        {
+            last = teleporPoints[dataManager.GetLastLocation()];
+        }
+
         ports = dataManager.GetTeleportsState();
 
-        //TODO: Refactor, id instead of gameobject
-        /*if (last != null)
-        {
-            TeleportPlayer(last);
-        }*/
+        TeleportPlayer(last);
 
         SetupTeleportUI();
     }
@@ -36,20 +46,20 @@ public class Teleport : MenuUI
         HideUI();
     }
 
-    private void SetLastLocation(GameObject port)
+    private void SetLastLocation(int id)
     {
-        lastLocation = port;
-        dataManager.SavePortLocation(port);
+        lastLocation = teleporPoints[id];
+        dataManager.SavePortLocation(id);
     }
 
-    public void ReachedTerritory(int id, GameObject port)
+    public void ReachedTerritory(int id)
     {
-        SetLocation(id, port);
+        SetLocation(id);
 
         SetPortUI(id);
     }
 
-    private void SetLocation(int id, GameObject port)
+    private void SetLocation(int id)
     {
         if (!ports[id])
         {
@@ -59,7 +69,7 @@ public class Teleport : MenuUI
             teleportsParent.transform.GetChild(id).gameObject.SetActive(true);
         }
 
-        SetLastLocation(port);
+        SetLastLocation(id);
     }
 
     private void SetPortUI(int id)
