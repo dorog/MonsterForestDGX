@@ -50,4 +50,17 @@ public class TraningCampCoverageUI : MonoBehaviour
             traningCampCoverageElementUIs[i].ShowResult(coverageResults[i].Result, coverageResults[i].Min, coverageResults[i].Name);
         }
     }
+
+    public void FilterSpellCoverage(ElementType elementType)
+    {
+        int chosed = spellManager.GetFilteredAttackSpellState(elementType);
+
+        for (int i = 0; i < traningCampCoverageElementUIs.Length; i++)
+        {
+            traningCampCoverageElementUIs[i].ResetUI();
+            traningCampCoverageElementUIs[i].gameObject.SetActive(false);
+        }
+
+        traningCampCoverageElementUIs[chosed].gameObject.SetActive(true);  
+    }
 }

@@ -96,11 +96,6 @@ public class Player : Fighter
         battleManager.PlayerDied();
     }
 
-    public override void StartTurn()
-    {
-        AttackTurn();
-    }
-
     public void DefTurn()
     {
         grid.color = DefenseGridColor;
@@ -144,7 +139,6 @@ public class Player : Fighter
 
     public void CastSpell(SpellResult spellResult)
     {
-        battleManager.PlayerAttack();
         magicCircleHandler.CastSpell(spellResult, battleManager);
     }
 

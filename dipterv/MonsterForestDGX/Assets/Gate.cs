@@ -4,10 +4,7 @@ public class Gate : Fighter, IEnemy
     public BattleManager battleManager;
     public int id;
 
-    public void Appear()
-    {
-        
-    }
+    public Controller controller;
 
     public override void Die()
     {
@@ -16,14 +13,9 @@ public class Gate : Fighter, IEnemy
         battleManager.MonsterDied();
     }
 
-    public void Disappear()
-    {
-
-    }
-
     public void Fight()
     {
-        
+        controller.Step();
     }
 
     public Health GetHealth()
@@ -36,18 +28,12 @@ public class Gate : Fighter, IEnemy
         return false;
     }
 
-    public void React()
-    {
-        
-    }
-
     public void ResetMonster()
     {
         health.ResetHealth();
     }
 
-    public override void StartTurn()
-    {
-        battleManager.PlayerTurn();
-    }
+    public void Appear(){}
+
+    public void Disappear(){}
 }

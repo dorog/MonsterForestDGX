@@ -45,24 +45,15 @@ public class BattleManager : MonoBehaviour
         monster.Fight();
     }
 
-    public void PlayerAttack()
-    {
-        monster.React();
-    }
-
     public void PlayerTurn()
     {
-        player.StartTurn();
+        player.AttackTurn();
         //turn.text = "Player Turn";
     }
 
     public void MonsterTurn()
     {
         player.DefTurn();
-
-        monster.StartTurn();
-
-        //turn.text = "Monster Turn";
 
         monsterTurnStartDelegateEvent?.Invoke();
     }

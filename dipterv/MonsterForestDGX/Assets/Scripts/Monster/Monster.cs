@@ -19,16 +19,11 @@ public class Monster : Fighter, IEnemy
     public GameObject[] extraObjects;
     public ParticleSystem[] extraParticles;
 
-    private bool died = false;
-
     public TurnFill turnFill;
 
     public AutoController autoController;
 
-    public override void StartTurn()
-    {
-        //turnFill.MoveForward();
-    }
+    public MagicCircleHandler magicCircleHandler;
 
     public void React()
     {
@@ -42,7 +37,8 @@ public class Monster : Fighter, IEnemy
 
     public override void Die()
     {
-        died = true;
+        magicCircleHandler.successCastSpellDelegateEvent -= React;
+
         battleManager.MonsterDied();
         animator.SetTrigger(dieAnimation);
 
@@ -77,6 +73,8 @@ public class Monster : Fighter, IEnemy
 
     public void ResetMonster()
     {
+        magicCircleHandler.successCastSpellDelegateEvent -= React;
+
         autoController.StopController();
 
         Disappear();
@@ -96,6 +94,7 @@ public class Monster : Fighter, IEnemy
 
     public void Fight()
     {
+        magicCircleHandler.successCastSpellDelegateEvent += React;
         autoController.StartController();
     }
 }

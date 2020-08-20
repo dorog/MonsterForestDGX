@@ -21,7 +21,7 @@ public class TrainingCampUI : MonoBehaviour
 
 
     public Toggle coverageToogle;
-    public GameObject coverageUI;
+    public TraningCampCoverageUI coverageUI;
 
     public Toggle damageToogle;
     public GameObject damageUI;
@@ -59,7 +59,11 @@ public class TrainingCampUI : MonoBehaviour
         OptionData option = dropdown.options[dropdown.value];
         BasePatternSpell basePatternSpell = spellManager.GetSpellPoints(option.text);
 
-        if(basePatternSpell == null)
+        ElementType elementType = ElementTypeExtensions.GetElementTypeByName(option.text);
+
+        coverageUI.FilterSpellCoverage(elementType);
+
+        if (basePatternSpell == null)
         {
             spellGuideDrawer.ClearGuide();
         }
@@ -71,7 +75,7 @@ public class TrainingCampUI : MonoBehaviour
 
     public void SetCoverageVisibility()
     {
-        coverageUI.SetActive(coverageToogle.isOn);
+        coverageUI.gameObject.SetActive(coverageToogle.isOn);
     }
 
     public void SetDamageVisibility()

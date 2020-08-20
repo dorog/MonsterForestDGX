@@ -30,7 +30,7 @@ public class Controller : MonoBehaviour
         return commands[actual];
     }
 
-    protected void Step()
+    public void Step()
     {
         if(!isRunning)
         {

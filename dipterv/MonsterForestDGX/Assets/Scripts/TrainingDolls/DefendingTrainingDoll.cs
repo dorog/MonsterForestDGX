@@ -15,15 +15,11 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public DollHealth dollHealth;
 
-    public void Appear()
-    {
-        
-    }
+    public Controller controller;
 
-    public void Disappear()
-    {
-        
-    }
+    public void Appear(){}
+
+    public void Disappear(){}
 
     public Health GetHealth()
     {
@@ -40,19 +36,7 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
         }
     }
 
-    public void ResetMonster()
-    {
-        
-    }
-
-    public void StartTurn()
-    {
-        trainingCampUI.EnableUI();
-
-        cooldownReset.Init(battleManager.player);
-
-        battleManager.PlayerTurn();
-    }
+    public void ResetMonster(){}
 
     public void FinishedTraining()
     {
@@ -71,6 +55,10 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public void Fight()
     {
-        
+        trainingCampUI.EnableUI();
+
+        cooldownReset.Init(battleManager.player);
+
+        controller.Step();
     }
 }

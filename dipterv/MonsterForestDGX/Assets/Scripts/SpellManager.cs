@@ -186,35 +186,30 @@ public class SpellManager : SingletonClass<SpellManager>
         return states;
     }
 
+    public int GetFilteredAttackSpellState(ElementType elementType)
+    {
+        for (int i = 0; i < attackPatterns.Count; i++)
+        {
+            if (attackPatterns[i].GetLevelValue() != 0 && attackPatterns[i].GetElementType() == elementType)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
     public BasePatternSpell GetSpellPoints(string name)
     {
         var basePatterns = DataManager.GetInstance().GetBasePatterns();
 
-        if(name == "All")
+        if(name == "No")
         {
             return null;
         }
         else
         {
-            ElementType type;
-            switch (name)
-            {
-                case "Fire":
-                    type = ElementType.Fire;
-                    break;
-                case "Water":
-                    type = ElementType.Water;
-                    break;
-                case "Air":
-                    type = ElementType.Air;
-                    break;
-                case "Earth":
-                    type = ElementType.Earth;
-                    break;
-                default:
-                    type = ElementType.Air;
-                    break;
-            }
+            ElementType type = ElementTypeExtensions.GetElementTypeByName(name);
 
             for(int i = 0; i < basePatterns.Count; i++)
             {
