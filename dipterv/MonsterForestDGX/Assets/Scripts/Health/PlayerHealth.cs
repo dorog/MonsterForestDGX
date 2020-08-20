@@ -53,4 +53,9 @@ public class PlayerHealth : Health
             timeDamageBlock.StartBlock();
         }
     }
+
+    public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
+    {
+        
+    }
 }

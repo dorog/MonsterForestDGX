@@ -21,6 +21,8 @@ public class SpellManager : SingletonClass<SpellManager>
 
     public Transform castEffectTransformReference;
 
+    private List<CoverageResult> coverageResults = new List<CoverageResult>();
+
     private void Awake()
     {
         Init(this);
@@ -75,12 +77,17 @@ public class SpellManager : SingletonClass<SpellManager>
 
     public SpellResult GetSpell()
     {
+        coverageResults.Clear();
+
         int index = -1;
         float max = -1;
         for (int i = 0; i < attackPatterns.Count; i++)
         {
             float result = attackPatterns[i].GetResult();
             float minCoverage = attackPatterns[i].GetMinCoverage();
+
+            coverageResults.Add(new CoverageResult(attackPatterns[i].GetElementType().ToString(), result, minCoverage));
+
             if ((minCoverage <= result) && (result > max))
             {
                 index = i;
@@ -144,6 +151,11 @@ public class SpellManager : SingletonClass<SpellManager>
         return castedCoverage;
     }
 
+    public List<CoverageResult> GetCoverageResults()
+    {
+        return coverageResults;
+    }
+
     public void AddXpForHit(float coverage)
     {
         lastCoverage = coverage;
@@ -153,6 +165,25 @@ public class SpellManager : SingletonClass<SpellManager>
     public void SpellLeveledUp(int id)
     {
         attackPatterns[id].LevelUp();
+    }
+
+    public List<bool> GetAttackSpellsState()
+    {
+        List<bool> states = new List<bool>();
+
+        foreach(var attackSpell in attackPatterns)
+        {
+            if(attackSpell.GetLevelValue() == 0)
+            {
+                states.Add(false);
+            }
+            else
+            {
+                states.Add(true);
+            }
+        }
+
+        return states;
     }
 
     public BasePatternSpell GetSpellPoints(string name)

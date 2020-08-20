@@ -2,7 +2,7 @@
 
 public class MonsterHit : MonoBehaviour, ITarget
 {
-    public MonsterHealth health;
+    public Health health;
     public MonsterHitType monsterHitType;
     [Range(0, 200)]
     public float dmgPercent = 100;
@@ -12,11 +12,11 @@ public class MonsterHit : MonoBehaviour, ITarget
         float damage = dmg * dmgPercent / 100;
         if(monsterHitType == MonsterHitType.Body)
         {
-            health.TakeDamageBody(damage, magicType);
+            health.TakeDamageBasedOnHit(damage, magicType, false);
         }
         else
         {
-            health.TakeDamageHead(damage, magicType);
+            health.TakeDamageBasedOnHit(damage, magicType, true);
         }
     }
 }

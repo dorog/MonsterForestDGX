@@ -17,7 +17,7 @@ public class CooldownResetPetAbility : PetAbility
         player = _player;
         effect = _player.GetCooldownEffect();
         magicCircleHandler = player.GetMagicCircleHandler();
-        magicCircleHandler.castSpellDelegateEvent += ResetCooldown;
+        magicCircleHandler.successCastSpellDelegateEvent += ResetCooldown;
     }
 
     private void ResetCooldown()
@@ -32,6 +32,6 @@ public class CooldownResetPetAbility : PetAbility
 
     public void DisableAbility()
     {
-        magicCircleHandler.castSpellDelegateEvent -= ResetCooldown;
+        magicCircleHandler.successCastSpellDelegateEvent -= ResetCooldown;
     }
 }

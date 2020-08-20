@@ -148,6 +148,11 @@ public class Player : Fighter
         magicCircleHandler.CastSpell(spellResult, battleManager);
     }
 
+    public void FailedSpell()
+    {
+        magicCircleHandler.failedCastSpellDelegateEvent?.Invoke();
+    }
+
     public MagicCircleHandler GetMagicCircleHandler()
     {
         return magicCircleHandler;

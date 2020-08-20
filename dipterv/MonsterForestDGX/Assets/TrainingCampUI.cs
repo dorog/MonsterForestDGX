@@ -13,13 +13,18 @@ public class TrainingCampUI : MonoBehaviour
 
     public Text percent;
 
-    public MagicCircleHandler magicCircleHandler;
     private SpellManager spellManager;
-    public Text coverage;
 
     public Dropdown dropdown;
 
     public SpellGuideDrawer spellGuideDrawer;
+
+
+    public Toggle coverageToogle;
+    public GameObject coverageUI;
+
+    public Toggle damageToogle;
+    public GameObject damageUI;
 
     private void Start()
     {
@@ -30,13 +35,11 @@ public class TrainingCampUI : MonoBehaviour
     public void EnableUI()
     {
         root.SetActive(true);
-        magicCircleHandler.castSpellDelegateEvent += GetSpellCoverage;
     }
 
     public void DisableUI()
     {
         root.SetActive(false);
-        magicCircleHandler.castSpellDelegateEvent -= GetSpellCoverage;
     }
 
     public void StepSlider(float value)
@@ -48,11 +51,6 @@ public class TrainingCampUI : MonoBehaviour
     {
         cooldownReset.resetChance = cooldownSlider.value * 100;
         percent.text = (cooldownSlider.value * 100) + "%";
-    }
-
-    private void GetSpellCoverage()
-    {
-        coverage.text = spellManager.GetCastedCoverage() * 100 + "%";
     }
 
     public void AskForGuide()
@@ -69,5 +67,15 @@ public class TrainingCampUI : MonoBehaviour
         {
             spellGuideDrawer.DrawGuide(basePatternSpell.SpellPatternPoints.GetPoints());
         }
+    }
+
+    public void SetCoverageVisibility()
+    {
+        coverageUI.SetActive(coverageToogle.isOn);
+    }
+
+    public void SetDamageVisibility()
+    {
+        damageUI.SetActive(damageToogle.isOn);
     }
 }

@@ -31,4 +31,9 @@ public class GateHealth : Health
             gateElement.ResetElement();
         }
     }
+
+    public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
+    {
+        
+    }
 }

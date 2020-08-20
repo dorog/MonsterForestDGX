@@ -17,6 +17,8 @@ public class MonsterHealth : Health
 
     public Text hp;
 
+    private string actualHitAnimation;
+
     public override void SetUpHealth()
     {
         base.SetUpHealth();
@@ -24,32 +26,19 @@ public class MonsterHealth : Health
         hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
     }
 
-    public void TakeDamageBody(float dmg, ElementType magicType)
+    public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
     {
-        if (inBlock)
-        {
-            TakeDamage(dmg, magicType);
-            if(currentHp > 0)
-            {
-                animator.SetTrigger(blockAnimation);
-            }
-        }
-        else
-        {
-            TakeDamage(dmg, magicType);
-            if(currentHp > 0)
-            {
-                animator.SetTrigger(bodyHitAnimation);
-            }
-        }
+        actualHitAnimation = isHeadshot ? headHitAnimation : bodyHitAnimation;
+
+        MonsterTakeDamage(dmg, magicType);
     }
 
-    public void TakeDamageHead(float dmg, ElementType magicType)
+    private void MonsterTakeDamage(float dmg, ElementType magicType)
     {
         if (inBlock)
         {
             TakeDamage(dmg, magicType);
-            if (currentHp > 0)
+            if(currentHp > 0)
             {
                 animator.SetTrigger(blockAnimation);
             }
@@ -57,9 +46,9 @@ public class MonsterHealth : Health
         else
         {
             TakeDamage(dmg, magicType);
-            if (currentHp > 0)
+            if(currentHp > 0)
             {
-                animator.SetTrigger(headHitAnimation);
+                animator.SetTrigger(actualHitAnimation);
             }
         }
     }

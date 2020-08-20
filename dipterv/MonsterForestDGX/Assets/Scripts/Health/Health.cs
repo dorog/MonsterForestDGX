@@ -44,6 +44,8 @@ public abstract class Health : MonoBehaviour
 
     public abstract void SetDamageBlock();
 
+    public abstract void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot);
+
     public virtual void ResetHealth()
     {
         currentHp = maxHp;

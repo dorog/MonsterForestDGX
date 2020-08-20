@@ -19,7 +19,8 @@ public class MagicCircleHandler : MonoBehaviour
     public Player player;
 
     public delegate void CastSpellDelegate();
-    public CastSpellDelegate castSpellDelegateEvent;
+    public CastSpellDelegate successCastSpellDelegateEvent;
+    public CastSpellDelegate failedCastSpellDelegateEvent;
 
     public GameObject hand;
 
@@ -107,7 +108,7 @@ public class MagicCircleHandler : MonoBehaviour
 
     private void SetUpCoolDown(float cd)
     {
-        castSpellDelegateEvent?.Invoke();
+        successCastSpellDelegateEvent?.Invoke();
 
         if (!resetedCd)
         {
@@ -144,12 +145,12 @@ public class MagicCircleHandler : MonoBehaviour
 
     private void ClearDelegates()
     {
-        if (castSpellDelegateEvent != null)
+        if (successCastSpellDelegateEvent != null)
         {
-            Delegate[] delegates = castSpellDelegateEvent.GetInvocationList();
+            Delegate[] delegates = successCastSpellDelegateEvent.GetInvocationList();
             foreach (Delegate d in delegates)
             {
-                castSpellDelegateEvent -= (CastSpellDelegate)d;
+                successCastSpellDelegateEvent -= (CastSpellDelegate)d;
             }
         }
     }

@@ -80,7 +80,7 @@ public class Paint : MonoBehaviour
             SpellResult spellResult = SpellManager.GetSpell();
             if (spellResult == null)
             {
-                Debug.Log("Null");
+                player.FailedSpell();
             }
             else
             {

@@ -10,6 +10,11 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public CooldownResetPetAbility cooldownReset;
 
+    [Range(0, 100)]
+    public float blockChance;
+
+    public DollHealth dollHealth;
+
     public void Appear()
     {
         
@@ -27,7 +32,12 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public void React()
     {
-        
+        float random = Random.Range(0, 101);
+
+        if (random <= blockChance)
+        {
+            dollHealth.SetDamageBlock();
+        }
     }
 
     public void ResetMonster()
