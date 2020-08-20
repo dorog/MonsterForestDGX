@@ -32,19 +32,9 @@ public class Monster : Fighter, IEnemy
 
     public TurnFill turnFill;
 
-    private bool firstRound = true;
-
     public override void StartTurn()
     {
-        if (firstRound)
-        {
-            firstRound = false;
-            MonsterTurnStart();
-        }
-        else
-        {
-            turnFill.MoveForward();
-        }
+        turnFill.MoveForward();
     }
 
     private IEnumerator Strike()
@@ -163,7 +153,6 @@ public class Monster : Fighter, IEnemy
 
     public void ResetMonster()
     {
-        firstRound = true;
         firstTurn = true;
 
         StopCoroutine(nameof(Strike));

@@ -8,13 +8,13 @@ public class MovingTurnFill : TurnFill
     public float backWardValue = 1f;
     private int direction = -1;
 
-    private Vector3 startPosition;
+    private Vector3 monsterTurnPosition;
     private Vector3 playerTurnPosition;
 
     private void Start()
     {
-        startPosition = transform.position;
-        playerTurnPosition = startPosition + transform.forward * (-1) * distance;
+        playerTurnPosition = transform.position;
+        monsterTurnPosition = transform.position + transform.forward * distance;
     }
 
     protected override IEnumerator Moving(bool forward, float time)
@@ -25,7 +25,7 @@ public class MovingTurnFill : TurnFill
 
         if (forward)
         {
-            StartCoroutine(EnumeratorMoving.MoveToPosition(transform, startPosition, time));
+            StartCoroutine(EnumeratorMoving.MoveToPosition(transform, monsterTurnPosition, time));
         }
         else
         {
