@@ -8,4 +8,5 @@ public interface IEnemy
     void ResetMonster();
     Health GetHealth();
     bool IsMonster();
+    void Fight();
 }

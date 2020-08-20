@@ -1,28 +1,26 @@
-﻿using System.Collections;
-using UnityEngine;
-
-public class AutoController : AbstractController
+﻿
+public class AutoController : Controller
 {
     private bool isCancelled = false;
 
     public void StartController()
     {
-        StartCoroutine("Running");
-    }
-
-    public IEnumerator Running()
-    {
-        while (!isCancelled)
-        {
-            Command cmd = GetNextCommand();
-            cmd.Execute();
-
-            yield return new WaitForSeconds(1);
-        }
+        isCancelled = false;
+        Step();
     }
 
     public void StopController()
     {
+        ResetController();
         isCancelled = true;
+    }
+
+    public override void FinishedTheCommand()
+    {
+        base.FinishedTheCommand();
+        if (!isCancelled)
+        {
+            Step();
+        }
     }
 }

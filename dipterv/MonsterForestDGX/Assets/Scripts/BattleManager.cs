@@ -11,7 +11,7 @@ public class BattleManager : MonoBehaviour
     //public Text turn;
     //public GameObject turnGO;
     public int id;
-    public bool isMonster;
+    private bool isMonster;
 
     private GameObject battlePlace;
 
@@ -20,6 +20,8 @@ public class BattleManager : MonoBehaviour
 
     public bool petEnable = true;
     public bool resistantEnable = true;
+
+    public Controller controller;
 
     public void Battle(int _id, bool _isMonster, GameObject battlePlace)
     {
@@ -39,8 +41,8 @@ public class BattleManager : MonoBehaviour
 
     public void BattleStart()
     {
-        MonsterTurn();
         player.BattleStarted();
+        monster.Fight();
     }
 
     public void PlayerAttack()

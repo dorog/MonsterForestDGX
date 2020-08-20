@@ -68,4 +68,9 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
     {
         return false;
     }
+
+    public void Fight()
+    {
+        
+    }
 }

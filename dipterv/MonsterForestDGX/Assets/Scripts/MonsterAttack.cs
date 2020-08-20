@@ -61,7 +61,6 @@ public class MonsterAttack : IAttack
 
     private int GetOneRandomAnimation(MonsterAttackClass[] animations)
     {
-
         int random = Random.Range(0, animations.Length);
         return random;
     }

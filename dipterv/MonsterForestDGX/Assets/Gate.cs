@@ -21,6 +21,11 @@ public class Gate : Fighter, IEnemy
 
     }
 
+    public void Fight()
+    {
+        
+    }
+
     public Health GetHealth()
     {
         return health;

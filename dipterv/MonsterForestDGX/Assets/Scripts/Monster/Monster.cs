@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Monster : Fighter, IEnemy
@@ -13,89 +12,22 @@ public class Monster : Fighter, IEnemy
     public float disappearAnimationTime = 2;
     public string dieAnimation;
 
-    public IAttack attack;
     [Range(0, 100)]
     public float blockChance = 10f;
     public BattleManager battleManager;
-    [Range(0, 100)]
-    public float[] extraAttackChances;
-
-    public float minWaitTime = 1;
-    public float maxWaitTime = 10;
 
     public GameObject[] extraObjects;
     public ParticleSystem[] extraParticles;
 
     private bool died = false;
 
-    private bool firstTurn = true;
-
     public TurnFill turnFill;
+
+    public AutoController autoController;
 
     public override void StartTurn()
     {
-        turnFill.MoveForward();
-    }
-
-    private IEnumerator Strike()
-    {
-        if (firstTurn)
-        {
-            firstTurn = false;
-            yield return new WaitForSeconds(2 + appearAnimationTime);
-        }
-        else
-        {
-            yield return new WaitForSeconds(2);
-        }
-
-        float animationTime = Attack();
-
-        yield return new WaitForSeconds(2 + animationTime);
-
-        for (int i = 0; i < extraAttackChances.Length; i++)
-        {
-            float extraAttack = Random.Range(0, 101);
-            if (extraAttack <= extraAttackChances[i])
-            {
-                animationTime = Attack();
-
-                yield return new WaitForSeconds(2 + animationTime);
-            }
-            else
-            {
-                break;
-            }
-        }
-
-        float waitTime = Random.Range(minWaitTime + turnFill.time, maxWaitTime + 1 + turnFill.time);
-        StartCoroutine(Countdown(waitTime));
-
-        yield return new WaitForSeconds(4);
-
-        turnFill.MoveBack();
-    }
-
-    private IEnumerator Countdown(float time)
-    {
-        float duration = time;
-        float normalizedTime = 0;
-        while (normalizedTime <= 1f && !died)
-        {
-            normalizedTime += Time.deltaTime / duration;
-
-            yield return null;
-        }
-
-        if (!died)
-        {
-            battleManager.MonsterTurn();
-        }
-    }
-
-    private float Attack()
-    {
-        return attack.Attack();
+        //turnFill.MoveForward();
     }
 
     public void React()
@@ -113,6 +45,8 @@ public class Monster : Fighter, IEnemy
         died = true;
         battleManager.MonsterDied();
         animator.SetTrigger(dieAnimation);
+
+        autoController.StopController();
     }
 
     public void Appear()
@@ -141,22 +75,9 @@ public class Monster : Fighter, IEnemy
         animator.SetTrigger(disappearAnimation);
     }
 
-    public void MonsterTurnEnd()
-    {
-        battleManager.PlayerTurn();
-    }
-
-    public void MonsterTurnStart()
-    {
-        StartCoroutine(nameof(Strike));
-    }
-
     public void ResetMonster()
     {
-        firstTurn = true;
-
-        StopCoroutine(nameof(Strike));
-        //StopCoroutine(Countdown(2));
+        autoController.StopController();
 
         Disappear();
 
@@ -171,5 +92,10 @@ public class Monster : Fighter, IEnemy
     public bool IsMonster()
     {
         return true;
+    }
+
+    public void Fight()
+    {
+        autoController.StartController();
     }
 }

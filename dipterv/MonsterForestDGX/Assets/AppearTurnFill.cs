@@ -15,7 +15,7 @@ public class AppearTurnFill : TurnFill
         time = undergroundtime + appearAnimationTime + disappearAnimationTime;
     }
 
-    protected override IEnumerator Moving(bool forward, float time)
+    public override IEnumerator Moving(bool forward, float time)
     {
         animator.SetTrigger(disapperAnimation);
         yield return new WaitForSeconds(disappearAnimationTime);

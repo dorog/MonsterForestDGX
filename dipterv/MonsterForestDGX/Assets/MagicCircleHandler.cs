@@ -67,7 +67,6 @@ public class MagicCircleHandler : MonoBehaviour
 
     public void BattleEnd()
     {
-        Debug.Log("BattleEnd");
         inCast = false;
         canAttack = false;
         magicCircle.SetActive(false);

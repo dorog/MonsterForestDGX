@@ -17,7 +17,7 @@ public class MovingTurnFill : TurnFill
         monsterTurnPosition = transform.position + transform.forward * distance;
     }
 
-    protected override IEnumerator Moving(bool forward, float time)
+    public override IEnumerator Moving(bool forward, float time)
     {
         direction = forward ? 1 : -1;
         float value = forward ? forwardValue : backWardValue;
