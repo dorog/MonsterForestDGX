@@ -3,59 +3,51 @@ using UnityEngine;
 
 public class SpellGuideDrawer : MonoBehaviour
 {
-    public LineRenderer lineRenderer;
+    public GuideElement guideElement;
+    public Transform Root;
 
-    public float minDistance = 20f;
+    public GameObject guidePoint;
 
-    private void Start()
+    private Transform startPoint;
+    private List<Transform> guidePoints = new List<Transform>();
+
+    public GuideDrawHelper guideDrawHelper;
+
+    public void DrawGuide(List<SpellPatternPoint> spellPatternPoints, float width = 10, float scale = 0.01f)
     {
-        /*List<SpellPatternPoint> spellPatternPoints = new List<SpellPatternPoint>() 
+        ClearGuide();
+
+        for (int i = 0; i < spellPatternPoints.Count - 1; i++)
         {
-            new SpellPatternPoint(0, new Vector2(0, 0)),
-            new SpellPatternPoint(0, new Vector2(0, 100)),
-            new SpellPatternPoint(0, new Vector2(100, 0)),
-            new SpellPatternPoint(0, new Vector2(0, -100)),
-            new SpellPatternPoint(0, new Vector2(-100, 0)),
-            new SpellPatternPoint(0, new Vector2(0, 0)),
-        };
-
-        DrawGuide(spellPatternPoints, 10, 0.005f);*/
-    }
-
-    public void DrawGuide(List<SpellPatternPoint> spellPatternPoints, float width = 10, float scale = 0.005f)
-    {
-        lineRenderer.startWidth = width * scale;
-        lineRenderer.endWidth = width * scale;
-
-        lineRenderer.positionCount = spellPatternPoints.Count;
-
-        Vector3 previousPoint = Vector3.zero;
-        int extraPoint = 0;
-        for (int i = 0; i < spellPatternPoints.Count; i++)
-        {
-            Vector3 point = transform.position + new Vector3(spellPatternPoints[i].Point.x, spellPatternPoints[i].Point.y) * scale;
-            if (i != 0)
+            GuideElement guideElementInstance = Instantiate(guideElement, Root);
+            guideElementInstance.Set(spellPatternPoints[i].Point, spellPatternPoints[i + 1].Point, width, scale);
+            if (i == 0)
             {
-                float distance = (point - previousPoint).magnitude;
-
-                int extra = Mathf.FloorToInt(distance / minDistance * scale);
-
-                Vector3 directionVector = (point - previousPoint).normalized * minDistance * scale;
-                for (int j = 0; j < extra; j++)
-                {
-                    lineRenderer.positionCount++;
-                    Vector3 exP = previousPoint + directionVector * (j + 1);
-                    lineRenderer.SetPosition(i + extraPoint, exP);
-                    extraPoint++;
-                }
+                startPoint = guideElementInstance.transform;
             }
-            lineRenderer.SetPosition(i + extraPoint, point);
-            previousPoint = point;
+            else
+            {
+                guidePoints.Add(guideElementInstance.transform);
+            }
         }
+
+        //Last point
+        GameObject lastGuidePoint = Instantiate(guidePoint, Root);
+        lastGuidePoint.transform.localPosition = new Vector3(spellPatternPoints[spellPatternPoints.Count - 1].Point.x * scale, spellPatternPoints[spellPatternPoints.Count - 1].Point.y * scale, 0);
+        guidePoints.Add(lastGuidePoint.transform);
+
+        GuideDrawHelper guideDrawHelperGO = Instantiate(guideDrawHelper, Root);
+        guideDrawHelperGO.Init(guidePoints, startPoint);
+        guideDrawHelperGO.StartHelper();
     }
 
     public void ClearGuide()
     {
-        lineRenderer.positionCount = 0;
+        foreach (Transform child in Root.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        guidePoints.Clear();
     }
 }
