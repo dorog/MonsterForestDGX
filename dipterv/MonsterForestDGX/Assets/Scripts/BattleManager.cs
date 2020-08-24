@@ -36,7 +36,7 @@ public class BattleManager : MonoBehaviour
 
         monster = monsterGO.GetComponent<IEnemy>();
         monster.Appear();
-        player.Battle(this, monsterHealth.resistant, petEnable);
+        player.Battle(this, monsterHealth.resistant, petEnable, resistantEnable);
     }
 
     public void BattleStart()

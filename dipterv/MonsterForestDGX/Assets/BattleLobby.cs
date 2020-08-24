@@ -9,6 +9,7 @@ public class BattleLobby : MonoBehaviour
     public ResistantValue air;
 
     public GameObject petTab;
+    public GameObject resistantTab;
 
     public void StartBattle()
     {
@@ -20,6 +21,11 @@ public class BattleLobby : MonoBehaviour
     public void SetPetTab(bool petEnable)
     {
         petTab.SetActive(petEnable);
+    }
+
+    public void SetResistantTab(bool resistantEnable)
+    {
+        resistantTab.SetActive(resistantEnable);
     }
 
     public void SetResistantValues(Resistant resistant)

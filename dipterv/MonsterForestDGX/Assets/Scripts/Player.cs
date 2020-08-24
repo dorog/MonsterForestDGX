@@ -108,7 +108,7 @@ public class Player : Fighter
         magicCircleHandler.AttackTurn();
     }
 
-    public void Battle(BattleManager battleManager, Resistant monsterResistant, bool petEnable)
+    public void Battle(BattleManager battleManager, Resistant monsterResistant, bool petEnable, bool resistantEnable)
     {
         this.petEnable = petEnable;
 
@@ -117,6 +117,7 @@ public class Player : Fighter
         battleLobbyUI.battleManager = battleManager;
         battleLobbyUI.SetResistantValues(monsterResistant);
         battleLobbyUI.SetPetTab(petEnable);
+        battleLobbyUI.SetResistantTab(resistantEnable);
 
         battleLobbyUI.gameObject.SetActive(true);
     }
