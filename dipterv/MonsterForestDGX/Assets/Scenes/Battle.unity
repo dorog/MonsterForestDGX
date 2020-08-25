@@ -5131,6 +5131,7 @@ MonoBehaviour:
   fire: {fileID: 1187585212}
   air: {fileID: 983699589}
   petTab: {fileID: 1580470597}
+  resistantTab: {fileID: 837364783}
 --- !u!1 &492165005
 GameObject:
   m_ObjectHideFlags: 0
@@ -9656,7 +9657,7 @@ MonoBehaviour:
   sceneLoader: {fileID: 1325831831}
   id: 0
   petEnable: 0
-  resistantEnable: 1
+  resistantEnable: 0
   controller: {fileID: 0}
 --- !u!4 &835252417
 Transform:
@@ -13581,7 +13582,7 @@ PrefabInstance:
     - target: {fileID: 5932595735893776519, guid: 42c945077afaa2149bff56f43193a7be,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 481.42
+      value: 506.43
       objectReference: {fileID: 0}
     - target: {fileID: 5932595735893776519, guid: 42c945077afaa2149bff56f43193a7be,
         type: 3}
@@ -13591,7 +13592,7 @@ PrefabInstance:
     - target: {fileID: 5932595735893776519, guid: 42c945077afaa2149bff56f43193a7be,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.64
+      value: 8.08
       objectReference: {fileID: 0}
     - target: {fileID: 5932595735893776519, guid: 42c945077afaa2149bff56f43193a7be,
         type: 3}
@@ -20141,6 +20142,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1821258325}
+  - component: {fileID: 1821258326}
   m_Layer: 0
   m_Name: Guides
   m_TagString: Untagged
@@ -20168,6 +20170,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1821258326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821258324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04590b2743561074d812b580af497044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropdown: {fileID: 1466745163}
 --- !u!1 &1834378505
 GameObject:
   m_ObjectHideFlags: 0

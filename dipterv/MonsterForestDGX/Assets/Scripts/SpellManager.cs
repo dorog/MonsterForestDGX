@@ -186,6 +186,21 @@ public class SpellManager : SingletonClass<SpellManager>
         return states;
     }
 
+    public List<string> GetAttackSpellNames()
+    {
+        List<string> names = new List<string>();
+
+        foreach (var attackSpell in attackPatterns)
+        {
+            if (attackSpell.GetLevelValue() != 0)
+            {
+                names.Add(attackSpell.GetElementType().ToString());
+            }
+        }
+
+        return names;
+    }
+
     public int GetFilteredAttackSpellState(ElementType elementType)
     {
         for (int i = 0; i < attackPatterns.Count; i++)

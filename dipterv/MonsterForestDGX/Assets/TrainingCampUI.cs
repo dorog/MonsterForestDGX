@@ -55,7 +55,6 @@ public class TrainingCampUI : MonoBehaviour
 
     public void AskForGuide()
     {
-        //dropdown.value
         OptionData option = dropdown.options[dropdown.value];
         BasePatternSpell basePatternSpell = spellManager.GetSpellPoints(option.text);
 
