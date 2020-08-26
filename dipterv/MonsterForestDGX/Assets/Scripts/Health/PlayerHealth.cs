@@ -8,6 +8,8 @@ public class PlayerHealth : Health
 
     public TimeDamageBlock timeDamageBlock;
 
+    public ParticleSystem healEffect;
+
     public override void SetUpHealth()
     {
         base.SetUpHealth();
@@ -32,6 +34,8 @@ public class PlayerHealth : Health
         }
 
         SetUpHealth();
+
+        healEffect.Play();
     }
 
     protected override float GetBlockedDamage(float dmg)

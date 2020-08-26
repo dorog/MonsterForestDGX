@@ -19,6 +19,14 @@ public class MonsterHealth : Health
 
     private string actualHitAnimation;
 
+    public ParticleSystem petAttackEffect;
+
+    public void TakeDamageFromPet(float dmg, ElementType magicType)
+    {
+        petAttackEffect.Play();
+        TakeDamage(dmg, magicType);
+    }
+
     public override void SetUpHealth()
     {
         base.SetUpHealth();

@@ -8,8 +8,7 @@ public class BattleManager : MonoBehaviour
     public Health monsterHealth;
     public Player player;
     public SceneLoader sceneLoader;
-    //public Text turn;
-    //public GameObject turnGO;
+
     public int id;
     private bool isMonster;
 
@@ -22,6 +21,8 @@ public class BattleManager : MonoBehaviour
     public bool resistantEnable = true;
 
     public Controller controller;
+
+    public GameObject petPosition;
 
     public void Battle(int _id, bool _isMonster, GameObject battlePlace)
     {
@@ -89,5 +90,11 @@ public class BattleManager : MonoBehaviour
     {
         //turnGO.SetActive(false);
         battlePlace.SetActive(true);
+    }
+
+    public Vector3 GetPetPosition()
+    {
+        //Gate and Traning camp dont need it
+        return petPosition.transform.position;
     }
 }

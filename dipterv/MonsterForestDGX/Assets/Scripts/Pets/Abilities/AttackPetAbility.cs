@@ -4,12 +4,12 @@
 public class AttackPetAbility : PetNextAction
 {
     private Player player;
-    private Health monsterHealth;
+    private MonsterHealth monsterHealth;
 
     public override void Init(Player _player)
     {
         player = _player;
-        monsterHealth = player.battleManager.monster.GetHealth();
+        monsterHealth = player.battleManager.monster.GetHealth() as MonsterHealth;
         base.Init(player);
     }
 
@@ -17,7 +17,7 @@ public class AttackPetAbility : PetNextAction
     {
         if (player.CanAttack() && !inWait)
         {
-            monsterHealth.TakeDamage(effectAmount, ElementType.TrueDamage);
+            monsterHealth.TakeDamageFromPet(effectAmount, ElementType.TrueDamage);
             SetUpNextEffect();
         }
     }

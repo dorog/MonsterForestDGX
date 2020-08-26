@@ -57,7 +57,8 @@ public class Player : Fighter
             GameObject playerPet = petManager.GetPet();
             if (playerPet != null)
             {
-                petGO = Instantiate(playerPet, playerPet.transform.position + new Vector3(transform.position.x, 0, transform.position.z) + transform.right * 2, transform.rotation);
+                //petGO = Instantiate(playerPet, playerPet.transform.position + new Vector3(transform.position.x, 0, transform.position.z) + transform.right * 2, transform.rotation);
+                petGO = Instantiate(playerPet, battleManager.GetPetPosition(), transform.rotation);
 
                 Pet pet = petGO.GetComponent<Pet>();
                 pet.AddPlayer(this);
