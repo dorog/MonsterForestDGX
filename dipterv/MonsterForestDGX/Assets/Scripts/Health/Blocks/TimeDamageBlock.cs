@@ -10,6 +10,8 @@ public class TimeDamageBlock : DamageBlock
 
     public GameObject blockUI;
 
+    public ParticleSystem shieldEffect;
+
     public void StartBlock()
     {
         actualBlockValue = blockValue;
@@ -18,6 +20,7 @@ public class TimeDamageBlock : DamageBlock
         working = true;
 
         blockUI.SetActive(true);
+        shieldEffect.Play();
     }
 
     private void Update()
@@ -30,7 +33,7 @@ public class TimeDamageBlock : DamageBlock
             {
                 working = false;
                 blockUI.SetActive(false);
-            }
+                shieldEffect.Stop();            }
         }
     }
 
