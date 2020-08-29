@@ -13,7 +13,6 @@ public class MagicCircleHandler : MonoBehaviour
     private bool inCast = false;
 
     public Text coolDown;
-    private readonly float multiplyCD = 100;
     private bool resetedCd = false;
 
     public Player player;

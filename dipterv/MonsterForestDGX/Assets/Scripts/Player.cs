@@ -33,6 +33,8 @@ public class Player : Fighter
 
     private bool petEnable = true;
 
+    public SpellGuideDrawer spellGuide;
+
     [Header("UI")]
     public GameObject leftHandCanvas;
     public GameObject rightHandCanvas;
@@ -196,5 +198,7 @@ public class Player : Fighter
         playerHealth.BlockDown();
 
         teleport.TeleportToLastPosition();
+
+        spellGuide.ClearGuide();
     }
 }

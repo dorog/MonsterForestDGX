@@ -20,6 +20,16 @@ public class GuideDrawHelper : MonoBehaviour
         this.startPoint = startPoint;
     }
 
+    private void OnEnable()
+    {
+        StartHelper();
+    }
+
+    private void OnDisable()
+    {
+        running = false;
+    }
+
     public void StartHelper()
     {
         transform.position = startPoint.position;
