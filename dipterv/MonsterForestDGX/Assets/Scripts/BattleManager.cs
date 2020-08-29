@@ -82,7 +82,7 @@ public class BattleManager : MonoBehaviour
 
         monster.Disappear();
         player.Run();
-        //battlePlace.SetActive(true);
+        battlePlace.SetActive(true);
     }
 
     public void FinishedTraining()

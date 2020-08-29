@@ -147,7 +147,7 @@ public class Player : Fighter
     public void Run()
     {
         InLobby = false;
-        //teleport.TeleportToLastPosition();
+        teleport.TeleportToLastPosition();
     }
 
     public void CastSpell(SpellResult spellResult)
