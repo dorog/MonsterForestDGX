@@ -62,4 +62,10 @@ public class PlayerHealth : Health
     {
         
     }
+
+    public void Full()
+    {
+        currentHp = maxHp;
+        hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
+    }
 }

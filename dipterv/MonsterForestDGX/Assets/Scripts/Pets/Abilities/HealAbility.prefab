@@ -43,7 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23595a0f388d24f47b892917138fd6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  effectAmount: 10
-  minWait: 5
-  maxWait: 10
+  effectAmount: 100
+  minWait: 1
+  maxWait: 1

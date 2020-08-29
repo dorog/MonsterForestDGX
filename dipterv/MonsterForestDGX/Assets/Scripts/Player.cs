@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 [Serializable]
 public class Player : Fighter
@@ -34,6 +33,10 @@ public class Player : Fighter
 
     private bool petEnable = true;
 
+    [Header("UI")]
+    public GameObject leftHandCanvas;
+    public GameObject rightHandCanvas;
+
     private void Start()
     {
         health.SetUpHealth();
@@ -46,18 +49,20 @@ public class Player : Fighter
 
     public void BattleStarted()
     {
-        //battleLobbyUI.gameObject.SetActive(false);
-
         InLobby = false;
 
         InBattle = true;
+
+        leftHandCanvas.SetActive(true);
+        rightHandCanvas.SetActive(true);
+
+        playerHealth.Full();
 
         if (petEnable)
         {
             GameObject playerPet = petManager.GetPet();
             if (playerPet != null)
             {
-                //petGO = Instantiate(playerPet, playerPet.transform.position + new Vector3(transform.position.x, 0, transform.position.z) + transform.right * 2, transform.rotation);
                 petGO = Instantiate(playerPet, battleManager.GetPetPosition(), transform.rotation);
 
                 Pet pet = petGO.GetComponent<Pet>();
@@ -66,11 +71,14 @@ public class Player : Fighter
         }
     }
 
+    //Rename it
     public void BattleEnd(int id, bool isMonster)
     {
         InBattle = false;
         playerHealth.BlockDown();
 
+        leftHandCanvas.SetActive(false);
+        rightHandCanvas.SetActive(false);
 
         magicCircleHandler.BattleEnd();
 
@@ -93,6 +101,9 @@ public class Player : Fighter
 
     public override void Die()
     {
+        leftHandCanvas.SetActive(false);
+        rightHandCanvas.SetActive(false);
+
         magicCircleHandler.Die();
         battleManager.PlayerDied();
     }

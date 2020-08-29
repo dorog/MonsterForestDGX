@@ -61,7 +61,6 @@ public class BattleManager : MonoBehaviour
 
     public void MonsterDied()
     {
-        //turnGO.SetActive(false);
         player.BattleEnd(id, isMonster);
     }
 
