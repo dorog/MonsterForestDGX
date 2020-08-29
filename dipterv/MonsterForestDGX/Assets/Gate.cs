@@ -1,4 +1,6 @@
 ﻿
+using UnityEngine;
+
 public class Gate : Fighter, IEnemy
 {
     public BattleManager battleManager;
@@ -6,10 +8,15 @@ public class Gate : Fighter, IEnemy
 
     public Controller controller;
 
+    public ElementMovement doorMovement;
+    public GateHealth gateHealth;
+    public GameObject battlePlace;
+
+    public ElementMovement[] crystals;
+
     public override void Die()
     {
-        //TODO: Add animation
-        gameObject.SetActive(false);
+        doorMovement.OpenContinously();
         battleManager.MonsterDied();
     }
 
@@ -33,7 +40,20 @@ public class Gate : Fighter, IEnemy
         health.ResetHealth();
     }
 
-    public void Appear(){}
+    public void Appear()
+    {
+        foreach (var crystal in crystals)
+        {
+            crystal.OpenContinously();
+        }
+    }
 
     public void Disappear(){}
+
+    public void Disable()
+    {
+        doorMovement.OpenInstantly();
+        gateHealth.HideCrystals();
+        battlePlace.SetActive(false);
+    }
 }

@@ -7,4 +7,5 @@ public interface IEnemy
     Health GetHealth();
     bool IsMonster();
     void Fight();
+    void Disable();
 }

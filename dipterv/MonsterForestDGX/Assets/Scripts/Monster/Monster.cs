@@ -98,4 +98,9 @@ public class Monster : Fighter, IEnemy
         magicCircleHandler.successCastSpellDelegateEvent += React;
         autoController.StartController();
     }
+
+    public void Disable()
+    {
+        gameObject.SetActive(false);
+    }
 }

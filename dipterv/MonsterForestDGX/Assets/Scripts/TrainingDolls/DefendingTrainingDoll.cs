@@ -61,4 +61,9 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
         controller.Step();
     }
+
+    public void Disable()
+    {
+        
+    }
 }

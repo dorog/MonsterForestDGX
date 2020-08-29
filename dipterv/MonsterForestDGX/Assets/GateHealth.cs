@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class GateHealth : Health
+﻿public class GateHealth : Health
 {
     public GateElement[] gateElements;
 
@@ -35,5 +31,13 @@ public class GateHealth : Health
     public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
     {
         
+    }
+
+    public void HideCrystals()
+    {
+        foreach(var gateElement in gateElements)
+        {
+            gateElement.gameObject.SetActive(false);
+        }
     }
 }

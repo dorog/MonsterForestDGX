@@ -10,9 +10,11 @@ public class BattlePlace : MonoBehaviour
 
     private bool isMonster = true;
 
+    private IEnemy enemy;
+
     private void Start()
     {
-        IEnemy enemy = monster.GetComponent<IEnemy>();
+        enemy = monster.GetComponent<IEnemy>();
         if(enemy == null)
         {
             Debug.LogError("There is no IEnemy! Object: " + monster.name);
@@ -39,7 +41,8 @@ public class BattlePlace : MonoBehaviour
     {
         if (!alive)
         {
-            root.SetActive(false);
+            enemy = monster.GetComponent<IEnemy>();
+            enemy.Disable();
         }
     }
 }
