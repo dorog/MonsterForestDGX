@@ -207,13 +207,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   input: 4
-  rigid: {fileID: 5932595735893776517}
   character: {fileID: 0}
   speed: 10
   gravity: -9.81
   body: {fileID: 5932595735893776518}
   rig: {fileID: 0}
-  playerCollider: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 0

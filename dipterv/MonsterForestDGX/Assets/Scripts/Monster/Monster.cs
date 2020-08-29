@@ -22,6 +22,7 @@ public class Monster : Fighter, IEnemy
     public TurnFill turnFill;
 
     public AutoController autoController;
+    public AutoController playerDiedAutoController;
 
     public MagicCircleHandler magicCircleHandler;
 
@@ -68,7 +69,7 @@ public class Monster : Fighter, IEnemy
             particle.Stop();
         }
 
-        animator.SetTrigger(disappearAnimation);
+        playerDiedAutoController.StartController();
     }
 
     public void ResetMonster()

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
@@ -9,6 +7,8 @@ public class Controller : MonoBehaviour
     private int actual = -1;
 
     private bool isRunning = false;
+
+    public bool looping = true;
 
     private void Start()
     {
@@ -24,7 +24,15 @@ public class Controller : MonoBehaviour
 
         if(actual == commands.Length)
         {
-            actual = 0;
+            if (looping)
+            {
+                actual = 0;
+                return commands[actual];
+            }
+            else
+            {
+                return null;
+            }
         }
 
         return commands[actual];
@@ -37,7 +45,10 @@ public class Controller : MonoBehaviour
             isRunning = true;
 
             AbstractCommand cmd = GetNextCommand();
-            cmd.Execute();
+            if(cmd != null)
+            {
+                cmd.Execute();
+            }
         }
     }
 

@@ -8,8 +8,16 @@ public class MonsterAttackCommand : AbstractCommand
 
     public IAttack attack;
 
+    private bool isCancelled = false;
+
+    public Player player;
+
     protected override IEnumerator ExecuteCommand()
     {
+        player.playerDiedDelegateEvent += CancelAttacking;
+
+        isCancelled = false;
+
         float animationTime = Attack();
 
         yield return new WaitForSeconds(2 + animationTime);
@@ -18,7 +26,7 @@ public class MonsterAttackCommand : AbstractCommand
         {
             float extraAttack = Random.Range(0, 101);
 
-            if (extraAttack <= extraAttackChances[i])
+            if (!isCancelled && extraAttack <= extraAttackChances[i])
             {
                 animationTime = Attack();
 
@@ -30,11 +38,17 @@ public class MonsterAttackCommand : AbstractCommand
             }
         }
 
+        player.playerDiedDelegateEvent -= CancelAttacking;
         Controller.FinishedTheCommand();
     }
 
     private float Attack()
     {
         return attack.Attack();
+    }
+
+    private void CancelAttacking()
+    {
+        isCancelled = true;
     }
 }

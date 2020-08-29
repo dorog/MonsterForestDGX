@@ -7,7 +7,6 @@ public class ContinousMovementVR : MonoBehaviour
     public Player player;
     public XRNode input;
     private Vector2 inputAxis;
-    public Rigidbody rigid;
     public CharacterController character;
 
     public float speed = 3;
@@ -40,6 +39,8 @@ public class ContinousMovementVR : MonoBehaviour
         character.Move(direction * Time.fixedDeltaTime * speed);
 
         Gravity();
+
+        inputAxis = Vector2.zero;
     }
 
     private void Gravity()

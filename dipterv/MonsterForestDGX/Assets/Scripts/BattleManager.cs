@@ -30,8 +30,6 @@ public class BattleManager : MonoBehaviour
 
         id = _id;
         isMonster = _isMonster;
-        //turnGO.SetActive(true);
-        //turn.text = "Battle!";
 
         player.battleManager = this;
 
@@ -49,7 +47,6 @@ public class BattleManager : MonoBehaviour
     public void PlayerTurn()
     {
         player.AttackTurn();
-        //turn.text = "Player Turn";
     }
 
     public void MonsterTurn()
@@ -66,20 +63,14 @@ public class BattleManager : MonoBehaviour
 
     public void PlayerDied()
     {
-        //turnGO.SetActive(false);
-
         player.Died();
 
         monster.ResetMonster();
         battlePlace.SetActive(true);
-
-        //sceneLoader.LoadMainMenu();
     }
 
     public void Run()
     {
-        //turnGO.SetActive(false);
-
         monster.Disappear();
         player.Run();
         battlePlace.SetActive(true);
@@ -87,7 +78,6 @@ public class BattleManager : MonoBehaviour
 
     public void FinishedTraining()
     {
-        //turnGO.SetActive(false);
         battlePlace.SetActive(true);
     }
 

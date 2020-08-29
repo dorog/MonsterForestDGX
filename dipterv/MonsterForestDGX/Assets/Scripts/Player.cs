@@ -35,6 +35,9 @@ public class Player : Fighter
 
     public SpellGuideDrawer spellGuide;
 
+    public delegate void PlayerDiedDelegate();
+    public PlayerDiedDelegate playerDiedDelegateEvent;
+
     [Header("UI")]
     public GameObject leftHandCanvas;
     public GameObject rightHandCanvas;
@@ -103,6 +106,8 @@ public class Player : Fighter
 
     public override void Die()
     {
+        playerDiedDelegateEvent?.Invoke();
+
         leftHandCanvas.SetActive(false);
         rightHandCanvas.SetActive(false);
 
