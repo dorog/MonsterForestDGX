@@ -5,7 +5,7 @@ public class PetUI : MonoBehaviour
 {
     private int id;
     public Text petNameText;
-    public Image image;
+    public GameObject selectedGo;
 
     public void SetUI(int id, Pet pet)
     {
@@ -16,6 +16,6 @@ public class PetUI : MonoBehaviour
     public void ChangePet()
     {
         PetManager petManager = PetManager.GetInstance();
-        petManager.Select(image, id);
+        petManager.Select(selectedGo, id);
     }
 }

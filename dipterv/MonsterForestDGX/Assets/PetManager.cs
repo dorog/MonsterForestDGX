@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR;
 
 public class PetManager : SingletonClass<PetManager>
 {
-    private Image selectedImage = null;
+    private GameObject selectedPetGO = null;
     private readonly int notSelectedPetValue = -1;
     public int selectedPet;
     private Pet[] pets;
@@ -12,7 +11,6 @@ public class PetManager : SingletonClass<PetManager>
     public PetTab petTab;
 
     public Sprite selectedImageSprite;
-    private Sprite originalSprite;
 
     private static readonly string lastPetKey = "lastPetKey";
 
@@ -63,17 +61,17 @@ public class PetManager : SingletonClass<PetManager>
         return pets[selectedPet].gameObject;
     }
 
-    public void Select(Image image, int number)
+    public void Select(GameObject select, int number)
     {
-        if(selectedImage != null)
+        if(selectedPetGO != null)
         {
-            selectedImage.sprite = originalSprite;
+            selectedPetGO.SetActive(false);
         }
-        selectedImage = image;
-        originalSprite = selectedImage.sprite;
-        selectedImage.sprite = selectedImageSprite;
+        selectedPetGO = select;
+        selectedPetGO.SetActive(true);
         selectedPet = number;
 
+        //TODO: Change
         PlayerPrefs.SetInt(lastPetKey, selectedPet);
     }
 

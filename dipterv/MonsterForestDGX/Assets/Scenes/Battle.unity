@@ -1739,7 +1739,7 @@ PrefabInstance:
     - target: {fileID: 6988239525094632458, guid: 64c305601a5fef94db5c6db4aafbeef2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55
+      value: 0.498
       objectReference: {fileID: 0}
     - target: {fileID: 6988239525094632458, guid: 64c305601a5fef94db5c6db4aafbeef2,
         type: 3}
@@ -11356,6 +11356,16 @@ PrefabInstance:
       propertyPath: monsterGO
       value: 
       objectReference: {fileID: 1978715575}
+    - target: {fileID: 7430444228697404817, guid: d8cd6fdbbee8a4e42ace32684ae889e4,
+        type: 3}
+      propertyPath: petPosition
+      value: 
+      objectReference: {fileID: 1377640396}
+    - target: {fileID: 7430444228697404817, guid: d8cd6fdbbee8a4e42ace32684ae889e4,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 124632359}
     - target: {fileID: 7430444228836337859, guid: d8cd6fdbbee8a4e42ace32684ae889e4,
         type: 3}
       propertyPath: m_Name
@@ -11989,7 +11999,7 @@ PrefabInstance:
     - target: {fileID: 5116419521634207633, guid: 2609c5f3df922c146957e72f25c8a148,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55
+      value: 0.497
       objectReference: {fileID: 0}
     - target: {fileID: 5116419521634207633, guid: 2609c5f3df922c146957e72f25c8a148,
         type: 3}
@@ -18433,7 +18443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   root: {fileID: 581875259}
   parent: {fileID: 681804742}
-  petUI: {fileID: 6904252062940055435, guid: 49fdd4ca8c2e2834bae14de4076386f0, type: 3}
+  petUI: {fileID: 4411277551346820328, guid: 9768f4cc73c69114bb24bd25375ae1f4, type: 3}
 --- !u!114 &1595480545 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5449196950964811644, guid: 91870e5f129f6a24daaef510772dc9a4,
@@ -19835,7 +19845,7 @@ PrefabInstance:
     - target: {fileID: 3441869854458486458, guid: 0c90877c7dedb784782ee27c3e30e62d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.55
+      value: 0.498
       objectReference: {fileID: 0}
     - target: {fileID: 3441869854458486458, guid: 0c90877c7dedb784782ee27c3e30e62d,
         type: 3}
@@ -24521,6 +24531,16 @@ PrefabInstance:
       propertyPath: petAttackEffect
       value: 
       objectReference: {fileID: 915434610}
+    - target: {fileID: 3793616788255035441, guid: 45e3b4886d77dc849a7c7a598bc9b316,
+        type: 3}
+      propertyPath: hardAttackChance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3793616788255035441, guid: 45e3b4886d77dc849a7c7a598bc9b316,
+        type: 3}
+      propertyPath: ultimateAttackChance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 3793616788255035442, guid: 45e3b4886d77dc849a7c7a598bc9b316,
         type: 3}
       propertyPath: magicCircleHandler
