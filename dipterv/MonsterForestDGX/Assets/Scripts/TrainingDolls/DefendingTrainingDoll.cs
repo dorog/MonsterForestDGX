@@ -40,11 +40,12 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public void FinishedTraining()
     {
+        player.FinishedTraining();
+
         trainingCampUI.DisableUI();
 
         cooldownReset.DisableAbility();
 
-        player.FinishedTraining();
         battleManager.FinishedTraining();
     }
 

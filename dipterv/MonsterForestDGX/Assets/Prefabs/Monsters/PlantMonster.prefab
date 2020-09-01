@@ -94,6 +94,7 @@ MonoBehaviour:
   inBlock: 0
   damageBlock: {fileID: 211610637}
   hp: {fileID: 0}
+  petAttackEffect: {fileID: 0}
 --- !u!114 &5449196950372748174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +122,8 @@ MonoBehaviour:
   extraParticles: []
   turnFill: {fileID: 5586935807568985112}
   autoController: {fileID: 0}
+  playerDiedAutoController: {fileID: 0}
+  magicCircleHandler: {fileID: 0}
 --- !u!114 &5449196950372748175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +212,55 @@ MonoBehaviour:
   health: {fileID: 5449196950372748169}
   monsterHitType: 1
   dmgPercent: 150
+--- !u!1 &4860342309351146009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7452704496557684682}
+  - component: {fileID: 6866405001845491460}
+  m_Layer: 0
+  m_Name: BattlePlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7452704496557684682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860342309351146009}
+  m_LocalRotation: {x: 0, y: -0.94569963, z: -0, w: -0.3250419}
+  m_LocalPosition: {x: 842.3544, y: 29, z: -1129.4862}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5449196950964811647}
+  m_Father: {fileID: 5449196949713590835}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6866405001845491460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860342309351146009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f635f31e28e06d488ccbff3713d2161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  battleManager: {fileID: 5449196950354447427}
+  root: {fileID: 5449196949713590832}
+  monster: {fileID: 3029147133929955126}
+  go: {fileID: 5449196950964811645}
 --- !u!1 &5449196949713590832
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,8 +290,8 @@ Transform:
   m_Children:
   - {fileID: 3029147133930115562}
   - {fileID: 5449196950354447426}
-  - {fileID: 5449196950964811647}
   - {fileID: 3748799671801368766}
+  - {fileID: 7452704496557684682}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -353,6 +405,7 @@ MonoBehaviour:
   petEnable: 1
   resistantEnable: 1
   controller: {fileID: 0}
+  petPosition: {fileID: 0}
 --- !u!1 &5449196950483051575
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,9 +478,9 @@ GameObject:
   - component: {fileID: 5449196950964811640}
   - component: {fileID: 5449196950964811641}
   - component: {fileID: 5449196950964811646}
-  - component: {fileID: 5449196950964811644}
+  - component: {fileID: 2554897198035646259}
   m_Layer: 0
-  m_Name: BattlePlace
+  m_Name: BattlePlaceTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,12 +493,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5449196950964811645}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 26.3, y: 1, z: 2.5}
+  m_LocalRotation: {x: -0, y: 0.89855, z: 0, w: 0.43887132}
+  m_LocalPosition: {x: -52.308533, y: -28, z: -1394.4896}
   m_LocalScale: {x: 5, y: 2, z: 5}
   m_Children: []
-  m_Father: {fileID: 5449196949713590835}
-  m_RootOrder: 2
+  m_Father: {fileID: 7452704496557684682}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &5449196950964811640
 MeshFilter:
@@ -509,7 +562,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5449196950964811644
+--- !u!114 &2554897198035646259
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -518,13 +571,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5449196950964811645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f635f31e28e06d488ccbff3713d2161, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fc1da5459784bd48aaedff9bb2b0c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
-  battleManager: {fileID: 5449196950354447427}
-  root: {fileID: 5449196949713590832}
-  monster: {fileID: 3029147133929955126}
+  battlePlace: {fileID: 6866405001845491460}
 --- !u!1001 &5449196950372748179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1104,15 +1154,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d66e56637f050474989d6340baeca55c, type: 3}
---- !u!95 &3029147133939501562 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7032052533963473513, guid: d66e56637f050474989d6340baeca55c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5449196950372748179}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3029147133929900826 stripped
+--- !u!1 &3029147133929955126 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7032052533955969161, guid: d66e56637f050474989d6340baeca55c,
+  m_CorrespondingSourceObject: {fileID: 7032052533956023461, guid: d66e56637f050474989d6340baeca55c,
     type: 3}
   m_PrefabInstance: {fileID: 5449196950372748179}
   m_PrefabAsset: {fileID: 0}
@@ -1122,9 +1166,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5449196950372748179}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3029147133929955126 stripped
+--- !u!1 &3029147133929900826 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7032052533956023461, guid: d66e56637f050474989d6340baeca55c,
+  m_CorrespondingSourceObject: {fileID: 7032052533955969161, guid: d66e56637f050474989d6340baeca55c,
     type: 3}
   m_PrefabInstance: {fileID: 5449196950372748179}
   m_PrefabAsset: {fileID: 0}
@@ -1137,6 +1181,12 @@ GameObject:
 --- !u!4 &3029147133930141124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7032052533955690071, guid: d66e56637f050474989d6340baeca55c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5449196950372748179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3029147133939501562 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7032052533963473513, guid: d66e56637f050474989d6340baeca55c,
     type: 3}
   m_PrefabInstance: {fileID: 5449196950372748179}
   m_PrefabAsset: {fileID: 0}
@@ -1195,7 +1245,7 @@ PrefabInstance:
     - target: {fileID: 7581305931352485731, guid: d69be472f603c6c4fba10e8520401455,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7581305931352485731, guid: d69be472f603c6c4fba10e8520401455,
         type: 3}

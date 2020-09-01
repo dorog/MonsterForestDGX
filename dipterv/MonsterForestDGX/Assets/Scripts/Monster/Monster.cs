@@ -55,10 +55,23 @@ public class Monster : Fighter, IEnemy
 
         animator.SetTrigger(appearAnimation);
         health.SetUpHealth();
-        //nameText.text = MonsterName;
     }
 
     public void Disappear()
+    {
+        DisableExtras();
+
+        animator.SetTrigger(disappearAnimation);
+    }
+
+    private void FightReset()
+    {
+        DisableExtras();
+
+        playerDiedAutoController.StartController();
+    }
+
+    private void DisableExtras()
     {
         foreach (var go in extraObjects)
         {
@@ -68,8 +81,6 @@ public class Monster : Fighter, IEnemy
         {
             particle.Stop();
         }
-
-        playerDiedAutoController.StartController();
     }
 
     public void ResetMonster()
@@ -78,7 +89,7 @@ public class Monster : Fighter, IEnemy
 
         autoController.StopController();
 
-        Disappear();
+        FightReset();
 
         health.ResetHealth();
     }

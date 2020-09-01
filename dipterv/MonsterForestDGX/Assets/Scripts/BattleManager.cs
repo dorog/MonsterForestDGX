@@ -12,7 +12,7 @@ public class BattleManager : MonoBehaviour
     public int id;
     private bool isMonster;
 
-    private GameObject battlePlace;
+    private BattlePlace battlePlace;
 
     public delegate void MonsterTurnEndDelegate();
     public MonsterTurnEndDelegate monsterTurnStartDelegateEvent;
@@ -24,7 +24,7 @@ public class BattleManager : MonoBehaviour
 
     public GameObject petPosition;
 
-    public void Battle(int _id, bool _isMonster, GameObject battlePlace)
+    public void Battle(int _id, bool _isMonster, BattlePlace battlePlace)
     {
         this.battlePlace = battlePlace;
 
@@ -66,19 +66,19 @@ public class BattleManager : MonoBehaviour
         player.Died();
 
         monster.ResetMonster();
-        battlePlace.SetActive(true);
+        battlePlace.ResetBattlePlace();
     }
 
     public void Run()
     {
         monster.Disappear();
         player.Run();
-        battlePlace.SetActive(true);
+        battlePlace.ResetBattlePlace();
     }
 
     public void FinishedTraining()
     {
-        battlePlace.SetActive(true);
+        battlePlace.ResetBattlePlace();
     }
 
     public Vector3 GetPetPosition()

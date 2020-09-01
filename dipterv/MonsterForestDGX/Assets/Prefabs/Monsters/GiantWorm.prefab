@@ -29,8 +29,8 @@ Transform:
   m_Children:
   - {fileID: 7651830619666689824}
   - {fileID: 4000349071436581318}
-  - {fileID: 4000349071045151895}
   - {fileID: 4000349072162525640}
+  - {fileID: 6322825631317620756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -46,9 +46,9 @@ GameObject:
   - component: {fileID: 4000349071045151892}
   - component: {fileID: 4000349071045151893}
   - component: {fileID: 4000349071045151894}
-  - component: {fileID: 4000349071045151891}
+  - component: {fileID: 3973507816623990375}
   m_Layer: 0
-  m_Name: BattlePlace
+  m_Name: BattlePlaceTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,12 +61,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4000349071045151896}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 84.26471, y: 1, z: 11.335833}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 84.26471, y: 1, z: 11.335815}
   m_LocalScale: {x: 5, y: 2, z: 5}
   m_Children: []
-  m_Father: {fileID: 4000349070942057364}
-  m_RootOrder: 2
+  m_Father: {fileID: 6322825631317620756}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &4000349071045151892
 MeshFilter:
@@ -130,7 +130,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4000349071045151891
+--- !u!114 &3973507816623990375
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,13 +139,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4000349071045151896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f635f31e28e06d488ccbff3713d2161, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fc1da5459784bd48aaedff9bb2b0c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  battleManager: {fileID: 4000349071436581317}
-  root: {fileID: 4000349070942057365}
-  monster: {fileID: 7651830619666990786}
+  battlePlace: {fileID: 0}
 --- !u!1 &4000349071436581319
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +194,7 @@ MonoBehaviour:
   petEnable: 1
   resistantEnable: 1
   controller: {fileID: 0}
+  petPosition: {fileID: 0}
 --- !u!114 &1541142751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +269,55 @@ MonoBehaviour:
   disapperAnimation: disappear
   disappearAnimationTime: 3
   undergroundtime: 2
+--- !u!1 &7672166007214517083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6322825631317620756}
+  - component: {fileID: 742132640886438008}
+  m_Layer: 10
+  m_Name: BattlePlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6322825631317620756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672166007214517083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4000349071045151895}
+  m_Father: {fileID: 4000349070942057364}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &742132640886438008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672166007214517083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f635f31e28e06d488ccbff3713d2161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  battleManager: {fileID: 4000349071436581317}
+  root: {fileID: 4000349070942057365}
+  monster: {fileID: 7651830619666990786}
+  go: {fileID: 4000349071045151896}
 --- !u!1001 &4000349072476037941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1069,7 +1116,7 @@ PrefabInstance:
     - target: {fileID: 7581305931352485731, guid: d69be472f603c6c4fba10e8520401455,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7581305931352485731, guid: d69be472f603c6c4fba10e8520401455,
         type: 3}

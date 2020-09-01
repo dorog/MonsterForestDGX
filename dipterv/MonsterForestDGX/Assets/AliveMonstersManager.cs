@@ -5,7 +5,7 @@ public class AliveMonstersManager : SingletonClass<AliveMonstersManager>
 {
     public BattlePlace[] battlePlaces;
 
-    private void Awake()
+    private void Start()
     {
         DataManager dataManager = DataManager.GetInstance();
 

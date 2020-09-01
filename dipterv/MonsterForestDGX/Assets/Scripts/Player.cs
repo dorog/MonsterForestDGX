@@ -187,7 +187,7 @@ public class Player : Fighter
         }
 
         health.ResetHealth();
-        teleport.TeleportToDefaultLocation();
+        teleport.TeleportToLastPosition();
     }
 
     public bool CanAttack()
@@ -197,12 +197,12 @@ public class Player : Fighter
 
     public void FinishedTraining()
     {
+        teleport.TeleportToLastPosition();
+
         magicCircleHandler.canAttack = false;
         InBattle = false;
 
         playerHealth.BlockDown();
-
-        teleport.TeleportToLastPosition();
 
         spellGuide.ClearGuide();
     }

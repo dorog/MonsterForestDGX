@@ -12,6 +12,8 @@ public class BattlePlace : MonoBehaviour
 
     private IEnemy enemy;
 
+    public GameObject go;
+
     private void Start()
     {
         enemy = monster.GetComponent<IEnemy>();
@@ -25,16 +27,9 @@ public class BattlePlace : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void Triggered()
     {
-        if(other.gameObject.tag == "Player")
-        {
-            other.gameObject.transform.position = transform.position;
-            other.gameObject.transform.rotation = transform.rotation;
-            battleManager.Battle(id, isMonster, gameObject);
-
-            gameObject.SetActive(false);
-        }
+        battleManager.Battle(id, isMonster, this);
     }
 
     public void SetAlive(bool alive)
@@ -44,5 +39,15 @@ public class BattlePlace : MonoBehaviour
             enemy = monster.GetComponent<IEnemy>();
             enemy.Disable();
         }
+    }
+
+    public void ResetBattlePlace()
+    {
+        Invoke(nameof(EnableGo), 3f);
+    }
+
+    private void EnableGo()
+    {
+        go.SetActive(true);
     }
 }
