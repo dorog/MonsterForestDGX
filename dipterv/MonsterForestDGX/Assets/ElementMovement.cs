@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ElementMovement : MonoBehaviour
+public class ElementMovement : MonoBehaviour, IPuzzleMovement
 {
     public float openingTime = 5;
     public float openingDistance = 20;
@@ -19,18 +19,23 @@ public class ElementMovement : MonoBehaviour
         speed = openingDistance / openingTime;
     }
 
-    public void OpenInstantly()
+    public void DisappearInstantly()
     {
         transform.position = openedPositon;
         opened = true;
     }
 
-    public void OpenContinously()
+    public void DisappearContinously()
     {
         if(!opened)
         {
             opening = true;
         }
+    }
+
+    public void OpenContinously(float delay)
+    {
+        Invoke(nameof(DisappearContinously), delay);
     }
 
     private void Update()

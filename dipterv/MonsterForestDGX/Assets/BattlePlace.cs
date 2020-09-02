@@ -5,7 +5,6 @@ public class BattlePlace : MonoBehaviour
     public int id;
     public BattleManager battleManager;
 
-    public GameObject root;
     public GameObject monster;
 
     private bool isMonster = true;

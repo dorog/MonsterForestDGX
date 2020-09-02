@@ -8,15 +8,22 @@ public class Gate : Fighter, IEnemy
 
     public Controller controller;
 
-    public ElementMovement doorMovement;
+    public GameObject obstacleGO;
     public GateHealth gateHealth;
     public GameObject battlePlace;
 
     public ElementMovement[] crystals;
 
+    private IPuzzleMovement obstacle;
+
+    public void Start()
+    {
+        obstacle = obstacleGO.GetComponent<IPuzzleMovement>();
+    }
+
     public override void Die()
     {
-        doorMovement.OpenContinously();
+        obstacle.DisappearContinously();
         battleManager.MonsterDied();
     }
 
@@ -44,7 +51,7 @@ public class Gate : Fighter, IEnemy
     {
         foreach (var crystal in crystals)
         {
-            crystal.OpenContinously();
+            crystal.DisappearContinously();
         }
     }
 
@@ -52,7 +59,7 @@ public class Gate : Fighter, IEnemy
 
     public void Disable()
     {
-        doorMovement.OpenInstantly();
+        obstacle.DisappearInstantly();
         gateHealth.HideCrystals();
         battlePlace.SetActive(false);
     }
