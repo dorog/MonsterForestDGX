@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class SpellGuideDrawer : MonoBehaviour
 {
@@ -15,9 +14,14 @@ public class SpellGuideDrawer : MonoBehaviour
 
     public GuideDrawHelper guideDrawHelper;
 
-    public XRNode input;
-
     private GameObject guideHelper;
+
+    private IPressed pressInput;
+
+    private void Start()
+    {
+        pressInput = KeyBindingManager.GetInstance().drawHelperInput;
+    }
 
     public void DrawGuide(List<SpellPatternPoint> spellPatternPoints, float width = 10, float scale = 0.01f)
     {
@@ -67,22 +71,12 @@ public class SpellGuideDrawer : MonoBehaviour
 
     private void Update()
     {
-        InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-        device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryBtn);
-        device.TryGetFeatureValue(CommonUsages.secondaryButton, out bool secondaryBtn);
-
-        if (primaryBtn)
-        {
-            if(guideHelper != null)
-            {
-                guideHelper.SetActive(false);
-            }
-        }
-        else if (secondaryBtn)
+        //TODO: Check what it is
+        if (pressInput.IsPressed())
         {
             if (guideHelper != null)
             {
-                guideHelper.SetActive(true);
+                guideHelper.SetActive(!guideHelper.activeSelf);
             }
         }
     }

@@ -2,7 +2,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR;
 
 public class MagicCircleHandler : MonoBehaviour
 {
@@ -23,11 +22,16 @@ public class MagicCircleHandler : MonoBehaviour
 
     public GameObject hand;
 
-    public XRNode input;
+    public IPressed magicCircleInput;
 
     public Text feedback;
 
     public float magicCircleExtraDistance = 2;
+
+    private void Start()
+    {
+        magicCircleInput = KeyBindingManager.GetInstance().magicCircleInput;
+    }
 
     public void ResetCooldown()
     {
@@ -36,24 +40,20 @@ public class MagicCircleHandler : MonoBehaviour
 
     private void Update()
     {
-        if (player.InBattle && canAttack)
+        if (player.InBattle && canAttack && magicCircleInput.IsPressed())
         {
-            InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-            device.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryBtn);
-            device.TryGetFeatureValue(CommonUsages.secondaryButton, out bool secondaryBtn);
-
-            if (secondaryBtn && !inCast)
+            if (inCast)
+            {
+                inCast = false;
+                magicCircle.SetActive(false);
+            }
+            else if (!inCast)
             {
                 inCast = true;
 
                 magicCircle.transform.position = hand.transform.position + hand.transform.forward * magicCircleExtraDistance;
                 magicCircle.transform.rotation = hand.transform.rotation;
                 magicCircle.SetActive(true);
-            }
-            if (primaryBtn && inCast)
-            {
-                inCast = false;
-                magicCircle.SetActive(false);
             }
         }
     }
@@ -97,7 +97,6 @@ public class MagicCircleHandler : MonoBehaviour
             yield return null;
         }
 
-        //TODO: Reset text after win
         coolDown.text = "Ready";
 
         inCast = false;
@@ -129,6 +128,8 @@ public class MagicCircleHandler : MonoBehaviour
 
     public void DefTurn()
     {
+        magicCircleInput.Deactivate();
+
         canAttack = false;
         magicCircle.SetActive(false);
         inCast = false;
@@ -136,6 +137,8 @@ public class MagicCircleHandler : MonoBehaviour
 
     public void AttackTurn()
     {
+        magicCircleInput.Activate();
+
         canAttack = true;
         magicCircle.SetActive(false);
         inCast = false;

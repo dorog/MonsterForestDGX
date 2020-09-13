@@ -1,27 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.XR;
+﻿using UnityEngine;
 
 public class ContinousRotationVR : MonoBehaviour
 {
-    public XRNode input;
-    private Vector2 inputDirection;
-    public Rigidbody rigid;
-    public float speed = 3;
+    public float rotationSpeed = 180;
 
-    public GameObject body;
+    private Vector3 rotation;
 
-    void Update()
+    private AxisInput rotationInput;
+
+    private void Start()
     {
-        InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputDirection);
+        rotationInput = KeyBindingManager.GetInstance().continousRotationAxisInput;
+    }
+
+    public void Update()
+    {
+        Vector2 axis = rotationInput.GetValue();
+        rotation += new Vector3(0, axis.x * rotationSpeed * Time.deltaTime, 0);
     }
 
     private void FixedUpdate()
     {
-        Quaternion rotation = Quaternion.Euler(0, body.transform.eulerAngles.y, 0);
-        Vector3 angle = rotation * new Vector3(0, inputDirection.x, 0) * Time.fixedDeltaTime * speed;
-        rigid.MoveRotation(Quaternion.Euler(angle));
+        transform.Rotate(rotation);
+        rotation = Vector3.zero;
     }
 }

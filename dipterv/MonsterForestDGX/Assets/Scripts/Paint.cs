@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class Paint : MonoBehaviour
 {
@@ -12,16 +11,18 @@ public class Paint : MonoBehaviour
 
     public MagicCircleHandler magicCircleHandler;
 
-    public XRNode input;
+    public IPressed drawingInput;
 
     public Transform hand;
 
+    private void Start()
+    {
+        drawingInput = KeyBindingManager.GetInstance().paintingTrigger;
+    }
+
     void Update()
     {
-        InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-        device.TryGetFeatureValue(CommonUsages.triggerButton, out bool inputDirection);
-
-        if (inputDirection)
+        if (drawingInput.IsPressing())
         {
             try
             {

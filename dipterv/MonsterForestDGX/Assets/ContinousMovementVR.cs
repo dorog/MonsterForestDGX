@@ -1,11 +1,11 @@
-﻿using UnityEngine;
-using UnityEngine.XR;
-using UnityEngine.XR.Interaction.Toolkit;
+﻿using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine;
 
 public class ContinousMovementVR : MonoBehaviour
 {
     public Player player;
-    public XRNode input;
+
+    private AxisInput axisInput;
     private Vector2 inputAxis;
     public CharacterController character;
 
@@ -20,12 +20,16 @@ public class ContinousMovementVR : MonoBehaviour
 
     public LayerMask groundLayer;
 
+    private void Start()
+    {
+        axisInput = KeyBindingManager.GetInstance().continousMovementAxisInput;
+    }
+
     void Update()
     {
         if (player.CanMove())
         {
-            InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-            device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
+            inputAxis = axisInput.GetValue();
         }
     }
 

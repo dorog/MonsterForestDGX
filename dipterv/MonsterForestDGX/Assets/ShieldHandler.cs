@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
-using UnityEngine.XR;
 using UnityEngine.UI;
 
 public class ShieldHandler : MonoBehaviour
 {
     public Player player;
-    public XRNode input;
     public PlayerHealth playerHealth;
 
     public Text feedback;
@@ -20,18 +18,20 @@ public class ShieldHandler : MonoBehaviour
     public float simpleDamageShieldMaxAngle = 90;
     public TimeDamageBlock simpleTimeDamageBlock;
 
+    private IPressed shieldActivateButton;
+
+    private void Start()
+    {
+        shieldActivateButton = KeyBindingManager.GetInstance().shieldHandlerButtonInput;
+    }
+
     void Update()
     {
         if(player.InBattle && !player.CanAttack())
         {
-            InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-            device.TryGetFeatureValue(CommonUsages.gripButton, out bool pressed);
-
             float angle = Vector3.Angle(hand.forward, Vector3.up);
-            //feedback.text = "" + angle;
-            //feedback.text = "" + angle;
 
-            if (pressed)
+            if (shieldActivateButton.IsPressing())
             {
                 if(angle <= simpleDamageShieldMaxAngle && angle >= simpleDamageShieldMinAngle)
                 {

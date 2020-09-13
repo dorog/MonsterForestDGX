@@ -26,6 +26,8 @@ public class Monster : Fighter, IEnemy
 
     public MagicCircleHandler magicCircleHandler;
 
+    public GameObject root;
+
     public void React()
     {
         float random = Random.Range(0, 101);
@@ -112,6 +114,6 @@ public class Monster : Fighter, IEnemy
 
     public void Disable()
     {
-        gameObject.SetActive(false);
+        root.SetActive(false);
     }
 }

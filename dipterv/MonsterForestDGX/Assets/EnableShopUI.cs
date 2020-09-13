@@ -10,15 +10,18 @@ public class EnableShopUI : MonoBehaviour
 
     public GameObject notification;
 
+    public IPressed enableShopInput;
+
+    private void Start()
+    {
+        enableShopInput = KeyBindingManager.GetInstance().shopCollectButton;
+    }
+
     void Update()
     {
         if (inArea && !inShop)
         {
-
-            InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-            device.TryGetFeatureValue(CommonUsages.primaryButton, out bool pressed);
-
-            if (pressed)
+            if (enableShopInput.IsPressed())
             {
                 uiShower.ShowUI(this);
                 inShop = true;
@@ -31,6 +34,7 @@ public class EnableShopUI : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             inArea = true;
+            enableShopInput.Activate();
             notification.SetActive(true);
         }
     }
@@ -40,6 +44,7 @@ public class EnableShopUI : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             inArea = false;
+            enableShopInput.Deactivate();
             notification.SetActive(false);
         }
     }

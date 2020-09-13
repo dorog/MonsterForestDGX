@@ -84,6 +84,7 @@ public class BattleManager : MonoBehaviour
     public Vector3 GetPetPosition()
     {
         //Gate and Traning camp dont need it
+        //TODO: Add option for use pets (cd or heal or ...)
         return petPosition.transform.position;
     }
 }

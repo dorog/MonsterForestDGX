@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.XR;
 
 public class PetManager : SingletonClass<PetManager>
 {
@@ -18,7 +17,8 @@ public class PetManager : SingletonClass<PetManager>
     private int availablePetId = defaultPetId;
     private PetEnable actualPetEnable = null;
 
-    public XRNode input = XRNode.LeftHand;
+    //TODO: Add to another class (like PetEnable)
+    public IPressed collectInput;
 
     private void Awake()
     {
@@ -28,6 +28,7 @@ public class PetManager : SingletonClass<PetManager>
     private void Start()
     {
         SetupPets();
+        collectInput = KeyBindingManager.GetInstance().petCollectButton;
     }
 
     private void SetupPets()
@@ -84,10 +85,7 @@ public class PetManager : SingletonClass<PetManager>
     {
         if(availablePetId != defaultPetId)
         {
-            InputDevice device = InputDevices.GetDeviceAtXRNode(input);
-            device.TryGetFeatureValue(CommonUsages.primaryButton, out bool pressed);
-
-            if (pressed)
+            if (collectInput.IsPressing())
             {
                 CollectPet();
                 DisableAvailablePet();

@@ -59,6 +59,10 @@ public class Gate : Fighter, IEnemy
 
     public void Disable()
     {
+        if(obstacle == null)
+        {
+            obstacle = obstacleGO.GetComponent<IPuzzleMovement>();
+        }
         obstacle.DisappearInstantly();
         gateHealth.HideCrystals();
         battlePlace.SetActive(false);
