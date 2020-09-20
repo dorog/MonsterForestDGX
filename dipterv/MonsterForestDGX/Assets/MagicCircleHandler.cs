@@ -26,22 +26,26 @@ public class MagicCircleHandler : MonoBehaviour
 
     public float magicCircleExtraDistance = 2;
 
+    public BattleManager battleManager;
+
 
     public void Start()
     {
         magicCircleInput = KeyBindingManager.GetInstance().magicCircleInput;
         magicCircleInput.SubscribeToPressed(new Action[] { MagicCircleStatePositive, MagicCircleStateNegativ });
 
-        BattleEvents.GetInstance().SubscribeEvents(Fighting, Exploring);
+        GameEvents gameEvents = GameEvents.GetInstance();
+        gameEvents.BattleStartDelegateEvent += Fighting;
+        gameEvents.BattleEndDelegateEvent += Exploring;
     }
 
-    private void Fighting(BattleManager battleManager)
+    private void Fighting()
     {
         battleManager.PlayerTurnStartDelegateEvent += AttackTurn;
         battleManager.MonsterTurnStartDelegateEvent += DefTurn;
     }
 
-    private void Exploring(BattleManager battleManager)
+    private void Exploring()
     {
         battleManager.PlayerTurnStartDelegateEvent -= AttackTurn;
         battleManager.MonsterTurnStartDelegateEvent -= DefTurn;

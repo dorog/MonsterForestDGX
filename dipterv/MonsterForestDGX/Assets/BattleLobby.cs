@@ -2,7 +2,7 @@
 
 public class BattleLobby : MonoBehaviour
 {
-    public BattleManager battleManager = null;
+    public BattleManager battleManager;
     public ResistantValue water;
     public ResistantValue earth;
     public ResistantValue fire;
@@ -11,24 +11,42 @@ public class BattleLobby : MonoBehaviour
     public GameObject petTab;
     public GameObject resistantTab;
 
-    public void StartBattle()
-    {
-        battleManager.BattleStart();
+    private GameEvents gameEvents;
 
-        gameObject.SetActive(false);
+    public GameObject battleLobbyUI;
+
+    private void Start()
+    {
+        gameEvents = GameEvents.GetInstance();
+        gameEvents.BattleLobbyEnteredDelegateEvent += SetupUI;
     }
 
-    public void SetPetTab(bool petEnable)
+    public void StartBattle()
+    {
+        battleLobbyUI.SetActive(false);
+        battleManager.BattleStart();
+    }
+
+    private void SetupUI()
+    {
+        SetResistantValues(gameEvents.enemyResistant);
+        SetPetTab(gameEvents.petEnable);
+        SetResistantTab(gameEvents.resistantEnable);
+
+        battleLobbyUI.SetActive(true);
+    }
+
+    private void SetPetTab(bool petEnable)
     {
         petTab.SetActive(petEnable);
     }
 
-    public void SetResistantTab(bool resistantEnable)
+    private void SetResistantTab(bool resistantEnable)
     {
         resistantTab.SetActive(resistantEnable);
     }
 
-    public void SetResistantValues(Resistant resistant)
+    private void SetResistantValues(Resistant resistant)
     {
         water.SetValue(ElementType.Water.ToString(), resistant.water);
         earth.SetValue(ElementType.Earth.ToString(), resistant.earth);
@@ -40,6 +58,6 @@ public class BattleLobby : MonoBehaviour
     {
         battleManager.Run();
 
-        gameObject.SetActive(false);
+        battleLobbyUI.SetActive(false);
     }
 }

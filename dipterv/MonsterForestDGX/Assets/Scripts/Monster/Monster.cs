@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Monster : Fighter, IEnemy
@@ -14,7 +15,6 @@ public class Monster : Fighter, IEnemy
 
     [Range(0, 100)]
     public float blockChance = 10f;
-    public BattleManager battleManager;
 
     public GameObject[] extraObjects;
     public ParticleSystem[] extraParticles;
@@ -30,7 +30,7 @@ public class Monster : Fighter, IEnemy
 
     public void React()
     {
-        float random = Random.Range(0, 101);
+        float random = UnityEngine.Random.Range(0, 101);
 
         if (random <= blockChance)
         {
@@ -42,10 +42,11 @@ public class Monster : Fighter, IEnemy
     {
         magicCircleHandler.successCastSpellDelegateEvent -= React;
 
-        battleManager.MonsterDied();
         animator.SetTrigger(dieAnimation);
 
         autoController.StopController();
+
+        base.Die();
     }
 
     public void Appear()

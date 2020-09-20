@@ -16,22 +16,26 @@ public class ShieldHandler : MonoBehaviour
 
     private IPressed shieldActivateButton;
 
+    public BattleManager battleManager;
+
     public void Start()
     {
         shieldActivateButton = KeyBindingManager.GetInstance().shieldHandlerButtonInput;
 
         shieldActivateButton.SubscribeToPressed(Def);
 
-        BattleEvents.GetInstance().SubscribeEvents(Fighting, Exploring);
+        GameEvents gameEvents = GameEvents.GetInstance();
+        gameEvents.BattleStartDelegateEvent += Fighting;
+        gameEvents.BattleEndDelegateEvent += Exploring;
     }
 
-    private void Fighting(BattleManager battleManager)
+    private void Fighting()
     {
         battleManager.MonsterTurnStartDelegateEvent += shieldActivateButton.Activate;
         battleManager.PlayerTurnStartDelegateEvent += shieldActivateButton.Deactivate;
     }
 
-    private void Exploring(BattleManager battleManager)
+    private void Exploring()
     {
         battleManager.MonsterTurnStartDelegateEvent -= shieldActivateButton.Activate;
         battleManager.PlayerTurnStartDelegateEvent -= shieldActivateButton.Deactivate;

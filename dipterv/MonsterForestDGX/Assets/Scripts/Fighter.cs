@@ -1,15 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public abstract class Fighter : MonoBehaviour//, IBattleParticipate
+public abstract class Fighter : MonoBehaviour
 {
     public Health health;
 
-    public abstract void Die();
+    public event Action Died;
 
-    /*public abstract void FinishFight();
-
-    public virtual void PrepareForFight(BattleManager battleManager)
+    public virtual void Die()
     {
-        this.battleManager = battleManager;
-    }*/
+        Died?.Invoke();
+    }
+
+    public void SubscribeToDie(Action method)
+    {
+        Died += method;
+    }
+    public void UnsubscribeToDie(Action method)
+    {
+        Died -= method;
+    }
 }

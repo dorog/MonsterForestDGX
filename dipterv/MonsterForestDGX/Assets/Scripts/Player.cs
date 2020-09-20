@@ -11,13 +11,6 @@ public class Player : Fighter
 
     public PlayerHealth playerHealth;
 
-    public Color DefenseGridColor;
-    public Color AttackGridColor;
-    public SpriteRenderer grid;
-
-    private GameObject petGO;
-
-    private PetManager petManager;
     private SpellManager spellManager;
     private AliveMonstersManager aliveMonstersManager;
     private GateManager gatesManager;
@@ -26,14 +19,9 @@ public class Player : Fighter
 
     public ParticleSystem cooldownParticleSystemEffect;
 
-    private bool petEnable = true;
-
     public SpellGuideDrawer spellGuide;
 
-    public delegate void PlayerDiedDelegate();
-    public PlayerDiedDelegate playerDiedDelegateEvent;
-
-    public BattleEvents battle;
+    public GameEvents gameEvents;
 
     public event Action Stopped;
     public event Action Go;
@@ -47,10 +35,12 @@ public class Player : Fighter
     {
         health.SetUpHealth();
 
-        petManager = PetManager.GetInstance();
         aliveMonstersManager = AliveMonstersManager.GetInstance();
         gatesManager = GateManager.GetInstance();
         spellManager = SpellManager.GetInstance();
+
+        gameEvents = GameEvents.GetInstance();
+        gameEvents.BattleStartDelegateEvent += BattleStarted;
     }
 
 
@@ -62,18 +52,6 @@ public class Player : Fighter
         rightHandCanvas.SetActive(true);
 
         playerHealth.Full();
-
-        if (petEnable)
-        {
-            GameObject playerPet = petManager.GetPet();
-            if (playerPet != null)
-            {
-                petGO = Instantiate(playerPet, battleManager.GetPetPosition(), transform.rotation);
-
-                Pet pet = petGO.GetComponent<Pet>();
-                pet.AddPlayer(this);
-            }
-        }
     }
 
     //Rename it
@@ -87,11 +65,6 @@ public class Player : Fighter
         rightHandCanvas.SetActive(false);
 
         magicCircleHandler.BattleEnd();
-
-        if(petGO != null)
-        {
-            Destroy(petGO);
-        }
 
         spellManager.Won();
 
@@ -107,8 +80,6 @@ public class Player : Fighter
 
     public override void Die()
     {
-        playerDiedDelegateEvent?.Invoke();
-
         leftHandCanvas.SetActive(false);
         rightHandCanvas.SetActive(false);
 
@@ -116,33 +87,25 @@ public class Player : Fighter
         battleManager.PlayerDied();
 
         Go?.Invoke();
+
+        base.Die();
     }
 
     public void DefTurn()
     {
-        grid.color = DefenseGridColor;
         magicCircleHandler.DefTurn();
     }
 
     public void AttackTurn()
     {
-        //grid.color = AttackGridColor;
         magicCircleHandler.AttackTurn();
     }
 
-    public void Battle(BattleManager battleManager, Resistant monsterResistant, bool petEnable, bool resistantEnable)
+    public void Battle(BattleManager battleManager, Resistant monsterResistant)
     {
         Stopped?.Invoke();
 
-        this.petEnable = petEnable;
-
         this.battleManager = battleManager;
-        battleLobbyUI.battleManager = battleManager;
-        battleLobbyUI.SetResistantValues(monsterResistant);
-        battleLobbyUI.SetPetTab(petEnable);
-        battleLobbyUI.SetResistantTab(resistantEnable);
-
-        battleLobbyUI.gameObject.SetActive(true);
 
         battleManager.PlayerTurnEndDelegateEvent += DefTurn;
     }
@@ -187,22 +150,12 @@ public class Player : Fighter
         return cooldownParticleSystemEffect;
     }
 
-    public void Died()
+    public void PlayerDied()
     {
         Go?.Invoke();
 
-        if (petGO != null)
-        {
-            Destroy(petGO);
-        }
-
         health.ResetHealth();
         teleport.TeleportToLastPosition();
-    }
-
-    public bool CanAttack()
-    {
-        return magicCircleHandler.canAttack;
     }
 
     public void FinishedTraining()

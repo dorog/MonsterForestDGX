@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 {
@@ -28,7 +29,7 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public void React()
     {
-        float random = Random.Range(0, 101);
+        float random = UnityEngine.Random.Range(0, 101);
 
         if (random <= blockChance)
         {
@@ -64,6 +65,16 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
     }
 
     public void Disable()
+    {
+        
+    }
+
+    public void SubscribeToDie(Action method)
+    {
+        
+    }
+
+    public void UnsubscribeToDie(Action method)
     {
         
     }

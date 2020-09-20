@@ -1,9 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-public class BattleManager : MonoBehaviour
+public class BattleManager : SingletonClass<BattleManager>
 {
-    public GameObject monsterGO;
     public IEnemy monster;
     public Health monsterHealth;
     public Player player;
@@ -13,12 +12,9 @@ public class BattleManager : MonoBehaviour
 
     private BattlePlace battlePlace;
 
-    public bool petEnable = true;
-    public bool resistantEnable = true;
-
     public GameObject petPosition;
 
-    private BattleEvents battle;
+    private GameEvents gameEvents;
 
     //Events
 
@@ -27,28 +23,40 @@ public class BattleManager : MonoBehaviour
     public event Action MonsterTurnStartDelegateEvent;
     public event Action MonsterTurnEndDelegateEvent;
 
-    public void Start()
+    private void Awake()
     {
-        battle = BattleEvents.GetInstance();
+        Init(this);
     }
 
-    public void BattleLobby(int _id, bool _isMonster, BattlePlace battlePlace)
+    public void Start()
     {
-        this.battlePlace = battlePlace;
+        gameEvents = GameEvents.GetInstance();
 
-        id = _id;
-        isMonster = _isMonster;
+        gameEvents.BattleLobbyEnteredDelegateEvent += BattleLobby;
+    }
 
-        player.battleManager = this;
+    public void BattleLobby()
+    {
+        battlePlace = gameEvents.battlePlace;
+        monster = gameEvents.enemy;
+        monsterHealth = gameEvents.enemyHealth;
+        player = gameEvents.player;
+        petPosition = gameEvents.petPosition;
 
-        monster = monsterGO.GetComponent<IEnemy>();
+        id = gameEvents.id;
+        isMonster = gameEvents.isMonster;
+
         monster.Appear();
-        player.Battle(this, monsterHealth.resistant, petEnable, resistantEnable);
+
+        player.Battle(this, monsterHealth.resistant);
     }
 
     public void BattleStart()
     {
-        battle.Fight(this);
+        gameEvents.Fight();
+
+        monster.SubscribeToDie(MonsterDied);
+        player.SubscribeToDie(PlayerDied);
 
         player.BattleStarted();
         monster.Fight();
@@ -68,19 +76,29 @@ public class BattleManager : MonoBehaviour
 
     public void MonsterDied()
     {
-        battle.Explore(this);
+        UnsubscribeDieFromDieEvents();
+
+        gameEvents.Explore();
 
         player.BattleEnd(id, isMonster);
     }
 
     public void PlayerDied()
     {
-        battle.Explore(this);
+        UnsubscribeDieFromDieEvents();
 
-        player.Died();
+        gameEvents.Explore();
+
+        player.PlayerDied();
 
         monster.ResetMonster();
         battlePlace.ResetBattlePlace();
+    }
+
+    private void UnsubscribeDieFromDieEvents()
+    {
+        monster.UnsubscribeToDie(MonsterDied);
+        player.UnsubscribeToDie(PlayerDied);
     }
 
     public void Run()
@@ -92,7 +110,7 @@ public class BattleManager : MonoBehaviour
 
     public void FinishedTraining()
     {
-        battle.Explore(this);
+        gameEvents.Explore();
         battlePlace.ResetBattlePlace();
     }
 

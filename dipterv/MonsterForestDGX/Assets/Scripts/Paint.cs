@@ -15,7 +15,7 @@ public class Paint : MonoBehaviour
 
     public Transform hand;
 
-    public BattleEvents battle;
+    private BattleManager battleManager;
 
     public bool circleOn = false;
 
@@ -26,16 +26,20 @@ public class Paint : MonoBehaviour
         drawingInput.SubscribeToPressing(Pressing);
         drawingInput.SubscribeToReleased(CheckResult);
 
-        BattleEvents.GetInstance().SubscribeEvents(Fighting, Exploring);
+        GameEvents gameEvents = GameEvents.GetInstance();
+        gameEvents.BattleStartDelegateEvent += Fighting;
+        gameEvents.BattleEndDelegateEvent += Exploring;
+
+        battleManager = gameEvents.battleManager;
     }
 
-    private void Fighting(BattleManager battleManager)
+    private void Fighting()
     {
         battleManager.PlayerTurnStartDelegateEvent += drawingInput.Activate;
         battleManager.MonsterTurnStartDelegateEvent += drawingInput.Deactivate;
     }
 
-    private void Exploring(BattleManager battleManager)
+    private void Exploring()
     {
         battleManager.PlayerTurnStartDelegateEvent -= drawingInput.Activate;
         battleManager.MonsterTurnStartDelegateEvent -= drawingInput.Deactivate;

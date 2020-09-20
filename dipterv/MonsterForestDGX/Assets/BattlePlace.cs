@@ -10,13 +10,23 @@ public class BattlePlace : MonoBehaviour
     private bool isMonster = true;
 
     private IEnemy enemy;
+    private Health enemyHealth;
 
     public GameObject go;
+
+    private GameEvents gameEvents;
+
+    public GameObject petPosition;
+
+    public bool petEnable = true;
+    public bool resistantEnable = true;
 
     private void Start()
     {
         enemy = monster.GetComponent<IEnemy>();
-        if(enemy == null)
+        enemyHealth = monster.GetComponent<Health>();
+
+        if (enemy == null)
         {
             Debug.LogError("There is no IEnemy! Object: " + monster.name);
         }
@@ -24,11 +34,23 @@ public class BattlePlace : MonoBehaviour
         {
             isMonster = enemy.IsMonster();
         }
+
+        gameEvents = GameEvents.GetInstance();
     }
 
     public void Triggered()
     {
-        battleManager.BattleLobby(id, isMonster, this);
+        gameEvents.id = id;
+        gameEvents.isMonster = isMonster;
+        gameEvents.battlePlace = this;
+        gameEvents.enemy = enemy;
+        gameEvents.enemyHealth = enemyHealth;
+        gameEvents.petEnable = petEnable;
+        gameEvents.petPosition = petPosition;
+        gameEvents.resistantEnable = resistantEnable;
+        gameEvents.enemyResistant = enemyHealth.resistant;
+
+        gameEvents.EnteredLobby();
     }
 
     public void SetAlive(bool alive)

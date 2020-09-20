@@ -626,7 +626,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 488110038}
-  - component: {fileID: 488110039}
   m_Layer: 8
   m_Name: BattleLobby
   m_TagString: Untagged
@@ -657,25 +656,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &488110039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488110037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bcefde80e7fbbc04d845ad126fd26f93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  battleManager: {fileID: 0}
-  water: {fileID: 1133031324}
-  earth: {fileID: 1282444705}
-  fire: {fileID: 1187585212}
-  air: {fileID: 983699589}
-  petTab: {fileID: 2133249554}
-  resistantTab: {fileID: 837364783}
 --- !u!1 &538114509
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,7 +872,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 488110039}
+      - m_Target: {fileID: 594840401}
         m_TargetAssemblyTypeName: BattleLobby, Assembly-CSharp
         m_MethodName: StartBattle
         m_Mode: 1
@@ -1862,10 +1842,10 @@ RectTransform:
   m_Father: {fileID: 674545892}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -500}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983699589
 MonoBehaviour:
@@ -1894,6 +1874,7 @@ GameObject:
   - component: {fileID: 1040738560}
   - component: {fileID: 1040738559}
   - component: {fileID: 1040738563}
+  - component: {fileID: 594840401}
   m_Layer: 8
   m_Name: Canvas
   m_TagString: Untagged
@@ -2001,6 +1982,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 2147483647
+--- !u!114 &594840401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040738558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcefde80e7fbbc04d845ad126fd26f93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleManager: {fileID: 0}
+  water: {fileID: 1133031324}
+  earth: {fileID: 1282444705}
+  fire: {fileID: 1187585212}
+  air: {fileID: 983699589}
+  petTab: {fileID: 2133249554}
+  resistantTab: {fileID: 837364783}
+  battleLobbyUI: {fileID: 488110037}
 --- !u!1 &1133031322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2034,10 +2035,10 @@ RectTransform:
   m_Father: {fileID: 674545892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -50}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1133031324
 MonoBehaviour:
@@ -2086,10 +2087,10 @@ RectTransform:
   m_Father: {fileID: 674545892}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -350}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187585212
 MonoBehaviour:
@@ -2138,10 +2139,10 @@ RectTransform:
   m_Father: {fileID: 674545892}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -200}
-  m_SizeDelta: {x: 400, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1282444705
 MonoBehaviour:
@@ -2811,7 +2812,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 488110039}
+      - m_Target: {fileID: 594840401}
         m_TargetAssemblyTypeName: BattleLobby, Assembly-CSharp
         m_MethodName: Run
         m_Mode: 1
@@ -3330,6 +3331,8 @@ GameObject:
   - component: {fileID: 1220643225}
   - component: {fileID: 1220643226}
   - component: {fileID: 1220643227}
+  - component: {fileID: 1152169243}
+  - component: {fileID: 1152169252}
   m_Layer: 8
   m_Name: VrPlayer
   m_TagString: Player
@@ -3469,13 +3472,10 @@ MonoBehaviour:
   magicCircleHandler: {fileID: 1220643223}
   teleport: {fileID: 0}
   playerHealth: {fileID: 1220643220}
-  DefenseGridColor: {r: 0.013375282, g: 0, b: 1, a: 1}
-  AttackGridColor: {r: 1, g: 0, b: 0, a: 1}
-  grid: {fileID: 0}
-  battleLobbyUI: {fileID: 488110039}
+  battleLobbyUI: {fileID: 0}
   cooldownParticleSystemEffect: {fileID: 6407921427351328199}
   spellGuide: {fileID: 0}
-  battle: {fileID: 0}
+  gameEvents: {fileID: 0}
   leftHandCanvas: {fileID: 1565776234}
   rightHandCanvas: {fileID: 1300218612}
 --- !u!114 &1220643223
@@ -3497,6 +3497,7 @@ MonoBehaviour:
   hand: {fileID: 5850135719896980824}
   feedback: {fileID: 277069153}
   magicCircleExtraDistance: 0.4
+  battleManager: {fileID: 0}
 --- !u!114 &1220643225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3517,6 +3518,7 @@ MonoBehaviour:
   simpleDamageShieldMinAngle: 65
   simpleDamageShieldMaxAngle: 90
   simpleTimeDamageBlock: {fileID: 1220643226}
+  battleManager: {fileID: 0}
 --- !u!114 &1220643226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3549,6 +3551,35 @@ MonoBehaviour:
   durationTime: 10
   blockUI: {fileID: 2092707489}
   shieldEffect: {fileID: 352610226}
+--- !u!114 &1152169243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932595735893776518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c1192edde402c4fb03f7f97f110698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleManager: {fileID: 0}
+  player: {fileID: 0}
+  gameEvents: {fileID: 0}
+--- !u!114 &1152169252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932595735893776518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c95c3aef7fccf074185d36d2e9139eff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 180
+  player: {fileID: 1220643221}
 --- !u!1 &5932595736034050564
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,15 +4681,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc278c6224d1dc04997673c4c4cc8d82, type: 3}
---- !u!198 &788531796 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19800004, guid: bc278c6224d1dc04997673c4c4cc8d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 774772112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &774377236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: bc278c6224d1dc04997673c4c4cc8d82,
+    type: 3}
+  m_PrefabInstance: {fileID: 774772112}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &788531796 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800004, guid: bc278c6224d1dc04997673c4c4cc8d82,
     type: 3}
   m_PrefabInstance: {fileID: 774772112}
   m_PrefabAsset: {fileID: 0}
@@ -4956,15 +4987,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9056bd5a02e5ff44c883f08959852443, type: 3}
---- !u!4 &1324672980 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4254468095665465927, guid: 9056bd5a02e5ff44c883f08959852443,
-    type: 3}
-  m_PrefabInstance: {fileID: 4254468096509316499}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &1339854252 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4254468095683788863, guid: 9056bd5a02e5ff44c883f08959852443,
+    type: 3}
+  m_PrefabInstance: {fileID: 4254468096509316499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1324672980 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4254468095665465927, guid: 9056bd5a02e5ff44c883f08959852443,
     type: 3}
   m_PrefabInstance: {fileID: 4254468096509316499}
   m_PrefabAsset: {fileID: 0}

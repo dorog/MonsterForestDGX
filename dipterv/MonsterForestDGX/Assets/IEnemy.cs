@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 public interface IEnemy
 {
     void Appear();
@@ -8,4 +10,6 @@ public interface IEnemy
     bool IsMonster();
     void Fight();
     void Disable();
+    void SubscribeToDie(Action method);
+    void UnsubscribeToDie(Action method);
 }
