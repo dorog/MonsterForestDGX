@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private float sideMovement = 0;
     public float movementSpeed = 10;
 
-    void Update()
+    /*void Update()
     {
         if (player.CanMove())
         {
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
             Click();
         }
-    }
+    }*/
 
     private void FixedUpdate()
     {

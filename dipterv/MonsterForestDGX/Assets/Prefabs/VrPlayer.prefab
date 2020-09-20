@@ -3465,12 +3465,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1220643220}
-  magicCircleHandler: {fileID: 1220643223}
   battleManager: {fileID: 0}
+  magicCircleHandler: {fileID: 1220643223}
   teleport: {fileID: 0}
-  InLobby: 0
-  InBattle: 0
-  InMenu: 0
   playerHealth: {fileID: 1220643220}
   DefenseGridColor: {r: 0.013375282, g: 0, b: 1, a: 1}
   AttackGridColor: {r: 1, g: 0, b: 0, a: 1}
@@ -3478,6 +3475,7 @@ MonoBehaviour:
   battleLobbyUI: {fileID: 488110039}
   cooldownParticleSystemEffect: {fileID: 6407921427351328199}
   spellGuide: {fileID: 0}
+  battle: {fileID: 0}
   leftHandCanvas: {fileID: 1565776234}
   rightHandCanvas: {fileID: 1300218612}
 --- !u!114 &1220643223
@@ -3511,9 +3509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484b68e2cb0a6084983a368267a2433c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1220643221}
   playerHealth: {fileID: 1220643220}
-  feedback: {fileID: 277069153}
   hand: {fileID: 4965013986553841895}
   continuesDamageShieldMinAngle: 0
   continuesDamageShieldMaxAngle: 25

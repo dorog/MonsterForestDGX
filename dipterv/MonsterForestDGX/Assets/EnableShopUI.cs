@@ -12,24 +12,22 @@ public class EnableShopUI : MonoBehaviour
 
     public IPressed enableShopInput;
 
-    private void Start()
+    public void Start()
     {
         enableShopInput = KeyBindingManager.GetInstance().shopCollectButton;
+        enableShopInput.SubscribeToPressed(ShowUI);
     }
 
-    void Update()
+    private void ShowUI()
     {
         if (inArea && !inShop)
         {
-            if (enableShopInput.IsPressed())
-            {
-                uiShower.ShowUI(this);
-                inShop = true;
-            }
+            uiShower.ShowUI(this);
+            inShop = true;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -39,7 +37,7 @@ public class EnableShopUI : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {

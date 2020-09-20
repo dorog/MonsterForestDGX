@@ -9,8 +9,6 @@ public class MagicCircleHandler : MonoBehaviour
 
     public GameObject magicCircle;
 
-    private bool inCast = false;
-
     public Text coolDown;
     private bool resetedCd = false;
 
@@ -28,9 +26,27 @@ public class MagicCircleHandler : MonoBehaviour
 
     public float magicCircleExtraDistance = 2;
 
-    private void Start()
+
+    public void Start()
     {
         magicCircleInput = KeyBindingManager.GetInstance().magicCircleInput;
+        magicCircleInput.SubscribeToPressed(new Action[] { MagicCircleStatePositive, MagicCircleStateNegativ });
+
+        BattleEvents.GetInstance().SubscribeEvents(Fighting, Exploring);
+    }
+
+    private void Fighting(BattleManager battleManager)
+    {
+        battleManager.PlayerTurnStartDelegateEvent += AttackTurn;
+        battleManager.MonsterTurnStartDelegateEvent += DefTurn;
+    }
+
+    private void Exploring(BattleManager battleManager)
+    {
+        battleManager.PlayerTurnStartDelegateEvent -= AttackTurn;
+        battleManager.MonsterTurnStartDelegateEvent -= DefTurn;
+
+        magicCircleInput.Deactivate();
     }
 
     public void ResetCooldown()
@@ -38,35 +54,25 @@ public class MagicCircleHandler : MonoBehaviour
         resetedCd = true;
     }
 
-    private void Update()
+    private void MagicCircleStatePositive()
     {
-        if (player.InBattle && canAttack && magicCircleInput.IsPressed())
-        {
-            if (inCast)
-            {
-                inCast = false;
-                magicCircle.SetActive(false);
-            }
-            else if (!inCast)
-            {
-                inCast = true;
+        magicCircle.transform.position = hand.transform.position + hand.transform.forward * magicCircleExtraDistance;
+        magicCircle.transform.rotation = hand.transform.rotation;
+        magicCircle.SetActive(true);
+    }
 
-                magicCircle.transform.position = hand.transform.position + hand.transform.forward * magicCircleExtraDistance;
-                magicCircle.transform.rotation = hand.transform.rotation;
-                magicCircle.SetActive(true);
-            }
-        }
+    private void MagicCircleStateNegativ()
+    {
+        magicCircle.SetActive(false);
     }
 
     public void Def()
     {
         magicCircle.SetActive(false);
-        inCast = false;
     }
 
     public void BattleEnd()
     {
-        inCast = false;
         canAttack = false;
         magicCircle.SetActive(false);
 
@@ -83,6 +89,7 @@ public class MagicCircleHandler : MonoBehaviour
 
         SetUpCoolDown(spellResult.cooldown);
 
+        magicCircleInput.Reset();
         magicCircle.SetActive(false);
     }
 
@@ -99,7 +106,6 @@ public class MagicCircleHandler : MonoBehaviour
 
         coolDown.text = "Ready";
 
-        inCast = false;
         resetedCd = false;
     }
 
@@ -114,7 +120,6 @@ public class MagicCircleHandler : MonoBehaviour
         }
         else
         {
-            inCast = false;
             resetedCd = false;
         }
     }
@@ -132,7 +137,6 @@ public class MagicCircleHandler : MonoBehaviour
 
         canAttack = false;
         magicCircle.SetActive(false);
-        inCast = false;
     }
 
     public void AttackTurn()
@@ -141,7 +145,6 @@ public class MagicCircleHandler : MonoBehaviour
 
         canAttack = true;
         magicCircle.SetActive(false);
-        inCast = false;
     }
 
     private void ClearDelegates()

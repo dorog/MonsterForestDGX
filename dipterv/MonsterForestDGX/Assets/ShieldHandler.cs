@@ -1,12 +1,8 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class ShieldHandler : MonoBehaviour
 {
-    public Player player;
     public PlayerHealth playerHealth;
-
-    public Text feedback;
 
     public Transform hand;
 
@@ -20,30 +16,42 @@ public class ShieldHandler : MonoBehaviour
 
     private IPressed shieldActivateButton;
 
-    private void Start()
+    public void Start()
     {
         shieldActivateButton = KeyBindingManager.GetInstance().shieldHandlerButtonInput;
+
+        shieldActivateButton.SubscribeToPressed(Def);
+
+        BattleEvents.GetInstance().SubscribeEvents(Fighting, Exploring);
     }
 
-    void Update()
+    private void Fighting(BattleManager battleManager)
     {
-        if(player.InBattle && !player.CanAttack())
-        {
-            float angle = Vector3.Angle(hand.forward, Vector3.up);
+        battleManager.MonsterTurnStartDelegateEvent += shieldActivateButton.Activate;
+        battleManager.PlayerTurnStartDelegateEvent += shieldActivateButton.Deactivate;
+    }
 
-            if (shieldActivateButton.IsPressing())
-            {
-                if(angle <= simpleDamageShieldMaxAngle && angle >= simpleDamageShieldMinAngle)
-                {
-                    playerHealth.timeDamageBlock = simpleTimeDamageBlock;
-                    playerHealth.SetDamageBlock();
-                }
-                else if(angle <= continuesDamageShieldMaxAngle && angle >= continuesDamageShieldMinAngle)
-                {
-                    playerHealth.timeDamageBlock = continouesTimeDamageBlock;
-                    playerHealth.SetDamageBlock();
-                }
-            }
+    private void Exploring(BattleManager battleManager)
+    {
+        battleManager.MonsterTurnStartDelegateEvent -= shieldActivateButton.Activate;
+        battleManager.PlayerTurnStartDelegateEvent -= shieldActivateButton.Deactivate;
+
+        shieldActivateButton.Deactivate();
+    }
+
+    private void Def()
+    {
+        float angle = Vector3.Angle(hand.forward, Vector3.up);
+
+        if (angle <= simpleDamageShieldMaxAngle && angle >= simpleDamageShieldMinAngle)
+        {
+            playerHealth.timeDamageBlock = simpleTimeDamageBlock;
+            playerHealth.SetDamageBlock();
+        }
+        else if (angle <= continuesDamageShieldMaxAngle && angle >= continuesDamageShieldMinAngle)
+        {
+            playerHealth.timeDamageBlock = continouesTimeDamageBlock;
+            playerHealth.SetDamageBlock();
         }
     }
 }

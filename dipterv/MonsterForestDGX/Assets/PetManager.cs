@@ -20,15 +20,17 @@ public class PetManager : SingletonClass<PetManager>
     //TODO: Add to another class (like PetEnable)
     public IPressed collectInput;
 
-    private void Awake()
+    public void Awake()
     {
         Init(this);
     }
 
-    private void Start()
+    public void Start()
     {
         SetupPets();
         collectInput = KeyBindingManager.GetInstance().petCollectButton;
+
+        collectInput.SubscribeToPressed(Collect);
     }
 
     private void SetupPets()
@@ -81,15 +83,12 @@ public class PetManager : SingletonClass<PetManager>
         return pets;
     }
 
-    private void Update()
+    private void Collect()
     {
-        if(availablePetId != defaultPetId)
+        if (availablePetId != defaultPetId)
         {
-            if (collectInput.IsPressing())
-            {
-                CollectPet();
-                DisableAvailablePet();
-            }
+            CollectPet();
+            DisableAvailablePet();
         }
     }
 

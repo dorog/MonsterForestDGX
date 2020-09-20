@@ -21,6 +21,7 @@ public class SpellGuideDrawer : MonoBehaviour
     private void Start()
     {
         pressInput = KeyBindingManager.GetInstance().drawHelperInput;
+        pressInput.SubscribeToPressed(Pressed);
     }
 
     public void DrawGuide(List<SpellPatternPoint> spellPatternPoints, float width = 10, float scale = 0.01f)
@@ -69,15 +70,11 @@ public class SpellGuideDrawer : MonoBehaviour
         guidePoints.Clear();
     }
 
-    private void Update()
+    public void Pressed()
     {
-        //TODO: Check what it is
-        if (pressInput.IsPressed())
+        if (guideHelper != null)
         {
-            if (guideHelper != null)
-            {
-                guideHelper.SetActive(!guideHelper.activeSelf);
-            }
+            guideHelper.SetActive(!guideHelper.activeSelf);
         }
     }
 }

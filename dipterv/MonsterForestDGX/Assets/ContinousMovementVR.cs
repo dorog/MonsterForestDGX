@@ -23,15 +23,17 @@ public class ContinousMovementVR : MonoBehaviour
     private void Start()
     {
         axisInput = KeyBindingManager.GetInstance().continousMovementAxisInput;
+
+        axisInput.SubscibeToAxisChange(Move);
+
+        player.Stopped += axisInput.Deactivate;
+        player.Go += axisInput.Activate;
     }
 
-    void Update()
+    private void Move(Vector2 axis)
     {
-        if (player.CanMove())
-        {
-            inputAxis = axisInput.GetValue();
-        }
-    }
+        inputAxis += axis;
+    } 
 
     private void FixedUpdate()
     {

@@ -28,7 +28,7 @@ public class BattlePlace : MonoBehaviour
 
     public void Triggered()
     {
-        battleManager.Battle(id, isMonster, this);
+        battleManager.BattleLobby(id, isMonster, this);
     }
 
     public void SetAlive(bool alive)

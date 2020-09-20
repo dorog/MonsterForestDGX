@@ -15,14 +15,37 @@ public class Paint : MonoBehaviour
 
     public Transform hand;
 
-    private void Start()
+    public BattleEvents battle;
+
+    public bool circleOn = false;
+
+    public void Start()
     {
         drawingInput = KeyBindingManager.GetInstance().paintingTrigger;
+
+        drawingInput.SubscribeToPressing(Pressing);
+        drawingInput.SubscribeToReleased(CheckResult);
+
+        BattleEvents.GetInstance().SubscribeEvents(Fighting, Exploring);
     }
 
-    void Update()
+    private void Fighting(BattleManager battleManager)
     {
-        if (drawingInput.IsPressing())
+        battleManager.PlayerTurnStartDelegateEvent += drawingInput.Activate;
+        battleManager.MonsterTurnStartDelegateEvent += drawingInput.Deactivate;
+    }
+
+    private void Exploring(BattleManager battleManager)
+    {
+        battleManager.PlayerTurnStartDelegateEvent -= drawingInput.Activate;
+        battleManager.MonsterTurnStartDelegateEvent -= drawingInput.Deactivate;
+
+        drawingInput.Deactivate();
+    }
+
+    private void Pressing()
+    {
+        if (circleOn)
         {
             try
             {
@@ -40,10 +63,6 @@ public class Paint : MonoBehaviour
 
             }
             catch (Exception) { }
-        }
-        else
-        {
-            CheckResult();
         }
     }
 
@@ -91,7 +110,7 @@ public class Paint : MonoBehaviour
         }
     }
 
-    private void OnDisable()
+    public void OnDisable()
     {
         lineRenderer.positionCount = 0;
         SpellManager.ResetSpells();

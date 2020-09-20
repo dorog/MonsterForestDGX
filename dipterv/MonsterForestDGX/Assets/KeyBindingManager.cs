@@ -6,8 +6,7 @@ public class KeyBindingManager : SingletonClass<KeyBindingManager>
 
     public ButtonInput shieldHandlerButtonInput;
 
-    public ButtonInput[] magicCircleInputs;
-    public MultiSwitchInput magicCircleInput;
+    public ButtonInput magicCircleInput;
     
     public TriggerInput paintingTrigger;
 
@@ -16,7 +15,7 @@ public class KeyBindingManager : SingletonClass<KeyBindingManager>
     public ButtonInput shopCollectButton;
 
     public ButtonInput[] drawHelperInputs;
-    public MultiSwitchInput drawHelperInput;
+    public SwitchInput drawHelperInput;
 
     private void Awake()
     {

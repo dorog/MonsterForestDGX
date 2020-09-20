@@ -4,15 +4,10 @@ using UnityEngine;
 [Serializable]
 public class Player : Fighter
 {
+    public BattleManager battleManager;
     public MagicCircleHandler magicCircleHandler;
 
-    public BattleManager battleManager;
-
     public Teleport teleport;
-
-    public bool InLobby = false;
-    public bool InBattle = false;
-    public bool InMenu = false;
 
     public PlayerHealth playerHealth;
 
@@ -38,9 +33,15 @@ public class Player : Fighter
     public delegate void PlayerDiedDelegate();
     public PlayerDiedDelegate playerDiedDelegateEvent;
 
+    public BattleEvents battle;
+
+    public event Action Stopped;
+    public event Action Go;
+
     [Header("UI")]
     public GameObject leftHandCanvas;
     public GameObject rightHandCanvas;
+
 
     private void Start()
     {
@@ -52,11 +53,10 @@ public class Player : Fighter
         spellManager = SpellManager.GetInstance();
     }
 
+
     public void BattleStarted()
     {
-        InLobby = false;
-
-        InBattle = true;
+        Stopped?.Invoke();
 
         leftHandCanvas.SetActive(true);
         rightHandCanvas.SetActive(true);
@@ -79,7 +79,8 @@ public class Player : Fighter
     //Rename it
     public void BattleEnd(int id, bool isMonster)
     {
-        InBattle = false;
+        Go?.Invoke();
+
         playerHealth.BlockDown();
 
         leftHandCanvas.SetActive(false);
@@ -113,6 +114,8 @@ public class Player : Fighter
 
         magicCircleHandler.Die();
         battleManager.PlayerDied();
+
+        Go?.Invoke();
     }
 
     public void DefTurn()
@@ -129,9 +132,10 @@ public class Player : Fighter
 
     public void Battle(BattleManager battleManager, Resistant monsterResistant, bool petEnable, bool resistantEnable)
     {
+        Stopped?.Invoke();
+
         this.petEnable = petEnable;
 
-        InLobby = true;
         this.battleManager = battleManager;
         battleLobbyUI.battleManager = battleManager;
         battleLobbyUI.SetResistantValues(monsterResistant);
@@ -139,21 +143,27 @@ public class Player : Fighter
         battleLobbyUI.SetResistantTab(resistantEnable);
 
         battleLobbyUI.gameObject.SetActive(true);
+
+        battleManager.PlayerTurnEndDelegateEvent += DefTurn;
     }
 
-    public bool CanMove()
-    {
-        return !(InLobby || InBattle || InMenu);
-    }
-
+    //Refactor
     public void MenuState(bool state)
     {
-        InMenu = state;
+        if (state)
+        {
+            Stopped?.Invoke();
+        }
+        else
+        {
+            Go?.Invoke();
+        }
     }
 
     public void Run()
     {
-        InLobby = false;
+        Go?.Invoke();
+
         teleport.TeleportToLastPosition();
     }
 
@@ -179,7 +189,7 @@ public class Player : Fighter
 
     public void Died()
     {
-        InBattle = false;
+        Go?.Invoke();
 
         if (petGO != null)
         {
@@ -197,10 +207,11 @@ public class Player : Fighter
 
     public void FinishedTraining()
     {
+        Go?.Invoke();
+
         teleport.TeleportToLastPosition();
 
         magicCircleHandler.canAttack = false;
-        InBattle = false;
 
         playerHealth.BlockDown();
 

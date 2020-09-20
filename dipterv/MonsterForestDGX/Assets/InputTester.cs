@@ -11,13 +11,13 @@ public class InputTester : MonoBehaviour
 
     void Update()
     {
-        if (pressInput.IsPressing())
+        /*if (pressInput.IsPressing())
         {
             Debug.Log("Pressing...");
         }
         if (pressInput.IsPressed())
         {
             Debug.Log("Pressed");
-        }
+        }*/
     }
 }

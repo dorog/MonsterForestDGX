@@ -1,44 +1,42 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class AbstractPressed : MonoBehaviour, IPressed
 {
     public string id;
-    private bool pressed = false;
     private bool pressing = false;
     private bool setted = false;
 
-    private bool isActive = true;
+    private bool isActive = false;
 
-    public bool IsPressed()
-    {
-        if (pressed)
-        {
-            Debug.Log("Pressed...");
-            pressed = false;
-            return true;
-        }
+    private event Action PressingAction;
+    private int actionIndex = -1;
+    private Action[] actions;
+    private event Action PressedAction;
+    private event Action ReleasedAction;
 
-        return false;
-    }
-
-    public bool IsPressing()
-    {
-        return pressing;
-    }
-
-    private void Update()
+    public void Update()
     {
         if (isActive)
         {
             pressing = GetPressState();
 
-            if (pressing && !setted)
+            if (pressing)
             {
-                pressed = true;
-                setted = true;
+                if(!setted)
+                {
+                    PressedAction?.Invoke();
+                    setted = true;
+                }
+
+                PressingAction?.Invoke();
             }
             else if (!pressing)
             {
+                if (setted)
+                {
+                    ReleasedAction?.Invoke();
+                }
                 setted = false;
             }
         }
@@ -46,21 +44,75 @@ public abstract class AbstractPressed : MonoBehaviour, IPressed
 
     protected abstract bool GetPressState();
 
-    private void ResetStates()
-    {
-        pressed = false;
-        pressing = false;
-        setted = false;
-    }
-
     public void Activate()
     {
-        ResetStates();
+        Reset();
         isActive = true;
     }
 
     public void Deactivate()
     {
         isActive = false;
+    }
+
+    public void SubscribeToPressing(Action method)
+    {
+        PressingAction += method;
+    }
+
+    public void SubscribeToPressed(Action method)
+    {
+        PressedAction += method;
+    }
+
+    public void UnsubscribeFromPressing(Action method)
+    {
+        PressingAction -= method;
+    }
+
+    public void UnsubscribeFromPressed(Action method)
+    {
+        PressedAction -= method;
+    }
+
+    public void SubscribeToReleased(Action method)
+    {
+        ReleasedAction += method;
+    }
+
+    public void UnsubscribeFromReleased(Action method)
+    {
+        ReleasedAction -= method;
+    }
+
+    public void Reset()
+    {
+        pressing = false;
+        setted = false;
+        actionIndex = -1;
+    }
+
+    public void SubscribeToPressed(Action[] methods)
+    {
+        actions = methods;
+        PressedAction += SteppingAction;
+    }
+
+    public void UnsubscribeFromPressed(Action[] methods)
+    {
+        actions = null;
+        actionIndex = -1;
+        PressedAction -= SteppingAction;
+    }
+
+    private void SteppingAction()
+    {
+        actionIndex++;
+        if(actionIndex >= actions.Length)
+        {
+            actionIndex = 0;
+        }
+
+        actions[actionIndex]?.Invoke();
     }
 }

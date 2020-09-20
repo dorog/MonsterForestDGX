@@ -11,7 +11,7 @@ public class SpellAttack : PlayerSpell
     public void SetBattleManager(BattleManager battleManager)
     {
         this.battleManager = battleManager;
-        battleManager.monsterTurnStartDelegateEvent += VanishSpell;
+        battleManager.MonsterTurnStartDelegateEvent += VanishSpell;
     }
 
     public override string GetSpellType()
@@ -49,7 +49,7 @@ public class SpellAttack : PlayerSpell
 
     private void OnDestroy()
     {
-        battleManager.monsterTurnStartDelegateEvent -= VanishSpell;
+        battleManager.MonsterTurnStartDelegateEvent -= VanishSpell;
     }
 
     private void DamageMonster(Collision hit)
