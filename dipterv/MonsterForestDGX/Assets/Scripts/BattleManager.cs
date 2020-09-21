@@ -48,7 +48,7 @@ public class BattleManager : SingletonClass<BattleManager>
 
         monster.Appear();
 
-        player.Battle(this, monsterHealth.resistant);
+        player.Battle();
     }
 
     public void BattleStart()

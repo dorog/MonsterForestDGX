@@ -5,7 +5,7 @@ public class PetEnable : MonoBehaviour
     public int id = 0;
     private PetManager petManager;
 
-    public GameObject pet;
+    public Pet pet;
 
     private bool collected = false;
 
@@ -26,7 +26,7 @@ public class PetEnable : MonoBehaviour
     {
         if (!collected && other.gameObject.tag == "Player")
         {
-            petManager.SetAvailablePet(this, id);
+            petManager.SetAvailablePet(this, id, pet);
             availableSign.SetActive(true);
         }
     }
@@ -42,7 +42,7 @@ public class PetEnable : MonoBehaviour
 
     public void Collected()
     {
-        pet.SetActive(false);
+        pet.gameObject.SetActive(false);
         collected = true;
         availableSign.SetActive(false);
     }

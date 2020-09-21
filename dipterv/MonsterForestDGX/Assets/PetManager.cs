@@ -20,6 +20,10 @@ public class PetManager : SingletonClass<PetManager>
     //TODO: Add to another class (like PetEnable)
     public IPressed collectInput;
 
+    public PetAbilityDesciptionUI petAbilityDesciptionUI;
+
+    private Pet pet;
+
     public void Awake()
     {
         Init(this);
@@ -92,14 +96,17 @@ public class PetManager : SingletonClass<PetManager>
         }
     }
 
-    public void SetAvailablePet(PetEnable petEnable, int id)
+    public void SetAvailablePet(PetEnable petEnable, int id, Pet availablePet)
     {
+        collectInput.Activate();
         availablePetId = id;
         actualPetEnable = petEnable;
+        pet = availablePet;
     }
 
     public void DisableAvailablePet()
     {
+        collectInput.Deactivate();
         availablePetId = defaultPetId;
     }
 
@@ -108,5 +115,10 @@ public class PetManager : SingletonClass<PetManager>
         DataManager.GetInstance().CollectPet(availablePetId);
         actualPetEnable.Collected();
         SetupPets();
+
+        var petName = pet.petName;
+        var petAbilities = pet.GetAbilityDesciptions();
+
+        petAbilityDesciptionUI.ShowUI(petName, petAbilities);
     }
 }

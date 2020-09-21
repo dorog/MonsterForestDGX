@@ -30,7 +30,6 @@ public class Player : Fighter
     public GameObject leftHandCanvas;
     public GameObject rightHandCanvas;
 
-
     private void Start()
     {
         health.SetUpHealth();
@@ -101,11 +100,9 @@ public class Player : Fighter
         magicCircleHandler.AttackTurn();
     }
 
-    public void Battle(BattleManager battleManager, Resistant monsterResistant)
+    public void Battle()
     {
         Stopped?.Invoke();
-
-        this.battleManager = battleManager;
 
         battleManager.PlayerTurnEndDelegateEvent += DefTurn;
     }

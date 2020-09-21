@@ -21,14 +21,18 @@ public class ElementMovement : MonoBehaviour, IPuzzleMovement
 
     public void DisappearInstantly()
     {
-        transform.position = openedPositon;
-        opened = true;
+        if (!opened)
+        {
+            transform.position = transform.position + new Vector3(0, openingDistance, 0);
+            opened = true;
+        }
     }
 
     public void DisappearContinously()
     {
         if(!opened)
         {
+            opened = true;
             opening = true;
         }
     }
@@ -50,7 +54,6 @@ public class ElementMovement : MonoBehaviour, IPuzzleMovement
             {
                 transform.position = openedPositon;
                 opening = false;
-                opened = true;
             }
             else
             {
