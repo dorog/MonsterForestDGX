@@ -22,6 +22,8 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public void Disappear(){}
 
+    public MagicCircleHandler magicCircleHandler;
+
     public Health GetHealth()
     {
         return GetComponent<Health>();
@@ -45,7 +47,7 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
         trainingCampUI.DisableUI();
 
-        cooldownReset.DisableAbility();
+        magicCircleHandler.successCastSpellDelegateEvent -= cooldownReset.ResetCooldown;
 
         battleManager.FinishedTraining();
     }
@@ -59,7 +61,8 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
     {
         trainingCampUI.EnableUI();
 
-        cooldownReset.Init(battleManager.player);
+        cooldownReset.Init(new PetParameter() { Resetable = magicCircleHandler });
+        magicCircleHandler.successCastSpellDelegateEvent += cooldownReset.ResetCooldown;
 
         controller.Step();
     }

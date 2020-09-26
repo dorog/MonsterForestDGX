@@ -9,15 +9,15 @@ public class Pet : MonoBehaviour
     public PetAbility[] normalAbilities;
     public UpdatePetAbility[] updateAbilities;
 
-    public void AddPlayer(Player player)
+    public void Init(PetParameter petParameter)
     {
         foreach(var petAbility in updateAbilities)
         {
-            petAbility.Init(player);
+            petAbility.Init(petParameter);
         }
         foreach (var petAbility in normalAbilities)
         {
-            petAbility.Init(player);
+            petAbility.Init(petParameter);
         }
     }
 
@@ -54,5 +54,17 @@ public class Pet : MonoBehaviour
         }
 
         return petAbilityDesciptions;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (var petAbility in updateAbilities)
+        {
+            petAbility.Destroy();
+        }
+        foreach (var petAbility in normalAbilities)
+        {
+            petAbility.Destroy();
+        }
     }
 }

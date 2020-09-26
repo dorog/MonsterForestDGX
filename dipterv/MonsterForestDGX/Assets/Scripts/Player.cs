@@ -17,8 +17,6 @@ public class Player : Fighter
 
     public BattleLobby battleLobbyUI;
 
-    public ParticleSystem cooldownParticleSystemEffect;
-
     public SpellGuideDrawer spellGuide;
 
     public GameEvents gameEvents;
@@ -140,11 +138,6 @@ public class Player : Fighter
     public MagicCircleHandler GetMagicCircleHandler()
     {
         return magicCircleHandler;
-    }
-
-    public ParticleSystem GetCooldownEffect()
-    {
-        return cooldownParticleSystemEffect;
     }
 
     public void PlayerDied()

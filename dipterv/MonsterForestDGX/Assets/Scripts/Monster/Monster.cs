@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Monster : Fighter, IEnemy
@@ -30,7 +29,7 @@ public class Monster : Fighter, IEnemy
 
     public void React()
     {
-        float random = UnityEngine.Random.Range(0, 101);
+        float random = Random.Range(0, 101);
 
         if (random <= blockChance)
         {

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MagicCircleHandler : MonoBehaviour
+public class MagicCircleHandler : MonoBehaviour, IResetable
 {
     public bool canAttack = false;
 
@@ -22,19 +22,24 @@ public class MagicCircleHandler : MonoBehaviour
 
     public IPressed magicCircleInput;
 
-    public Text feedback;
-
     public float magicCircleExtraDistance = 2;
 
     public BattleManager battleManager;
 
+    public ParticleSystem cooldownParticleSystemEffect;
+    /*private ParticleSystem effect;
+    effect.Play();
+            effect = _player.GetCooldownEffect();
+        magicCircleHandler = player.GetMagicCircleHandler();
+        magicCircleHandler.successCastSpellDelegateEvent += ResetCooldown;*/
+
+    public GameEvents gameEvents;
 
     public void Start()
     {
         magicCircleInput = KeyBindingManager.GetInstance().magicCircleInput;
         magicCircleInput.SubscribeToPressed(new Action[] { MagicCircleStatePositive, MagicCircleStateNegativ });
 
-        GameEvents gameEvents = GameEvents.GetInstance();
         gameEvents.BattleStartDelegateEvent += Fighting;
         gameEvents.BattleEndDelegateEvent += Exploring;
     }
@@ -51,11 +56,6 @@ public class MagicCircleHandler : MonoBehaviour
         battleManager.MonsterTurnStartDelegateEvent -= DefTurn;
 
         magicCircleInput.Deactivate();
-    }
-
-    public void ResetCooldown()
-    {
-        resetedCd = true;
     }
 
     private void MagicCircleStatePositive()
@@ -171,5 +171,28 @@ public class MagicCircleHandler : MonoBehaviour
     public Transform GetTransform()
     {
         return magicCircle.transform;
+    }
+
+    public void ResetAction()
+    {
+        resetedCd = true;
+        cooldownParticleSystemEffect.Play();
+    }
+
+    public void SubscribeToEvents(Action activate, Action deactivate)
+    {
+        gameEvents.BattleStartDelegateEvent += activate;
+        gameEvents.BattleEndDelegateEvent += deactivate;
+    }
+
+    public void UnsubscribeToEvents(Action activate, Action deactivate)
+    {
+        gameEvents.BattleStartDelegateEvent -= activate;
+        gameEvents.BattleEndDelegateEvent -= deactivate;
+    }
+
+    public void AddCooldownRef(CooldownResetPetAbility cooldownResetPetAbility)
+    {
+        throw new NotImplementedException();
     }
 }
