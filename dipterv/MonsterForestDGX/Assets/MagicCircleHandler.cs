@@ -185,7 +185,11 @@ public class MagicCircleHandler : MonoBehaviour, IResetable
         }
 
         cooldownReset = cooldownResetPetAbility;
-        successCastSpellDelegateEvent += cooldownResetPetAbility.ResetCooldown;
-        cooldownResetPetAbility.Activate();
+
+        if(cooldownResetPetAbility != null)
+        {
+            successCastSpellDelegateEvent += cooldownResetPetAbility.ResetCooldown;
+            cooldownResetPetAbility.Activate();
+        }
     }
 }

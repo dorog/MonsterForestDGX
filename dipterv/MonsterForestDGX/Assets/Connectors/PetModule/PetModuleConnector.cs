@@ -46,9 +46,9 @@ public class PetModuleConnector : MonoBehaviour
 
     private void AssignToEvents()
     {
-        gameEvents.BattleLobbyEnteredDelegateEvent += petTab.ShowTab;
+        gameEvents.BattleLobbyEnteredDelegateEvent += PetTabShowCheck;
 
-        gameEvents.BattleStartDelegateEvent += petInitializerComponent.SummonPet;
+        gameEvents.BattleStartDelegateEvent += PetSummonEnabledCheck;
         gameEvents.BattleEndDelegateEvent += petInitializerComponent.VanishPet;
 
         gameEvents.BattleLobbyEnteredDelegateEvent += SetPetInitializerProperties;
@@ -59,9 +59,26 @@ public class PetModuleConnector : MonoBehaviour
 
     }
 
+    private void PetSummonEnabledCheck()
+    {
+        if (gameEvents.petEnable)
+        {
+            petInitializerComponent.SummonPet();
+        }
+    }
+
+    private void PetTabShowCheck()
+    {
+        if (gameEvents.petEnable)
+        {
+            petTab.ShowTab();
+        }
+    }
+
     private void SetPetInitializerProperties()
     {
         petInitializerComponent.position = gameEvents.petPosition;
+        petInitializerComponent.rotation = gameEvents.petRotation;
         petParameter.Attackable = gameEvents.enemyHealth;
     }
 }

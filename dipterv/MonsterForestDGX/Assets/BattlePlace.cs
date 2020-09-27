@@ -16,12 +16,12 @@ public class BattlePlace : MonoBehaviour
 
     private GameEvents gameEvents;
 
-    public GameObject petPosition;
+    public GameObject petPosition = null;
 
     public bool petEnable = true;
     public bool resistantEnable = true;
 
-    private void Start()
+    public void Start()
     {
         enemy = monster.GetComponent<IEnemy>();
         enemyHealth = monster.GetComponent<Health>();
@@ -46,9 +46,14 @@ public class BattlePlace : MonoBehaviour
         gameEvents.enemy = enemy;
         gameEvents.enemyHealth = enemyHealth;
         gameEvents.petEnable = petEnable;
-        gameEvents.petPosition = petPosition.transform.position;
         gameEvents.resistantEnable = resistantEnable;
         gameEvents.enemyResistant = enemyHealth.resistant;
+
+        if(petPosition != null)
+        {
+            gameEvents.petPosition = petPosition.transform.position;
+            gameEvents.petRotation = petPosition.transform.rotation;
+        }
 
         gameEvents.EnteredLobby();
     }

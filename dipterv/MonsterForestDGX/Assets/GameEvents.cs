@@ -21,6 +21,7 @@ public class GameEvents : SingletonClass<GameEvents>
     public bool resistantEnable = false;
     public Resistant enemyResistant;
     public Vector3 petPosition;
+    public Quaternion petRotation;
 
     public void Awake()
     {
