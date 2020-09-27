@@ -1,7 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class Health : MonoBehaviour
+public abstract class Health : MonoBehaviour, IAttackable, IHealable
 {
     public float maxHp = 100f;
     public float currentHp;
@@ -11,6 +12,10 @@ public abstract class Health : MonoBehaviour
     public Color lowColor;
     public Color fullColor;
     public Resistant resistant;
+
+    [Header("Only for healing (optional)")]
+    public ParticleSystem healEffect;
+    public ParticleSystem petAttackEffect;
 
     public void Start()
     {
@@ -27,7 +32,6 @@ public abstract class Health : MonoBehaviour
     {
         float realDmg = resistant.CalculateDmg(dmg, magicType);
 
-        //TODO: Add resistant
         realDmg = GetBlockedDamage(realDmg);
 
         currentHp -= realDmg;
@@ -50,5 +54,65 @@ public abstract class Health : MonoBehaviour
     {
         currentHp = maxHp;
         SetUpHealth();
+    }
+
+    public void TakeDamageFromPet(float amount)
+    {
+        TakeDamage(amount, ElementType.TrueDamage);
+        if(petAttackEffect != null)
+        {
+            petAttackEffect.Play();
+        }
+    }
+
+    public bool IsFull()
+    {
+        return currentHp == maxHp;
+    }
+
+    public void Heal(float amount)
+    {
+        if (maxHp - currentHp >= amount)
+        {
+            currentHp += amount;
+        }
+        else
+        {
+            currentHp = maxHp;
+        }
+
+        SetUpHealth();
+
+        if(healEffect != null)
+        {
+            healEffect.Play();
+        }
+    }
+
+    public void SubscribeToAttackEvents(Action activate, Action deactivate)
+    {
+        BattleManager battleManager = BattleManager.GetInstance();
+        battleManager.PlayerTurnStartDelegateEvent += activate;
+        battleManager.PlayerTurnEndDelegateEvent += deactivate;
+    }
+
+    public void UnsubscribeFromAttackEvents(Action activate, Action deactivate)
+    {
+        BattleManager battleManager = BattleManager.GetInstance();
+        battleManager.PlayerTurnStartDelegateEvent -= activate;
+        battleManager.PlayerTurnEndDelegateEvent -= deactivate;
+    }
+
+    public void SubscribeToHealEvents(Action activate, Action deactivate)
+    {
+        GameEvents gameEvents = GameEvents.GetInstance();
+        activate?.Invoke();
+        gameEvents.BattleEndDelegateEvent += deactivate;
+    }
+
+    public void UnsubscribeFromHealEvents(Action activate, Action deactivate)
+    {
+        GameEvents gameEvents = GameEvents.GetInstance();
+        gameEvents.BattleEndDelegateEvent -= deactivate;
     }
 }

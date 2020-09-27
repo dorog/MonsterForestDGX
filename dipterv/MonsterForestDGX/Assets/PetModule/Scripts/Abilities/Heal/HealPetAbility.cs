@@ -6,6 +6,26 @@ public class HealPetAbility : PetNextAction
 {
     private IHealable healable;
 
+    public override void Init(PetParameter _petParameter)
+    {
+        healable = _petParameter.Healable;
+        healable?.SubscribeToHealEvents(Activate, Deactivate);
+    }
+
+    public override void Destroy()
+    {
+        healable?.UnsubscribeFromHealEvents(Activate, Deactivate);
+    }
+
+    public override void UpdateEffect()
+    {
+        if (isActivated && !inWait && !healable.IsFull())
+        {
+            healable.Heal(effectAmount);
+            SetUpNextEffect();
+        }
+    }
+
     public override string GetAbilityDescription()
     {
         return "If the player's HP is not full, it increases the player's HP by " + effectAmount + GetTimeRangeMessage();
@@ -19,25 +39,5 @@ public class HealPetAbility : PetNextAction
     public override Color GetAbilityNameColor()
     {
         return Color.green;
-    }
-
-    public override void Init(PetParameter _petParameter)
-    {
-        healable = _petParameter.Healable;
-        base.Init(_petParameter);
-    }
-
-    public override void UpdateEffect()
-    {
-        if (isActivated && !inWait && !healable.IsFull())
-        {
-            healable.Heal(effectAmount);
-            SetUpNextEffect();
-        }
-    }
-
-    protected override IPetParameter GetPetParameter(PetParameter petParameter)
-    {
-        return petParameter.Healable;
     }
 }

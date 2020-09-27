@@ -20,4 +20,5 @@ public class GameConfig : ScriptableObject
 
     [Header("Pet Settings")]
     public Pet[] pets;
+    public int lastSelectedPet = -1;
 }

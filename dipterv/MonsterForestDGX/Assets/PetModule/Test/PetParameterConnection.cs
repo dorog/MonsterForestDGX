@@ -10,7 +10,7 @@ public class PetParameterConnection : MonoBehaviour
     [Header("Dependencies")]
     public PetSystem petSystem;
     public PetManager petManager;
-    public PetDataLoaderTestImpl petDataLoader;
+    public PetDataHandlerTestImpl petDataLoader;
     public PetInitializerComponent petInitializerComponent;
     public PetSelectorComponent petSelectorComponent;
     public PetSelectorHandlerTestImpl petSelectorHandler;

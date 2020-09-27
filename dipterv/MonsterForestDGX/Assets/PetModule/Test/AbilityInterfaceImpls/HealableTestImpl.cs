@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class HealableTestImpl : PetParameterTestImpl, IHealable
 {
@@ -13,5 +14,15 @@ public class HealableTestImpl : PetParameterTestImpl, IHealable
     {
         Debug.Log(nameof(HealableTestImpl) + ": IsFull (" + full + ")");
         return full;
+    }
+
+    public void SubscribeToHealEvents(Action activate, Action deactivate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UnsubscribeFromHealEvents(Action activate, Action deactivate)
+    {
+        throw new NotImplementedException();
     }
 }

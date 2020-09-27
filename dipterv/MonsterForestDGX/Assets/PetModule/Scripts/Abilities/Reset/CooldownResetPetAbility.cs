@@ -12,12 +12,23 @@ public class CooldownResetPetAbility : PetAbility
     {
         if (isActivated)
         {
-            float random = UnityEngine.Random.Range(0, 100);
+            float random = UnityEngine.Random.Range(0, 101);
             if (random <= resetChance)
             {
                 resetable.ResetAction();
             }
         }
+    }
+
+    public override void Init(PetParameter _petParameter)
+    {
+        resetable = _petParameter.Resetable;
+        resetable?.AddCooldownRef(this);
+    }
+
+    public override void Destroy()
+    {
+        resetable?.AddCooldownRef(null);
     }
 
     public override string GetAbilityName()
@@ -33,17 +44,5 @@ public class CooldownResetPetAbility : PetAbility
     public override Color GetAbilityNameColor()
     {
         return Color.cyan;
-    }
-
-    protected override IPetParameter GetPetParameter(PetParameter petParameter)
-    {
-        return petParameter.Resetable;
-    }
-
-    public override void Init(PetParameter _petParameter)
-    {
-        resetable = _petParameter.Resetable;
-        resetable.AddCooldownRef(this);
-        base.Init(_petParameter);
     }
 }

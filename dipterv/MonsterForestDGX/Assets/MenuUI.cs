@@ -10,20 +10,22 @@ public class MenuUI : MonoBehaviour
 
     public void HideUI()
     {
-        if(esUI != null)
+        Debug.Log("HideUI: MenuUI");
+        if (esUI != null)
         {
             esUI.ClosedUI();
         }
 
-        player.MenuState(false);
+        player.MenuState();
         ui.SetActive(false);
     }
 
     public void ShowUI(Vector3 position, Quaternion rotation, EnableShopUI enableShopUI)
     {
+        Debug.Log("ShowUI: MenuUI");
         esUI = enableShopUI;
 
-        player.MenuState(true);
+        player.MenuState();
 
         menu.position = position;
         menu.rotation = rotation;

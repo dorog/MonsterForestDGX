@@ -21,7 +21,7 @@ public class Pet : MonoBehaviour
         }
     }
 
-    private void Update()
+    public void Update()
     {
         foreach (var petAbility in updateAbilities)
         {
@@ -56,7 +56,7 @@ public class Pet : MonoBehaviour
         return petAbilityDesciptions;
     }
 
-    private void OnDestroy()
+    public void OnDestroy()
     {
         foreach (var petAbility in updateAbilities)
         {

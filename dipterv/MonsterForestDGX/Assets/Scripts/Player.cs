@@ -28,6 +28,8 @@ public class Player : Fighter
     public GameObject leftHandCanvas;
     public GameObject rightHandCanvas;
 
+    private bool isStopped = false;
+
     private void Start()
     {
         health.SetUpHealth();
@@ -106,9 +108,10 @@ public class Player : Fighter
     }
 
     //Refactor
-    public void MenuState(bool state)
+    public void MenuState()
     {
-        if (state)
+        Debug.Log("MenuState");
+        if (!isStopped)
         {
             Stopped?.Invoke();
         }
@@ -116,6 +119,8 @@ public class Player : Fighter
         {
             Go?.Invoke();
         }
+
+        isStopped = !isStopped;
     }
 
     public void Run()

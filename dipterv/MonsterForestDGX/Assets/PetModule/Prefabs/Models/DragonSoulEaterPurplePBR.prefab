@@ -441,6 +441,9 @@ GameObject:
   - component: {fileID: 3441869854458486458}
   - component: {fileID: 3441869854458486437}
   - component: {fileID: 3441869854891632780}
+  - component: {fileID: 3916116430953857463}
+  - component: {fileID: 8673025060776775541}
+  - component: {fileID: 1559198447106127672}
   m_Layer: 0
   m_Name: DragonSoulEaterPurplePBR
   m_TagString: Untagged
@@ -497,10 +500,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petName: Purple
   normalAbilities:
-  - {fileID: 4284074866904985539, guid: f2e2269a03e01f44180ebada21e164d5, type: 3}
+  - {fileID: 1559198447106127672}
   updateAbilities:
-  - {fileID: 7335588371824786013, guid: 282cf0bff65b75b43915803678e24da8, type: 3}
-  - {fileID: 8709626779585211243, guid: 4c0a361d87c8a6f4fb8f87ec9e14c54f, type: 3}
+  - {fileID: 3916116430953857463}
+  - {fileID: 8673025060776775541}
+--- !u!114 &3916116430953857463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441869854458486436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb9d23ab4419e34781f1d48ae86ac5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectAmount: 5
+  minWait: 5
+  maxWait: 5
+--- !u!114 &8673025060776775541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441869854458486436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23595a0f388d24f47b892917138fd6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectAmount: 10
+  minWait: 3
+  maxWait: 3
+--- !u!114 &1559198447106127672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441869854458486436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91a80b2e687fb24a8a123a28073b035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetChance: 80
 --- !u!1 &3441869854494183462
 GameObject:
   m_ObjectHideFlags: 0

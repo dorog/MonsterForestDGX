@@ -46,7 +46,7 @@ public class BattlePlace : MonoBehaviour
         gameEvents.enemy = enemy;
         gameEvents.enemyHealth = enemyHealth;
         gameEvents.petEnable = petEnable;
-        gameEvents.petPosition = petPosition;
+        gameEvents.petPosition = petPosition.transform.position;
         gameEvents.resistantEnable = resistantEnable;
         gameEvents.enemyResistant = enemyHealth.resistant;
 

@@ -15,11 +15,6 @@ public class SwitchInput : MonoBehaviour, IMultiInput, IPressed
     private event Action PressedAction;
     private event Action ReleasedAction;
 
-    public void Start()
-    {
-        
-    }
-
     public void Activate()
     {
         positive.Activate(); 

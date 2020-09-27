@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PetDataLoaderTestImpl : MonoBehaviour, IPetDataHandler
+public class PetDataHandlerTestImpl : MonoBehaviour, IPetDataHandler
 {
     public PetData[] petDatas;
 

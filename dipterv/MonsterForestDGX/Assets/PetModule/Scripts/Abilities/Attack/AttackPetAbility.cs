@@ -9,7 +9,12 @@ public class AttackPetAbility : PetNextAction
     public override void Init(PetParameter _petParameter)
     {
         attackable = _petParameter.Attackable;
-        base.Init(_petParameter);
+        attackable?.SubscribeToAttackEvents(Activate, Deactivate);
+    }
+
+    public override void Destroy()
+    {
+        attackable?.UnsubscribeFromAttackEvents(Activate, Deactivate);
     }
 
     public override void UpdateEffect()
@@ -19,11 +24,6 @@ public class AttackPetAbility : PetNextAction
             attackable.TakeDamageFromPet(effectAmount);
             SetUpNextEffect();
         }
-    }
-
-    protected override IPetParameter GetPetParameter(PetParameter petParameter)
-    {
-        return petParameter.Attackable;
     }
 
     public override string GetAbilityDescription()

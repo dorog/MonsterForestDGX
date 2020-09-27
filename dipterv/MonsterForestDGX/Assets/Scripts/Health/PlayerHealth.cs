@@ -3,12 +3,11 @@ using UnityEngine.UI;
 
 public class PlayerHealth : Health
 {
+    [Header ("Player Options")]
     public Text hp;
     public GameObject block;
 
     public TimeDamageBlock timeDamageBlock;
-
-    public ParticleSystem healEffect;
 
     public override void SetUpHealth()
     {
@@ -20,22 +19,6 @@ public class PlayerHealth : Health
     public void BlockDown()
     {
         block.SetActive(false);
-    }
-
-    public void Heal(float amount)
-    {
-        if(maxHp - currentHp >= amount)
-        {
-            currentHp += amount;
-        }
-        else
-        {
-            currentHp = maxHp;
-        }
-
-        SetUpHealth();
-
-        healEffect.Play();
     }
 
     protected override float GetBlockedDamage(float dmg)

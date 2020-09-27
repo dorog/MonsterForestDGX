@@ -1704,6 +1704,7 @@ GameObject:
   - component: {fileID: 2226125729451737209}
   - component: {fileID: 2226125729451737190}
   - component: {fileID: 5812343948825244384}
+  - component: {fileID: -1054975500698108408}
   m_Layer: 0
   m_Name: DragonSoulEaterBluePBR
   m_TagString: Untagged
@@ -1760,8 +1761,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petName: Blue
   normalAbilities:
-  - {fileID: 4284074866904985539, guid: f2e2269a03e01f44180ebada21e164d5, type: 3}
+  - {fileID: -1054975500698108408}
   updateAbilities: []
+--- !u!114 &-1054975500698108408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2226125729451737191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91a80b2e687fb24a8a123a28073b035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetChance: 50
 --- !u!1 &2226125729473610795
 GameObject:
   m_ObjectHideFlags: 0

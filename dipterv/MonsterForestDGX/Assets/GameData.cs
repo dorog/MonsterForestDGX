@@ -11,6 +11,7 @@ public class GameData
     public bool[] availablePets;
     public float exp;
     public int lastLocation = -1;
+    public int lastSelectedPet = -1;
 
     public GameData() { }
 
@@ -22,6 +23,7 @@ public class GameData
         basePatternSpellLevels = CreateArrayWithDefaultValue(gameConfig.baseSpells.Length, 0);
         availablePets = CreateArrayWithDefaultValue(gameConfig.pets.Length, false);
         exp = gameConfig.exp;
+        lastSelectedPet = gameConfig.lastSelectedPet;
     }
 
     public T[] CreateArrayWithDefaultValue<T>(int count, T value)

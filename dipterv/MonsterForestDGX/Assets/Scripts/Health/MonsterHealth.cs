@@ -3,6 +3,9 @@ using UnityEngine.UI;
 
 public class MonsterHealth : Health
 {
+
+    [Header ("Monster Settings")]
+
     public string bodyHitAnimation;
     public string headHitAnimation;
     public string blockAnimation;
@@ -18,14 +21,6 @@ public class MonsterHealth : Health
     public Text hp;
 
     private string actualHitAnimation;
-
-    public ParticleSystem petAttackEffect;
-
-    public void TakeDamageFromPet(float dmg, ElementType magicType)
-    {
-        petAttackEffect.Play();
-        TakeDamage(dmg, magicType);
-    }
 
     public override void SetUpHealth()
     {

@@ -19,8 +19,6 @@ public class MultiInput : MonoBehaviour, IMultiInput, IPressed
 
     public void Start()
     {
-        //inputs = KeyBindingManager.GetInstance().magicCircleInputs;
-
         for (int i = 0; i < inputs.Length; i++)
         {
             InputIndex index = new InputIndex(i, this);

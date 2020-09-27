@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public abstract class PetNextAction : UpdatePetAbility
@@ -6,7 +7,7 @@ public abstract class PetNextAction : UpdatePetAbility
     public float effectAmount = 10;
     public float minWait = 5;
     public float maxWait = 10;
-    protected bool inWait = false;
+    protected bool inWait { get; private set; } = false;
 
     protected void SetUpNextEffect()
     {

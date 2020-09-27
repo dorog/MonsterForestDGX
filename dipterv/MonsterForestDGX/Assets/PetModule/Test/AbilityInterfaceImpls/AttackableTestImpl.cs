@@ -7,4 +7,14 @@ public class AttackableTestImpl : PetParameterTestImpl, IAttackable
     {
         Debug.Log(nameof(AttackableTestImpl) + ": Take damage (" + amount + ")");
     }
+
+    public void SubscribeToAttackEvents(Action activate, Action deactivate)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void UnsubscribeFromAttackEvents(Action activate, Action deactivate)
+    {
+        throw new NotImplementedException();
+    }
 }

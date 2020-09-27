@@ -20,7 +20,7 @@ public class GameEvents : SingletonClass<GameEvents>
     public bool petEnable = false;
     public bool resistantEnable = false;
     public Resistant enemyResistant;
-    public GameObject petPosition;
+    public Vector3 petPosition;
 
     public void Awake()
     {

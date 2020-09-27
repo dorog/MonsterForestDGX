@@ -27,13 +27,10 @@ public class MagicCircleHandler : MonoBehaviour, IResetable
     public BattleManager battleManager;
 
     public ParticleSystem cooldownParticleSystemEffect;
-    /*private ParticleSystem effect;
-    effect.Play();
-            effect = _player.GetCooldownEffect();
-        magicCircleHandler = player.GetMagicCircleHandler();
-        magicCircleHandler.successCastSpellDelegateEvent += ResetCooldown;*/
 
     public GameEvents gameEvents;
+
+    private CooldownResetPetAbility cooldownReset;
 
     public void Start()
     {
@@ -179,20 +176,16 @@ public class MagicCircleHandler : MonoBehaviour, IResetable
         cooldownParticleSystemEffect.Play();
     }
 
-    public void SubscribeToEvents(Action activate, Action deactivate)
-    {
-        gameEvents.BattleStartDelegateEvent += activate;
-        gameEvents.BattleEndDelegateEvent += deactivate;
-    }
-
-    public void UnsubscribeToEvents(Action activate, Action deactivate)
-    {
-        gameEvents.BattleStartDelegateEvent -= activate;
-        gameEvents.BattleEndDelegateEvent -= deactivate;
-    }
-
     public void AddCooldownRef(CooldownResetPetAbility cooldownResetPetAbility)
     {
-        throw new NotImplementedException();
+        if(cooldownReset != null)
+        {
+            cooldownReset.Deactivate();
+            successCastSpellDelegateEvent -= cooldownReset.ResetCooldown;
+        }
+
+        cooldownReset = cooldownResetPetAbility;
+        successCastSpellDelegateEvent += cooldownResetPetAbility.ResetCooldown;
+        cooldownResetPetAbility.Activate();
     }
 }

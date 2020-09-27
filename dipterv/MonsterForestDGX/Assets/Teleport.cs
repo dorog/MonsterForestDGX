@@ -33,17 +33,20 @@ public class Teleport : MenuUI
 
         ports = dataManager.GetTeleportsState();
 
-        TeleportPlayer(last);
+        TeleportPlayer(last, true);
 
         SetupTeleportUI();
     }
 
-    public void TeleportPlayer(GameObject port)
+    public void TeleportPlayer(GameObject port, bool initTeleportation = false)
     {
         player.transform.position = port.transform.position;
         player.transform.rotation = port.transform.rotation;
 
-        HideUI();
+        if (!initTeleportation)
+        {
+            HideUI();
+        }
     }
 
     private void SetLastLocation(int id)

@@ -120,12 +120,6 @@ public class Rectangle
 
                     indexes = indexes.Distinct().ToList();
 
-                    //TODO: Buggfix:
-                    /*if(indexes.Count != 2)
-                    {
-                        Debug.LogError("Not two point!");
-                    }*/
-
                     int lastIndex = indexes[0];
                     int actualIndex = indexes[1];
 

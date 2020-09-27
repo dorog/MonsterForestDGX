@@ -12,8 +12,6 @@ public class BattleManager : SingletonClass<BattleManager>
 
     private BattlePlace battlePlace;
 
-    public GameObject petPosition;
-
     private GameEvents gameEvents;
 
     //Events
@@ -23,7 +21,7 @@ public class BattleManager : SingletonClass<BattleManager>
     public event Action MonsterTurnStartDelegateEvent;
     public event Action MonsterTurnEndDelegateEvent;
 
-    private void Awake()
+    public void Awake()
     {
         Init(this);
     }
@@ -41,7 +39,6 @@ public class BattleManager : SingletonClass<BattleManager>
         monster = gameEvents.enemy;
         monsterHealth = gameEvents.enemyHealth;
         player = gameEvents.player;
-        petPosition = gameEvents.petPosition;
 
         id = gameEvents.id;
         isMonster = gameEvents.isMonster;
@@ -112,12 +109,5 @@ public class BattleManager : SingletonClass<BattleManager>
     {
         gameEvents.Explore();
         battlePlace.ResetBattlePlace();
-    }
-
-    public Vector3 GetPetPosition()
-    {
-        //Gate and Traning camp dont need it
-        //TODO: Add option for use pets (cd or heal or ...)
-        return petPosition.transform.position;
     }
 }

@@ -3,8 +3,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-//TODO: inherit from singleton class?
-public class DataManager : MonoBehaviour
+public class DataManager : SingletonClass<DataManager>
 {
     public readonly string fileName = "gameData.json";
     private static string deviceFileLocation;
@@ -21,23 +20,11 @@ public class DataManager : MonoBehaviour
     public delegate void SpellLevelChangedEvent(int id);
     public SpellLevelChangedEvent spellLevelChangedEvent;
 
-    public static DataManager GetInstance()
-    {
-        return instance;
-    }
-
     public void Awake()
     {
         deviceFileLocation = Application.persistentDataPath + "/" + fileName;
 
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Debug.LogWarning("There is more than one " + nameof(DataManager) + "!");
-        }
+        Init(this);
 
         GetGameData();
 
@@ -108,23 +95,19 @@ public class DataManager : MonoBehaviour
         expChangedEvent(exp);
     }
 
-    public Pet[] GetAvailablePets()
+    public PetData[] GetPetDatas()
     {
-        List<Pet> pets = new List<Pet>();
+        List<PetData> petDatas = new List<PetData>();
         for(int i = 0; i < gameConfig.pets.Length; i++)
         {
-            if (gameData.availablePets[i])
-            {
-                pets.Add(gameConfig.pets[i]);
-            }
+            petDatas.Add(new PetData() 
+            { 
+                available = gameData.availablePets[i],
+                pet = gameConfig.pets[i]
+            });
         }
 
-        return pets.ToArray();
-    }
-
-    public bool[] GetAllPetsAvailability()
-    {
-        return gameData.availablePets;
+        return petDatas.ToArray();
     }
 
     public int GetLastLocation()
@@ -182,9 +165,24 @@ public class DataManager : MonoBehaviour
         spellLevelChangedEvent(id);
     }
 
-    public void CollectPet(int id)
+    public void SavePetDatas(PetData[] petDatas)
     {
-        gameData.availablePets[id] = true;
+        for(int i = 0; i < petDatas.Length; i++)
+        {
+            gameData.availablePets[i] = petDatas[i].available;
+        }
+
+        Save(gameData);
+    }
+
+    public int GetLastSelectedPet()
+    {
+        return gameData.lastSelectedPet;
+    }
+
+    public void SaveSelectedPet(int id)
+    {
+        gameData.lastSelectedPet = id;
         Save(gameData);
     }
 }

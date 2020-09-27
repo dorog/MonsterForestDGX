@@ -1763,6 +1763,7 @@ GameObject:
   - component: {fileID: 5116419521634207633}
   - component: {fileID: 5116419521634207634}
   - component: {fileID: 6310326573633760408}
+  - component: {fileID: 2988190643302445909}
   m_Layer: 0
   m_Name: DragonSoulEaterGreenPBR
   m_TagString: Untagged
@@ -1820,7 +1821,22 @@ MonoBehaviour:
   petName: Green
   normalAbilities: []
   updateAbilities:
-  - {fileID: 8709626779585211243, guid: 4c0a361d87c8a6f4fb8f87ec9e14c54f, type: 3}
+  - {fileID: 2988190643302445909}
+--- !u!114 &2988190643302445909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5116419521634207635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23595a0f388d24f47b892917138fd6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectAmount: 10
+  minWait: 5
+  maxWait: 10
 --- !u!1 &5116419521694190460
 GameObject:
   m_ObjectHideFlags: 0

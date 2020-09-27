@@ -34,8 +34,7 @@ public class PetModuleInputTester : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            petUnlockerComponent.SetAvailablePet(unlockId);
-            petUnlockerComponent.CollectPet();
+            petUnlockerComponent.CollectPet(unlockId);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {

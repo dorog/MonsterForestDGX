@@ -538,6 +538,7 @@ GameObject:
   - component: {fileID: 6988239525094632458}
   - component: {fileID: 6988239525094632469}
   - component: {fileID: 5346369568621177650}
+  - component: {fileID: 3619594749309299836}
   m_Layer: 0
   m_Name: DragonSoulEaterRedPBR
   m_TagString: Untagged
@@ -595,7 +596,22 @@ MonoBehaviour:
   petName: Red
   normalAbilities: []
   updateAbilities:
-  - {fileID: 7335588371824786013, guid: 282cf0bff65b75b43915803678e24da8, type: 3}
+  - {fileID: 3619594749309299836}
+--- !u!114 &3619594749309299836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988239525094632468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb9d23ab4419e34781f1d48ae86ac5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectAmount: 10
+  minWait: 5
+  maxWait: 10
 --- !u!1 &6988239525139852329
 GameObject:
   m_ObjectHideFlags: 0
