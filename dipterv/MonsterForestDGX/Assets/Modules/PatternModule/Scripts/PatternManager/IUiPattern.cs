@@ -1,17 +1,7 @@
 ﻿using UnityEngine;
 
-public interface ISpellPattern
+public interface IUiPattern : IPattern
 {
-    void Guess(Vector2 point);
-    float GetResult();
-    void Reset();
-    GameObject GetSpell();
-    ElementType GetElementType();
-    int GetLevelValue();
-    float GetCooldown();
-    float GetMinCoverage();
-
-    //Only UI:
     Sprite GetIcon();
     string GetSpellTypeUI();
     string[] GetLevelUI();
@@ -23,4 +13,5 @@ public interface ISpellPattern
     string[] GetCooldownUI();
     bool IsMaxed();
     void LevelUp();
+    void InstantiateUiElement(Transform root, int quantity);
 }

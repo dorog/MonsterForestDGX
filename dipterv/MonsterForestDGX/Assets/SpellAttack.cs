@@ -57,7 +57,8 @@ public class SpellAttack : PlayerSpell
         ITarget target = hit.gameObject.GetComponent<ITarget>();
         if (target != null)
         {
-            SpellManager.GetInstance().AddXpForHit(coverage);
+            Debug.Log("Comment");
+            //PatternRecognizerComponent.GetInstance().AddXpForHit(coverage);
             target.TakeDamage(dmg * coverage, elementType);
         }
     }

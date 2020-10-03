@@ -40,6 +40,7 @@ public class Teleport : MenuUI
 
     public void TeleportPlayer(GameObject port, bool initTeleportation = false)
     {
+        Debug.Log("Fix UI hide: Disable ContinousMovementVR/ContinousRotationVR");
         player.transform.position = port.transform.position;
         player.transform.rotation = port.transform.rotation;
 
@@ -87,7 +88,7 @@ public class Teleport : MenuUI
 
     public void TeleportToLastPosition()
     {
-        TeleportPlayer(lastLocation);
+        TeleportPlayer(lastLocation, true);
     }
 
     private void SetupTeleportUI()

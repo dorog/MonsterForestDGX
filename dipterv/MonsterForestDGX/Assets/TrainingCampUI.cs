@@ -13,7 +13,7 @@ public class TrainingCampUI : MonoBehaviour
 
     public Text percent;
 
-    private SpellManager spellManager;
+    private PatternRecognizerComponent spellManager;
 
     public Dropdown dropdown;
 
@@ -26,9 +26,10 @@ public class TrainingCampUI : MonoBehaviour
     public Toggle damageToogle;
     public GameObject damageUI;
 
+    public MfxTraningCampPatternComponent mfxTraningCampPatternComponent;
+
     private void Start()
     {
-        spellManager = SpellManager.GetInstance();
         SetCooldownChance();
     }
 
@@ -56,7 +57,7 @@ public class TrainingCampUI : MonoBehaviour
     public void AskForGuide()
     {
         OptionData option = dropdown.options[dropdown.value];
-        BasePatternSpell basePatternSpell = spellManager.GetSpellPoints(option.text);
+        BasePatternSpell basePatternSpell = mfxTraningCampPatternComponent.GetSpellPoints(option.text);
 
         ElementType elementType = ElementTypeExtensions.GetElementTypeByName(option.text);
 

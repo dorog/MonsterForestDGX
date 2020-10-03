@@ -10,8 +10,6 @@ public class DataManager : SingletonClass<DataManager>
 
     public GameConfig gameConfig;
 
-    private static DataManager instance = null;
-
     private GameData gameData = null;
 
     public delegate void ExpChangedEvent(float exp);
@@ -82,13 +80,9 @@ public class DataManager : SingletonClass<DataManager>
         Save(gameData);
     }
 
-    public void Won(List<ISpellPattern> spellPatterns, float exp)
+    public void Won(float exp)
     {
         gameData.exp = exp;
-        for (int i = 0; i < spellPatterns.Count; i++)
-        {
-            gameData.basePatternSpellLevels[i] = spellPatterns[i].GetLevelValue();
-        }
 
         Save(gameData);
 
@@ -154,15 +148,22 @@ public class DataManager : SingletonClass<DataManager>
         return gameData.basePatternSpellLevels.ToList();
     }
 
-    public void LevelUpSpell(int id, int exp)
+    public float LevelUpSpell(int id, float price)
     {
-        gameData.exp -= exp;
+        gameData.exp -= price;
         gameData.basePatternSpellLevels[id]++;
 
         Save(gameData);
 
-        expChangedEvent(gameData.exp);
-        spellLevelChangedEvent(id);
+        return gameData.exp;
+        //expChangedEvent(gameData.exp);
+        //spellLevelChangedEvent(id);
+    }
+
+    public void DecreasePrice(int quantity)
+    {
+        gameData.exp -= quantity;
+        Save(gameData);
     }
 
     public void SavePetDatas(PetData[] petDatas)
@@ -184,5 +185,10 @@ public class DataManager : SingletonClass<DataManager>
     {
         gameData.lastSelectedPet = id;
         Save(gameData);
+    }
+
+    public float GetExp()
+    {
+        return gameData.exp;
     }
 }

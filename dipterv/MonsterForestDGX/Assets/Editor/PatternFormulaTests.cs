@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 namespace Tests
 {
@@ -15,10 +13,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-            patternFormula = new PatternFormula(points, null)
-            {
-                level = 1
-            };
+            patternFormula = new PatternFormula(points);
         }
 
         [TearDown]

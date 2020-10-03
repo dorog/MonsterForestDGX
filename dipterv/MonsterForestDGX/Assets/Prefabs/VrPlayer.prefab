@@ -2989,6 +2989,9 @@ MonoBehaviour:
   battleManager: {fileID: 0}
   cooldownParticleSystemEffect: {fileID: 0}
   gameEvents: {fileID: 0}
+  mfxPatternDataHandler: {fileID: 0}
+  castEffects: []
+  castEffectTransformReference: {fileID: 0}
 --- !u!114 &1220643225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3055,6 +3058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &1152169252
 MonoBehaviour:
   m_ObjectHideFlags: 0

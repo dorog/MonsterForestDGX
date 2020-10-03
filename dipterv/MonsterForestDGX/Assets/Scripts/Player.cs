@@ -11,7 +11,7 @@ public class Player : Fighter
 
     public PlayerHealth playerHealth;
 
-    private SpellManager spellManager;
+    private PatternRecognizerComponent spellManager;
     private AliveMonstersManager aliveMonstersManager;
     private GateManager gatesManager;
 
@@ -36,7 +36,6 @@ public class Player : Fighter
 
         aliveMonstersManager = AliveMonstersManager.GetInstance();
         gatesManager = GateManager.GetInstance();
-        spellManager = SpellManager.GetInstance();
 
         gameEvents = GameEvents.GetInstance();
         gameEvents.BattleStartDelegateEvent += BattleStarted;
@@ -45,7 +44,8 @@ public class Player : Fighter
 
     public void BattleStarted()
     {
-        Stopped?.Invoke();
+        GoCall("BTS");
+        //Stopped?.Invoke();
 
         leftHandCanvas.SetActive(true);
         rightHandCanvas.SetActive(true);
@@ -56,7 +56,8 @@ public class Player : Fighter
     //Rename it
     public void BattleEnd(int id, bool isMonster)
     {
-        Go?.Invoke();
+        GoCall("BTE");
+        //Go?.Invoke();
 
         playerHealth.BlockDown();
 
@@ -65,7 +66,8 @@ public class Player : Fighter
 
         magicCircleHandler.BattleEnd();
 
-        spellManager.Won();
+        Debug.Log("Comment: not save and add the win xp xp right now");
+        //spellManager.Won();
 
         if (isMonster)
         {
@@ -85,7 +87,8 @@ public class Player : Fighter
         magicCircleHandler.Die();
         battleManager.PlayerDied();
 
-        Go?.Invoke();
+        GoCall("Die");
+        //Go?.Invoke();
 
         base.Die();
     }
@@ -102,7 +105,8 @@ public class Player : Fighter
 
     public void Battle()
     {
-        Stopped?.Invoke();
+        StopCall("Battle");
+        //Stopped?.Invoke();
 
         battleManager.PlayerTurnEndDelegateEvent += DefTurn;
     }
@@ -110,14 +114,15 @@ public class Player : Fighter
     //Refactor
     public void MenuState()
     {
-        Debug.Log("MenuState");
         if (!isStopped)
         {
-            Stopped?.Invoke();
+            GoCall("MenuS");
+            //Stopped?.Invoke();
         }
         else
         {
-            Go?.Invoke();
+            GoCall("MenuG");
+            //Go?.Invoke();
         }
 
         isStopped = !isStopped;
@@ -125,7 +130,8 @@ public class Player : Fighter
 
     public void Run()
     {
-        Go?.Invoke();
+        GoCall("Run");
+        //Go?.Invoke();
 
         teleport.TeleportToLastPosition();
     }
@@ -147,7 +153,8 @@ public class Player : Fighter
 
     public void PlayerDied()
     {
-        Go?.Invoke();
+        GoCall("PlayerDied");
+        //Go?.Invoke();
 
         health.ResetHealth();
         teleport.TeleportToLastPosition();
@@ -155,7 +162,8 @@ public class Player : Fighter
 
     public void FinishedTraining()
     {
-        Go?.Invoke();
+        GoCall("FT");
+        //Go?.Invoke();
 
         teleport.TeleportToLastPosition();
 
@@ -164,5 +172,22 @@ public class Player : Fighter
         playerHealth.BlockDown();
 
         spellGuide.ClearGuide();
+
+        PlayerExperience playerExperience = PlayerExperience.GetInstance();
+        playerExperience.AddExp(2000f, 1);
+
+        DataManager.GetInstance().Won(playerExperience.GetExp());
+    }
+
+    private void GoCall(string name)
+    {
+        Debug.Log(name);
+        Go?.Invoke();
+    }
+
+    private void StopCall(string name)
+    {
+        Debug.Log(name);
+        Stopped?.Invoke();
     }
 }

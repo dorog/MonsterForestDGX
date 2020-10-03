@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class SpellElementInfoUI : MonoBehaviour
 {
+    public GameObject root;
+
     [Header("Update UI Settings")]
     public GameObject updateUI;
 
@@ -31,23 +33,16 @@ public class SpellElementInfoUI : MonoBehaviour
     public Text cooldownValueText;
     public Text levelText;
 
-    private int spellId = -1;
-    private ISpellPattern spellPattern = null;
+    private UiPattern spellPattern = null;
 
-    public void ShowUI(int id, ISpellPattern spellPattern, bool refresh = false)
+    public void SetPattern(UiPattern spellPattern)
     {
-        if (!refresh && id == spellId)
-        {
-            spellId = -1;
-            buyOrMaxedUI.SetActive(false);
-            updateUI.SetActive(false);
-
-            return;
-        }
-
-        spellId = id;
         this.spellPattern = spellPattern;
+        Refresh();
+    }
 
+    public void Refresh()
+    {
         if (spellPattern.IsMaxed() || spellPattern.GetLevelValue() == 0)
         {
             spellNameText.text = spellPattern.GetElementType().ToString();
@@ -78,7 +73,7 @@ public class SpellElementInfoUI : MonoBehaviour
             valueTitleTextUpdate.text = spellPattern.GetSpellTypeUI() + ":";
 
             string[] values = spellPattern.GetTypeValueUI();
-            valueValueTextActual.text = values[0]; ;
+            valueValueTextActual.text = values[0];
             valueValueTextNext.text = values[1];
 
             string[] cooldowns = spellPattern.GetCooldownUI();
@@ -94,17 +89,18 @@ public class SpellElementInfoUI : MonoBehaviour
         }
     }
 
-    public void RefreshInfo(int id)
+    public void ShowUI()
     {
-        if(spellId == id)
-        {
-            ShowUI(spellId, spellPattern, true);
-        }
+        root.SetActive(true);
     }
 
-    public void Exit()
+    public void HideUI()
     {
-        buyOrMaxedUI.SetActive(false);
-        updateUI.SetActive(false);
+        root.SetActive(false);
+    }
+
+    public bool IsVisible()
+    {
+        return root.activeSelf;
     }
 }

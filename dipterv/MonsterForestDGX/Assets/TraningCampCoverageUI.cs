@@ -3,30 +3,17 @@ using UnityEngine;
 
 public class TraningCampCoverageUI : MonoBehaviour
 {
-    public MagicCircleHandler magicCircleHandler;
-
     public TraningCampCoverageElementUI[] traningCampCoverageElementUIs;
 
-    private SpellManager spellManager;
+    public MfxTraningCampPatternComponent traningCampPatternComponent;
 
-    private void Start()
-    {
-        if (spellManager == null)
-        {
-            spellManager = SpellManager.GetInstance();
-        }
-    }
+    public PatternRecognizerComponent patternRecognizer;
 
     private void OnEnable()
     {
-        magicCircleHandler.successCastSpellDelegateEvent += GetSpellCoverage;
-        magicCircleHandler.failedCastSpellDelegateEvent += GetSpellCoverage;
+        patternRecognizer.Recognize += GetSpellCoverage;
 
-        if(spellManager == null)
-        {
-            spellManager = SpellManager.GetInstance();
-        }
-        List<bool> states = spellManager.GetAttackSpellsState();
+        List<bool> states = traningCampPatternComponent.GetAttackSpellsState();
 
         for(int i = 0; i < states.Count; i++)
         {
@@ -37,23 +24,21 @@ public class TraningCampCoverageUI : MonoBehaviour
 
     private void OnDisable()
     {
-        magicCircleHandler.successCastSpellDelegateEvent -= GetSpellCoverage;
-        magicCircleHandler.failedCastSpellDelegateEvent -= GetSpellCoverage;
+        patternRecognizer.Recognize -= GetSpellCoverage;
     }
 
-    private void GetSpellCoverage()
+    private void GetSpellCoverage(List<CoverageResult> coverageResults)
     {
-        List<CoverageResult> coverageResults = spellManager.GetCoverageResults();
-
-        for (int i = 0; i < coverageResults.Count; i++)
+        Debug.Log("Comment");
+        /*for (int i = 0; i < coverageResults.Count; i++)
         {
             traningCampCoverageElementUIs[i].ShowResult(coverageResults[i].Result, coverageResults[i].Min, coverageResults[i].Name);
-        }
+        }*/
     }
 
     public void FilterSpellCoverage(ElementType elementType)
     {
-        int chosed = spellManager.GetFilteredAttackSpellState(elementType);
+        int chosed = traningCampPatternComponent.GetFilteredAttackSpellState(elementType);
 
         for (int i = 0; i < traningCampCoverageElementUIs.Length; i++)
         {

@@ -4,18 +4,13 @@ using UnityEngine.UI;
 
 public class TraningCampGuideUI : MonoBehaviour
 {
-    private SpellManager spellManager = null;
-
     public Dropdown dropdown;
+
+    public MfxTraningCampPatternComponent patternTraningCampPatternComponent;
 
     private void OnEnable()
     {
-        if(spellManager == null)
-        {
-            spellManager = SpellManager.GetInstance();
-        }
-
-        List<string> spellNames = spellManager.GetAttackSpellNames();
+        List<string> spellNames = patternTraningCampPatternComponent.GetAttackSpellNames();
 
         if(spellNames.Count == 0)
         {

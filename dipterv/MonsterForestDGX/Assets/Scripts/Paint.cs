@@ -4,7 +4,7 @@ using UnityEngine;
 public class Paint : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    public SpellManager SpellManager;
+    public PatternRecognizerComponent SpellManager;
     public Player player;
 
     public float scale = 0.1f;
@@ -19,6 +19,8 @@ public class Paint : MonoBehaviour
 
     public bool circleOn = false;
 
+    public PlayerExperience playerExperience;
+
     public void Start()
     {
         drawingInput = KeyBindingManager.GetInstance().paintingTrigger;
@@ -31,6 +33,8 @@ public class Paint : MonoBehaviour
         gameEvents.BattleEndDelegateEvent += Exploring;
 
         battleManager = gameEvents.battleManager;
+
+        playerExperience = PlayerExperience.GetInstance();
     }
 
     private void Fighting()
@@ -108,6 +112,7 @@ public class Paint : MonoBehaviour
             }
             else
             {
+                playerExperience.AddExp(ExpType.Cast, spellResult.Coverage);
                 player.CastSpell(spellResult);
             }
             SpellManager.ResetSpells();

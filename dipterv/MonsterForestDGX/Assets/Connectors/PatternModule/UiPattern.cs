@@ -1,13 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PatternFormula : ISpellPattern
+public class UiPattern : MonoBehaviour, IShopUiPattern
 {
-    public readonly List<Rectangle> rectangles = new List<Rectangle>();
-    private readonly float step = 10;
-
-    private int lastId = int.MinValue;
-
     public Sprite icon;
     public int level = 0;
 
@@ -15,63 +10,24 @@ public class PatternFormula : ISpellPattern
     public int[] RequiredExps;
     public ElementType ElementType;
 
-    public PatternFormula(List<Vector2> points, Sprite icon, float width = 10)
+    public UpdateablePetUI patternUI;
+    private UpdateablePetUI ui;
+
+    private PatternFormula patternFormula;
+
+    public SpellElementInfoUI spellElementInfoUI;
+
+    private int id;
+    private PatternShopComponent patternShopComponent;
+    private PatternInfoComponent patternInfoComponent;
+
+    public void Init(int _id, List<Vector2> points, Sprite _icon, PatternShopComponent _patternShopComponent, PatternInfoComponent _patternInfoComponent, float width = 10)
     {
-        this.icon = icon;
-        int id = 0;
-        for(int i = 0; i < points.Count - 1; i++)
-        {
-            int maxHit = Mathf.CeilToInt((points[i + 1] - points[i]).magnitude / step);
-            rectangles.Add(new Rectangle(id, step, maxHit, points[i], points[i + 1], width));
-            id += maxHit;
-        }
-    }
-
-    public void Guess(Vector2 point)
-    {
-        int minId = int.MaxValue;
-        bool hit = false;
-        for(int i = 0; i < rectangles.Count; i++)
-        {
-            int resultId = rectangles[i].Guess(point, lastId);
-            if(resultId != -1 && minId > resultId)
-            {
-                minId = resultId;
-                hit = true;
-            }
-        }
-
-        if (hit)
-        {
-            lastId = minId;
-        }
-    }
-
-    public float GetResult()
-    {
-        if(level == 0)
-        {
-            return -1;
-        }
-
-        int correct = 0;
-        int max = 0;
-        for(int i = 0; i < rectangles.Count; i++)
-        {
-            correct += rectangles[i].GetHitNumber();
-            max += rectangles[i].GetMaxHitNumber();
-        }
-
-        return ((float)correct) / max;
-    }
-
-    public void Reset()
-    {
-        lastId = int.MinValue;
-        for (int i = 0; i < rectangles.Count; i++)
-        {
-            rectangles[i].Reset();
-        }
+        id = _id;
+        icon = _icon;
+        patternShopComponent = _patternShopComponent;
+        patternInfoComponent = _patternInfoComponent;
+        patternFormula = new PatternFormula(points, width);
     }
 
     public GameObject GetSpell()
@@ -91,7 +47,7 @@ public class PatternFormula : ISpellPattern
 
     public float GetMinCoverage()
     {
-        if(level == 0)
+        if (level == 0)
         {
             return 2;
         }
@@ -187,7 +143,7 @@ public class PatternFormula : ISpellPattern
 
     public string GetRequiredExp()
     {
-        if(IsMaxed())
+        if (IsMaxed())
         {
             return "---";
         }
@@ -215,7 +171,7 @@ public class PatternFormula : ISpellPattern
 
     public int GetRequiredExpValue()
     {
-        if(IsMaxed())
+        if (IsMaxed())
         {
             return int.MaxValue;
         }
@@ -230,5 +186,69 @@ public class PatternFormula : ISpellPattern
     public void LevelUp()
     {
         level++;
+    }
+
+    public PatternState GetState()
+    {
+        if (level < 0)
+        {
+            return PatternState.Unavailable;
+        }
+        else if (level == 0)
+        {
+            return PatternState.Showable;
+        }
+        else
+        {
+            return PatternState.Available;
+        }
+    }
+
+    public void InstantiateUiElement(Transform root, int quantity)
+    {
+        ui = Instantiate(patternUI, root);
+        ui.Init(this, quantity);
+        
+        if(GetState() == PatternState.Unavailable)
+        {
+            ui.gameObject.SetActive(false);
+        }
+    }
+
+    public void Guess(Vector2 point)
+    {
+        patternFormula.Guess(point);
+    }
+
+    public float GetResult()
+    {
+        return patternFormula.GetResult();
+    }
+
+    public void ResetPattern()
+    {
+        patternFormula.Reset();
+    }
+
+    public void RefreshQuantity(int quantity)
+    {
+        ui.RefreshQuantity(quantity);
+    }
+
+    public void RefreshData()
+    {
+        ui.RefreshData();
+    }
+
+    public void Increase()
+    {
+        int price = GetRequiredExpValue();
+        level++;
+        patternShopComponent.ChangeQuantity(id, price);
+    }
+
+    public void ShowInfo()
+    {
+        patternInfoComponent.SelectPattern(id);
     }
 }

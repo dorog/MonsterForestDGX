@@ -32,6 +32,12 @@ public class MagicCircleHandler : MonoBehaviour, IResetable
 
     private CooldownResetPetAbility cooldownReset;
 
+    public MfxPatternDataHandler mfxPatternDataHandler;
+
+    public CastEffect[] castEffects;
+
+    public Transform castEffectTransformReference;
+
     public void Start()
     {
         magicCircleInput = KeyBindingManager.GetInstance().magicCircleInput;
@@ -82,16 +88,36 @@ public class MagicCircleHandler : MonoBehaviour, IResetable
 
     public void CastSpell(SpellResult spellResult, BattleManager battleManager)
     {
-        GameObject spell = Instantiate(spellResult.spell, magicCircle.transform.position, magicCircle.transform.rotation);
+        GameObject spell = Instantiate(mfxPatternDataHandler.uiPatterns[spellResult.Index].GetSpell(), magicCircle.transform.position, magicCircle.transform.rotation);
         SpellAttack spellAttack = spell.GetComponent<SpellAttack>();
-        spellAttack.coverage = spellResult.coverage;
+        spellAttack.coverage = spellResult.Coverage;
 
         spellAttack.SetBattleManager(battleManager);
 
-        SetUpCoolDown(spellResult.cooldown);
+        SetUpCoolDown(mfxPatternDataHandler.uiPatterns[spellResult.Index].GetCooldown());
 
         magicCircleInput.Reset();
         magicCircle.SetActive(false);
+
+        CastSpellEffect(mfxPatternDataHandler.uiPatterns[spellResult.Index]);
+    }
+
+    private void CastSpellEffect(UiPattern patternFormula)
+    {
+        ElementType elementType = patternFormula.GetElementType();
+        GameObject castEffect = null;
+        for (int i = 0; i < castEffects.Length; i++)
+        {
+            if (elementType == castEffects[i].ElementType)
+            {
+                castEffect = castEffects[i].gameObject;
+                break;
+            }
+        }
+        if (castEffect != null)
+        {
+            Instantiate(castEffect, castEffectTransformReference.position, castEffectTransformReference.rotation);
+        }
     }
 
     private IEnumerator Countdown(float cd)

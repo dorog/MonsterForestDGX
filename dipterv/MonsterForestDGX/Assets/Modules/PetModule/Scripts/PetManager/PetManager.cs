@@ -16,8 +16,10 @@ public class PetManager : MonoBehaviour, IPetManager
         LoadedPetData?.Invoke(petDatas);
     }
 
+    //TODO: Add LockPet function
     public void UnlockPet(int id)
     {
+        Debug.Log("Add LockPet function");
         bool originalValue = petDatas[id].available;
 
         petDatas[id].available = true;

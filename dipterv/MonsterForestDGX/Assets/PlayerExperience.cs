@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerExperience : SingletonClass<PlayerExperience>
@@ -6,6 +7,8 @@ public class PlayerExperience : SingletonClass<PlayerExperience>
     private float exp = 0;
     public SpellsUI spellsUI;
     //public Text expText;
+
+    public event Action<float> ExpChanged;
 
     private void Awake()
     {
@@ -23,12 +26,17 @@ public class PlayerExperience : SingletonClass<PlayerExperience>
     {
         this.exp = exp;
         int expValue = Mathf.FloorToInt(exp);
-        spellsUI.SetExp(expValue);
-        //expText.text = expValue + " EXP";
+
+        ExpChanged?.Invoke(expValue);
     }
 
     public void AddExp(ExpType expType, float coverage)
     {
         SetExp(exp + expType.GetExp() * coverage);
+    }
+
+    public void AddExp(float addedExp, float coverage)
+    {
+        SetExp(exp + addedExp * coverage);
     }
 }
