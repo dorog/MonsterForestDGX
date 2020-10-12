@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CircleStateHandler : MonoBehaviour
 {
     public Paint paint;
+    public LineRenderer lineRenderer;
 
     public void OnEnable()
     {
@@ -14,5 +13,6 @@ public class CircleStateHandler : MonoBehaviour
     public void OnDisable()
     {
         paint.circleOn = false;
+        lineRenderer.positionCount = 0;
     }
 }

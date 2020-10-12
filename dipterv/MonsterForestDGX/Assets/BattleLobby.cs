@@ -15,16 +15,17 @@ public class BattleLobby : MonoBehaviour
 
     public GameObject battleLobbyUI;
 
-    private void Start()
+    public BattleConnector battleConnector;
+
+    public void Start()
     {
-        gameEvents = GameEvents.GetInstance();
         gameEvents.BattleLobbyEnteredDelegateEvent += SetupUI;
     }
 
     public void StartBattle()
     {
         battleLobbyUI.SetActive(false);
-        battleManager.BattleStart();
+        battleConnector.Fight();
     }
 
     private void SetupUI()
@@ -56,7 +57,7 @@ public class BattleLobby : MonoBehaviour
 
     public void Run()
     {
-        battleManager.Run();
+        battleManager.WithdrawFromFight();
 
         battleLobbyUI.SetActive(false);
     }

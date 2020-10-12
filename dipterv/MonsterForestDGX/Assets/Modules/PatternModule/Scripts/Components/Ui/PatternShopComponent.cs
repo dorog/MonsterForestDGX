@@ -5,27 +5,30 @@ public class PatternShopComponent : MonoBehaviour
 {
     public Text quantityText;
     public Transform content;
-    public SpellElementInfoUI SpellElementInfoUI;
 
-    public string currency = " EXP";
+    public string currency = "EXP";
 
     private int quantity = 0;
 
-    private IPatternUiManager patternManager;
-    private UiPatternData[] patternDatas;
+    private IPatternShopUiManager patternManager;
+    public ShopUiPatternData[] patternDatas;
 
-    public ICurrencyHandler currencyHandler;
-    public PatternInfoComponent patternInfo;
+    private ICurrencyHandler currencyHandler;
 
-    public void Init(IPatternUiManager _patternManager)
+    public void AddPatternManager(IPatternShopUiManager _patternManager)
     {
         patternManager = _patternManager;
         patternManager.SubscibeToPatternDataLoadedEvent(SetPatternData);
         patternManager.SubscibeToPattternDataDataChangedEvent(RefreshPatternData);
+    }
+
+    public void AddCurrencyHandler(ICurrencyHandler _currencyHandler)
+    {
+        currencyHandler = _currencyHandler;
         currencyHandler.SubscribeToQuantityValueChanged(SetQuantity);
     }
 
-    private void SetPatternData(UiPatternData[] _patternDatas)
+    private void SetPatternData(ShopUiPatternData[] _patternDatas)
     {
         patternDatas = _patternDatas;
         SetupUI();
@@ -35,13 +38,13 @@ public class PatternShopComponent : MonoBehaviour
     {
         for (int i = 0; i < patternDatas.Length; i++)
         {
-            patternDatas[i].UiPattern.InstantiateUiElement(content, quantity);
+            patternDatas[i].ShopUiPattern.InstantiateUiElement(content, quantity);
         }
     }
 
     private void RefreshPatternData(int id)
     {
-        patternDatas[id].UiPattern.RefreshData();
+        patternDatas[id].ShopUiPattern.RefreshData();
     }
 
     private void SetQuantity(float newQuantity)
@@ -50,9 +53,14 @@ public class PatternShopComponent : MonoBehaviour
 
         quantityText.text = quantity + " " + currency;
 
+        if(patternDatas == null)
+        {
+            Debug.LogWarning("Bug: PatternDatas arent loaded, before the first quantity!");
+            return;
+        }
         for (int i = 0; i < patternDatas.Length; i++)
         {
-            patternDatas[i].UiPattern.RefreshQuantity(quantity);
+            patternDatas[i].ShopUiPattern.RefreshQuantity(quantity);
         }
     }
 

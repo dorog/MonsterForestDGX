@@ -20,9 +20,11 @@ public class ContinousMovementVR : MonoBehaviour
 
     public LayerMask groundLayer;
 
+    public KeyBindingManager keyBindingManager;
+
     private void Start()
     {
-        axisInput = KeyBindingManager.GetInstance().continousMovementAxisInput;
+        axisInput = keyBindingManager.continousMovementAxisInput;
 
         axisInput.SubscibeToAxisChange(Move);
 

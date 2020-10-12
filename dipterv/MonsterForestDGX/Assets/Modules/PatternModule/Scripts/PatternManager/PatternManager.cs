@@ -1,22 +1,25 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
-public class PatternManager : MonoBehaviour, IPatternManager, IPatternUiManager
+public class PatternManager : MonoBehaviour, IPatternManager, IPatternUiManager, IPatternShopUiManager
 {
     private event Action<PatternData[]> LoadedPatternData;
     private event Action<UiPatternData[]> LoadedUiPatternData;
+    private event Action<ShopUiPatternData[]> LoadedShopUiPatternData;
 
     private event Action<PatternDataDifference> ChangedPatternDataState;
     private event Action<int> ChangedPatternDataData;
 
-    private UiPatternData[] patternDatas;
+    private ShopUiPatternData[] patternDatas;
     public IUiPatternDataHandler patternDataHandler;
 
     public void LoadData()
     {
         patternDatas = patternDataHandler.LoadPatternDatas();
         LoadedPatternData?.Invoke(patternDatas);
-        LoadedUiPatternData?.Invoke(patternDatas);
+        LoadedUiPatternData?.Invoke(patternDatas.ToList().Select(x => new UiPatternData() { State = x.State, UiPattern = x.ShopUiPattern }).ToArray());
+        LoadedShopUiPatternData?.Invoke(patternDatas);
     }
 
     public void ChangePatternDataState(int id, PatternState patternState)
@@ -83,5 +86,15 @@ public class PatternManager : MonoBehaviour, IPatternManager, IPatternUiManager
     public void UnsubscibeToPatternDataLoadedEvent(Action<UiPatternData[]> method)
     {
         LoadedUiPatternData -= method;
+    }
+
+    public void SubscibeToPatternDataLoadedEvent(Action<ShopUiPatternData[]> method)
+    {
+        LoadedShopUiPatternData += method;
+    }
+
+    public void UnsubscibeToPatternDataLoadedEvent(Action<ShopUiPatternData[]> method)
+    {
+        LoadedShopUiPatternData -= method;
     }
 }

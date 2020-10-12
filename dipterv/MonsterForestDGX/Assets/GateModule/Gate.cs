@@ -1,18 +1,16 @@
 ﻿
 using UnityEngine;
 
-public class Gate : Fighter, IEnemy
+public class Gate : AiFighter
 {
-    public BattleManager battleManager;
-    public int id;
-
     public Controller controller;
 
     public GameObject obstacleGO;
     public GateHealth gateHealth;
-    public GameObject battlePlace;
 
     public ElementMovement[] crystals;
+
+    public Health health;
 
     private IPuzzleMovement obstacle;
 
@@ -24,30 +22,24 @@ public class Gate : Fighter, IEnemy
     public override void Die()
     {
         obstacle.DisappearContinously();
-        battleManager.MonsterDied();
     }
 
-    public void Fight()
+    public override void Fight()
     {
         controller.Step();
     }
 
-    public Health GetHealth()
+    public override EnemyType IsMonster()
     {
-        return health;
+        return EnemyType.Puzzle;
     }
 
-    public bool IsMonster()
-    {
-        return false;
-    }
-
-    public void ResetMonster()
+    protected override void ResetMonster()
     {
         health.ResetHealth();
     }
 
-    public void Appear()
+    protected override void Appear()
     {
         foreach (var crystal in crystals)
         {
@@ -55,9 +47,9 @@ public class Gate : Fighter, IEnemy
         }
     }
 
-    public void Disappear(){}
+    protected override void Disappear(){}
 
-    public void Disable()
+    public override void Disable()
     {
         if(obstacle == null)
         {
@@ -65,6 +57,5 @@ public class Gate : Fighter, IEnemy
         }
         obstacle.DisappearInstantly();
         gateHealth.HideCrystals();
-        battlePlace.SetActive(false);
     }
 }

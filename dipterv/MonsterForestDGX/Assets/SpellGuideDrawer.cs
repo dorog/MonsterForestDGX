@@ -18,9 +18,11 @@ public class SpellGuideDrawer : MonoBehaviour
 
     private IPressed pressInput;
 
+    public KeyBindingManager keyBindingManager;
+
     private void Start()
     {
-        pressInput = KeyBindingManager.GetInstance().drawHelperInput;
+        pressInput = keyBindingManager.drawHelperInput;
         pressInput.SubscribeToPressed(Pressed);
     }
 

@@ -3,7 +3,7 @@
 public class Teleport : MenuUI
 {
     public GameObject lastLocation;
-    private DataManager dataManager;
+    public DataManager dataManager;
 
     public GameObject teleportsParent;
 
@@ -15,10 +15,12 @@ public class Teleport : MenuUI
 
     public GameObject[] teleporPoints;
 
+    public Player player;
+
+    public BattleManager battleManager;
+
     public void Start()
     {
-        dataManager = DataManager.GetInstance();
-
         int lastTeleportId = dataManager.GetLastLocation();
 
         GameObject last;
@@ -33,21 +35,19 @@ public class Teleport : MenuUI
 
         ports = dataManager.GetTeleportsState();
 
-        TeleportPlayer(last, true);
+        TeleportPlayer(last);
 
         SetupTeleportUI();
+
+        battleManager.RedFighterWon += TeleportToLastPosition;
+        battleManager.Withdraw += TeleportToLastPosition;
+        battleManager.Draw += TeleportToLastPosition;
     }
 
-    public void TeleportPlayer(GameObject port, bool initTeleportation = false)
+    public void TeleportPlayer(GameObject port)
     {
-        Debug.Log("Fix UI hide: Disable ContinousMovementVR/ContinousRotationVR");
         player.transform.position = port.transform.position;
         player.transform.rotation = port.transform.rotation;
-
-        if (!initTeleportation)
-        {
-            HideUI();
-        }
     }
 
     private void SetLastLocation(int id)
@@ -88,7 +88,7 @@ public class Teleport : MenuUI
 
     public void TeleportToLastPosition()
     {
-        TeleportPlayer(lastLocation, true);
+        TeleportPlayer(lastLocation);
     }
 
     private void SetupTeleportUI()

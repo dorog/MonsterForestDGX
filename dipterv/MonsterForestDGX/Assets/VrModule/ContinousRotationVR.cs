@@ -10,9 +10,11 @@ public class ContinousRotationVR : MonoBehaviour
 
     public Player player;
 
+    public KeyBindingManager keyBindingManager;
+
     private void Start()
     {
-        rotationInput = KeyBindingManager.GetInstance().continousRotationAxisInput;
+        rotationInput = keyBindingManager.continousRotationAxisInput;
 
         rotationInput.SubscibeToAxisChange(Rotate);
 

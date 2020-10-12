@@ -28,3 +28,4 @@ MonoBehaviour:
   - exp: 2000
     playerSpell: {fileID: 2939845473548581011, guid: ffa70433df7e3f0458993a415695ef31,
       type: 3}
+  ElementType: 1

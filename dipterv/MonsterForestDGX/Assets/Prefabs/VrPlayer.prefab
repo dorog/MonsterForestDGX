@@ -2941,6 +2941,7 @@ MonoBehaviour:
   lowColor: {r: 1, g: 0, b: 0, a: 1}
   fullColor: {r: 0.10734272, g: 1, b: 0, a: 1}
   resistant: {fileID: 11400000, guid: 4fe9cc2d1942a334fa8bf19d0ccf4223, type: 2}
+  battleManager: {fileID: 0}
   healEffect: {fileID: 1339854252}
   petAttackEffect: {fileID: 0}
   hp: {fileID: 182605256}
@@ -2959,13 +2960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1220643220}
-  battleManager: {fileID: 0}
-  magicCircleHandler: {fileID: 1220643223}
-  teleport: {fileID: 0}
   playerHealth: {fileID: 1220643220}
-  battleLobbyUI: {fileID: 0}
-  spellGuide: {fileID: 0}
-  gameEvents: {fileID: 0}
   leftHandCanvas: {fileID: 1565776234}
   rightHandCanvas: {fileID: 1300218612}
 --- !u!114 &1220643223

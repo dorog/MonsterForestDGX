@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DefendingTrainingDoll : MonoBehaviour, IEnemy
+public class DefendingTrainingDoll : AiFighter
 {
     public BattleManager battleManager;
 
@@ -18,9 +17,9 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public Controller controller;
 
-    public void Appear(){}
+    protected override void Appear(){}
 
-    public void Disappear(){}
+    protected override void Disappear(){}
 
     public MagicCircleHandler magicCircleHandler;
 
@@ -31,7 +30,7 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
     public void React()
     {
-        float random = UnityEngine.Random.Range(0, 101);
+        float random = Random.Range(0, 101);
 
         if (random <= blockChance)
         {
@@ -39,7 +38,7 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
         }
     }
 
-    public void ResetMonster(){}
+    protected override void ResetMonster(){}
 
     public void FinishedTraining()
     {
@@ -47,37 +46,27 @@ public class DefendingTrainingDoll : MonoBehaviour, IEnemy
 
         trainingCampUI.DisableUI();
 
-        magicCircleHandler.successCastSpellDelegateEvent -= cooldownReset.ResetCooldown;
+        magicCircleHandler.SuccessCastSpellDelegateEvent -= cooldownReset.ResetCooldown;
 
-        battleManager.FinishedTraining();
+        battleManager.DrawFight();
     }
 
-    public bool IsMonster()
+    public override EnemyType IsMonster()
     {
-        return false;
+        return EnemyType.Dummy;
     }
 
-    public void Fight()
+    public override void Fight()
     {
         trainingCampUI.EnableUI();
 
         cooldownReset.Init(new PetParameter() { Resetable = magicCircleHandler });
-        magicCircleHandler.successCastSpellDelegateEvent += cooldownReset.ResetCooldown;
+        magicCircleHandler.SuccessCastSpellDelegateEvent += cooldownReset.ResetCooldown;
 
         controller.Step();
     }
 
-    public void Disable()
-    {
-        
-    }
-
-    public void SubscribeToDie(Action method)
-    {
-        
-    }
-
-    public void UnsubscribeToDie(Action method)
+    public override void Disable()
     {
         
     }

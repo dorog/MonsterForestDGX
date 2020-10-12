@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
-public class Monster : Fighter, IEnemy
+public class Monster : AiFighter
 {
     public string MonsterName = "";
-    public Text nameText;
     public Animator animator;
     public string appearAnimation;
     public float appearAnimationTime = 2;
     public string disappearAnimation;
     public float disappearAnimationTime = 2;
     public string dieAnimation;
+
+    public Health health;
 
     [Range(0, 100)]
     public float blockChance = 10f;
@@ -39,7 +39,7 @@ public class Monster : Fighter, IEnemy
 
     public override void Die()
     {
-        magicCircleHandler.successCastSpellDelegateEvent -= React;
+        magicCircleHandler.SuccessCastSpellDelegateEvent -= React;
 
         animator.SetTrigger(dieAnimation);
 
@@ -48,7 +48,7 @@ public class Monster : Fighter, IEnemy
         base.Die();
     }
 
-    public void Appear()
+    protected override void Appear()
     {
         foreach (var go in extraObjects)
         {
@@ -59,7 +59,7 @@ public class Monster : Fighter, IEnemy
         health.SetUpHealth();
     }
 
-    public void Disappear()
+    protected override void Disappear()
     {
         DisableExtras();
 
@@ -85,9 +85,9 @@ public class Monster : Fighter, IEnemy
         }
     }
 
-    public void ResetMonster()
+    protected override void ResetMonster()
     {
-        magicCircleHandler.successCastSpellDelegateEvent -= React;
+        magicCircleHandler.SuccessCastSpellDelegateEvent -= React;
 
         autoController.StopController();
 
@@ -96,24 +96,24 @@ public class Monster : Fighter, IEnemy
         health.ResetHealth();
     }
 
-    public Health GetHealth()
+    public override EnemyType IsMonster()
     {
-        return GetComponent<MonsterHealth>();
+        return EnemyType.Monster;
     }
 
-    public bool IsMonster()
-    {
-        return true;
-    }
-
-    public void Fight()
-    {
-        magicCircleHandler.successCastSpellDelegateEvent += React;
-        autoController.StartController();
-    }
-
-    public void Disable()
+    public override void Disable()
     {
         root.SetActive(false);
+    }
+
+    public override void SetupForFight()
+    {
+        Appear();
+    }
+
+    public override void Fight()
+    {
+        magicCircleHandler.SuccessCastSpellDelegateEvent += React;
+        autoController.StartController();
     }
 }

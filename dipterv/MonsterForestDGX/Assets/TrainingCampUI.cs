@@ -4,7 +4,6 @@ using static UnityEngine.UI.Dropdown;
 
 public class TrainingCampUI : MonoBehaviour
 {
-
     public Slider cooldownSlider;
 
     public CooldownResetPetAbility cooldownReset;
@@ -12,8 +11,6 @@ public class TrainingCampUI : MonoBehaviour
     public GameObject root;
 
     public Text percent;
-
-    private PatternRecognizerComponent spellManager;
 
     public Dropdown dropdown;
 
@@ -41,6 +38,7 @@ public class TrainingCampUI : MonoBehaviour
     public void DisableUI()
     {
         root.SetActive(false);
+        spellGuideDrawer.ClearGuide();
     }
 
     public void StepSlider(float value)

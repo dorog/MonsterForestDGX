@@ -12,7 +12,7 @@ public class PatternRecognizerComponent : MonoBehaviour
     private IPatternManager patternManager;
     private PatternData[] patternDatas;
 
-    public virtual void Init(IPatternManager _patternManager)
+    public virtual void AddPatternManager(IPatternManager _patternManager)
     {
         patternManager = _patternManager;
         patternManager.SubscibeToPatternDataLoadedEvent(SetPatternData);

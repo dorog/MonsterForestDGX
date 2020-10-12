@@ -19,34 +19,32 @@ public class Paint : MonoBehaviour
 
     public bool circleOn = false;
 
-    public PlayerExperience playerExperience;
+    public KeyBindingManager keyBindingManager;
+    public GameEvents gameEvents;
 
     public void Start()
     {
-        drawingInput = KeyBindingManager.GetInstance().paintingTrigger;
+        drawingInput = keyBindingManager.paintingTrigger;
 
         drawingInput.SubscribeToPressing(Pressing);
         drawingInput.SubscribeToReleased(CheckResult);
 
-        GameEvents gameEvents = GameEvents.GetInstance();
         gameEvents.BattleStartDelegateEvent += Fighting;
         gameEvents.BattleEndDelegateEvent += Exploring;
 
         battleManager = gameEvents.battleManager;
-
-        playerExperience = PlayerExperience.GetInstance();
     }
 
     private void Fighting()
     {
-        battleManager.PlayerTurnStartDelegateEvent += drawingInput.Activate;
-        battleManager.MonsterTurnStartDelegateEvent += drawingInput.Deactivate;
+        battleManager.BlueFighterTurnStartDelegateEvent += drawingInput.Activate;
+        battleManager.RedFighterTurnStartDelegateEvent += drawingInput.Deactivate;
     }
 
     private void Exploring()
     {
-        battleManager.PlayerTurnStartDelegateEvent -= drawingInput.Activate;
-        battleManager.MonsterTurnStartDelegateEvent -= drawingInput.Deactivate;
+        battleManager.BlueFighterTurnStartDelegateEvent -= drawingInput.Activate;
+        battleManager.RedFighterTurnStartDelegateEvent -= drawingInput.Deactivate;
 
         drawingInput.Deactivate();
     }
@@ -57,9 +55,9 @@ public class Paint : MonoBehaviour
         {
             try
             {
-                Transform flat = magicCircleHandler.GetTransform();
+                Transform flat = magicCircleHandler.transform;
 
-                Vector3 relativPosition = magicCircleHandler.GetPosition() - flat.position;
+                Vector3 relativPosition = hand.position - flat.position;
                 Vector3 projected = Vector3.ProjectOnPlane(relativPosition, flat.forward);
                 Vector3 flattenedVector = flat.position + projected;
 
@@ -108,12 +106,11 @@ public class Paint : MonoBehaviour
             SpellResult spellResult = SpellManager.GetSpell();
             if (spellResult == null)
             {
-                player.FailedSpell();
+                magicCircleHandler.CastFailed();
             }
             else
             {
-                playerExperience.AddExp(ExpType.Cast, spellResult.Coverage);
-                player.CastSpell(spellResult);
+                magicCircleHandler.CastSpell(spellResult);
             }
             SpellManager.ResetSpells();
         }

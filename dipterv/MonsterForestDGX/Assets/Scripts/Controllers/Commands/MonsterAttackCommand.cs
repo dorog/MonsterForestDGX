@@ -14,7 +14,7 @@ public class MonsterAttackCommand : AbstractCommand
 
     protected override IEnumerator ExecuteCommand()
     {
-        player.Died += CancelAttacking;
+        player.SubscribeToDie(CancelAttacking);
 
         isCancelled = false;
 
@@ -38,7 +38,7 @@ public class MonsterAttackCommand : AbstractCommand
             }
         }
 
-        player.Died -= CancelAttacking;
+        player.UnsubscribeToDie(CancelAttacking);
         Controller.FinishedTheCommand();
     }
 
