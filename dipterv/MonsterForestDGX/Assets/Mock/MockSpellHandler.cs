@@ -4,12 +4,10 @@ public class MockSpellHandler : MonoBehaviour, ISpellHandler
 {
     public MockDataIO mockDataIO;
     public MagicCircleHandler magicCircleHandler;
-    public TextCooldownShower cooldownShower;
 
     public void Start()
     {
         magicCircleHandler.spellHandler = this;
-        magicCircleHandler.cooldownShower = cooldownShower;
     }
 
     public SpellData GetSpellData(int index)

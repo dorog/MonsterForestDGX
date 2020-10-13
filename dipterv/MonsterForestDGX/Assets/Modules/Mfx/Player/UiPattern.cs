@@ -10,26 +10,31 @@ public class UiPattern : MonoBehaviour, IShopUiPattern
     public int[] RequiredExps;
     public ElementType ElementType;
 
-    public UpdateablePetUI patternUI;
-    private UpdateablePetUI ui;
+    public UpdateablePatternUI patternUI;
+    private UpdateablePatternUI ui;
 
     private PatternFormula patternFormula;
 
     public SpellElementInfoUI spellElementInfoUI;
 
     private int id;
-    private PatternShopComponent patternShopComponent;
-    private PatternInfoComponent patternInfoComponent;
+    private ExperienceManager experienceManager;
+    private PatternManager patternManager;
 
     private SpellElementInfoUI spellElementInfo;
 
-    public void Init(int _id, List<Vector2> points, Sprite _icon, PatternShopComponent _patternShopComponent, PatternInfoComponent _patternInfoComponent, float width = 10)
+    public void Init(int _id, List<Vector2> points, Sprite _icon, float width = 10)
     {
         id = _id;
         icon = _icon;
-        patternShopComponent = _patternShopComponent;
-        patternInfoComponent = _patternInfoComponent;
+
         patternFormula = new PatternFormula(points, width);
+    }
+
+    public void Connect(PatternManager _patternManager, ExperienceManager _experienceManager)
+    {
+        patternManager = _patternManager;
+        experienceManager = _experienceManager;
     }
 
     public GameObject GetSpell()
@@ -239,14 +244,17 @@ public class UiPattern : MonoBehaviour, IShopUiPattern
 
     public void Increase()
     {
-        int price = GetRequiredExpValue();
+        experienceManager.RemoveExp(GetRequiredExpValue());
         level++;
-        patternShopComponent.ChangeQuantity(id, price);
+
+        experienceManager.Save();
+        patternManager.ChangedPatternData(id);
     }
 
     public void ShowInfo()
     {
-        patternInfoComponent.SelectPattern(id);
+        Debug.Log("Show info, missing");
+        //patternInfoComponent.SelectPattern(id);
     }
 
     public string GetName()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateablePetUI : PatternUI
+public class UpdateablePatternUI : PatternUI
 {
     public Image iconImage;
     public Text spellNameText;

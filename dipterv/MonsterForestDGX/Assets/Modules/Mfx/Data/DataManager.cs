@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour, IExperienceIO
 {
+    //TODO: Remove somehow
     public GameConfig gameConfig;
 
     private GameData gameData = null;

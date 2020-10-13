@@ -63,10 +63,4 @@ public class PatternShopComponent : MonoBehaviour
             patternDatas[i].ShopUiPattern.RefreshQuantity(quantity);
         }
     }
-
-    public void ChangeQuantity(int id, int price)
-    {
-        currencyHandler.ItemChanged(id, price);
-        patternManager.ChangedPatternData(id);
-    }
 }

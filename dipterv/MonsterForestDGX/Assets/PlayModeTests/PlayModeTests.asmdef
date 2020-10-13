@@ -6,7 +6,8 @@
         "Mock",
         "Mfx",
         "PatternModule",
-        "BattleModule"
+        "BattleModule",
+        "ExperienceModule"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
