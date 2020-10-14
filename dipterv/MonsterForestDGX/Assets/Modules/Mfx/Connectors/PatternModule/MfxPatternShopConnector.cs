@@ -2,7 +2,7 @@
 public class MfxPatternShopConnector : AbstractConnector
 {
     public PatternShopComponent patternShopComponent;
-    public PatternManager patternManager;
+    public MfxPatternManager patternManager;
 
     public override void Setup()
     {

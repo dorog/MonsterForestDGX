@@ -15,7 +15,7 @@ namespace Tests
 
         private IEnumerator SetUp()
         {
-            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/ExpChanging.prefab");
+            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/ExpChanging/ExpChanging.prefab");
             core = Object.Instantiate(coreGO);
 
             patternShopComponent = core.GetComponentInChildren<PatternShopComponent>();

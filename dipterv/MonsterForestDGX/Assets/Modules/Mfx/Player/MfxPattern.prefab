@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 566603596260733443}
   - component: {fileID: 3298745699287843216}
   m_Layer: 0
-  m_Name: UiPattern
+  m_Name: MfxPattern
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7690064301843584329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07745d81ce4b6704099572845ca23c9e, type: 3}
+  m_Script: {fileID: 11500000, guid: bc2dd3a5fc7937e41a80104e2442c23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
@@ -50,4 +50,5 @@ MonoBehaviour:
   ElementType: 0
   patternUI: {fileID: -5492322378602857560, guid: 1146ee11da72b9f4d98a4544f265abb6,
     type: 3}
-  spellElementInfoUI: {fileID: 0}
+  spellElementInfoUI: {fileID: 6623331640588930785, guid: 7368478e4d0528f4a9d277c5c817aba4,
+    type: 3}

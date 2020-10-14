@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 8478069490020498697}
   - component: {fileID: 5623120813320533901}
   - component: {fileID: 7355753292420515959}
-  - component: {fileID: 3610876553954856875}
+  - component: {fileID: 1910247847160050206}
   m_Layer: 5
   m_Name: Update
   m_TagString: Untagged
@@ -755,7 +755,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3610876553954856875
+--- !u!114 &1910247847160050206
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -764,27 +764,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4745661850080604772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab92f8a3c3892840bc5f5512c067a38, type: 3}
+  m_Script: {fileID: 11500000, guid: 523702bc9dda9424094e8d98f193a45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateUI: {fileID: 0}
-  spellNameTextUpdate: {fileID: 0}
-  difficultyValueTextActual: {fileID: 0}
-  difficultyValueTextNext: {fileID: 0}
-  valueTitleTextUpdate: {fileID: 0}
-  valueValueTextActual: {fileID: 0}
-  valueValueTextNext: {fileID: 0}
-  cooldownValueTextActual: {fileID: 0}
-  cooldownValueTextNext: {fileID: 0}
-  levelTextActual: {fileID: 0}
-  levelTextNext: {fileID: 0}
-  buyOrMaxedUI: {fileID: 0}
-  spellNameText: {fileID: 0}
-  difficultyValueText: {fileID: 0}
-  valueTitleText: {fileID: 0}
-  valueValueText: {fileID: 0}
-  cooldownValueText: {fileID: 0}
-  levelText: {fileID: 0}
+  spellNameTextUpdate: {fileID: 4216995050360041355}
+  difficultyValueTextActual: {fileID: 3743574791408962525}
+  difficultyValueTextNext: {fileID: 6769840958451474834}
+  valueTitleTextUpdate: {fileID: 9141907046249111729}
+  valueValueTextActual: {fileID: 3743574791408962525}
+  valueValueTextNext: {fileID: 6769840959041573920}
+  cooldownValueTextActual: {fileID: 2788144450563622316}
+  cooldownValueTextNext: {fileID: 6769840959224023228}
+  levelTextActual: {fileID: 6064308328229109369}
+  levelTextNext: {fileID: 6769840958923567412}
 --- !u!1 &5033513818138810184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2606,7 +2598,7 @@ GameObject:
   - component: {fileID: 6769840959260621747}
   - component: {fileID: 6769840959260621748}
   - component: {fileID: 6769840959260621749}
-  - component: {fileID: 6769840959260621746}
+  - component: {fileID: 4922478752096722262}
   m_Layer: 5
   m_Name: BuyOrMaxed
   m_TagString: Untagged
@@ -2673,7 +2665,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6769840959260621746
+--- !u!114 &4922478752096722262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2682,27 +2674,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6769840959260621744}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab92f8a3c3892840bc5f5512c067a38, type: 3}
+  m_Script: {fileID: 11500000, guid: f468dd024aa80c54197617be2026c35a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateUI: {fileID: 0}
-  spellNameTextUpdate: {fileID: 0}
-  difficultyValueTextActual: {fileID: 0}
-  difficultyValueTextNext: {fileID: 0}
-  valueTitleTextUpdate: {fileID: 0}
-  valueValueTextActual: {fileID: 0}
-  valueValueTextNext: {fileID: 0}
-  cooldownValueTextActual: {fileID: 0}
-  cooldownValueTextNext: {fileID: 0}
-  levelTextActual: {fileID: 0}
-  levelTextNext: {fileID: 0}
-  buyOrMaxedUI: {fileID: 0}
-  spellNameText: {fileID: 0}
-  difficultyValueText: {fileID: 0}
-  valueTitleText: {fileID: 0}
-  valueValueText: {fileID: 0}
-  cooldownValueText: {fileID: 0}
-  levelText: {fileID: 0}
+  spellNameText: {fileID: 6769840958943362910}
+  difficultyValueText: {fileID: 6769840957305696180}
+  valueTitleText: {fileID: 6769840957753150381}
+  valueValueText: {fileID: 6769840958748312560}
+  cooldownValueText: {fileID: 6769840957579604928}
+  levelText: {fileID: 6769840957550247750}
 --- !u!1 &6876701904330739984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2866,24 +2846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab92f8a3c3892840bc5f5512c067a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateUI: {fileID: 4745661850080604772}
-  spellNameTextUpdate: {fileID: 4216995050360041355}
-  difficultyValueTextActual: {fileID: 3743574791408962525}
-  difficultyValueTextNext: {fileID: 6769840958451474834}
-  valueTitleTextUpdate: {fileID: 9141907046249111729}
-  valueValueTextActual: {fileID: 5109456924534138105}
-  valueValueTextNext: {fileID: 6769840959041573920}
-  cooldownValueTextActual: {fileID: 2788144450563622316}
-  cooldownValueTextNext: {fileID: 6769840959224023228}
-  levelTextActual: {fileID: 6064308328229109369}
-  levelTextNext: {fileID: 6769840958923567412}
-  buyOrMaxedUI: {fileID: 6769840959260621744}
-  spellNameText: {fileID: 6769840958943362910}
-  difficultyValueText: {fileID: 6769840957305696180}
-  valueTitleText: {fileID: 6769840957753150381}
-  valueValueText: {fileID: 6769840958748312560}
-  cooldownValueText: {fileID: 6769840957579604928}
-  levelText: {fileID: 6769840957550247750}
+  patternBuyUI: {fileID: 4922478752096722262}
+  patternUpdateUI: {fileID: 1910247847160050206}
 --- !u!1 &7657872533259221178
 GameObject:
   m_ObjectHideFlags: 0

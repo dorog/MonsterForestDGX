@@ -7,5 +7,5 @@ public interface IPatternShopUiManager
     void UnsubscibeToPatternDataLoadedEvent(Action<ShopUiPatternData[]> method);
     void ChangedPatternData(int id);
     void SubscibeToPattternDataDataChangedEvent(Action<int> method);
-    void UnsubscibeFromPatternDataDateChangedEvent(Action<int> method);
+    void UnsubscibeFromPatternDataDataChangedEvent(Action<int> method);
 }

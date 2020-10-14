@@ -2,18 +2,19 @@
 
 public class PatternInfoComponent : MonoBehaviour
 {
-    private IPatternUiManager patternManager;
+    private IPatternInfoManager patternManager;
     private UiPatternData[] patternsData;
 
     private int id = -1;
 
     public Transform root;
 
-    public void AddPatternManager(IPatternUiManager _patternManager)
+    public void AddPatternManager(IPatternInfoManager _patternManager)
     {
         patternManager = _patternManager;
         patternManager.SubscibeToPatternDataLoadedEvent(SetPatternData);
         patternManager.SubscibeToPattternDataDataChangedEvent(RefreshPatternData);
+        patternManager.SubscibeToPattternDataSelectedEvent(SelectPattern);
     }
 
     private void SetPatternData(UiPatternData[] _patternsData)
@@ -33,14 +34,13 @@ public class PatternInfoComponent : MonoBehaviour
     {
         if(_id == id)
         {
-            root.gameObject.SetActive(!root.gameObject.activeSelf);
+            patternsData[id].UiPattern.ChangeVisibility();
         }
         else
         {
             id = _id;
             ClearChild();
             patternsData[id].UiPattern.InstantiateInfo(root);
-            root.gameObject.SetActive(true);
         }
     }
 

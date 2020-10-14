@@ -19,7 +19,7 @@ namespace Tests
 
         private IEnumerator SetUp()
         {
-            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/ExpCollecting.prefab");
+            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/ExpCollecting/ExpCollecting.prefab");
             core = Object.Instantiate(coreGO);
 
             battleManager = core.GetComponentInChildren<BattleManager>();

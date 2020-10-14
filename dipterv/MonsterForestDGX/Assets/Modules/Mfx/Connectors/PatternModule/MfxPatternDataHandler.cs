@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class MfxPatternDataHandler : AbstractConnector, ISpellHandler
 {
-    private readonly List<UiPattern> uiPatterns = new List<UiPattern>();
+    private readonly List<MfxPattern> uiPatterns = new List<MfxPattern>();
 
     [Header("Connector dependencies")]
     public MagicCircleHandler magicCircleHandler;
-    public PatternManager patternManager;
+    public MfxPatternManager patternManager;
     public PatternRecognizerComponent patternRecognizerComponent;
     public MfxTraningCampPatternComponent traningCampPatternComponent;
     public PatternInfoComponent patternInfoComponent;
@@ -19,7 +19,6 @@ public class MfxPatternDataHandler : AbstractConnector, ISpellHandler
     {
         patternRecognizerComponent.AddPatternManager(patternManager);
         traningCampPatternComponent.AddPatternManager(patternManager);
-        patternInfoComponent.AddPatternManager(patternManager);
 
         magicCircleHandler.spellHandler = this;
     }

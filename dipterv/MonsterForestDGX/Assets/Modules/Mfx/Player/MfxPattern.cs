@@ -1,8 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class UiPattern : MonoBehaviour, IShopUiPattern
+public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
 {
+    private PatternFormula patternFormula;
+
+    private int id;
+    private ExperienceManager experienceManager;
+    private MfxPatternManager patternManager;
+
+    [Header ("Settings")]
     public Sprite icon;
     public int level = 0;
 
@@ -10,18 +17,13 @@ public class UiPattern : MonoBehaviour, IShopUiPattern
     public int[] RequiredExps;
     public ElementType ElementType;
 
+    [Header ("ShopUI")]
     public UpdateablePatternUI patternUI;
     private UpdateablePatternUI ui;
 
-    private PatternFormula patternFormula;
-
-    public SpellElementInfoUI spellElementInfoUI;
-
-    private int id;
-    private ExperienceManager experienceManager;
-    private PatternManager patternManager;
-
-    private SpellElementInfoUI spellElementInfo;
+    [Header ("InfoUI")]
+    public MfxPatternInfoUI spellElementInfoUI;
+    private MfxPatternInfoUI spellElementInfo;
 
     public void Init(int _id, List<Vector2> points, Sprite _icon, float width = 10)
     {
@@ -31,7 +33,7 @@ public class UiPattern : MonoBehaviour, IShopUiPattern
         patternFormula = new PatternFormula(points, width);
     }
 
-    public void Connect(PatternManager _patternManager, ExperienceManager _experienceManager)
+    public void Connect(MfxPatternManager _patternManager, ExperienceManager _experienceManager)
     {
         patternManager = _patternManager;
         experienceManager = _experienceManager;
@@ -81,18 +83,8 @@ public class UiPattern : MonoBehaviour, IShopUiPattern
 
     public string[] GetLevelUI()
     {
-        if (IsMaxed())
-        {
-            return new string[] { "Max" };
-        }
-        else if (level == 0)
-        {
-            return new string[] { level.ToString() };
-        }
-        else
-        {
-            return new string[] { level.ToString(), (level + 1).ToString() };
-        }
+        //TODO: Add max instead of lvl + 1?
+        return new string[] { level.ToString(), (level + 1).ToString() };
     }
 
     public string[] GetTypeValueUI()
@@ -253,8 +245,7 @@ public class UiPattern : MonoBehaviour, IShopUiPattern
 
     public void ShowInfo()
     {
-        Debug.Log("Show info, missing");
-        //patternInfoComponent.SelectPattern(id);
+        patternManager.SelectPatternData(id);
     }
 
     public string GetName()
@@ -271,5 +262,10 @@ public class UiPattern : MonoBehaviour, IShopUiPattern
     public void RefreshInfo()
     {
         spellElementInfo.Refresh();
+    }
+
+    public void ChangeVisibility()
+    {
+        spellElementInfo.gameObject.SetActive(!spellElementInfo.gameObject.activeSelf);
     }
 }

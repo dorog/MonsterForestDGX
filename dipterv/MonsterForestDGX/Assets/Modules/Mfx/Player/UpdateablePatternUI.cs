@@ -9,9 +9,9 @@ public class UpdateablePatternUI : PatternUI
     public Text buttonText;
     public Button button;
 
-    private UiPattern uiPattern;
+    private MfxPattern uiPattern;
 
-    public void Init(UiPattern _uiPattern, int quantity = 0)
+    public void Init(MfxPattern _uiPattern, int quantity = 0)
     {
         uiPattern = _uiPattern;
 

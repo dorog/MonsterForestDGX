@@ -4,11 +4,11 @@ public class MfxTraningCampPatternComponent : PatternComponent
 {
     private UiPatternData[] patternDatas;
 
-    private IPatternUiManager patternManager;
+    private IPatternInfoManager patternManager;
 
     public DataManager dataManager;
 
-    public void AddPatternManager(IPatternUiManager _patternManager)
+    public void AddPatternManager(IPatternInfoManager _patternManager)
     {
         patternManager = _patternManager;
         patternManager.SubscibeToPatternDataLoadedEvent(SetUp);

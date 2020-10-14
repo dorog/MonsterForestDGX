@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class PatternManager : MonoBehaviour, IPatternManager, IPatternUiManager, IPatternShopUiManager
+public class MfxPatternManager : MonoBehaviour, IPatternManager, IPatternInfoManager, IPatternShopUiManager
 {
     private event Action<PatternData[]> LoadedPatternData;
     private event Action<UiPatternData[]> LoadedUiPatternData;
@@ -10,18 +10,20 @@ public class PatternManager : MonoBehaviour, IPatternManager, IPatternUiManager,
 
     private event Action<PatternDataDifference> ChangedPatternDataState;
     private event Action<int> ChangedPatternDataData;
+    private event Action<int> SelectedPatternDataData;
 
-    private ShopUiPatternData[] patternDatas;
-    public IUiPatternDataHandler patternDataHandler;
+    private MfxPatternData[] patternDatas;
+    public IMfxPatternDataHandler patternDataHandler;
 
     public void LoadData()
     {
         patternDatas = patternDataHandler.LoadPatternDatas();
         LoadedPatternData?.Invoke(patternDatas);
-        LoadedUiPatternData?.Invoke(patternDatas.ToList().Select(x => new UiPatternData() { State = x.State, UiPattern = x.ShopUiPattern }).ToArray());
-        LoadedShopUiPatternData?.Invoke(patternDatas);
+        LoadedUiPatternData?.Invoke(patternDatas.ToList().Select(x => new UiPatternData() { State = x.State, UiPattern = x.Pattern }).ToArray());
+        LoadedShopUiPatternData?.Invoke(patternDatas.ToList().Select(x => new ShopUiPatternData() { State = x.State, ShopUiPattern = x.Pattern }).ToArray());
     }
 
+    //TODO: Not necessary code? Unlock function?
     public void ChangePatternDataState(int id, PatternState patternState)
     {
         PatternState oldState = patternDatas[id].State;
@@ -73,7 +75,7 @@ public class PatternManager : MonoBehaviour, IPatternManager, IPatternUiManager,
         ChangedPatternDataData += method;
     }
 
-    public void UnsubscibeFromPatternDataDateChangedEvent(Action<int> method)
+    public void UnsubscibeFromPatternDataDataChangedEvent(Action<int> method)
     {
         ChangedPatternDataData -= method;
     }
@@ -96,5 +98,20 @@ public class PatternManager : MonoBehaviour, IPatternManager, IPatternUiManager,
     public void UnsubscibeToPatternDataLoadedEvent(Action<ShopUiPatternData[]> method)
     {
         LoadedShopUiPatternData -= method;
+    }
+
+    public void SelectPatternData(int id)
+    {
+        SelectedPatternDataData?.Invoke(id);
+    }
+
+    public void SubscibeToPattternDataSelectedEvent(Action<int> method)
+    {
+        SelectedPatternDataData += method;
+    }
+
+    public void UnsubscibeFromPatternDataSelectedEvent(Action<int> method)
+    {
+        SelectedPatternDataData -= method;
     }
 }

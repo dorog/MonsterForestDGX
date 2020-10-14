@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PatternManagerConnector : AbstractConnector, IUiPatternDataHandler
+public class PatternManagerConnector : AbstractConnector, IMfxPatternDataHandler
 {
-    public PatternManager patternManager;
+    public MfxPatternManager patternManager;
 
     [Header("Settings")]
-    public UiPattern uiPattern;
+    public MfxPattern uiPattern;
     public DataManager dataManager;
 
     [Header("Optional")]
     public ExperienceManager experienceManager;
 
-    private readonly List<IShopUiPattern> recognizeablePatterns = new List<IShopUiPattern>();
+    private readonly List<MfxPattern> recognizeablePatterns = new List<MfxPattern>();
 
     public override void Setup()
     {
@@ -24,16 +24,16 @@ public class PatternManagerConnector : AbstractConnector, IUiPatternDataHandler
         patternManager.LoadData();
     }
 
-    public ShopUiPatternData[] LoadPatternDatas()
+    public MfxPatternData[] LoadPatternDatas()
     {
         CreatePatterns(dataManager.GetBasePatterns(), dataManager.GetBasePatternLevels(), recognizeablePatterns);
 
-        ShopUiPatternData[] patternDatas = new ShopUiPatternData[recognizeablePatterns.Count];
+        MfxPatternData[] patternDatas = new MfxPatternData[recognizeablePatterns.Count];
         for (int i = 0; i < recognizeablePatterns.Count; i++)
         {
-            patternDatas[i] = new ShopUiPatternData()
+            patternDatas[i] = new MfxPatternData()
             {
-                ShopUiPattern = recognizeablePatterns[i],
+                Pattern = recognizeablePatterns[i],
                 State = recognizeablePatterns[i].GetState()
             };
         }
@@ -41,17 +41,15 @@ public class PatternManagerConnector : AbstractConnector, IUiPatternDataHandler
         return patternDatas;
     }
 
-    private void CreatePatterns(List<BasePatternSpell> BasePaternSpells, List<int> levels, List<IShopUiPattern> SpellPatterns, float extraHeigh = 0)
+    private void CreatePatterns(List<BasePatternSpell> BasePaternSpells, List<int> levels, List<MfxPattern> SpellPatterns, float extraHeigh = 0)
     {
-        Debug.Log(BasePaternSpells.Count);
-        Debug.Log(levels.Count);
         for (int i = 0; i < BasePaternSpells.Count; i++)
         {
             CreateSpellPattern(i, BasePaternSpells[i], levels[i], SpellPatterns, extraHeigh);
         }
     }
 
-    private void CreateSpellPattern(int id, BasePatternSpell basePaternSpell, int level, List<IShopUiPattern> SpellPatterns, float extraHeigh = 0)
+    private void CreateSpellPattern(int id, BasePatternSpell basePaternSpell, int level, List<MfxPattern> SpellPatterns, float extraHeigh = 0)
     {
         List<Vector2> points = new List<Vector2>();
         List<SpellPatternPoint> spellPatternPoints = basePaternSpell.SpellPatternPoints.GetPoints();
@@ -60,7 +58,7 @@ public class PatternManagerConnector : AbstractConnector, IUiPatternDataHandler
             points.Add(spellPatternPoints[i].Point);
         }
 
-        UiPattern uiPatternInstance = Instantiate(uiPattern, transform);
+        MfxPattern uiPatternInstance = Instantiate(uiPattern, transform);
         uiPatternInstance.Init(id, points, basePaternSpell.icon);
         uiPatternInstance.Connect(patternManager, experienceManager);
         uiPatternInstance.ElementType = basePaternSpell.elementType;
@@ -71,7 +69,7 @@ public class PatternManagerConnector : AbstractConnector, IUiPatternDataHandler
         SpellPatterns.Add(uiPatternInstance);
     }
 
-    public void SavePatternDatas(ShopUiPatternData[] patternDatas)
+    public void SavePatternDatas(MfxPatternData[] patternDatas)
     {
         throw new System.NotImplementedException();
     }
