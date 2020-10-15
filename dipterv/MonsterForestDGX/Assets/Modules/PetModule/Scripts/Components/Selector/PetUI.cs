@@ -6,6 +6,7 @@ public class PetUI : MonoBehaviour
     private int id;
     public Text petNameText;
     public GameObject selectedGo;
+    public GameObject root;
 
     public PetSelectorComponent petSelectorComponent;
 
@@ -15,10 +16,15 @@ public class PetUI : MonoBehaviour
         petNameText.text = petData.pet.petName;
         if (!petData.available)
         {
-            gameObject.SetActive(false);
+            root.SetActive(false);
         }
 
         petSelectorComponent = _petSelectorComponent;
+    }
+
+    public void Refresh(bool availability)
+    {
+        root.SetActive(availability);
     }
 
     public void ChangePet()

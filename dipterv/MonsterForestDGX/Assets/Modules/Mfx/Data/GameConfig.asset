@@ -26,8 +26,12 @@ MonoBehaviour:
   - startLevel: 0
     basePatternSpell: {fileID: 11400000, guid: 98daaeb9848c2354799233c83004bbbf, type: 2}
   pets:
-  - {fileID: 6310326573633760408, guid: 2609c5f3df922c146957e72f25c8a148, type: 3}
-  - {fileID: 5812343948825244384, guid: b5ea5ff87386830468341484f8de2853, type: 3}
-  - {fileID: 5346369568621177650, guid: 64c305601a5fef94db5c6db4aafbeef2, type: 3}
-  - {fileID: 3441869854891632780, guid: 0c90877c7dedb784782ee27c3e30e62d, type: 3}
+  - Available: 0
+    Pet: {fileID: 5812343948825244384, guid: b5ea5ff87386830468341484f8de2853, type: 3}
+  - Available: 0
+    Pet: {fileID: 6310326573633760408, guid: 2609c5f3df922c146957e72f25c8a148, type: 3}
+  - Available: 0
+    Pet: {fileID: 3441869854891632780, guid: 0c90877c7dedb784782ee27c3e30e62d, type: 3}
+  - Available: 0
+    Pet: {fileID: 5346369568621177650, guid: 64c305601a5fef94db5c6db4aafbeef2, type: 3}
   lastSelectedPet: -1

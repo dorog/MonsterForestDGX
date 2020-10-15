@@ -18,11 +18,11 @@ public class GameData
 
     public GameData(GameConfig gameConfig)
     {
-        aliveMonsters = CreateArrayWithDefaultValue(gameConfig.aliveMonsters, true);
-        gatesState = CreateArrayWithDefaultValue(gameConfig.gatesState, true);
-        teleports = CreateArrayWithDefaultValue(gameConfig.teleports, false);
+        aliveMonsters = gameConfig.aliveMonsters == 0 ? null : CreateArrayWithDefaultValue(gameConfig.aliveMonsters, true);
+        gatesState = gameConfig.gatesState == 0 ? null : CreateArrayWithDefaultValue(gameConfig.gatesState, true);
+        teleports = gameConfig.teleports == 0 ? null : CreateArrayWithDefaultValue(gameConfig.teleports, false);
         basePatternSpellLevels = gameConfig.baseSpells.Select(x => x.startLevel).ToArray();
-        availablePets = CreateArrayWithDefaultValue(gameConfig.pets.Length, false);
+        availablePets = gameConfig.pets.Select(x => x.Available).ToArray();
         exp = gameConfig.exp;
         lastSelectedPet = gameConfig.lastSelectedPet;
     }

@@ -19,6 +19,6 @@ public class GameConfig : ScriptableObject
     public SpellConfig[] baseSpells;
 
     [Header("Pet Settings")]
-    public Pet[] pets;
+    public PetConfig[] pets;
     public int lastSelectedPet = -1;
 }

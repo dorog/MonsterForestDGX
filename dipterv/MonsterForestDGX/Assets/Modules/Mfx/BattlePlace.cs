@@ -23,6 +23,7 @@ public class BattlePlace : MonoBehaviour
     public bool resistantEnable = true;
 
     public BattleManager battleManager;
+    public PetInitializerConnector petInitializer;
 
     public void Start()
     {
@@ -42,13 +43,15 @@ public class BattlePlace : MonoBehaviour
         gameEvents.enemyType = isMonster;
         gameEvents.battlePlace = this;
         gameEvents.enemy = enemy;
-        gameEvents.healable = healable;
-        gameEvents.attackable = attackable;
-        gameEvents.petEnable = petEnable;
+
         gameEvents.resistantEnable = resistantEnable;
         gameEvents.enemyResistant = enemyHealth.resistant;
 
-        if(petPosition != null)
+        gameEvents.petEnable = petEnable;
+
+        petInitializer.attackable = attackable;
+
+        if (petPosition != null)
         {
             gameEvents.petPosition = petPosition.transform.position;
             gameEvents.petRotation = petPosition.transform.rotation;

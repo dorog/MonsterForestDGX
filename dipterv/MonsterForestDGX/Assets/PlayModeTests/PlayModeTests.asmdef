@@ -7,7 +7,8 @@
         "Mfx",
         "PatternModule",
         "BattleModule",
-        "ExperienceModule"
+        "ExperienceModule",
+        "PetModule"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

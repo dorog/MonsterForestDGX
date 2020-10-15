@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//TODO: Separate Functions based on the components
 public class PetManager : MonoBehaviour, IPetManager
 {
     private event Action<PetData[]> LoadedPetData;

@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-//TODO: Remove it and impl it in DataManager?
 public class MfxPetDataHandler : MonoBehaviour, IPetDataHandler
 {
     public DataManager dataManager;

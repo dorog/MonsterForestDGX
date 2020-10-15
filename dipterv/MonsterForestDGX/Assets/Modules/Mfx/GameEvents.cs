@@ -16,13 +16,13 @@ public class GameEvents : MonoBehaviour
     public int id;
     public BattlePlace battlePlace;
     public Fighter enemy;
-    public HealableConnector healable;
-    public AttackableConnector attackable;
-    public bool petEnable = false;
+
     public bool resistantEnable = false;
     public Resistant enemyResistant;
     public Vector3 petPosition;
     public Quaternion petRotation;
+
+    public bool petEnable = false;
 
     public void Fight()
     {

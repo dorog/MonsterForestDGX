@@ -10,8 +10,6 @@ public class PetModuleConnector : MonoBehaviour
     public GameEvents gameEvents;
 
     [Header ("Components / Dependencies")]
-    public PetSelectorComponent petSelectorComponent;
-    public PetInitializerComponent petInitializerComponent;
 
     [Header("Dependencies (Not component)")]
     public MfxPetDataHandler petDataHandler;
@@ -25,7 +23,6 @@ public class PetModuleConnector : MonoBehaviour
     public void Start()
     {
         AddDependencies();
-        AssignToEvents();
         AssignToInputs();
 
         petSystem.InitializeComponents(petManager);
@@ -35,50 +32,14 @@ public class PetModuleConnector : MonoBehaviour
     {
         petManager.petDataHandler = petDataHandler;
 
-        petSelectorComponent.petSelectorHandler = petSelectorHandler;
 
-        petInitializerComponent.petSelectorComponent = petSelectorComponent;
-        petInitializerComponent.petParameter = petParameter;
 
         petParameter.Resetable = resetable;
         petParameter.Healable = healable;
     }
 
-    private void AssignToEvents()
-    {
-        gameEvents.BattleLobbyEnteredDelegateEvent += PetTabShowCheck;
-
-        gameEvents.BattleStartDelegateEvent += PetSummonEnabledCheck;
-        gameEvents.BattleEndDelegateEvent += petInitializerComponent.VanishPet;
-
-        gameEvents.BattleLobbyEnteredDelegateEvent += SetPetInitializerProperties;
-    }
-
     private void AssignToInputs()
     {
 
-    }
-
-    private void PetSummonEnabledCheck()
-    {
-        if (gameEvents.petEnable)
-        {
-            petInitializerComponent.SummonPet();
-        }
-    }
-
-    private void PetTabShowCheck()
-    {
-        if (gameEvents.petEnable)
-        {
-            petTab.ShowTab();
-        }
-    }
-
-    private void SetPetInitializerProperties()
-    {
-        petInitializerComponent.position = gameEvents.petPosition;
-        petInitializerComponent.rotation = gameEvents.petRotation;
-        petParameter.Attackable = gameEvents.attackable;
     }
 }

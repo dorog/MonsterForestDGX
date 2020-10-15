@@ -18,7 +18,7 @@ public class PetParameterConnection : MonoBehaviour
     private void Start()
     {
         petManager.petDataHandler = petDataLoader;
-        petSelectorComponent.petSelectorHandler = petSelectorHandler;
+        //petSelectorComponent.petSelectorHandler = petSelectorHandler;
         petInitializerComponent.petSelectorComponent = petSelectorComponent;
         petInitializerComponent.petParameter = GetPetParameters();
 

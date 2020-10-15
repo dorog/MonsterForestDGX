@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cd405e25be6374ab132463842b0147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternConnectors:
+  connectors:
   - {fileID: 1139424394566705305}
   - {fileID: 1139424394156181304}
   - {fileID: 4395560297759018238}

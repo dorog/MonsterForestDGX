@@ -8,7 +8,7 @@ public class PetSelectorComponent : PetComponent, IPetSelector
     private static readonly int notSelectedPetValue = -1;
     private int selectedPet = notSelectedPetValue;
 
-    public IPetSelectorHandler petSelectorHandler;
+    private IPetSelectorHandler petSelectorHandler;
 
     public int GetPet()
     {
@@ -19,11 +19,16 @@ public class PetSelectorComponent : PetComponent, IPetSelector
         return selectedPet;
     }
 
-    public override void Init(IPetManager _petManager)
+    public override void AddPetManager(IPetManager _petManager)
     {
-        base.Init(_petManager);
+        base.AddPetManager(_petManager);
         _petManager.SubscibeToPetDataChangedEvent(Refresh);
         _petManager.SubscibeToPetDataLoadedEvent(SetupPets);
+    }
+
+    public void AddSelectorHandler(IPetSelectorHandler _petSelectorHandler)
+    {
+        petSelectorHandler = _petSelectorHandler;
     }
 
     private void Refresh(List<PetDataDifference> petDataDifferences)
@@ -31,7 +36,7 @@ public class PetSelectorComponent : PetComponent, IPetSelector
         petTab.Refresh(petDataDifferences);
     }
 
-    public void SetupPets(PetData[] petDatas)
+    private void SetupPets(PetData[] petDatas)
     {
         if (petDatas == null)
         {
@@ -40,7 +45,7 @@ public class PetSelectorComponent : PetComponent, IPetSelector
         else
         {
             selectedPet = petSelectorHandler.GetLastSelectedPet();
-            if (selectedPet >= petDatas.Length)
+            if (selectedPet >= petDatas.Length || selectedPet < 0)
             {
                 selectedPet = notSelectedPetValue;
                 petTab.SetUpUI(petDatas, this);
@@ -58,10 +63,30 @@ public class PetSelectorComponent : PetComponent, IPetSelector
         {
             selectedPetGO.SetActive(false);
         }
-        selectedPetGO = select;
-        selectedPetGO.SetActive(true);
-        selectedPet = number;
+
+        if(selectedPet == number)
+        {
+            selectedPetGO = null;
+            selectedPet = -1;
+        }
+        else
+        {
+            selectedPetGO = select;
+            selectedPetGO.SetActive(true);
+            selectedPet = number;
+        }
+
 
         petSelectorHandler.Select(selectedPet);
+    }
+
+    public void ShowSelectorTab()
+    {
+        petTab.ShowTab();
+    }
+
+    public void HideSelectorTab()
+    {
+        petTab.HideTab();
     }
 }

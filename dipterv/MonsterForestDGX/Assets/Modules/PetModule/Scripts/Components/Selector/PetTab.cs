@@ -35,7 +35,7 @@ public class PetTab : MonoBehaviour
     {
         foreach(var petDataDifference in petDataDifferences)
         {
-            petUIs[petDataDifference.Id].gameObject.SetActive(petDataDifference.NewAvailability);
+            petUIs[petDataDifference.Id].Refresh(petDataDifference.NewAvailability);
         }
     }
 

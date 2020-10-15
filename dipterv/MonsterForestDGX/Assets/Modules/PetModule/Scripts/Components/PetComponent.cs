@@ -5,7 +5,7 @@ public abstract class PetComponent : MonoBehaviour
     protected IPetManager petManager;
     protected PetData[] petDatas;
 
-    public virtual void Init(IPetManager _petManager)
+    public virtual void AddPetManager(IPetManager _petManager)
     {
         petManager = _petManager;
         petManager.SubscibeToPetDataLoadedEvent(SetPetDatas);

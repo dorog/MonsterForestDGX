@@ -297,13 +297,11 @@ MonoBehaviour:
   id: 0
   battlePlace: {fileID: 0}
   enemy: {fileID: 0}
-  healable: {fileID: 0}
-  attackable: {fileID: 0}
-  petEnable: 0
   resistantEnable: 0
   enemyResistant: {fileID: 0}
   petPosition: {x: 0, y: 0, z: 0}
   petRotation: {x: 0, y: 0, z: 0, w: 0}
+  petEnable: 0
 --- !u!1 &1089268919159085706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,7 +1029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cd405e25be6374ab132463842b0147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patternConnectors:
+  connectors:
   - {fileID: 4519872354648390910}
 --- !u!1 &1089268920850053910
 GameObject:

@@ -2,11 +2,11 @@
 
 public class ConnectorManager : MonoBehaviour
 {
-    public AbstractConnector[] patternConnectors;
+    public AbstractConnector[] connectors;
 
     void Start()
     {
-        StartConnectors(patternConnectors);
+        StartConnectors(connectors);
     }
 
     private void StartConnectors(AbstractConnector[] connectors)

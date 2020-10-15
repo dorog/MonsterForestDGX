@@ -48,7 +48,7 @@ public class DataManager : MonoBehaviour, IExperienceIO
             petDatas.Add(new PetData() 
             { 
                 available = gameData.availablePets[i],
-                pet = gameConfig.pets[i]
+                pet = gameConfig.pets[i].Pet
             });
         }
 

@@ -14,9 +14,9 @@ public class PetUiShowerComponent : PetComponent
     public event Action uiActivated;
     public event Action uiDeactivated;
 
-    public override void Init(IPetManager _petManager)
+    public override void AddPetManager(IPetManager _petManager)
     {
-        base.Init(_petManager);
+        base.AddPetManager(_petManager);
         _petManager.SubscibeToPetDataChangedEvent(Refresh);
     }
 
