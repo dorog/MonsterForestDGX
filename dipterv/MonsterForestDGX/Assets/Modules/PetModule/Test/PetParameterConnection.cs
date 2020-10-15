@@ -8,7 +8,6 @@ public class PetParameterConnection : MonoBehaviour
     public ResetableTestImpl resetable;
 
     [Header("Dependencies")]
-    public PetSystem petSystem;
     public PetManager petManager;
     public PetDataHandlerTestImpl petDataLoader;
     public PetInitializerComponent petInitializerComponent;
@@ -21,8 +20,6 @@ public class PetParameterConnection : MonoBehaviour
         //petSelectorComponent.petSelectorHandler = petSelectorHandler;
         petInitializerComponent.petSelectorComponent = petSelectorComponent;
         petInitializerComponent.petParameter = GetPetParameters();
-
-        petSystem.InitializeComponents(petManager);
     }
 
     public PetParameter GetPetParameters()

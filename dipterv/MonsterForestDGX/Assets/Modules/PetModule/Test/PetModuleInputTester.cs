@@ -5,7 +5,6 @@ public class PetModuleInputTester : MonoBehaviour
     public int unlockId = 0;
 
     [Header ("Components")]
-    public PetUnlockerComponent petUnlockerComponent;
     public PetInitializerComponent petInitializerComponent;
 
     [Header("Interface Impls")]
@@ -34,7 +33,7 @@ public class PetModuleInputTester : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            petUnlockerComponent.CollectPet(unlockId);
+            
         }
         if (Input.GetKeyDown(KeyCode.S))
         {

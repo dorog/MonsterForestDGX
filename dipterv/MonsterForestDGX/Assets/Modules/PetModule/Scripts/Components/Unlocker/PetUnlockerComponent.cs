@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class PetUnlockerComponent : PetComponent
 {
@@ -7,7 +8,7 @@ public class PetUnlockerComponent : PetComponent
     public override void AddPetManager(IPetManager _petManager)
     {
         base.AddPetManager(_petManager);
-        _petManager.SubscibeToPetDataChangedEvent(Refresh);
+        petManager.SubscibeToPetDataChangedEvent(Refresh);
     }
 
     private void Refresh(List<PetDataDifference> petDataDifferences)
@@ -20,11 +21,11 @@ public class PetUnlockerComponent : PetComponent
 
     protected override void SetPetDatas(PetData[] _petDatas)
     {
-        for (int i = 0; i < _petDatas.Length; i++)
-        {
-            unlockSpots[i].Setup(_petDatas[i], i, this);
-        }
         base.SetPetDatas(_petDatas);
+        for (int i = 0; i < petDatas.Length; i++)
+        {
+            unlockSpots[i].Setup(petDatas[i], i, this);
+        }
     }
 
     public void CollectPet(int id)

@@ -920,7 +920,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3669378945094612513}
-  - component: {fileID: 7135783403769099017}
   m_Layer: 0
   m_Name: PetModule
   m_TagString: Untagged
@@ -944,23 +943,6 @@ Transform:
   m_Father: {fileID: 3669378946665546987}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7135783403769099017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3669378945094612514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f46125eb46c2f443a234fcb3ef8e7f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  petComponents:
-  - {fileID: 3669378945097403419}
-  - {fileID: 3669378946776808163}
-  - {fileID: 3669378945547404412}
-  - {fileID: 3669378945808192606}
 --- !u!1 &3669378945097403421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,13 +1034,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5cd405e25be6374ab132463842b0147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectors:
+  patternConnectors:
   - {fileID: 450242494867668844}
   - {fileID: 6991141441751860832}
   - {fileID: 3339075077195029891}
   - {fileID: 3669378945423733209}
   - {fileID: 2887397224876325701}
+  experienceConnectors:
   - {fileID: 5745923984395248544}
+  petConnectors:
+  - {fileID: 1499173715855432531}
   - {fileID: 5126671075710292688}
   - {fileID: 8348477903275425551}
 --- !u!1 &3669378945297559035
@@ -2844,6 +2829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6329531564958691111}
+  - component: {fileID: 1499173715855432531}
   m_Layer: 0
   m_Name: PetUnlockerConnector
   m_TagString: Untagged
@@ -2865,6 +2851,20 @@ Transform:
   m_Father: {fileID: 2750636289364702156}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499173715855432531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6612459287282240432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05364d2af57792488259d49efd16fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  petUnlockerComponent: {fileID: 3669378946776808163}
+  petManager: {fileID: 3669378946499652387}
 --- !u!1 &6929827921722522794
 GameObject:
   m_ObjectHideFlags: 0

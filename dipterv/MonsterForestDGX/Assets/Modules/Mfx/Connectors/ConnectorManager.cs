@@ -2,11 +2,15 @@
 
 public class ConnectorManager : MonoBehaviour
 {
-    public AbstractConnector[] connectors;
+    public AbstractConnector[] patternConnectors;
+    public AbstractConnector[] experienceConnectors;
+    public AbstractConnector[] petConnectors;
 
-    void Start()
+    public void Start()
     {
-        StartConnectors(connectors);
+        StartConnectors(patternConnectors);
+        StartConnectors(experienceConnectors);
+        StartConnectors(petConnectors);
     }
 
     private void StartConnectors(AbstractConnector[] connectors)

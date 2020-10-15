@@ -5,11 +5,8 @@ public class PetModuleConnector : MonoBehaviour
     private PetParameter petParameter = new PetParameter();
 
     [Header ("Managers")]
-    public PetSystem petSystem;
     public PetManager petManager;
     public GameEvents gameEvents;
-
-    [Header ("Components / Dependencies")]
 
     [Header("Dependencies (Not component)")]
     public MfxPetDataHandler petDataHandler;
@@ -24,8 +21,6 @@ public class PetModuleConnector : MonoBehaviour
     {
         AddDependencies();
         AssignToInputs();
-
-        petSystem.InitializeComponents(petManager);
     }
 
     private void AddDependencies()
