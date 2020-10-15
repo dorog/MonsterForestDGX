@@ -25,7 +25,7 @@ public class PatternFormula
         for(int i = 0; i < rectangles.Count; i++)
         {
             int resultId = rectangles[i].Guess(point, lastId);
-            if(resultId != -1 && minId > resultId)
+            if (resultId != -1 && minId > resultId)
             {
                 minId = resultId;
                 hit = true;

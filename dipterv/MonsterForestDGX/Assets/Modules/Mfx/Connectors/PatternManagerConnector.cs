@@ -68,9 +68,4 @@ public class PatternManagerConnector : AbstractConnector, IMfxPatternDataHandler
 
         SpellPatterns.Add(uiPatternInstance);
     }
-
-    public void SavePatternDatas(MfxPatternData[] patternDatas)
-    {
-        throw new System.NotImplementedException();
-    }
 }

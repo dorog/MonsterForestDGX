@@ -19210,7 +19210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   elementType: 1
-  coverage: 0.4
+  coverage: 0.7
   cd: 2
   dmg: 1025
   impactParticle: {fileID: 100010, guid: 87698b9d467306440a17655d9c528f3a, type: 3}

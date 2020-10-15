@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class ExperienceManager : MonoBehaviour
 {
+    //TODO: Force it to be greater than or equal to zero?
     private float exp = 0;
     private float stack = 0;
 

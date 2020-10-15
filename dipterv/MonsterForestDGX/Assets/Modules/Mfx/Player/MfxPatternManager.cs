@@ -32,7 +32,6 @@ public class MfxPatternManager : MonoBehaviour, IPatternManager, IPatternInfoMan
         if (stateChanged)
         {
             patternDatas[id].State = patternState;
-            patternDataHandler.SavePatternDatas(patternDatas);
 
             ChangedPatternDataState?.Invoke(new PatternDataDifference()
             {

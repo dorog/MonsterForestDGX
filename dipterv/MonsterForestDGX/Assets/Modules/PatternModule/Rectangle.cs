@@ -107,7 +107,7 @@ public class Rectangle
 
             if (results.Count > 0)
             {
-                if(results.Count > 1)
+                if (results.Count > 1)
                 {
                     results.Sort((x, y) => IntersectionResult.SortByDistance(x, y, lastHitResult.Point));
 
@@ -121,7 +121,7 @@ public class Rectangle
                     indexes = indexes.Distinct().ToList();
 
                     int lastIndex = indexes[0];
-                    int actualIndex = indexes[1];
+                    int actualIndex = indexes.Count > 1 ? indexes[1] : indexes[0];
 
                     //Same #1
                     lastHitResult.Included = true;

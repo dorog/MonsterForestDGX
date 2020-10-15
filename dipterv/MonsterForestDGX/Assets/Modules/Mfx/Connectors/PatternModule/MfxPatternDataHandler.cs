@@ -8,16 +8,12 @@ public class MfxPatternDataHandler : AbstractConnector, ISpellHandler
     [Header("Connector dependencies")]
     public MagicCircleHandler magicCircleHandler;
     public MfxPatternManager patternManager;
-    public PatternRecognizerComponent patternRecognizerComponent;
-    public MfxTraningCampPatternComponent traningCampPatternComponent;
-    public PatternInfoComponent patternInfoComponent;
-    public PatternShopComponent patternShopComponent;
 
-    public DataManager dataManager;
+    public MfxTraningCampPatternComponent traningCampPatternComponent;
 
     public override void Setup()
     {
-        patternRecognizerComponent.AddPatternManager(patternManager);
+
         traningCampPatternComponent.AddPatternManager(patternManager);
 
         magicCircleHandler.spellHandler = this;

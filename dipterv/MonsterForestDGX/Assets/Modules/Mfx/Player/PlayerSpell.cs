@@ -11,7 +11,7 @@ public abstract class PlayerSpell : MonoBehaviour
     public abstract float GetSpellTypeValue();
     public string GetDifficulty()
     {
-        if (coverage < 0.6)
+        if (coverage < 0.65)
         {
             return SpellDifficulty.Easy.ToString();
         }

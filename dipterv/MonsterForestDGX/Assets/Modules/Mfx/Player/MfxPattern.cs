@@ -174,6 +174,10 @@ public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
         {
             return int.MaxValue;
         }
+        else if(level < 0)
+        {
+            return 0;
+        }
         return RequiredExps[level];
     }
 
@@ -198,6 +202,7 @@ public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
         }
     }
 
+    //TODO: Test Instantiating with unavailable UI
     public void InstantiateUiElement(Transform root, int quantity)
     {
         ui = Instantiate(patternUI, root);
@@ -237,10 +242,20 @@ public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
     public void Increase()
     {
         experienceManager.RemoveExp(GetRequiredExpValue());
+
+        PatternState oldState = GetState();
         level++;
+        PatternState newState = GetState();
 
         experienceManager.Save();
-        patternManager.ChangedPatternData(id);
+        if(oldState != newState)
+        {
+            patternManager.ChangePatternDataState(id, newState);
+        }
+        else
+        {
+            patternManager.ChangedPatternData(id);
+        }
     }
 
     public void ShowInfo()
