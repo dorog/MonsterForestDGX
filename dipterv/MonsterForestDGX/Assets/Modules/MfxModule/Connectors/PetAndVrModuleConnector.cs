@@ -7,7 +7,8 @@ public class PetAndVrModuleConnector : MonoBehaviour
 
     void Start()
     {
-        petUiShowerComponent.uiActivated += player.MenuState;
-        petUiShowerComponent.uiDeactivated += player.MenuState;
+        Debug.Log("Connect popup and vr movement");
+        //petUiShowerComponent.uiActivated += player.MenuState;
+        //petUiShowerComponent.uiDeactivated += player.MenuState;
     }
 }

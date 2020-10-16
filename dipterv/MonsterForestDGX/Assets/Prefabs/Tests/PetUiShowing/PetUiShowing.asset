@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
+  m_Name: PetUiShowing
+  m_EditorClassIdentifier: 
+  exp: 0
+  aliveMonsters: 0
+  gatesState: 0
+  teleports: 0
+  baseSpells: []
+  pets:
+  - Available: 0
+    Pet: {fileID: -4812290835658329080, guid: 18c359ac881084842a4998d5aeefbfb5, type: 3}
+  - Available: 0
+    Pet: {fileID: -4812290835658329080, guid: 4b37877651a25284090d2e97a3e01193, type: 3}
+  - Available: 0
+    Pet: {fileID: -798780661532089905, guid: 3372bf66d2d7faf4ab8aaf253e6065af, type: 3}
+  - Available: 0
+    Pet: {fileID: -798780661532089905, guid: 8543bd5302fb0b644a368f150c5f3396, type: 3}
+  - Available: 0
+    Pet: {fileID: 8546974002409809431, guid: e53d16cddb1ac314ea104a0ca4928bcf, type: 3}
+  - Available: 0
+    Pet: {fileID: 8546974002409809431, guid: 894e45d47c0d83f489b5f7b8c9f833cc, type: 3}
+  lastSelectedPet: -1
