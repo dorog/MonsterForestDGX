@@ -20,9 +20,9 @@ public class CooldownResetPetAbility : PetAbility
         }
     }
 
-    public override void Init(PetParameter _petParameter)
+    public override void Init(GameObject owner)
     {
-        resetable = _petParameter.Resetable;
+        resetable = owner.GetComponent<IResetable>();
         resetable?.AddCooldownRef(this);
     }
 

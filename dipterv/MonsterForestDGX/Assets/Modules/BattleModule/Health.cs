@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class Health : MonoBehaviour
@@ -8,8 +7,6 @@ public abstract class Health : MonoBehaviour
     public float currentHp;
     public Fighter fighter;
     public Image hpImage;
-    public Color lowColor;
-    public Color fullColor;
     public Resistant resistant;
 
     public BattleManager battleManager;
@@ -23,11 +20,7 @@ public abstract class Health : MonoBehaviour
         currentHp = maxHp;
     }
 
-    public virtual void SetUpHealth()
-    {
-        //hpSlider.value = currentHp / maxHp;
-        //hpImage.color = Color.Lerp(lowColor, fullColor, currentHp / maxHp);
-    }
+    public virtual void SetUpHealth(){}
 
     public virtual void TakeDamage(float dmg, ElementType magicType)
     {

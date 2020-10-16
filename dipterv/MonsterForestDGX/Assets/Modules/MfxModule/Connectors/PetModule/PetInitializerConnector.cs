@@ -11,26 +11,14 @@ public class PetInitializerConnector : AbstractConnector
     [Tooltip ("Must have an IPetSelector component!")]
     public GameObject petSelectorGO;
 
-    [Header("Pet Parameter Settings")]
-    public HealableHandler healable;
-    public AttackableHandler attackable;
-    public ResetableHandler resetable;
-
-    private PetParameter petParameter;
+    private GameObject petOwner;
 
     public override void Setup()
     {
         IPetSelector petSelector = petSelectorGO.GetComponent<IPetSelector>();
 
-        petParameter = new PetParameter()
-        {
-            Attackable = attackable,
-            Healable = healable,
-            Resetable = resetable
-        };
-
         petInitializerComponent.petSelectorComponent = petSelector;
-        petInitializerComponent.petParameter = petParameter;
+        petInitializerComponent.petOwner = petOwner;
 
         gameEvents.BattleStartDelegateEvent += PetSummonEnabledCheck;
         gameEvents.BattleEndDelegateEvent += petInitializerComponent.VanishPet;
@@ -54,6 +42,5 @@ public class PetInitializerConnector : AbstractConnector
     {
         petInitializerComponent.position = gameEvents.petPosition;
         petInitializerComponent.rotation = gameEvents.petRotation;
-        petParameter.Attackable = attackable;
     }
 }

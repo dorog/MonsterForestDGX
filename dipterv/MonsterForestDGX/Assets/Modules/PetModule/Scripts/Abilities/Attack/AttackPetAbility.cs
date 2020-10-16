@@ -6,9 +6,9 @@ public class AttackPetAbility : PetNextAction
 {
     private IAttackable attackable;
 
-    public override void Init(PetParameter _petParameter)
+    public override void Init(GameObject owner)
     {
-        attackable = _petParameter.Attackable;
+        attackable = owner.GetComponent<IAttackable>();
         attackable?.SubscribeToAttackEvents(Activate, Deactivate);
     }
 

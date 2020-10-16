@@ -61,7 +61,7 @@ public class DefendingTrainingDoll : AiFighter
     {
         trainingCampUI.EnableUI();
 
-        cooldownReset.Init(new PetParameter() { Resetable = resetable });
+        cooldownReset.Init(resetable.gameObject);
         magicCircleHandler.SuccessCastSpellDelegateEvent += cooldownReset.ResetCooldown;
 
         controller.Step();

@@ -59,6 +59,13 @@ public class Player : Fighter
 
     public override void Fight()
     {
+        base.Fight();
+    }
+
+    public override void Def()
+    {
+        base.Def();
+
         playerHealth.Full();
 
         DisableUI();

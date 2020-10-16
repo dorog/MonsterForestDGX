@@ -49,7 +49,8 @@ public class BattlePlace : MonoBehaviour
 
         gameEvents.petEnable = petEnable;
 
-        petInitializer.attackable = attackable;
+        Debug.Log("Commented");
+        //petInitializer.attackable = attackable;
 
         if (petPosition != null)
         {

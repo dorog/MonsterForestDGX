@@ -6,9 +6,9 @@ public class HealPetAbility : PetNextAction
 {
     private IHealable healable;
 
-    public override void Init(PetParameter _petParameter)
+    public override void Init(GameObject owner)
     {
-        healable = _petParameter.Healable;
+        healable = owner.GetComponent<IHealable>();
         healable?.SubscribeToHealEvents(Activate, Deactivate);
     }
 

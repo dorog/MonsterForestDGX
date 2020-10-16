@@ -5,7 +5,7 @@ public class GameEvents : MonoBehaviour
 {
     public BattleManager battleManager;
 
-    public Player player;
+    public Fighter player;
 
     public event Action BattleLobbyEnteredDelegateEvent;
     public event Action BattleStartDelegateEvent;

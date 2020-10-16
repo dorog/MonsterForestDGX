@@ -115,6 +115,8 @@ public class Monster : AiFighter
 
     public override void Fight()
     {
+        base.Fight();
+
         Debug.Log("Add Connector!");
         //magicCircleHandler.SuccessCastSpellDelegateEvent += React;
         autoController.StartController();

@@ -9,15 +9,15 @@ public class Pet : MonoBehaviour
     public PetAbility[] normalAbilities;
     public UpdatePetAbility[] updateAbilities;
 
-    public void Init(PetParameter petParameter)
+    public void Init(GameObject owner)
     {
         foreach(var petAbility in updateAbilities)
         {
-            petAbility.Init(petParameter);
+            petAbility.Init(owner);
         }
         foreach (var petAbility in normalAbilities)
         {
-            petAbility.Init(petParameter);
+            petAbility.Init(owner);
         }
     }
 

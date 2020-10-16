@@ -1,7 +1,6 @@
-﻿
-using System;
+﻿using System;
 
-public interface IAttackable : IPetParameter
+public interface IAttackable
 {
     void TakeDamageFromPet(float amount);
     void SubscribeToAttackEvents(Action activate, Action deactivate);

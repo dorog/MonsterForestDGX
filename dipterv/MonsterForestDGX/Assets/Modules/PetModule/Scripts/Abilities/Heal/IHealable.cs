@@ -1,6 +1,6 @@
 ﻿using System;
 
-public interface IHealable : IPetParameter
+public interface IHealable
 {
     bool IsFull();
     void Heal(float amount);

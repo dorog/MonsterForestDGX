@@ -1,7 +1,5 @@
 ﻿
-using System;
-
-public interface IResetable : IPetParameter
+public interface IResetable
 {
     void ResetAction();
     void AddCooldownRef(CooldownResetPetAbility cooldownResetPetAbility);

@@ -15,7 +15,7 @@ public abstract class PetAbility : MonoBehaviour
         isActivated = false;
     }
 
-    public abstract void Init(PetParameter _petParameter);
+    public abstract void Init(GameObject owner);
     public abstract void Destroy();
     public abstract string GetAbilityName();
     public abstract Color GetAbilityNameColor();

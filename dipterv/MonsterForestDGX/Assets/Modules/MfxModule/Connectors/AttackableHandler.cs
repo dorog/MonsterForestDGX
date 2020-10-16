@@ -4,11 +4,10 @@ using UnityEngine;
 public class AttackableHandler : MonoBehaviour, IAttackable
 {
     public Health health;
-    public ParticleSystem petAttackEffect;
     public Fighter fighter;
 
-    public BattleManager battleManager;
-    public GameEvents gameEvents;
+    [Header ("Optional")]
+    public ParticleSystem petAttackEffect;
 
     public void TakeDamageFromPet(float amount)
     {
@@ -21,29 +20,13 @@ public class AttackableHandler : MonoBehaviour, IAttackable
 
     public void SubscribeToAttackEvents(Action activate, Action deactivate)
     {
-        if(gameEvents.GetBlueFighter() == fighter)
-        {
-            battleManager.BlueFighterTurnStartDelegateEvent += activate;
-            battleManager.BlueFighterTurnEndDelegateEvent += deactivate;
-        }
-        else if (gameEvents.GetRedFighter() == fighter)
-        {
-            battleManager.RedFighterTurnStartDelegateEvent += activate;
-            battleManager.RedFighterTurnEndDelegateEvent += deactivate;
-        }
+        fighter.SubscribeToStartTurn(activate);
+        fighter.SubscribeToEndTurn(deactivate);
     }
 
     public void UnsubscribeFromAttackEvents(Action activate, Action deactivate)
     {
-        if (gameEvents.GetBlueFighter() == fighter)
-        {
-            battleManager.BlueFighterTurnStartDelegateEvent -= activate;
-            battleManager.BlueFighterTurnEndDelegateEvent -= deactivate;
-        }
-        else if (gameEvents.GetRedFighter() == fighter)
-        {
-            battleManager.RedFighterTurnStartDelegateEvent -= activate;
-            battleManager.RedFighterTurnEndDelegateEvent -= deactivate;
-        }
+        fighter.UnsubscribeToStartTurn(activate);
+        fighter.UnsubscribeToEndTurn(deactivate);
     }
 }
