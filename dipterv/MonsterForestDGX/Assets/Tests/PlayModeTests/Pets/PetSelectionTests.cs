@@ -18,7 +18,7 @@ namespace Tests
 
         private IEnumerator SetUp()
         {
-            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/PetSelecting/PetSelecting.prefab");
+            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Pets/PetSelecting/PetSelecting.prefab");
             core = Object.Instantiate(coreGO);
 
             yield return new WaitForSeconds(2);

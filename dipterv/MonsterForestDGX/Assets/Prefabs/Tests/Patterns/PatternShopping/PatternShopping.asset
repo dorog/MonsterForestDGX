@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
-  m_Name: ExperienceChanging
+  m_Name: PatternShopping
   m_EditorClassIdentifier: 
   exp: 0
   aliveMonsters: 0

@@ -16,7 +16,7 @@ namespace Tests
 
         private IEnumerator SetUp()
         {
-            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/PetUiShowing/PetUiShowing.prefab");
+            GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Pets/PetUiShowing/PetUiShowing.prefab");
             core = Object.Instantiate(coreGO);
 
             petManager = core.GetComponentInChildren<PetManager>();
