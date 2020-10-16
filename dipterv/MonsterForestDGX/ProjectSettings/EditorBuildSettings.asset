@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Battle.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/PlayModeTests/GameTest.unity
+    path: Assets/Tests/PlayModeTests/GameTest.unity
     guid: 6f68f21a21944ba4b84ea00ab4f74861
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 7add9d60d642fb243bdb00d8062b28fb,
