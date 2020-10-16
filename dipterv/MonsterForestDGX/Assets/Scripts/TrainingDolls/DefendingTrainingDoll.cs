@@ -22,6 +22,7 @@ public class DefendingTrainingDoll : AiFighter
     protected override void Disappear(){}
 
     public MagicCircleHandler magicCircleHandler;
+    public ResetableHandler resetable;
 
     public Health GetHealth()
     {
@@ -60,7 +61,7 @@ public class DefendingTrainingDoll : AiFighter
     {
         trainingCampUI.EnableUI();
 
-        cooldownReset.Init(new PetParameter() { Resetable = magicCircleHandler });
+        cooldownReset.Init(new PetParameter() { Resetable = resetable });
         magicCircleHandler.SuccessCastSpellDelegateEvent += cooldownReset.ResetCooldown;
 
         controller.Step();

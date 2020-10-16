@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class AttackableConnector : MonoBehaviour, IAttackable
+public class AttackableHandler : MonoBehaviour, IAttackable
 {
     public Health health;
     public ParticleSystem petAttackEffect;

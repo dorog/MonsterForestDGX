@@ -16,6 +16,7 @@ public class PetSelectorComponent : PetComponent, IPetSelector
         {
             return -1;
         }
+        
         return selectedPet;
     }
 

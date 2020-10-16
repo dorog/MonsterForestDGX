@@ -9,7 +9,12 @@ public class PetManager : MonoBehaviour, IPetManager
     private event Action<List<PetDataDifference>> ChangedPetData;
 
     private PetData[] petDatas;
-    public IPetDataHandler petDataHandler;
+    private IPetDataHandler petDataHandler;
+
+    public void AddPetDataHandler(IPetDataHandler _petDataHandler)
+    {
+        petDataHandler = _petDataHandler;
+    }
 
     public void LoadData()
     {

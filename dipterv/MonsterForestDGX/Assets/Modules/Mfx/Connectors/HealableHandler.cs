@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class HealableConnector : MonoBehaviour, IHealable
+public class HealableHandler : MonoBehaviour, IHealable
 {
     public Health health;
     public GameEvents gameEvents;

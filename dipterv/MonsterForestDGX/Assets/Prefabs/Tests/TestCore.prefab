@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   petInitializerComponent: {fileID: 3669378945097403419}
-  petSelectorComponent: {fileID: 3669378945547404412}
   gameEvents: {fileID: 3669378946808490425}
+  petSelectorComponent: {fileID: 3669378945547404412}
   healable: {fileID: 0}
   attackable: {fileID: 0}
   resetable: {fileID: 0}
@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   petSelectorComponent: {fileID: 3669378945547404412}
-  petManager: {fileID: 0}
+  petManager: {fileID: 3669378946499652387}
   petSelectorHandler: {fileID: 3161249832692153862}
   gameEvents: {fileID: 3669378946808490425}
 --- !u!1 &3263363480332203495
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feb06ab857ef2c5498be8463fc5c521d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  petTab: {fileID: 0}
+  petTab: {fileID: 1058511581624052587}
 --- !u!1 &3669378945597497044
 GameObject:
   m_ObjectHideFlags: 0

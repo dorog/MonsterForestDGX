@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
+  m_Name: PetInizializer
+  m_EditorClassIdentifier: 
+  exp: 0
+  aliveMonsters: 0
+  gatesState: 0
+  teleports: 0
+  baseSpells: []
+  pets:
+  - Available: 1
+    Pet: {fileID: -4812290835658329080, guid: 37ae9e6e176a7474f8b8ab200e6238fb, type: 3}
+  - Available: 1
+    Pet: {fileID: -798780661532089905, guid: 1d7c39107cbefd141a603c0618ce265a, type: 3}
+  - Available: 0
+    Pet: {fileID: 8546974002409809431, guid: f1b1a4abbe29dd54c937de1e0e805ea3, type: 3}
+  lastSelectedPet: -1

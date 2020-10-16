@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class MagicCircleHandler : MonoBehaviour, IResetable
+public class MagicCircleHandler : Resetable
 {
     public GameObject magicCircle;
 
@@ -88,26 +88,19 @@ public class MagicCircleHandler : MonoBehaviour, IResetable
         magicCircle.SetActive(false);
     }
 
-    public void ResetAction()
+    public override void ResetAction()
     {
         cooldownShower.ResetCoolDown();
         cooldownParticleSystemEffect.Play();
     }
 
-    public void AddCooldownRef(CooldownResetPetAbility cooldownResetPetAbility)
+    public override void SubscribeToReset(Action method)
     {
-        if(cooldownReset != null)
-        {
-            cooldownReset.Deactivate();
-            SuccessCastSpellDelegateEvent -= cooldownReset.ResetCooldown;
-        }
+        SuccessCastSpellDelegateEvent += method;
+    }
 
-        cooldownReset = cooldownResetPetAbility;
-
-        if(cooldownResetPetAbility != null)
-        {
-            SuccessCastSpellDelegateEvent += cooldownResetPetAbility.ResetCooldown;
-            cooldownResetPetAbility.Activate();
-        }
+    public override void UnsubscribeToReset(Action method)
+    {
+        SuccessCastSpellDelegateEvent -= method;
     }
 }

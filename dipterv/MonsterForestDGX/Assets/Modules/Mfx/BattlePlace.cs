@@ -10,8 +10,8 @@ public class BattlePlace : MonoBehaviour
     public Health enemyHealth;
 
     //Merge them?
-    public HealableConnector healable;
-    public AttackableConnector attackable;
+    public HealableHandler healable;
+    public AttackableHandler attackable;
 
     public GameObject go;
 

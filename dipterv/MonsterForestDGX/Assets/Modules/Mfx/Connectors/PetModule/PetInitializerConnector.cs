@@ -1,21 +1,27 @@
 ﻿using UnityEngine;
 
-public class PetInitializerConnector : MonoBehaviour
+public class PetInitializerConnector : AbstractConnector
 {
     public PetInitializerComponent petInitializerComponent;
-    public PetSelectorComponent petSelectorComponent;
 
     public GameEvents gameEvents;
+    
+    public PetManager petManager;
+
+    [Tooltip ("Must have an IPetSelector component!")]
+    public GameObject petSelectorGO;
 
     [Header("Pet Parameter Settings")]
-    public HealableConnector healable;
-    public AttackableConnector attackable;
-    public MagicCircleHandler resetable;
+    public HealableHandler healable;
+    public AttackableHandler attackable;
+    public ResetableHandler resetable;
 
     private PetParameter petParameter;
 
-    private void Start()
+    public override void Setup()
     {
+        IPetSelector petSelector = petSelectorGO.GetComponent<IPetSelector>();
+
         petParameter = new PetParameter()
         {
             Attackable = attackable,
@@ -23,14 +29,18 @@ public class PetInitializerConnector : MonoBehaviour
             Resetable = resetable
         };
 
-        petInitializerComponent.petSelectorComponent = petSelectorComponent;
+        petInitializerComponent.petSelectorComponent = petSelector;
         petInitializerComponent.petParameter = petParameter;
 
         gameEvents.BattleStartDelegateEvent += PetSummonEnabledCheck;
         gameEvents.BattleEndDelegateEvent += petInitializerComponent.VanishPet;
 
         gameEvents.BattleLobbyEnteredDelegateEvent += SetPetInitializerProperties;
+
+        petInitializerComponent.AddPetManager(petManager);
     }
+
+    public override void Load(){}
 
     private void PetSummonEnabledCheck()
     {

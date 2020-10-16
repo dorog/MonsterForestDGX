@@ -6,7 +6,7 @@ public class PetManagerConnector : AbstractConnector
 
     public override void Setup() 
     {
-        petManager.petDataHandler = petDataHandler;
+        petManager.AddPetDataHandler(petDataHandler);
     }
 
     public override void Load()
