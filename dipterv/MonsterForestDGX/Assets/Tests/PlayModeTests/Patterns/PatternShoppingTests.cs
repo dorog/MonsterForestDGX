@@ -6,7 +6,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class ExperienceChangingTests
+    public class PatternShoppingTests
     {
         private PatternShopComponent patternShopComponent;
         private ExperienceManager experienceManager;

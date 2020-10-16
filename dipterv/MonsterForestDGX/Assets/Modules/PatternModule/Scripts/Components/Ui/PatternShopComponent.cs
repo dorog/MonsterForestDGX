@@ -53,11 +53,6 @@ public class PatternShopComponent : MonoBehaviour
 
         quantityText.text = quantity + " " + currency;
 
-        if(patternDatas == null)
-        {
-            Debug.LogWarning("Bug: PatternDatas arent loaded, before the first quantity!");
-            return;
-        }
         for (int i = 0; i < patternDatas.Length; i++)
         {
             patternDatas[i].ShopUiPattern.RefreshQuantity(quantity);
