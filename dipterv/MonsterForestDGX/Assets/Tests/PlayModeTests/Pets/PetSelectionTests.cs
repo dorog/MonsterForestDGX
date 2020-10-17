@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Tests.PetModule
 {
     public class PetSelectionTests
     {
@@ -16,7 +16,8 @@ namespace Tests
 
         private GameObject core;
 
-        private IEnumerator SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp()
         {
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Pets/PetSelecting/PetSelecting.prefab");
             core = Object.Instantiate(coreGO);
@@ -28,11 +29,10 @@ namespace Tests
             petManager = core.GetComponentInChildren<PetManager>();
             
             mockDataIO = core.GetComponentInChildren<MockDataIO>();
-
-            yield return null;
         }
 
-        private void TearDown()
+        [TearDown]
+        public void TearDown()
         {
             Object.Destroy(core);
         }
@@ -40,11 +40,7 @@ namespace Tests
         [UnityTest]
         public IEnumerator DefaultStateTest()
         {
-            yield return SetUp();
-
             Assert.AreEqual(false, petTab.root.activeSelf);
-
-            TearDown();
 
             yield return null;
         }
@@ -52,13 +48,9 @@ namespace Tests
         [UnityTest]
         public IEnumerator NotShowPetTabTest()
         {
-            yield return SetUp();
-
             gameEvents.EnteredLobby();
 
             Assert.AreEqual(false, petTab.root.activeSelf);
-
-            TearDown();
 
             yield return null;
         }
@@ -66,8 +58,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator ShowPetTabTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
 
@@ -86,16 +76,12 @@ namespace Tests
             Assert.AreEqual(true, petUIs[2].root.activeSelf);
             Assert.AreEqual(false, petUIs[2].selectedGo.activeSelf);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator SelectOnePetTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
 
@@ -114,16 +100,12 @@ namespace Tests
 
             Assert.AreEqual(1, mockDataIO.LocalGameData.lastSelectedPet);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator SelectOneThanAnotherOneTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
 
@@ -143,16 +125,12 @@ namespace Tests
 
             Assert.AreEqual(2, mockDataIO.LocalGameData.lastSelectedPet);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator SelectOneThanSelectTheSameOneTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
 
@@ -171,8 +149,6 @@ namespace Tests
             Assert.AreEqual(false, petUIs[2].selectedGo.activeSelf);
 
             Assert.AreEqual(-1, mockDataIO.LocalGameData.lastSelectedPet);
-
-            TearDown();
 
             yield return null;
         }
@@ -180,15 +156,11 @@ namespace Tests
         [UnityTest]
         public IEnumerator SelectorFightTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
             gameEvents.Fight();
 
             Assert.AreEqual(false, petTab.root.activeSelf);
-
-            TearDown();
 
             yield return null;
         }
@@ -196,8 +168,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator SelectNothingThanNextFightTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
 
@@ -216,8 +186,6 @@ namespace Tests
             Assert.AreEqual(false, petUIs[2].selectedGo.activeSelf);
 
             Assert.AreEqual(-1, mockDataIO.LocalGameData.lastSelectedPet);
-
-            TearDown();
 
             yield return null;
         }
@@ -225,8 +193,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator SelectOneThanNextFightTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
 
@@ -248,16 +214,12 @@ namespace Tests
 
             Assert.AreEqual(1, mockDataIO.LocalGameData.lastSelectedPet);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator UnlockPetTest()
         {
-            yield return SetUp();
-
             petManager.UnlockPet(0);
 
             gameEvents.petEnable = true;
@@ -276,16 +238,12 @@ namespace Tests
 
             Assert.AreEqual(-1, mockDataIO.LocalGameData.lastSelectedPet);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator SelectOneThanUnlockAnotherOneTest()
         {
-            yield return SetUp();
-
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
 
@@ -304,8 +262,6 @@ namespace Tests
             Assert.AreEqual(false, petUIs[2].selectedGo.activeSelf);
 
             Assert.AreEqual(1, mockDataIO.LocalGameData.lastSelectedPet);
-
-            TearDown();
 
             yield return null;
         }

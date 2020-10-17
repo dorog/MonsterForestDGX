@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Tests.PetModule
 {
     public class PetUnlockingTests
     {
@@ -12,7 +12,8 @@ namespace Tests
         private MockPetUnlockSpot[] unlockSpots;
         private GameObject core;
 
-        private IEnumerator SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp2()
         {
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Pets/PetUnlocking/PetUnlocking.prefab");
             core = Object.Instantiate(coreGO);
@@ -25,7 +26,8 @@ namespace Tests
             yield return null;
         }
 
-        private void TearDown()
+        [TearDown]
+        public void TearDown2()
         {
             Object.Destroy(core);
         }
@@ -33,8 +35,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator UnlockFirstOneTest()
         {
-            yield return SetUp();
-
             unlockSpots[0].UnlockPet();
 
             Debug.Log("Loc: " + mockDataIO.LocalGameData.availablePets.Length);
@@ -44,24 +44,18 @@ namespace Tests
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[2]);
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[3]);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator UnlockMiddleOneTest()
         {
-            yield return SetUp();
-
             unlockSpots[1].UnlockPet();
 
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[0]);
             Assert.AreEqual(true, mockDataIO.LocalGameData.availablePets[1]);
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[2]);
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[3]);
-
-            TearDown();
 
             yield return null;
         }
@@ -69,8 +63,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator UnlockLastOneTest()
         {
-            yield return SetUp();
-
             unlockSpots[3].UnlockPet();
 
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[0]);
@@ -78,16 +70,12 @@ namespace Tests
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[2]);
             Assert.AreEqual(true, mockDataIO.LocalGameData.availablePets[3]);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator UnlockMoreTest()
         {
-            yield return SetUp();
-
             unlockSpots[1].UnlockPet();
             unlockSpots[3].UnlockPet();
 
@@ -96,16 +84,12 @@ namespace Tests
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[2]);
             Assert.AreEqual(true, mockDataIO.LocalGameData.availablePets[3]);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator UnlockTheSameTwiceTest()
         {
-            yield return SetUp();
-
             unlockSpots[1].UnlockPet();
             unlockSpots[1].UnlockPet();
 
@@ -113,8 +97,6 @@ namespace Tests
             Assert.AreEqual(true, mockDataIO.LocalGameData.availablePets[1]);
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[2]);
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[3]);
-
-            TearDown();
 
             yield return null;
         }

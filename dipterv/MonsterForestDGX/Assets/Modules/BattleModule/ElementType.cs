@@ -1,8 +1,7 @@
 ﻿
 public enum ElementType
 {
-    //TODO: Poison, Fire burn?
-    TrueDamage, Fire, Water, Poison, Laser, Physical, Air, Earth
+    TrueDamage, Fire, Water, Air, Earth
 }
 
 public static class ElementTypeExtensions
@@ -20,7 +19,7 @@ public static class ElementTypeExtensions
             case "Earth":
                 return ElementType.Earth;
             default:
-                return ElementType.Air;
+                return ElementType.TrueDamage;
         }
     }
 }

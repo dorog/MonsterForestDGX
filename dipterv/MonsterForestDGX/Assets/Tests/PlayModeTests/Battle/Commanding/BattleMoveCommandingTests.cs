@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Battle
+namespace Tests.Battle.Commanding
 {
     public class BattleMoveCommandingTests
     {

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Tests.PatternModule
 {
     public class PatternRecognizingTests
     {
@@ -13,7 +13,8 @@ namespace Tests
 
         private GameObject core;
 
-        private IEnumerator SetUp()
+        [UnitySetUp]
+        public IEnumerator SetUp()
         {
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Patterns/PatternRecognizing/PatternRecognizing.prefab");
             core = Object.Instantiate(coreGO);
@@ -22,11 +23,10 @@ namespace Tests
 
             patterns = core.GetComponentsInChildren<MfxPattern>();
             patternRecognizer = core.GetComponentInChildren<PatternRecognizerComponent>();
-
-            yield return null;
         }
 
-        private void TearDown()
+        [TearDown]
+        public void TearDown()
         {
             Object.Destroy(core);
         }
@@ -34,8 +34,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator GetUnavailablePatternTest()
         {
-            yield return SetUp();
-
             patternRecognizer.Guess(new Vector2(0, 0));
             patternRecognizer.Guess(new Vector2(0, 100));
             patternRecognizer.Guess(new Vector2(100, 0));
@@ -46,8 +44,6 @@ namespace Tests
             SpellResult spellResult = patternRecognizer.GetSpell();
 
             Assert.AreEqual(null, spellResult);
-
-            TearDown();
 
             yield return null;
         }
@@ -55,13 +51,9 @@ namespace Tests
         [UnityTest]
         public IEnumerator GetWithoutGuessTest()
         {
-            yield return SetUp();
-
             SpellResult spellResult = patternRecognizer.GetSpell();
 
             Assert.AreEqual(null, spellResult);
-
-            TearDown();
 
             yield return null;
         }
@@ -69,8 +61,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator GetShowablePatternTest()
         {
-            yield return SetUp();
-
             patternRecognizer.Guess(new Vector2(0, 0));
             patternRecognizer.Guess(new Vector2(0, -100));
             patternRecognizer.Guess(new Vector2(-100, 0));
@@ -82,16 +72,12 @@ namespace Tests
 
             Assert.AreEqual(null, spellResult);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator GetAvailablePatternTest()
         {
-            yield return SetUp();
-
             patternRecognizer.Guess(new Vector2(0, 0));
             patternRecognizer.Guess(new Vector2(100, 0));
             patternRecognizer.Guess(new Vector2(0, 100));
@@ -104,16 +90,12 @@ namespace Tests
             Assert.AreEqual(2, spellResult.Index);
             Assert.AreEqual(1, spellResult.Coverage);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator GetAvailablePatternButCoverageNotEnoughTest()
         {
-            yield return SetUp();
-
             patternRecognizer.Guess(new Vector2(0, 0));
             patternRecognizer.Guess(new Vector2(100, 0));
 
@@ -121,16 +103,12 @@ namespace Tests
 
             Assert.AreEqual(null, spellResult);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator BuyShowAblePatternAndGetItTest()
         {
-            yield return SetUp();
-
             patterns[1].Increase();
 
             patternRecognizer.Guess(new Vector2(0, 0));
@@ -145,16 +123,12 @@ namespace Tests
             Assert.AreEqual(1, spellResult.Index);
             Assert.AreEqual(1, spellResult.Coverage);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator UnlockUnavailablePatternAndGetItTest()
         {
-            yield return SetUp();
-
             patterns[0].Increase();
 
             patternRecognizer.Guess(new Vector2(0, 0));
@@ -168,16 +142,12 @@ namespace Tests
 
             Assert.AreEqual(null, spellResult);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator UnlockThanBuyUnavailablePatternAndGetItTest()
         {
-            yield return SetUp();
-
             patterns[0].Increase();
             patterns[0].Increase();
 
@@ -193,16 +163,12 @@ namespace Tests
             Assert.AreEqual(0, spellResult.Index);
             Assert.AreEqual(1, spellResult.Coverage);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator GetOneWithGuessesThanGetAgainWithoutGuess()
         {
-            yield return SetUp();
-
             patternRecognizer.Guess(new Vector2(0, 0));
             patternRecognizer.Guess(new Vector2(100, 0));
             patternRecognizer.Guess(new Vector2(0, 100));
@@ -215,8 +181,6 @@ namespace Tests
             SpellResult spellResultWithoutGuess = patternRecognizer.GetSpell();
 
             Assert.AreEqual(null, spellResultWithoutGuess);
-
-            TearDown();
 
             yield return null;
         }

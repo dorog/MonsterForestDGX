@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Tests.PatternModule
 {
     public class PatternShoppingTests
     {
@@ -13,18 +13,18 @@ namespace Tests
 
         private GameObject core;
 
-        private IEnumerator SetUp()
+        [SetUp]
+        public void SetUp()
         {
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Patterns/PatternShopping/PatternShopping.prefab");
             core = Object.Instantiate(coreGO);
 
             patternShopComponent = core.GetComponentInChildren<PatternShopComponent>();
             experienceManager = core.GetComponentInChildren<ExperienceManager>();
-
-            yield return null;
         }
 
-        private void TearDown()
+        [TearDown]
+        public void TearDown()
         {
             Object.Destroy(core);
         }
@@ -33,8 +33,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator NoBuyableSpellTest()
         {
-            yield return SetUp();
-
             experienceManager.AddExp(50);
             experienceManager.Save();
 
@@ -47,16 +45,12 @@ namespace Tests
             Assert.AreEqual(false, patternUIs[2].button.interactable);
             Assert.AreEqual(false, patternUIs[2].button.gameObject.activeSelf);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator OneBuyableSpellTest()
         {
-            yield return SetUp();
-
             experienceManager.AddExp(110);
             experienceManager.Save();
 
@@ -69,16 +63,12 @@ namespace Tests
             Assert.AreEqual(false, patternUIs[2].button.interactable);
             Assert.AreEqual(false, patternUIs[2].button.gameObject.activeSelf);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator MoreBuyableSpellTest()
         {
-            yield return SetUp();
-
             experienceManager.AddExp(5000);
             experienceManager.Save();
 
@@ -91,16 +81,12 @@ namespace Tests
             Assert.AreEqual(false, patternUIs[2].button.interactable);
             Assert.AreEqual(false, patternUIs[2].button.gameObject.activeSelf);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator BuyableThanNotBuyableSpellTest()
         {
-            yield return SetUp();
-
             experienceManager.AddExp(200);
             experienceManager.Save();
 
@@ -123,16 +109,12 @@ namespace Tests
             Assert.AreEqual(false, patternUIs[2].button.interactable);
             Assert.AreEqual(false, patternUIs[2].button.gameObject.activeSelf);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator BuyOneSpellTest()
         {
-            yield return SetUp();
-
             experienceManager.AddExp(500);
             experienceManager.Save();
 
@@ -151,8 +133,6 @@ namespace Tests
             Assert.AreEqual(false, patternUIs[1].button.interactable);
             Assert.AreEqual(false, patternUIs[2].button.interactable);
             Assert.AreEqual(false, patternUIs[2].button.gameObject.activeSelf);
-
-            TearDown();
 
             yield return null;
         }

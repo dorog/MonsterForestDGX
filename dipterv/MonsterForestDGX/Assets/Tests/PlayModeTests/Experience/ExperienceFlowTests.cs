@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Tests.ExperienceModule
 {
     public class ExperienceCollectingTests
     {
@@ -17,7 +17,8 @@ namespace Tests
 
         private GameObject core;
 
-        private IEnumerator SetUp()
+        [SetUp]
+        public void SetUp()
         {
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Experience/ExpCollecting/ExpCollecting.prefab");
             core = Object.Instantiate(coreGO);
@@ -32,11 +33,10 @@ namespace Tests
 
             battleManager.BattleLobby(redFighter, blueFighter);
             battleManager.BattleStart();
-
-            yield return null;
         }
 
-        private void TearDown()
+        [TearDown]
+        public void TearDown()
         {
             Object.Destroy(core);
         }
@@ -44,8 +44,6 @@ namespace Tests
         [UnityTest]
         public IEnumerator CastExperienceTest()
         {
-            yield return SetUp();
-
             SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
             magicCircleHandler.CastSpell(spellResult);
 
@@ -53,16 +51,12 @@ namespace Tests
 
             Assert.AreEqual(ExpType.Cast.GetExp(), mockDataIO.LocalGameData.exp);
 
-            TearDown();
-
             yield return null;
         }
 
         [UnityTest]
         public IEnumerator CastAndKillExperienceTest()
         {
-            yield return SetUp();
-
             magicCircleHandler.transform.localRotation = Quaternion.Euler(0, 45, 0);
 
             SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
@@ -73,17 +67,11 @@ namespace Tests
             battleManager.RedFighterDied();
 
             Assert.AreEqual(ExpType.Cast.GetExp() + ExpType.Kill.GetExp(), mockDataIO.LocalGameData.exp);
-
-            TearDown();
-
-            yield return null;
         }
 
         [UnityTest]
         public IEnumerator AllExperienceTest()
         {
-            yield return SetUp();
-
             SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
             magicCircleHandler.CastSpell(spellResult);
 
@@ -92,25 +80,17 @@ namespace Tests
             battleManager.RedFighterDied();
 
             Assert.AreEqual(ExpType.Cast.GetExp() + ExpType.Hit.GetExp() + ExpType.Kill.GetExp(), mockDataIO.LocalGameData.exp);
-
-            TearDown();
-
-            yield return null;
         }
 
         [UnityTest]
         public IEnumerator CastButDieExperienceTest()
         {
-            yield return SetUp();
-
             SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
             magicCircleHandler.CastSpell(spellResult);
 
             battleManager.BlueFighterDied();
 
             Assert.AreEqual(0, mockDataIO.LocalGameData.exp);
-
-            TearDown();
 
             yield return null;
         }
