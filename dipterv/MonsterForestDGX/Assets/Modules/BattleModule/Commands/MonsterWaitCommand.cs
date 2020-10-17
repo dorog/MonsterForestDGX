@@ -17,7 +17,5 @@ public class MonsterWaitCommand : AbstractCommand
 
             yield return null;
         }
-
-        Controller.FinishedTheCommand();
     }
 }

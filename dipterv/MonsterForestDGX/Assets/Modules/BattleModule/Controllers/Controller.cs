@@ -10,9 +10,9 @@ public class Controller : MonoBehaviour
 
     public bool looping = true;
 
-    private void Start()
+    public void InitCommands()
     {
-        foreach(var command in commands)
+        foreach (var command in commands)
         {
             command.Controller = this;
         }

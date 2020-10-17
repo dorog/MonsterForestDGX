@@ -8,10 +8,8 @@ public class MonsterMoveCommand : AbstractCommand
 
     protected override IEnumerator ExecuteCommand()
     {
-        StartCoroutine(turnFill.Moving(forward, turnFill.time));
+        StartCoroutine(turnFill.Moving(forward));
 
-        yield return new WaitForSeconds(turnFill.time);
-
-        Controller.FinishedTheCommand();
+        yield return new WaitForSeconds(turnFill.GetNecessaryTimeForMoving());
     }
 }

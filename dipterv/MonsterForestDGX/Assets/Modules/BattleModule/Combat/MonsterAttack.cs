@@ -17,7 +17,7 @@ public class MonsterAttack : IAttack
 
     public override float Attack()
     {
-        float random = Random.Range(0, 101);
+        float random = Random.Range(1, 101);
 
         string animationKey;
         int animation;

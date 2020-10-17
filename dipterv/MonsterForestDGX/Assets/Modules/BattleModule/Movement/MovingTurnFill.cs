@@ -3,37 +3,32 @@ using UnityEngine;
 
 public class MovingTurnFill : TurnFill
 {
-    public string movingAnimation = "locomotion";
-    public float forwardValue = 1f;
-    public float backWardValue = 1f;
     private int direction = -1;
 
-    private Vector3 monsterTurnPosition;
-    private Vector3 playerTurnPosition;
+    public float movementTime = 3f;
 
-    private void Start()
-    {
-        playerTurnPosition = transform.position;
-        monsterTurnPosition = transform.position + transform.forward * distance;
-    }
+    [Header ("Animation Settings")]
+    public string movingAnimation = "locomotion";
+    public float forwardValue = 1f;
+    public float backwardValue = 1f;
 
-    public override IEnumerator Moving(bool forward, float time)
+    public override IEnumerator Moving(bool forward)
     {
         direction = forward ? 1 : -1;
-        float value = forward ? forwardValue : backWardValue;
+        float value = forward ? forwardValue : backwardValue;
         animator.SetFloat(movingAnimation, value * direction);
 
-        if (forward)
-        {
-            StartCoroutine(EnumeratorMoving.MoveToPosition(transform, monsterTurnPosition, time));
-        }
-        else
-        {
-            StartCoroutine(EnumeratorMoving.MoveToPosition(transform, playerTurnPosition, time));
-        }
+        Vector3 goalPosition = transform.position + distance * transform.forward * direction;
 
-        yield return new WaitForSeconds(time);
+        StartCoroutine(EnumeratorMoving.MoveToPosition(transform, goalPosition, movementTime));
+
+        yield return new WaitForSeconds(movementTime);
 
         animator.SetFloat(movingAnimation, 0);
+    }
+
+    public override float GetNecessaryTimeForMoving()
+    {
+        return movementTime;
     }
 }

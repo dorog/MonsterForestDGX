@@ -7,7 +7,14 @@ public abstract class AbstractCommand : MonoBehaviour
 
     public void Execute()
     {
-        StartCoroutine(nameof(ExecuteCommand));
+        StartCoroutine(nameof(ExecutingCommand));
+    }
+
+    private IEnumerator ExecutingCommand()
+    {
+        yield return ExecuteCommand();
+
+        Controller.FinishedTheCommand();
     }
 
     protected abstract IEnumerator ExecuteCommand();

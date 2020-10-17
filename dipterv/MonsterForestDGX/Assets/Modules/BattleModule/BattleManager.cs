@@ -16,6 +16,8 @@ public class BattleManager : MonoBehaviour
     public event Action Draw;
     public event Action Withdraw;
 
+    public Controller controller;
+
     public void BattleLobby(Fighter _redFighter, Fighter _blueFighter)
     {
         redFighter = _redFighter;
@@ -30,17 +32,28 @@ public class BattleManager : MonoBehaviour
 
     public void BattleStart()
     {
-        redFighter.Fight();
-        blueFighter.Fight();
+        controller.Step();
     }
 
-    public void PlayerTurn()
+    public void TurnChange(Fighter fighter)
+    {
+        if(redFighter == fighter)
+        {
+            RedFighterTurn();
+        }
+        else if(blueFighter == fighter)
+        {
+            BlueFighterTurn();
+        }
+    }
+
+    private void BlueFighterTurn()
     {
         BlueFighterTurnStartDelegateEvent?.Invoke();
         RedFighterTurnEndDelegateEvent?.Invoke();
     }
 
-    public void MonsterTurn()
+    private void RedFighterTurn()
     {
         BlueFighterTurnEndDelegateEvent?.Invoke();
         RedFighterTurnStartDelegateEvent?.Invoke();

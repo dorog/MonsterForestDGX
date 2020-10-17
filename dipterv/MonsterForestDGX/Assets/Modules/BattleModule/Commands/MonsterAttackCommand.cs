@@ -10,28 +10,28 @@ public class MonsterAttackCommand : AbstractCommand
 
     private bool isCancelled = false;
 
-    //public Player player;
+    public Fighter enemy;
+    public float attackDelay = 2f;
 
     protected override IEnumerator ExecuteCommand()
     {
-        Debug.Log("Add connector!");
-        //player.SubscribeToDie(CancelAttacking);
+        enemy.SubscribeToDie(CancelAttacking);
 
         isCancelled = false;
 
         float animationTime = Attack();
 
-        yield return new WaitForSeconds(2 + animationTime);
+        yield return new WaitForSeconds(attackDelay + animationTime);
 
         for (int i = 0; i < extraAttackChances.Length; i++)
         {
-            float extraAttack = Random.Range(0, 101);
+            float extraAttack = Random.Range(1, 101);
 
             if (!isCancelled && extraAttack <= extraAttackChances[i])
             {
                 animationTime = Attack();
 
-                yield return new WaitForSeconds(2 + animationTime);
+                yield return new WaitForSeconds(attackDelay + animationTime);
             }
             else
             {
@@ -39,9 +39,7 @@ public class MonsterAttackCommand : AbstractCommand
             }
         }
 
-        Debug.Log("Add connector!");
-        //player.UnsubscribeToDie(CancelAttacking);
-        Controller.FinishedTheCommand();
+        enemy.UnsubscribeToDie(CancelAttacking);
     }
 
     private float Attack()
