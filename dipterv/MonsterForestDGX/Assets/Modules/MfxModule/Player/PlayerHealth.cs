@@ -9,13 +9,6 @@ public class PlayerHealth : Health
 
     public TimeDamageBlock timeDamageBlock;
 
-    public override void SetUpHealth()
-    {
-        base.SetUpHealth();
-        
-        hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
-    }
-
     public void BlockDown()
     {
         block.SetActive(false);
@@ -49,6 +42,9 @@ public class PlayerHealth : Health
     public override void TakeDamage(float dmg, ElementType magicType)
     {
         base.TakeDamage(dmg, magicType);
+
+        hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
+
         if (currentHp < 0)
         {
             ResetHealth();

@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Battle.Commanding
+namespace Tests.BattleModule.Commanding
 {
     public class BattleFightTurnCommandingTests
     {
@@ -62,7 +62,7 @@ namespace Tests.Battle.Commanding
             controller.commands = new AbstractCommand[] { fighterTurnCommands[0] };
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(1, BlueFighterTurnStart.Called);
             Assert.AreEqual(1, RedFighterTurnEnd.Called);
@@ -78,11 +78,11 @@ namespace Tests.Battle.Commanding
             controller.looping = true;
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(2, BlueFighterTurnStart.Called);
             Assert.AreEqual(2, RedFighterTurnEnd.Called);
@@ -96,7 +96,7 @@ namespace Tests.Battle.Commanding
             controller.commands = new AbstractCommand[] { fighterTurnCommands[1] };
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(1, BlueFighterTurnEnd.Called);
             Assert.AreEqual(1, RedFighterTurnStart.Called);
@@ -112,11 +112,11 @@ namespace Tests.Battle.Commanding
             controller.looping = true;
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(2, BlueFighterTurnEnd.Called);
             Assert.AreEqual(2, RedFighterTurnStart.Called);
@@ -130,11 +130,11 @@ namespace Tests.Battle.Commanding
             controller.commands = new AbstractCommand[] { fighterTurnCommands[0], fighterTurnCommands[1] };
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(1, BlueFighterTurnEnd.Called);
             Assert.AreEqual(1, RedFighterTurnStart.Called);
@@ -150,11 +150,11 @@ namespace Tests.Battle.Commanding
             controller.commands = new AbstractCommand[] { fighterTurnCommands[1], fighterTurnCommands[0] };
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(1, BlueFighterTurnEnd.Called);
             Assert.AreEqual(1, RedFighterTurnStart.Called);
@@ -172,19 +172,19 @@ namespace Tests.Battle.Commanding
             controller.looping = true;
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(2, BlueFighterTurnEnd.Called);
             Assert.AreEqual(2, RedFighterTurnStart.Called);
@@ -202,19 +202,19 @@ namespace Tests.Battle.Commanding
             controller.looping = true;
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(2, BlueFighterTurnEnd.Called);
             Assert.AreEqual(2, RedFighterTurnStart.Called);

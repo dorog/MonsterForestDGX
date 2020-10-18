@@ -1,26 +1,19 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class Health : MonoBehaviour
 {
     public float maxHp = 100f;
     public float currentHp;
     public Fighter fighter;
-    public Image hpImage;
     public Resistant resistant;
-
-    public BattleManager battleManager;
 
     [Header("Only for healing (optional)")]
     public ParticleSystem healEffect;
-    public ParticleSystem petAttackEffect;
 
     public void Start()
     {
         currentHp = maxHp;
     }
-
-    public virtual void SetUpHealth(){}
 
     public virtual void TakeDamage(float dmg, ElementType magicType)
     {
@@ -29,8 +22,6 @@ public abstract class Health : MonoBehaviour
         realDmg = GetBlockedDamage(realDmg);
 
         currentHp -= realDmg;
-
-        SetUpHealth();
 
         if (currentHp <= 0)
         {
@@ -47,7 +38,6 @@ public abstract class Health : MonoBehaviour
     public virtual void ResetHealth()
     {
         currentHp = maxHp;
-        SetUpHealth();
     }
 
     public bool IsFull()
@@ -65,8 +55,6 @@ public abstract class Health : MonoBehaviour
         {
             currentHp = maxHp;
         }
-
-        SetUpHealth();
 
         if(healEffect != null)
         {

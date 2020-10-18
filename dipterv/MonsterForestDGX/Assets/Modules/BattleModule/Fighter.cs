@@ -3,10 +3,27 @@ using UnityEngine;
 
 public abstract class Fighter : MonoBehaviour
 {
+    private event Action Attacking;
     private event Action Died;
 
     private event Action StartTurn;
     private event Action EndTurn;
+
+    private Fighter enemy;
+
+    private void SetEnemy(Fighter _enemy)
+    {
+        enemy = _enemy;
+
+        enemy.SubscribeToAttack(React);
+        enemy.SubscribeToDie(DefeatedEnemy);
+    }
+
+    private void DefeatedEnemy()
+    {
+        enemy.UnsubscribeToAttack(React);
+        enemy.UnsubscribeToDie(DefeatedEnemy);
+    }
 
     public virtual void Die()
     {
@@ -22,7 +39,11 @@ public abstract class Fighter : MonoBehaviour
         Died -= method;
     }
 
-    public abstract void SetupForFight();
+    public virtual void SetupForFight(Fighter fighter)
+    {
+        SetEnemy(fighter);
+    }
+
     public virtual void Fight()
     {
         StartTurn?.Invoke();
@@ -50,5 +71,22 @@ public abstract class Fighter : MonoBehaviour
     public void UnsubscribeToEndTurn(Action method)
     {
         EndTurn -= method;
+    }
+
+    protected abstract void React();
+
+    public virtual void Attack()
+    {
+        Attacking?.Invoke();
+    }
+
+    public void SubscribeToAttack(Action method)
+    {
+        Attacking += method;
+    }
+
+    public void UnsubscribeToAttack(Action method)
+    {
+        Attacking -= method;
     }
 }

@@ -26,13 +26,13 @@ public class BattleManager : MonoBehaviour
         redFighter.SubscribeToDie(RedFighterDied);
         blueFighter.SubscribeToDie(BlueFighterDied);
 
-        redFighter.SetupForFight();
-        blueFighter.SetupForFight();
+        redFighter.SetupForFight(blueFighter);
+        blueFighter.SetupForFight(redFighter);
     }
 
     public void BattleStart()
     {
-        controller.Step();
+        controller.StartController();
     }
 
     public void TurnChange(Fighter fighter)
@@ -79,6 +79,7 @@ public class BattleManager : MonoBehaviour
 
     private void FightOver()
     {
+        controller.StopController();
         UnsubscribeDieFromDieEvents();
     }
 

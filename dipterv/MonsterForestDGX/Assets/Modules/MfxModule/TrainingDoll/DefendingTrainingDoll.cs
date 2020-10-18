@@ -29,9 +29,9 @@ public class DefendingTrainingDoll : AiFighter
         return GetComponent<Health>();
     }
 
-    public void React()
+    protected override void React()
     {
-        float random = Random.Range(0, 101);
+        float random = Random.Range(1, 101);
 
         if (random <= blockChance)
         {
@@ -59,16 +59,15 @@ public class DefendingTrainingDoll : AiFighter
 
     public override void Fight()
     {
+        base.Fight();
+
         trainingCampUI.EnableUI();
 
         cooldownReset.Init(resetable.gameObject);
         magicCircleHandler.SuccessCastSpellDelegateEvent += cooldownReset.ResetCooldown;
 
-        controller.Step();
+        controller.StartController();
     }
 
-    public override void Disable()
-    {
-        
-    }
+    public override void Disable(){}
 }

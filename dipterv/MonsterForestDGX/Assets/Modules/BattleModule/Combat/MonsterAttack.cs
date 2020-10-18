@@ -8,22 +8,21 @@ public class MonsterAttack : IAttack
     public MonsterAttackClass[] hardAttacks;
     public MonsterAttackClass[] ultimateAttacks;
 
-    [Range (0, 100)]
-    public float normalAttakChance = 70;
-    [Range(0, 100)]
-    public float hardAttackChance = 20;
-    [Range(0, 100)]
-    public float ultimateAttackChance = 10;
+    public MonsterAttackChances attackChances;
+
+    public Monster monster;
 
     public override float Attack()
     {
+        monster.Attack();
+
         float random = Random.Range(1, 101);
 
         string animationKey;
         int animation;
         float time;
 
-        if (random <= normalAttakChance)
+        if (random <= attackChances.normalAttakChance)
         {
             animation = GetOneRandomAnimation(normalAttacks);
             animationKey = normalAttacks[animation].animation;
@@ -33,7 +32,7 @@ public class MonsterAttack : IAttack
                 attackGO.SetActive(true);
             }
         }
-        else if (random - normalAttakChance <= hardAttackChance)
+        else if (random - attackChances.normalAttakChance <= attackChances.hardAttackChance)
         {
             animation = GetOneRandomAnimation(hardAttacks);
             animationKey = hardAttacks[animation].animation;

@@ -3,16 +3,16 @@ public class AutoController : Controller
 {
     private bool isCancelled = false;
 
-    public void StartController()
+    public override void StartController()
     {
         isCancelled = false;
-        Step();
+        base.StartController();
     }
 
-    public void StopController()
+    public override void StopController()
     {
-        ResetController();
         isCancelled = true;
+        base.StopController();
     }
 
     public override void FinishedTheCommand()
@@ -20,7 +20,7 @@ public class AutoController : Controller
         base.FinishedTheCommand();
         if (!isCancelled)
         {
-            Step();
+            base.StartController();
         }
     }
 }

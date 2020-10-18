@@ -1701,6 +1701,7 @@ MonoBehaviour:
   petTab: {fileID: 2133249554}
   resistantTab: {fileID: 837364783}
   battleLobbyUI: {fileID: 488110037}
+  battleConnector: {fileID: 0}
 --- !u!1 &1133031322
 GameObject:
   m_ObjectHideFlags: 0
@@ -2885,6 +2886,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 4096
+  keyBindingManager: {fileID: 0}
 --- !u!114 &5932595735893776523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2937,13 +2939,8 @@ MonoBehaviour:
   maxHp: 100
   currentHp: 100
   fighter: {fileID: 1220643221}
-  hpImage: {fileID: 0}
-  lowColor: {r: 1, g: 0, b: 0, a: 1}
-  fullColor: {r: 0.10734272, g: 1, b: 0, a: 1}
   resistant: {fileID: 11400000, guid: 4fe9cc2d1942a334fa8bf19d0ccf4223, type: 2}
-  battleManager: {fileID: 0}
   healEffect: {fileID: 1339854252}
-  petAttackEffect: {fileID: 0}
   hp: {fileID: 182605256}
   block: {fileID: 2092707489}
   timeDamageBlock: {fileID: 0}
@@ -2959,7 +2956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a363175739223e4d8248a9dc5436d7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 1220643220}
   playerHealth: {fileID: 1220643220}
   leftHandCanvas: {fileID: 1565776234}
   rightHandCanvas: {fileID: 1300218612}
@@ -2975,18 +2971,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acf4bf70adb0a6f4194ae64a1fc38fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 0
   magicCircle: {fileID: 0}
-  coolDown: {fileID: 830464538}
-  player: {fileID: 1220643221}
   hand: {fileID: 5850135719896980824}
   magicCircleExtraDistance: 0.4
-  battleManager: {fileID: 0}
   cooldownParticleSystemEffect: {fileID: 0}
-  gameEvents: {fileID: 0}
-  mfxPatternDataHandler: {fileID: 0}
-  castEffects: []
-  castEffectTransformReference: {fileID: 0}
+  castEffectHandler: {fileID: 0}
+  keyBindingManager: {fileID: 0}
+  battleManager: {fileID: 0}
+  experienceManager: {fileID: 0}
 --- !u!114 &1220643225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3008,6 +3000,8 @@ MonoBehaviour:
   simpleDamageShieldMaxAngle: 90
   simpleTimeDamageBlock: {fileID: 1220643226}
   battleManager: {fileID: 0}
+  gameEvents: {fileID: 0}
+  keyBindingManager: {fileID: 0}
 --- !u!114 &1220643226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3054,6 +3048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  petOwner: {fileID: 0}
 --- !u!114 &1152169252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,6 +3063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 180
   player: {fileID: 1220643221}
+  keyBindingManager: {fileID: 0}
 --- !u!1 &5932595736034050564
 GameObject:
   m_ObjectHideFlags: 0

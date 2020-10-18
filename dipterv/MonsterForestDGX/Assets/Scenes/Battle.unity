@@ -198,9 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quantityText: {fileID: 1109492140}
   content: {fileID: 1519214593}
-  SpellElementInfoUI: {fileID: 741850451}
   currency: 
-  patternInfo: {fileID: 114339652}
 --- !u!1001 &15661215
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -294,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  playerTurn: 1
+  fighter: {fileID: 0}
   battleManager: {fileID: 0}
 --- !u!4 &15954301
 Transform:
@@ -1420,6 +1418,7 @@ MonoBehaviour:
   availableSign: {fileID: 378987663}
   petPosition: {fileID: 5112390}
   colliderTag: Player
+  keyBindingManager: {fileID: 0}
 --- !u!65 &85140501
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1634,7 +1633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1b9c2b7f3cdcb4094a66bd1ea3b7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellElementInfoUI: {fileID: 741850451}
+  root: {fileID: 0}
 --- !u!1001 &116535208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2375,6 +2374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e15e56b3c1843f4c9ed955946ee8e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
 --- !u!114 &186861959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,14 +2387,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49e4555b44ca80344ba22d61f07e7ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiPatterns: []
-  uiPattern: {fileID: 3298745699287843216, guid: c755b7a7ab73c87418425947db69030b,
-    type: 3}
+  magicCircleHandler: {fileID: 0}
   patternManager: {fileID: 1710199213}
-  patternRecognizerComponent: {fileID: 572558793}
-  patternShopComponent: {fileID: 5575098}
   traningCampPatternComponent: {fileID: 186861958}
-  patternInfoComponent: {fileID: 114339652}
 --- !u!1 &187452766
 GameObject:
   m_ObjectHideFlags: 0
@@ -3150,7 +3145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   experienceManager: {fileID: 130172645}
-  dataManager: {fileID: 1152767550}
   patternShopComponent: {fileID: 5575098}
 --- !u!4 &232481384
 Transform:
@@ -6962,13 +6956,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  battleManager: {fileID: 1735545953}
   enemy: {fileID: 660884783}
   enemyHealth: {fileID: 660884782}
+  healable: {fileID: 0}
+  attackable: {fileID: 0}
   go: {fileID: 1749151896}
+  gameEvents: {fileID: 0}
   petPosition: {fileID: 0}
   petEnable: 0
   resistantEnable: 0
+  battleManager: {fileID: 1735545953}
+  petInitializer: {fileID: 0}
 --- !u!1001 &439710488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7178,13 +7176,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  battleManager: {fileID: 1735545953}
   enemy: {fileID: 685164625}
   enemyHealth: {fileID: 685164624}
+  healable: {fileID: 0}
+  attackable: {fileID: 0}
   go: {fileID: 1511226268}
+  gameEvents: {fileID: 0}
   petPosition: {fileID: 0}
   petEnable: 0
   resistantEnable: 0
+  battleManager: {fileID: 1735545953}
+  petInitializer: {fileID: 0}
 --- !u!4 &458893883
 Transform:
   m_ObjectHideFlags: 0
@@ -9377,6 +9379,8 @@ MonoBehaviour:
   magicCircleHandler: {fileID: 1220643223}
   hand: {fileID: 1101447979}
   circleOn: 0
+  keyBindingManager: {fileID: 0}
+  gameEvents: {fileID: 0}
 --- !u!1 &604582563
 GameObject:
   m_ObjectHideFlags: 0
@@ -10167,13 +10171,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  battleManager: {fileID: 1735545953}
   enemy: {fileID: 978768450}
   enemyHealth: {fileID: 978768451}
+  healable: {fileID: 0}
+  attackable: {fileID: 0}
   go: {fileID: 67193501}
+  gameEvents: {fileID: 0}
   petPosition: {fileID: 0}
   petEnable: 0
   resistantEnable: 0
+  battleManager: {fileID: 1735545953}
+  petInitializer: {fileID: 0}
 --- !u!1001 &641440574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10526,7 +10534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  playerTurn: 1
+  fighter: {fileID: 0}
   battleManager: {fileID: 0}
 --- !u!1 &678728333
 GameObject:
@@ -11410,18 +11418,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 63.674652, y: 0.6269531, z: 8.084106}
   m_Center: {x: -41.218002, y: 12.101397, z: -21.027283}
---- !u!114 &741850451 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 439526966534451040, guid: 774a50c21a8d1714e92a6668400f6a35,
-    type: 3}
-  m_PrefabInstance: {fileID: 2048042782}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab92f8a3c3892840bc5f5512c067a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &753220038
 GameObject:
   m_ObjectHideFlags: 0
@@ -13678,6 +13674,7 @@ MonoBehaviour:
   availableSign: {fileID: 1594689766}
   petPosition: {fileID: 1789436096}
   colliderTag: Player
+  keyBindingManager: {fileID: 0}
 --- !u!65 &906032556
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14535,6 +14532,7 @@ MonoBehaviour:
   availableSign: {fileID: 1460397530}
   petPosition: {fileID: 252473554}
   colliderTag: Player
+  keyBindingManager: {fileID: 0}
 --- !u!65 &968117040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14789,8 +14787,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407596ef83b8b4147a2c7e0974dd0100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 978768451}
-  battlePlace: {fileID: 639990425}
   controller: {fileID: 937422926}
   obstacleGO: {fileID: 1748126539}
   gateHealth: {fileID: 978768451}
@@ -14799,6 +14795,7 @@ MonoBehaviour:
   - {fileID: 1628989432}
   - {fileID: 1630633605}
   - {fileID: 2086178563}
+  health: {fileID: 978768451}
 --- !u!114 &978768451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14814,13 +14811,8 @@ MonoBehaviour:
   maxHp: 4
   currentHp: 0
   fighter: {fileID: 978768450}
-  hpImage: {fileID: 0}
-  lowColor: {r: 0, g: 0, b: 0, a: 0}
-  fullColor: {r: 0, g: 0, b: 0, a: 0}
   resistant: {fileID: 11400000, guid: a9a0fc12d7ab31b45ab4cc95ebbc5653, type: 2}
-  battleManager: {fileID: 0}
   healEffect: {fileID: 0}
-  petAttackEffect: {fileID: 0}
   gateElements:
   - {fileID: 212410661}
   - {fileID: 1628989433}
@@ -15956,6 +15948,8 @@ MonoBehaviour:
   patternConnectors:
   - {fileID: 186861959}
   - {fileID: 232481383}
+  experienceConnectors: []
+  petConnectors: []
 --- !u!4 &1116715704
 Transform:
   m_ObjectHideFlags: 0
@@ -16169,12 +16163,11 @@ MonoBehaviour:
   id: 0
   battlePlace: {fileID: 0}
   enemy: {fileID: 0}
-  enemyHealth: {fileID: 0}
-  petEnable: 1
   resistantEnable: 1
   enemyResistant: {fileID: 0}
   petPosition: {x: 0, y: 0, z: 0}
   petRotation: {x: 0, y: 0, z: 0, w: 0}
+  petEnable: 1
 --- !u!4 &1151209030
 Transform:
   m_ObjectHideFlags: 0
@@ -16219,6 +16212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConfig: {fileID: 11400000, guid: 1936c5d025b2b8e4aa2560390c3ee3a2, type: 2}
+  dataIO: {fileID: 0}
 --- !u!4 &1152767551
 Transform:
   m_ObjectHideFlags: 0
@@ -16403,7 +16397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  playerTurn: 1
+  fighter: {fileID: 0}
   battleManager: {fileID: 0}
 --- !u!1 &1169076732
 GameObject:
@@ -17541,13 +17535,8 @@ MonoBehaviour:
   maxHp: 100
   currentHp: 0
   fighter: {fileID: 0}
-  hpImage: {fileID: 0}
-  lowColor: {r: 0, g: 0, b: 0, a: 0}
-  fullColor: {r: 0, g: 0, b: 0, a: 0}
   resistant: {fileID: 11400000, guid: 2d99ec87b1d7cec408f75232b280d534, type: 2}
-  battleManager: {fileID: 0}
   healEffect: {fileID: 0}
-  petAttackEffect: {fileID: 0}
   damageUI: {fileID: 125997877}
   damageBlock: {fileID: 1251199736}
 --- !u!114 &1251199734
@@ -17562,8 +17551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa4af54fdb02c8e49a96e8c79d5a4717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
-  battlePlace: {fileID: 0}
   battleManager: {fileID: 0}
   player: {fileID: 1220643221}
   trainingCampUI: {fileID: 1294864875}
@@ -17572,6 +17559,7 @@ MonoBehaviour:
   dollHealth: {fileID: 1251199733}
   controller: {fileID: 337358664}
   magicCircleHandler: {fileID: 1220643223}
+  resetable: {fileID: 0}
 --- !u!4 &1251199735
 Transform:
   m_ObjectHideFlags: 0
@@ -21128,6 +21116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3099d3d6e1cea0444ba7d01d7d572008, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
 --- !u!114 &1512068260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21140,6 +21129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1044c1c1b2fdd44a8a4107f158680f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dataManager: {fileID: 0}
 --- !u!1 &1513358051
 GameObject:
   m_ObjectHideFlags: 0
@@ -23191,6 +23181,7 @@ MonoBehaviour:
   availableSign: {fileID: 1771738043}
   petPosition: {fileID: 1392262912}
   colliderTag: Player
+  keyBindingManager: {fileID: 0}
 --- !u!65 &1623097487
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24537,13 +24528,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  battleManager: {fileID: 1735545953}
   enemy: {fileID: 1251199734}
   enemyHealth: {fileID: 1251199733}
+  healable: {fileID: 0}
+  attackable: {fileID: 0}
   go: {fileID: 403036792}
+  gameEvents: {fileID: 0}
   petPosition: {fileID: 0}
   petEnable: 0
   resistantEnable: 0
+  battleManager: {fileID: 1735545953}
+  petInitializer: {fileID: 0}
 --- !u!1001 &1731905876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24762,6 +24757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b30de5db2d385924581137a6efe57810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
 --- !u!1001 &1737573971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28969,7 +28965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  playerTurn: 1
+  fighter: {fileID: 0}
   battleManager: {fileID: 0}
 --- !u!4 &1988068790
 Transform:
@@ -31500,6 +31496,7 @@ MonoBehaviour:
   menu: {fileID: 240931392}
   ui: {fileID: 581875259}
   lastLocation: {fileID: 542217200}
+  dataManager: {fileID: 0}
   teleportsParent: {fileID: 681804741}
   defaultLocation: {fileID: 542217200}
   teleporPoints:

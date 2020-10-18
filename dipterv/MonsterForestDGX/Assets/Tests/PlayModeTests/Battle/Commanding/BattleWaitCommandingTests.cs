@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Battle.Commanding
+namespace Tests.BattleModule.Commanding
 {
     public class BattleWaitCommandingTests
     {
@@ -31,7 +31,7 @@ namespace Tests.Battle.Commanding
         public IEnumerator WaitCommandTest()
         {
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(3);
 
@@ -42,7 +42,7 @@ namespace Tests.Battle.Commanding
         public IEnumerator WaitCommandBeforeFinishedTest()
         {
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
@@ -53,14 +53,14 @@ namespace Tests.Battle.Commanding
         public IEnumerator WaitCommandCallTwiceTest()
         {
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(3);
 
             Assert.AreEqual(true, controller.Finished);
             controller.Finished = false;
 
-            controller.Step();
+            controller.StartController();
             yield return new WaitForSeconds(3);
 
             Assert.AreEqual(true, controller.Finished);
@@ -70,14 +70,14 @@ namespace Tests.Battle.Commanding
         public IEnumerator WaitCommandCallTwiceButSecondBeforeTimeTest()
         {
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(3);
 
             Assert.AreEqual(true, controller.Finished);
             controller.Finished = false;
 
-            controller.Step();
+            controller.StartController();
             yield return new WaitForSeconds(1);
 
             Assert.AreEqual(false, controller.Finished);

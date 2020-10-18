@@ -26,7 +26,7 @@ public class Gate : AiFighter
 
     public override void Fight()
     {
-        controller.Step();
+        controller.StartController();
     }
 
     public override EnemyType IsMonster()
@@ -58,4 +58,6 @@ public class Gate : AiFighter
         obstacle.DisappearInstantly();
         gateHealth.HideCrystals();
     }
+
+    protected override void React(){}
 }

@@ -19,6 +19,17 @@ public class GateElement : MonoBehaviour, ITarget
         }
     }
 
+    public void TakeDamage(float dmg, ElementType elementType, Health attackerHealth)
+    {
+        //TODO: Not need it, Gate can't attack
+        if(gateHealth == attackerHealth)
+        {
+            return;
+        }
+
+        TakeDamage(dmg, elementType);
+    }
+
     public void ResetElement()
     {
         alive = true;

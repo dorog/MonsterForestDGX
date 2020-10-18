@@ -2,15 +2,17 @@
 
 public class Monster : AiFighter
 {
-    public string MonsterName = "";
     public Animator animator;
+    public string dieAnimation;
+    public MonsterHealth health;
+
+    [Header ("Appear Settings")]
     public string appearAnimation;
     public float appearAnimationTime = 2;
+
+    [Header("Disappear Settings")]
     public string disappearAnimation;
     public float disappearAnimationTime = 2;
-    public string dieAnimation;
-
-    public Health health;
 
     [Range(0, 100)]
     public float blockChance = 10f;
@@ -18,18 +20,15 @@ public class Monster : AiFighter
     public GameObject[] extraObjects;
     public ParticleSystem[] extraParticles;
 
-    public TurnFill turnFill;
-
-    public AutoController autoController;
-    public AutoController playerDiedAutoController;
-
-    //public MagicCircleHandler magicCircleHandler;
+    public AutoController EnemyDiedAutoController;
 
     public GameObject root;
 
-    public void React()
+    public MonsterAttack monsterAttack;
+
+    protected override void React()
     {
-        float random = Random.Range(0, 101);
+        float random = Random.Range(1, 101);
 
         if (random <= blockChance)
         {
@@ -39,12 +38,7 @@ public class Monster : AiFighter
 
     public override void Die()
     {
-        Debug.Log("Add connector!");
-        //magicCircleHandler.SuccessCastSpellDelegateEvent -= React;
-
         animator.SetTrigger(dieAnimation);
-
-        autoController.StopController();
 
         base.Die();
     }
@@ -57,7 +51,6 @@ public class Monster : AiFighter
         }
 
         animator.SetTrigger(appearAnimation);
-        health.SetUpHealth();
     }
 
     protected override void Disappear()
@@ -71,7 +64,7 @@ public class Monster : AiFighter
     {
         DisableExtras();
 
-        playerDiedAutoController.StartController();
+        EnemyDiedAutoController.StartController();
     }
 
     private void DisableExtras()
@@ -88,11 +81,6 @@ public class Monster : AiFighter
 
     protected override void ResetMonster()
     {
-        Debug.Log("Add connector!");
-        //magicCircleHandler.SuccessCastSpellDelegateEvent -= React;
-
-        autoController.StopController();
-
         FightReset();
 
         health.ResetHealth();
@@ -108,17 +96,9 @@ public class Monster : AiFighter
         root.SetActive(false);
     }
 
-    public override void SetupForFight()
+    public override void SetupForFight(Fighter fighter)
     {
-        Appear();
-    }
-
-    public override void Fight()
-    {
-        base.Fight();
-
-        Debug.Log("Add Connector!");
-        //magicCircleHandler.SuccessCastSpellDelegateEvent += React;
-        autoController.StartController();
+        base.SetupForFight(fighter);
+        health.Init();
     }
 }

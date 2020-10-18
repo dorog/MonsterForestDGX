@@ -52,14 +52,10 @@ public class Player : Fighter
         playerHealth.BlockDown();
     }
 
-    public override void SetupForFight()
+    public override void SetupForFight(Fighter fighter)
     {
+        Debug.Log("Got the enemy: Maybe warning when it attacks?");
         StopCall("Battle");
-    }
-
-    public override void Fight()
-    {
-        base.Fight();
     }
 
     public override void Def()
@@ -109,4 +105,6 @@ public class Player : Fighter
         leftHandCanvas.SetActive(false);
         rightHandCanvas.SetActive(false);
     }
+
+    protected override void React(){}
 }

@@ -4,16 +4,30 @@ public class Attack : MonoBehaviour
 {
     public float dmg = 10;
     public ElementType magicType = ElementType.TrueDamage;
+    public Health ownHealth;
+
+    private bool Used = false;
+
+    private void OnEnable()
+    {
+        Used = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        Health health = other.GetComponent<Health>();
-        if(health == null)
+        if (Used)
         {
             return;
         }
 
-        health.TakeDamage(dmg, magicType);
+        ITarget target = other.GetComponent<ITarget>();
+        if(target == null)
+        {
+            return;
+        }
+
+        Used = true;
+        target.TakeDamage(dmg, magicType, ownHealth);
 
         gameObject.SetActive(false);
     }

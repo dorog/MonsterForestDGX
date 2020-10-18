@@ -21,7 +21,6 @@ public class Controller : MonoBehaviour
     protected AbstractCommand GetNextCommand()
     {
         actual++;
-
         if(actual == commands.Length)
         {
             if (looping)
@@ -38,7 +37,7 @@ public class Controller : MonoBehaviour
         return commands[actual];
     }
 
-    public void Step()
+    public virtual void StartController()
     {
         if(!isRunning)
         {
@@ -52,7 +51,7 @@ public class Controller : MonoBehaviour
         }
     }
 
-    protected void ResetController()
+    public virtual void StopController() 
     {
         actual = -1;
     }

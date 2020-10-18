@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Battle.Commanding
+namespace Tests.BattleModule.Commanding
 {
     public class BattleAttackCommandingTests
     {
@@ -39,7 +39,7 @@ namespace Tests.Battle.Commanding
             controller.commands = new AbstractCommand[] { monsterAttackCommand };
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             Assert.AreEqual(1, mockAttack.AttackedCounter);
 
@@ -54,7 +54,7 @@ namespace Tests.Battle.Commanding
             controller.commands = new AbstractCommand[] { monsterAttackCommand };
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(2);
 
@@ -69,7 +69,7 @@ namespace Tests.Battle.Commanding
             controller.commands = new AbstractCommand[] { monsterAttackCommand };
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
@@ -84,11 +84,11 @@ namespace Tests.Battle.Commanding
 
             controller.InitCommands();
 
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(1);
 

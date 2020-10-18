@@ -1,11 +1,18 @@
 ﻿
-public class MockFighter : Fighter
+public class MockFighter : AiFighter
 {
-    public override void Draw(){}
+    public override void Disable(){}
 
-    public override void SetupForFight(){}
+    public override EnemyType IsMonster()
+    {
+        return EnemyType.Dummy;
+    }
 
-    public override void Win(){}
+    protected override void Appear(){}
 
-    public override void Withdraw(){}
+    protected override void Disappear(){}
+
+    protected override void React(){}
+
+    protected override void ResetMonster() {}
 }

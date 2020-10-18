@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class MonsterBodyDisappear : MonoBehaviour
+public class Disappearer : MonoBehaviour
 {
     public float amount = 10;
     public float disappearTime = 10;

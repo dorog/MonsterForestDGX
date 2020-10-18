@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Battle.Commanding
+namespace Tests.BattleModule.Commanding
 {
     public class BattleMoveCommandingTests
     {
@@ -53,7 +53,7 @@ namespace Tests.Battle.Commanding
             Vector3 expectedPosition = startPosition + (turnFills[parameters.TurnFillIndex].transform.forward * 10 * (parameters.Forward ? 1 : -1));
 
             controller.InitCommands();
-            controller.Step();
+            controller.StartController();
 
             yield return new WaitForSeconds(2);
 
@@ -118,7 +118,7 @@ namespace Tests.Battle.Commanding
 
                 yield return new WaitForSeconds(2);
 
-                controller.Step();
+                controller.StartController();
             }
 
             yield return new WaitForSeconds(4);

@@ -1,16 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class MonsterHealth : Health
 {
-
     [Header ("Monster Settings")]
-
     public string bodyHitAnimation;
     public string headHitAnimation;
     public string blockAnimation;
     public Animator animator;
-    public MonsterBodyDisappear monsterBodyDisappear;
+    public Disappearer monsterBodyDisappear;
 
     private bool death = false;
 
@@ -18,15 +15,14 @@ public class MonsterHealth : Health
 
     public DamageBlock damageBlock;
 
-    public Text hp;
+    public HealthShowerUI healthShowerUI;
 
     private string actualHitAnimation;
 
-    public override void SetUpHealth()
+    public void Init()
     {
-        base.SetUpHealth();
-
-        hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
+        currentHp = maxHp;
+        healthShowerUI.ShowHealthData(currentHp, maxHp);
     }
 
     public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
@@ -34,6 +30,11 @@ public class MonsterHealth : Health
         actualHitAnimation = isHeadshot ? headHitAnimation : bodyHitAnimation;
 
         MonsterTakeDamage(dmg, magicType);
+
+        if(healthShowerUI != null)
+        {
+            healthShowerUI.ShowHealthData(currentHp, maxHp);
+        }
     }
 
     private void MonsterTakeDamage(float dmg, ElementType magicType)
@@ -67,7 +68,6 @@ public class MonsterHealth : Health
         if(currentHp <= 0)
         {
             death = true;
-            //hpSlider.gameObject.SetActive(false);
             StartCoroutine(monsterBodyDisappear.DisAppear());
         }
     }

@@ -9,11 +9,6 @@ public class DollHealth : Health
 
     private bool inBlock = false;
 
-    public override void SetUpHealth()
-    {
-
-    }
-
     protected override float GetBlockedDamage(float dmg)
     {
         if (inBlock)

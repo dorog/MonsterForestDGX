@@ -1,8 +1,9 @@
 ﻿
 public abstract class AiFighter : Fighter
 {
-    public override void SetupForFight()
+    public override void SetupForFight(Fighter fighter)
     {
+        base.SetupForFight(fighter);
         Appear();
     }
 
@@ -16,10 +17,7 @@ public abstract class AiFighter : Fighter
         ResetMonster();
     }
 
-    public override void Draw()
-    {
-        
-    }
+    public override void Draw(){}
 
     protected abstract void Appear();
     protected abstract void Disappear();

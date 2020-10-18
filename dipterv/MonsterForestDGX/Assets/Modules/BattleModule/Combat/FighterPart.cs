@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
 
-public class MonsterHit : MonoBehaviour, ITarget
+public class FighterPart : MonoBehaviour, ITarget
 {
     public Health health;
-    public MonsterHitType monsterHitType;
+    public HitType monsterHitType;
     [Range(0, 200)]
     public float dmgPercent = 100;
 
     public void TakeDamage(float dmg, ElementType magicType)
     {
         float damage = dmg * dmgPercent / 100;
-        if(monsterHitType == MonsterHitType.Body)
+        if(monsterHitType == HitType.Body)
         {
             health.TakeDamageBasedOnHit(damage, magicType, false);
         }
@@ -19,9 +19,18 @@ public class MonsterHit : MonoBehaviour, ITarget
             health.TakeDamageBasedOnHit(damage, magicType, true);
         }
     }
+
+    public void TakeDamage(float dmg, ElementType elementType, Health attackerHealth)
+    {
+        if(attackerHealth == health)
+        {
+            return;
+        }
+        TakeDamage(dmg, elementType);
+    }
 }
 
-public enum MonsterHitType
+public enum HitType
 {
     Body, Head
 }
