@@ -24,8 +24,6 @@ public class Monster : AiFighter
 
     public GameObject root;
 
-    public MonsterAttack monsterAttack;
-
     protected override void React()
     {
         float random = Random.Range(1, 101);
@@ -84,11 +82,6 @@ public class Monster : AiFighter
         FightReset();
 
         health.ResetHealth();
-    }
-
-    public override EnemyType IsMonster()
-    {
-        return EnemyType.Monster;
     }
 
     public override void Disable()

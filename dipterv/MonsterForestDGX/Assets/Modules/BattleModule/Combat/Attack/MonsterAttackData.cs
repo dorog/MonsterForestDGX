@@ -2,7 +2,7 @@
 using System;
 
 [Serializable]
-public class MonsterAttackClass
+public class MonsterAttackData
 {
     public string animation;
     public float time;

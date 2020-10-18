@@ -66,7 +66,7 @@ public class SpellAttack : PlayerSpell
         if (target != null)
         {
             experienceManager.AddExp(ExpType.Hit.GetExp() * coverage);
-            target.TakeDamage(dmg * coverage, elementType);
+            target.TakeDamage(dmg * coverage);
         }
     }
 }

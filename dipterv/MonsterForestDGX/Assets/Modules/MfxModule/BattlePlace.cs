@@ -33,7 +33,8 @@ public class BattlePlace : MonoBehaviour
         }
         else
         {
-            isMonster = enemy.IsMonster();
+            Debug.Log("Missing");
+            //isMonster = enemy.IsMonster();
         }
     }
 
@@ -45,7 +46,8 @@ public class BattlePlace : MonoBehaviour
         gameEvents.enemy = enemy;
 
         gameEvents.resistantEnable = resistantEnable;
-        gameEvents.enemyResistant = enemyHealth.resistant;
+        Debug.Log("Commented");
+        //gameEvents.enemyResistant = enemyHealth.resistant;
 
         gameEvents.petEnable = petEnable;
 

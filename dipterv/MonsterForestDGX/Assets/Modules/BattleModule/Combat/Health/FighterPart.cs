@@ -7,26 +7,26 @@ public class FighterPart : MonoBehaviour, ITarget
     [Range(0, 200)]
     public float dmgPercent = 100;
 
-    public void TakeDamage(float dmg, ElementType magicType)
+    public void TakeDamage(float dmg)
     {
         float damage = dmg * dmgPercent / 100;
         if(monsterHitType == HitType.Body)
         {
-            health.TakeDamageBasedOnHit(damage, magicType, false);
+            health.TakeDamageBasedOnHit(damage, false);
         }
         else
         {
-            health.TakeDamageBasedOnHit(damage, magicType, true);
+            health.TakeDamageBasedOnHit(damage, true);
         }
     }
 
-    public void TakeDamage(float dmg, ElementType elementType, Health attackerHealth)
+    public void TakeDamage(float dmg, Health attackerHealth)
     {
         if(attackerHealth == health)
         {
             return;
         }
-        TakeDamage(dmg, elementType);
+        TakeDamage(dmg);
     }
 }
 

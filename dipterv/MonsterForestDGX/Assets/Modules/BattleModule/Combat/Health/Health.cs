@@ -5,7 +5,6 @@ public abstract class Health : MonoBehaviour
     public float maxHp = 100f;
     public float currentHp;
     public Fighter fighter;
-    public Resistant resistant;
 
     [Header("Only for healing (optional)")]
     public ParticleSystem healEffect;
@@ -15,11 +14,9 @@ public abstract class Health : MonoBehaviour
         currentHp = maxHp;
     }
 
-    public virtual void TakeDamage(float dmg, ElementType magicType)
+    public virtual void TakeDamage(float dmg)
     {
-        float realDmg = resistant.CalculateDmg(dmg, magicType);
-
-        realDmg = GetBlockedDamage(realDmg);
+        float realDmg = GetBlockedDamage(dmg);
 
         currentHp -= realDmg;
 
@@ -33,7 +30,7 @@ public abstract class Health : MonoBehaviour
 
     public abstract void SetDamageBlock();
 
-    public abstract void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot);
+    public abstract void TakeDamageBasedOnHit(float dmg, bool isHeadshot);
 
     public virtual void ResetHealth()
     {

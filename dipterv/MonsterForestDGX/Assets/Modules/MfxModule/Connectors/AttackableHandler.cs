@@ -11,7 +11,7 @@ public class AttackableHandler : MonoBehaviour, IAttackable
 
     public void TakeDamageFromPet(float amount)
     {
-        health.TakeDamage(amount, ElementType.TrueDamage);
+        health.TakeDamage(amount);
         if (petAttackEffect != null)
         {
             petAttackEffect.Play();

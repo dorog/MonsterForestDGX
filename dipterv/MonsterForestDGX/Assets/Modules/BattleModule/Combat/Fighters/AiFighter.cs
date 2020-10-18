@@ -22,6 +22,5 @@ public abstract class AiFighter : Fighter
     protected abstract void Appear();
     protected abstract void Disappear();
     protected abstract void ResetMonster();
-    public abstract EnemyType IsMonster();
     public abstract void Disable();
 }

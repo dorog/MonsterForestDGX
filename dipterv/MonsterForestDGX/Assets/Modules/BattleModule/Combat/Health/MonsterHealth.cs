@@ -25,11 +25,11 @@ public class MonsterHealth : Health
         healthShowerUI.ShowHealthData(currentHp, maxHp);
     }
 
-    public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
+    public override void TakeDamageBasedOnHit(float dmg, bool isHeadshot)
     {
         actualHitAnimation = isHeadshot ? headHitAnimation : bodyHitAnimation;
 
-        MonsterTakeDamage(dmg, magicType);
+        MonsterTakeDamage(dmg);
 
         if(healthShowerUI != null)
         {
@@ -37,11 +37,11 @@ public class MonsterHealth : Health
         }
     }
 
-    private void MonsterTakeDamage(float dmg, ElementType magicType)
+    private void MonsterTakeDamage(float dmg)
     {
         if (inBlock)
         {
-            TakeDamage(dmg, magicType);
+            TakeDamage(dmg);
             if(currentHp > 0)
             {
                 animator.SetTrigger(blockAnimation);
@@ -49,7 +49,7 @@ public class MonsterHealth : Health
         }
         else
         {
-            TakeDamage(dmg, magicType);
+            TakeDamage(dmg);
             if(currentHp > 0)
             {
                 animator.SetTrigger(actualHitAnimation);
@@ -57,14 +57,14 @@ public class MonsterHealth : Health
         }
     }
 
-    public override void TakeDamage(float dmg, ElementType magicType)
+    public override void TakeDamage(float dmg)
     {
         //Player doesn't need it?
         if (death)
         {
             return;
         }
-        base.TakeDamage(dmg, magicType);
+        base.TakeDamage(dmg);
         if(currentHp <= 0)
         {
             death = true;

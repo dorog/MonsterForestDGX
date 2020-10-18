@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "new Resistant", menuName = "Resistant")]
-public class Resistant : ScriptableObject
+public class Resistant
 {
     [Range(-100, 100)]
     public int water = 0;
@@ -12,16 +12,16 @@ public class Resistant : ScriptableObject
     [Range(-100, 100)]
     public int air = 0;
 
-    public float CalculateDmg(float dmg, ElementType magicType)
+    public float CalculateDmg(float dmg, ElementType elementType)
     {
-        float resistant = GetResistant(magicType);
+        float resistant = GetResistant(elementType);
 
         return dmg * (1 - (resistant / 100));
     }
 
-    public float GetResistant(ElementType magicType)
+    public float GetResistant(ElementType elementType)
     {
-        switch (magicType)
+        switch (elementType)
         {
             case ElementType.Water:
                 return water;

@@ -32,6 +32,93 @@ Transform:
   m_Father: {fileID: 155212319384680742}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &517022432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517022433}
+  - component: {fileID: 517022436}
+  - component: {fileID: 517022435}
+  - component: {fileID: 517022434}
+  m_Layer: 0
+  m_Name: BlueAttackChances
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517022433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517022432}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3443360399461869363}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517022436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517022432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chance: 100
+  monsterAttacks:
+  - animation: attack2
+    time: 5
+    activate:
+    - {fileID: 8936889201540693147}
+--- !u!114 &517022435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517022432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chance: 100
+  monsterAttacks:
+  - animation: attack2
+    time: 5
+    activate:
+    - {fileID: 3718970795649575142}
+--- !u!114 &517022434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517022432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chance: 100
+  monsterAttacks:
+  - animation: attack2
+    time: 5
+    activate:
+    - {fileID: 5663505011645722713}
 --- !u!1 &905187725
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  fighter: {fileID: 0}
+  fighter: {fileID: 3160591800730181377}
   battleManager: {fileID: 155212320021434484}
 --- !u!1 &1036255596
 GameObject:
@@ -124,6 +211,93 @@ MonoBehaviour:
   Controller: {fileID: 0}
   turnFill: {fileID: 155212319339886264}
   forward: 0
+--- !u!1 &1252488714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252488715}
+  - component: {fileID: 1252488718}
+  - component: {fileID: 1252488717}
+  - component: {fileID: 1252488716}
+  m_Layer: 0
+  m_Name: RedAttackChances
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252488715
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252488714}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1848182426983881443}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1252488718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252488714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chance: 100
+  monsterAttacks:
+  - animation: attack2
+    time: 5
+    activate:
+    - {fileID: 8474843425361573919}
+--- !u!114 &1252488717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252488714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chance: 100
+  monsterAttacks:
+  - animation: attack2
+    time: 5
+    activate:
+    - {fileID: 1087919083481288687}
+--- !u!114 &1252488716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252488714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chance: 100
+  monsterAttacks:
+  - animation: attack2
+    time: 5
+    activate:
+    - {fileID: 7425989676647648782}
 --- !u!1 &1325244197
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +377,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 155212320307190808}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!20 &1630799143
 Camera:
@@ -1077,7 +1251,6 @@ Transform:
   - {fileID: 155212318497653543}
   - {fileID: 155212320048700292}
   - {fileID: 155212319384680742}
-  - {fileID: 155212320460703949}
   - {fileID: 1630799140}
   - {fileID: 6948517844692385339}
   m_Father: {fileID: 0}
@@ -1162,84 +1335,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Blue HP
---- !u!1 &155212320460703948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 155212320460703949}
-  - component: {fileID: 155212320460703944}
-  - component: {fileID: 155212320460703951}
-  - component: {fileID: 155212320460703950}
-  m_Layer: 0
-  m_Name: AttackChances
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &155212320460703949
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155212320460703948}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 155212320307190808}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &155212320460703944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155212320460703948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b235fba1887afd449e467ff49ce019d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalAttakChance: 100
-  hardAttackChance: 0
-  ultimateAttackChance: 0
---- !u!114 &155212320460703951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155212320460703948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b235fba1887afd449e467ff49ce019d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalAttakChance: 0
-  hardAttackChance: 100
-  ultimateAttackChance: 0
---- !u!114 &155212320460703950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155212320460703948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b235fba1887afd449e467ff49ce019d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalAttakChance: 0
-  hardAttackChance: 0
-  ultimateAttackChance: 100
 --- !u!1 &155212320469528247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,7 +1379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  fighter: {fileID: 0}
+  fighter: {fileID: 600076249024004244}
   battleManager: {fileID: 155212320021434484}
 --- !u!1 &156872372591789743
 GameObject:
@@ -11433,7 +11528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 20
-  magicType: 0
   ownHealth: {fileID: 2898458209247614460}
 --- !u!1 &1093126990522748373
 GameObject:
@@ -12382,6 +12476,7 @@ Transform:
   - {fileID: 8907487581236307844}
   - {fileID: 2158037070335767695}
   - {fileID: 2400439348226839283}
+  - {fileID: 517022433}
   m_Father: {fileID: 2056302505835297571}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17912,7 +18007,6 @@ MonoBehaviour:
   maxHp: 100
   currentHp: 0
   fighter: {fileID: 600076249024004244}
-  resistant: {fileID: 11400000, guid: c8f59ccf0a66576499d4ad786ddb52de, type: 2}
   healEffect: {fileID: 2515662893818341892}
   bodyHitAnimation: gotHitBody
   headHitAnimation: gotHitHead
@@ -17948,7 +18042,6 @@ MonoBehaviour:
   - {fileID: 3899898857887249597}
   EnemyDiedAutoController: {fileID: 7398355212405325121}
   root: {fileID: 4020031985119386627}
-  monsterAttack: {fileID: 0}
 --- !u!114 &618491971620567022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18069,22 +18162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6145017799872034823}
-  normalAttacks:
-  - animation: attack2
-    time: 3
-    activate:
-    - {fileID: 8936889201540693147}
-  hardAttacks:
-  - animation: attack2
-    time: 3
-    activate:
-    - {fileID: 3718970795649575142}
-  ultimateAttacks:
-  - animation: attack2
-    time: 3
-    activate:
-    - {fileID: 5663505011645722713}
-  attackChances: {fileID: 0}
+  attackChances: []
   monster: {fileID: 600076249024004244}
 --- !u!54 &155212319339886262
 Rigidbody:
@@ -23463,6 +23541,7 @@ GameObject:
   - component: {fileID: 281418322586551693}
   - component: {fileID: 2639363346583361871}
   - component: {fileID: 155212319339886267}
+  - component: {fileID: 6131818386879023207}
   m_Layer: 10
   m_Name: Wormy
   m_TagString: Untagged
@@ -23488,6 +23567,7 @@ Transform:
   - {fileID: 2816229800576209052}
   - {fileID: 2462611154591007261}
   - {fileID: 8021977220602247652}
+  - {fileID: 1252488715}
   m_Father: {fileID: 3314574547123368191}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -29018,7 +29098,6 @@ MonoBehaviour:
   maxHp: 100
   currentHp: 0
   fighter: {fileID: 3160591800730181377}
-  resistant: {fileID: 11400000, guid: c8f59ccf0a66576499d4ad786ddb52de, type: 2}
   healEffect: {fileID: 5681557146325887285}
   bodyHitAnimation: gotHitBody
   headHitAnimation: gotHitHead
@@ -29026,7 +29105,7 @@ MonoBehaviour:
   animator: {fileID: 7607963895032819206}
   monsterBodyDisappear: {fileID: 2986370642888799137}
   inBlock: 0
-  damageBlock: {fileID: 2276801873596120276}
+  damageBlock: {fileID: 6131818386879023207}
   healthShowerUI: {fileID: 3995623787450068882}
 --- !u!114 &3160591800730181377
 MonoBehaviour:
@@ -29054,7 +29133,6 @@ MonoBehaviour:
   - {fileID: 6357983418304039612}
   EnemyDiedAutoController: {fileID: 4411492073383312626}
   root: {fileID: 4203028652202522142}
-  monsterAttack: {fileID: 0}
 --- !u!114 &2986370642888799137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29175,22 +29253,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7607963895032819206}
-  normalAttacks:
-  - animation: attack2
-    time: 3
-    activate:
-    - {fileID: 8474843425361573919}
-  hardAttacks:
-  - animation: attack2
-    time: 3
-    activate:
-    - {fileID: 1087919083481288687}
-  ultimateAttacks:
-  - animation: attack2
-    time: 3
-    activate:
-    - {fileID: 7425989676647648782}
-  attackChances: {fileID: 0}
+  attackChances:
+  - {fileID: 0}
   monster: {fileID: 3160591800730181377}
 --- !u!54 &2639363346583361871
 Rigidbody:
@@ -29227,6 +29291,19 @@ MonoBehaviour:
   appearAnimationTime: 2
   disapperAnimation: disappear
   disappearAnimationTime: 2
+--- !u!114 &6131818386879023207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691913527577701028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e9da471b4ef1d9428a732bb70bc98d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockValue: 15
 --- !u!1 &2705156465906204611
 GameObject:
   m_ObjectHideFlags: 0
@@ -34844,7 +34921,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 20
-  magicType: 0
   ownHealth: {fileID: 7076540035710939000}
 --- !u!1 &3790882617369654524
 GameObject:
@@ -45966,7 +46042,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 155212320307190808}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!108 &2854666296173213118
 Light:
@@ -51009,7 +51085,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 30
-  magicType: 0
   ownHealth: {fileID: 7076540035710939000}
 --- !u!1 &5673415261507709883
 GameObject:
@@ -71459,7 +71534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 30
-  magicType: 0
   ownHealth: {fileID: 2898458209247614460}
 --- !u!1 &7444141676546069848
 GameObject:
@@ -86436,7 +86510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 10
-  magicType: 0
   ownHealth: {fileID: 2898458209247614460}
 --- !u!1 &8489358230741663019
 GameObject:
@@ -86861,7 +86934,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 10
-  magicType: 0
   ownHealth: {fileID: 7076540035710939000}
 --- !u!1 &8976780098388152453
 GameObject:

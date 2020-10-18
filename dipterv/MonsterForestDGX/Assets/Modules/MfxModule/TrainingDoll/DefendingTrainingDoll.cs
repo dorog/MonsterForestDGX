@@ -52,11 +52,6 @@ public class DefendingTrainingDoll : AiFighter
         battleManager.DrawFight();
     }
 
-    public override EnemyType IsMonster()
-    {
-        return EnemyType.Dummy;
-    }
-
     public override void Fight()
     {
         base.Fight();

@@ -28,10 +28,7 @@
         }
     }
 
-    public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
-    {
-        
-    }
+    public override void TakeDamageBasedOnHit(float dmg, bool isHeadshot){}
 
     public void HideCrystals()
     {

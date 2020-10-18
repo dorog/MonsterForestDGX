@@ -29,11 +29,6 @@ public class Gate : AiFighter
         controller.StartController();
     }
 
-    public override EnemyType IsMonster()
-    {
-        return EnemyType.Puzzle;
-    }
-
     protected override void ResetMonster()
     {
         health.ResetHealth();

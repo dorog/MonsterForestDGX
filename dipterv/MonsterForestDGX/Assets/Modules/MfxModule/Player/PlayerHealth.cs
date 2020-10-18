@@ -34,14 +34,14 @@ public class PlayerHealth : Health
         }
     }
 
-    public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
+    public override void TakeDamageBasedOnHit(float dmg, bool isHeadshot)
     {
         
     }
 
-    public override void TakeDamage(float dmg, ElementType magicType)
+    public override void TakeDamage(float dmg)
     {
-        base.TakeDamage(dmg, magicType);
+        base.TakeDamage(dmg);
 
         hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
 

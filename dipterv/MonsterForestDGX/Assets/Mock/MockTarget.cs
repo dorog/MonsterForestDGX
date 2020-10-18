@@ -2,7 +2,7 @@
 
 public class MockTarget : MonoBehaviour, ITarget
 {
-    public void TakeDamage(float dmg, ElementType elementType){}
+    public void TakeDamage(float dmg){}
 
-    public void TakeDamage(float dmg, ElementType elementType, Health health){}
+    public void TakeDamage(float dmg, Health health){}
 }

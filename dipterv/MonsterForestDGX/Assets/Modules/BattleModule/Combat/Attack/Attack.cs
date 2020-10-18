@@ -3,7 +3,6 @@
 public class Attack : MonoBehaviour
 {
     public float dmg = 10;
-    public ElementType magicType = ElementType.TrueDamage;
     public Health ownHealth;
 
     private bool Used = false;
@@ -27,7 +26,7 @@ public class Attack : MonoBehaviour
         }
 
         Used = true;
-        target.TakeDamage(dmg, magicType, ownHealth);
+        target.TakeDamage(dmg, ownHealth);
 
         gameObject.SetActive(false);
     }

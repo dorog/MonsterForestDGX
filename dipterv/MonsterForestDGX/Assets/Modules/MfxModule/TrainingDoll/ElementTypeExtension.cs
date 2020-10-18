@@ -1,9 +1,4 @@
 ﻿
-public enum ElementType
-{
-    TrueDamage, Fire, Water, Air, Earth
-}
-
 public static class ElementTypeExtensions
 {
     public static ElementType GetElementTypeByName(string name)

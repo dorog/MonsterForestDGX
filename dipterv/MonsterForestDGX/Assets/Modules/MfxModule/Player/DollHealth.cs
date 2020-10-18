@@ -32,8 +32,10 @@ public class DollHealth : Health
         inBlock = true;
     }
 
-    public override void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
+    public void TakeDamageBasedOnHit(float dmg, ElementType magicType, bool isHeadshot)
     {
-        TakeDamage(dmg, magicType);
+        TakeDamage(dmg);
     }
+
+    public override void TakeDamageBasedOnHit(float dmg, bool isHeadshot){}
 }

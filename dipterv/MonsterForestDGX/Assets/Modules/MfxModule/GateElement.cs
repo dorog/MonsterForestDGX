@@ -2,24 +2,29 @@
 
 public class GateElement : MonoBehaviour, ITarget
 {
-    public ElementType elementType;
+    public ElementType cristalType;
     public GateHealth gateHealth;
 
     //TODO: Disappears right know, but add animation instead
     private bool alive = true;
 
-    public void TakeDamage(float dmg, ElementType spellType)
+    public void TakeDamage(float dmg)
     {
-        if(alive && elementType == spellType)
+
+    }
+
+    public void TakeDamage(float dmg, ElementType elementType)
+    {
+        if(alive && cristalType == elementType)
         {
             alive = false;
-            gateHealth.TakeDamage(1, spellType);
+            gateHealth.TakeDamage(1);
             //TODO: Remove if it has animation
             gameObject.SetActive(false);
         }
     }
 
-    public void TakeDamage(float dmg, ElementType elementType, Health attackerHealth)
+    public void TakeDamage(float dmg, Health attackerHealth)
     {
         //TODO: Not need it, Gate can't attack
         if(gateHealth == attackerHealth)
@@ -27,7 +32,7 @@ public class GateElement : MonoBehaviour, ITarget
             return;
         }
 
-        TakeDamage(dmg, elementType);
+        //TakeDamage(dmg, cristalType);
     }
 
     public void ResetElement()
