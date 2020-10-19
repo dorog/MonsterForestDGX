@@ -32,6 +32,9 @@ namespace Tests.PetModule
 
             handlers = GameObject.Find("Handlers");
 
+            healths[0].InitHealth();
+            healths[1].InitHealth();
+
             yield return null;
         }
 

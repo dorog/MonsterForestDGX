@@ -1,17 +1,32 @@
 ﻿using UnityEngine;
 
-public abstract class Health : MonoBehaviour
+public class Health : MonoBehaviour
 {
     public float maxHp = 100f;
     public float currentHp;
     public Fighter fighter;
 
+    public ExtraFighterPart[] extraParts;
+
+    public DamageBlock damageBlock;
+
+    public HealthShowerUI healthShowerUI;
+
     [Header("Only for healing (optional)")]
     public ParticleSystem healEffect;
 
-    public void Start()
+    public virtual void InitHealth()
     {
         currentHp = maxHp;
+        foreach (var extraPart in extraParts)
+        {
+            extraPart.Appear();
+        }
+
+        if (healthShowerUI != null)
+        {
+            healthShowerUI.ShowHealthData(currentHp, maxHp);
+        }
     }
 
     public virtual void TakeDamage(float dmg)
@@ -24,17 +39,21 @@ public abstract class Health : MonoBehaviour
         {
             fighter.Die();
         }
+
+        if (healthShowerUI != null)
+        {
+            healthShowerUI.ShowHealthData(currentHp, maxHp);
+        }
     }
 
-    protected abstract float GetBlockedDamage(float dmg);
-
-    public abstract void SetDamageBlock();
-
-    public abstract void TakeDamageBasedOnHit(float dmg, bool isHeadshot);
-
-    public virtual void ResetHealth()
+    protected virtual float GetBlockedDamage(float dmg)
     {
-        currentHp = maxHp;
+        return damageBlock.GetCalculatedDamage(dmg);
+    }
+
+    public virtual void SetDamageBlock()
+    {
+        damageBlock.StartBlocking();
     }
 
     public bool IsFull()
@@ -56,6 +75,22 @@ public abstract class Health : MonoBehaviour
         if(healEffect != null)
         {
             healEffect.Play();
+        }
+    }
+
+    public virtual void DisappearHealth()
+    {
+        foreach (var extraPart in extraParts)
+        {
+            extraPart.Disable();
+        }
+    }
+
+    public virtual void DisableHealth()
+    {
+        foreach (var extraPart in extraParts)
+        {
+            extraPart.Disable();
         }
     }
 }

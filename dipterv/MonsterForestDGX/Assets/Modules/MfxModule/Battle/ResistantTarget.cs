@@ -1,11 +1,12 @@
 ﻿
-public class ResistantTarget : FighterPart, ISpellTarget
+public class ResistantTarget : ISpellTarget
 {
     public Resistant resistant;
+    public FighterPart fighterPart;
 
     public void TakeDamage(float dmg, ElementType elementType)
     {
         float resistantDmg = resistant.CalculateDmg(dmg, elementType);
-        TakeDamage(resistantDmg);
+        fighterPart.TakeDamage(resistantDmg);
     }
 }

@@ -6,21 +6,12 @@ public class TimeDamageBlock : DamageBlock
 
     private bool working = false;
     private float actualDurationTime = 0;
-    private float actualBlockValue = 0;
 
-    public GameObject blockUI;
-
-    public ParticleSystem shieldEffect;
-
-    public void StartBlock()
+    public override void StartBlocking()
     {
-        actualBlockValue = blockValue;
         actualDurationTime = durationTime;
 
         working = true;
-
-        blockUI.SetActive(true);
-        shieldEffect.Play();
     }
 
     private void Update()
@@ -32,8 +23,8 @@ public class TimeDamageBlock : DamageBlock
             if (actualDurationTime <= 0)
             {
                 working = false;
-                blockUI.SetActive(false);
-                shieldEffect.Stop();            }
+                BlockDowned();
+            }
         }
     }
 
@@ -41,7 +32,7 @@ public class TimeDamageBlock : DamageBlock
     {
         if (working)
         {
-            return CalculateDamaga(actualBlockValue, damage);
+            return CalculateDamage(blockValue, damage);
         }
 
         return damage;

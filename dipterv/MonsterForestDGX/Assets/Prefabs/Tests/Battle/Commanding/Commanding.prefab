@@ -89,10 +89,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4540784765172691092}
-  - component: {fileID: 1955161491517972938}
   - component: {fileID: 4405843739819254754}
   - component: {fileID: 7821525386633726923}
   - component: {fileID: 4827140221891353798}
+  - component: {fileID: 9132663147375250735}
   m_Layer: 0
   m_Name: Moving
   m_TagString: Untagged
@@ -114,21 +114,6 @@ Transform:
   m_Father: {fileID: 4540784764929113880}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1955161491517972938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4540784765172691095}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aca9c4aea1f8494a8f7a13c27fe1b05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  turnFill: {fileID: 0}
-  forward: 0
 --- !u!95 &4405843739819254754
 Animator:
   serializedVersion: 3
@@ -185,6 +170,21 @@ MonoBehaviour:
   movingAnimation: locomotion
   forwardValue: 1
   backwardValue: 1
+--- !u!114 &9132663147375250735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4540784765172691095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea724b44c2a13314799ab8cb07a1ce24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 7611258694527496068}
+  turnFill: {fileID: 7821525386633726923}
+  forward: 0
 --- !u!1 &4540784765188467130
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4540784766758774653}
-  - component: {fileID: 4540784766758774650}
+  - component: {fileID: 639862954148328576}
   m_Layer: 0
   m_Name: Attack
   m_TagString: Untagged
@@ -568,7 +568,7 @@ Transform:
   m_Father: {fileID: 4540784764929113880}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4540784766758774650
+--- !u!114 &639862954148328576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -577,13 +577,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4540784766758774652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea61a8a2513362f47a545c376ae0d506, type: 3}
+  m_Script: {fileID: 11500000, guid: dbf4036fe3ba4a644b26e0d0de1b708a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
+  Controller: {fileID: 7611258694527496068}
   extraAttackChances: []
   attack: {fileID: 7977155196953840624}
-  enemy: {fileID: 4540784765614418840}
+  enemy: {fileID: 4540784766651981949}
   attackDelay: 0
 --- !u!1 &4540784766898323860
 GameObject:

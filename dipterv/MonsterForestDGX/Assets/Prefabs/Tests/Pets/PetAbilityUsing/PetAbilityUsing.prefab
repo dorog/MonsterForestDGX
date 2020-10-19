@@ -5132,12 +5132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
-  fighter: {fileID: 0}
-  hpImage: {fileID: 0}
-  resistant: {fileID: 11400000, guid: a17c476126441814babfb9a0f8270310, type: 2}
-  battleManager: {fileID: 0}
+  fighter: {fileID: 4465305270178232714}
+  extraParts: []
+  damageBlock: {fileID: 0}
+  healthShowerUI: {fileID: 0}
   healEffect: {fileID: 0}
-  petAttackEffect: {fileID: 0}
 --- !u!1 &4465305270330742072
 GameObject:
   m_ObjectHideFlags: 0
@@ -5303,12 +5302,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 0
-  fighter: {fileID: 0}
-  hpImage: {fileID: 0}
-  resistant: {fileID: 11400000, guid: a17c476126441814babfb9a0f8270310, type: 2}
-  battleManager: {fileID: 0}
+  fighter: {fileID: 4465305271195276416}
+  extraParts: []
+  damageBlock: {fileID: 0}
+  healthShowerUI: {fileID: 0}
   healEffect: {fileID: 0}
-  petAttackEffect: {fileID: 0}
 --- !u!1 &5042437091219444546
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace Tests.BattleModule.Commanding
 {
     public class BattleMoveCommandingTests
     {
-        private MonsterMoveCommand monsterMoveCommand = null;
+        private MoveCommand monsterMoveCommand = null;
         private Controller controller = null;
 
         private TurnFill[] turnFills = null;
@@ -21,7 +21,7 @@ namespace Tests.BattleModule.Commanding
         {
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Battle/Commanding/Commanding.prefab");
             core = Object.Instantiate(coreGO);
-            monsterMoveCommand = core.GetComponentInChildren<MonsterMoveCommand>();
+            monsterMoveCommand = core.GetComponentInChildren<MoveCommand>();
             controller = core.GetComponentInChildren<Controller>();
 
             turnFills = core.GetComponentsInChildren<TurnFill>();

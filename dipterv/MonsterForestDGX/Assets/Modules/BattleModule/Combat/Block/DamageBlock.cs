@@ -1,15 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class DamageBlock : MonoBehaviour
+public abstract class DamageBlock : MonoBehaviour
 {
     public float blockValue = 10;
 
-    public virtual float GetCalculatedDamage(float damage)
-    {
-        return CalculateDamaga(blockValue, damage);
-    }
+    private event Action BlockDown;
 
-    protected float CalculateDamaga(float value, float dmg)
+    public abstract float GetCalculatedDamage(float damage);
+
+    protected float CalculateDamage(float value, float dmg)
     {
         float blockedDamage = dmg;
 
@@ -24,4 +24,21 @@ public class DamageBlock : MonoBehaviour
 
         return blockedDamage;
     }
+
+    public void SubscribeToBlockDown(Action method)
+    {
+        BlockDown += method;
+    }
+
+    public void UnsubscribeToBlockDown(Action method)
+    {
+        BlockDown -= method;
+    }
+
+    protected void BlockDowned()
+    {
+        BlockDown?.Invoke();
+    }
+
+    public abstract void StartBlocking();
 }

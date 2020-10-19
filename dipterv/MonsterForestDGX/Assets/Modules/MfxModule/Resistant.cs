@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(fileName = "new Resistant", menuName = "Resistant")]
-public class Resistant
+public class Resistant : ScriptableObject
 {
     [Range(-100, 100)]
     public int water = 0;

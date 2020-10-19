@@ -11,14 +11,14 @@ namespace Tests.BattleModule
         private BattleManager battleManager = null;
 
         private FighterTurnCommand[] fighterTurnCommands = null;
-        private MonsterAttackCommand[] monsterAttackCommands = null;
+        private AttackCommand[] monsterAttackCommands = null;
         private Controller controller = null;
 
-        private MonsterAttack[] monsterAttack = null;
+        private AnimatedAttack[] monsterAttack = null;
 
         private GameObject core;
 
-        private Monster[] fighters = null;
+        private AnimatedFighter[] fighters = null;
 
         private TextHealthShowerUI[] textHealthShowerUIs = null;
 
@@ -30,12 +30,12 @@ namespace Tests.BattleModule
 
             battleManager = core.GetComponentInChildren<BattleManager>();
             fighterTurnCommands = core.GetComponentsInChildren<FighterTurnCommand>();
-            monsterAttackCommands = core.GetComponentsInChildren<MonsterAttackCommand>();
-            monsterAttack = core.GetComponentsInChildren<MonsterAttack>();
+            monsterAttackCommands = core.GetComponentsInChildren<AttackCommand>();
+            monsterAttack = core.GetComponentsInChildren<AnimatedAttack>();
             textHealthShowerUIs = core.GetComponentsInChildren<TextHealthShowerUI>();
             controller = core.GetComponentInChildren<AutoController>();
 
-            fighters = core.GetComponentsInChildren<Monster>();
+            fighters = core.GetComponentsInChildren<AnimatedFighter>();
 
             battleManager.BattleLobby(fighters[1], fighters[0]);
         }
@@ -65,8 +65,8 @@ namespace Tests.BattleModule
         [UnityTest]
         public IEnumerator SimpleAttackTest([Values(0, 1)] int monsterIndex, [Values (0, 1, 2)] int monsterAttackChanceIndex)
         {
-            MonsterAttackChance[] allAttackChances = fighters[monsterIndex].GetComponentsInChildren<MonsterAttackChance>();
-            MonsterAttackChance[] attackChances = new MonsterAttackChance[] { allAttackChances[monsterAttackChanceIndex] };
+            AnimatedAttackChance[] allAttackChances = fighters[monsterIndex].GetComponentsInChildren<AnimatedAttackChance>();
+            AnimatedAttackChance[] attackChances = new AnimatedAttackChance[] { allAttackChances[monsterAttackChanceIndex] };
             monsterAttack[monsterIndex].attackChances = attackChances;
 
             controller.looping = false;
@@ -105,13 +105,13 @@ namespace Tests.BattleModule
         [UnityTest]
         public IEnumerator BothAttackTest([Values(0, 1)] int monsterIndex, [Values(0, 1, 2)] int monsterAttackChanceIndex)
         {
-            Health enemyHealth = monsterAttackCommands[monsterIndex].enemy.GetComponent<Health>();
-            Health ownHealth = monsterAttackCommands[monsterIndex].attack.GetComponent<Health>();
+            Health enemyHealth = monsterAttackCommands[monsterIndex].attack.GetComponent<Health>();
+            Health ownHealth = monsterAttackCommands[Revert(monsterIndex)].attack.GetComponent<Health>();
 
-            MonsterAttackChance[] attackChances = new MonsterAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<MonsterAttackChance>()[monsterAttackChanceIndex] };
+            AnimatedAttackChance[] attackChances = new AnimatedAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<AnimatedAttackChance>()[monsterAttackChanceIndex] };
             monsterAttack[monsterIndex].attackChances = attackChances;
 
-            MonsterAttackChance[] enemyAttackChances = new MonsterAttackChance[] { fighters[Revert(monsterIndex)].GetComponentsInChildren<MonsterAttackChance>()[monsterAttackChanceIndex] };
+            AnimatedAttackChance[] enemyAttackChances = new AnimatedAttackChance[] { fighters[Revert(monsterIndex)].GetComponentsInChildren<AnimatedAttackChance>()[monsterAttackChanceIndex] };
             monsterAttack[Revert(monsterIndex)].attackChances = enemyAttackChances;
 
             controller.looping = false;
@@ -147,7 +147,8 @@ namespace Tests.BattleModule
 
             enemyHealth.TakeDamage(99);
 
-            monsterAttack[monsterIndex].attackChances = fighters[monsterIndex].GetComponentsInChildren<MonsterAttackChance>();
+            AnimatedAttackChance[] attackChances = new AnimatedAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<AnimatedAttackChance>()[0] };
+            monsterAttack[monsterIndex].attackChances = attackChances;
 
             controller.looping = true;
             controller.commands = new AbstractCommand[] { monsterAttackCommands[monsterIndex] };
@@ -156,7 +157,7 @@ namespace Tests.BattleModule
 
             battleManager.BattleStart();
 
-            yield return new WaitForSeconds(15);
+            yield return new WaitForSeconds(10);
 
             Vector3 actualPosition = monsterAttackCommands[monsterIndex].enemy.transform.position;
 
@@ -176,10 +177,10 @@ namespace Tests.BattleModule
             Health enemyHealth = monsterAttackCommands[monsterIndex].enemy.GetComponent<Health>();
             Health ownHealth = monsterAttackCommands[monsterIndex].attack.GetComponent<Health>();
 
-            MonsterAttackChance[] attackChances = new MonsterAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<MonsterAttackChance>()[monsterAttackIndex] };
+            AnimatedAttackChance[] attackChances = new AnimatedAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<AnimatedAttackChance>()[monsterAttackIndex] };
             monsterAttack[monsterIndex].attackChances = attackChances;
 
-            Monster[] monsters = core.GetComponentsInChildren<Monster>();
+            AnimatedFighter[] monsters = core.GetComponentsInChildren<AnimatedFighter>();
 
             monsters[Revert(monsterIndex)].blockChance = 100;
 
@@ -210,10 +211,10 @@ namespace Tests.BattleModule
             Health enemyHealth = monsterAttackCommands[monsterIndex].enemy.GetComponent<Health>();
             Health ownHealth = monsterAttackCommands[monsterIndex].attack.GetComponent<Health>();
 
-            MonsterAttackChance[] attackChances = new MonsterAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<MonsterAttackChance>()[0] };
+            AnimatedAttackChance[] attackChances = new AnimatedAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<AnimatedAttackChance>()[0] };
             monsterAttack[monsterIndex].attackChances = attackChances;
 
-            MonsterMoveCommand[] monsterMoveCommands = core.GetComponentsInChildren<MonsterMoveCommand>();
+            MoveCommand[] monsterMoveCommands = core.GetComponentsInChildren<MoveCommand>();
 
             controller.looping = false;
             controller.commands = new AbstractCommand[] { monsterMoveCommands[Revert(monsterIndex)], monsterAttackCommands[monsterIndex] };
@@ -227,6 +228,42 @@ namespace Tests.BattleModule
             Assert.AreEqual(100, enemyHealth.currentHp);
             Assert.AreEqual(100, ownHealth.currentHp);
 
+            Assert.AreEqual("100/100", textHealthShowerUIs[Revert(monsterIndex)].hp.text);
+            Assert.AreEqual("100/100", textHealthShowerUIs[monsterIndex].hp.text);
+
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator WithDrawTest()
+        {
+            yield return new WaitForSeconds(2);
+
+            battleManager.WithdrawFromFight();
+
+            yield return new WaitForSeconds(4);
+
+            Assert.AreEqual(true, fighters[0].gameObject.activeSelf);
+            Assert.AreEqual(true, fighters[1].gameObject.activeSelf);
+
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator DisableTest([Values(0, 1)] int monsterIndex)
+        {
+            controller.looping = false;
+            controller.commands = new AbstractCommand[] { };
+
+            controller.InitCommands();
+
+            battleManager.BattleStart();
+
+            fighters[monsterIndex].Disable();
+
+            yield return new WaitForSeconds(1);
+
+            Assert.AreEqual(false, fighters[monsterIndex].gameObject.activeSelf);
             Assert.AreEqual("100/100", textHealthShowerUIs[Revert(monsterIndex)].hp.text);
             Assert.AreEqual("100/100", textHealthShowerUIs[monsterIndex].hp.text);
 

@@ -7,7 +7,10 @@ public class PlayerHealth : Health
     public Text hp;
     public GameObject block;
 
+    [Header ("Time Damage Block Settings")]
     public TimeDamageBlock timeDamageBlock;
+    public GameObject blockUI;
+    public ParticleSystem shieldEffect;
 
     public void BlockDown()
     {
@@ -28,15 +31,10 @@ public class PlayerHealth : Health
 
     public override void SetDamageBlock()
     {
-        if (timeDamageBlock != null)
-        {
-            timeDamageBlock.StartBlock();
-        }
-    }
+        base.SetDamageBlock();
 
-    public override void TakeDamageBasedOnHit(float dmg, bool isHeadshot)
-    {
-        
+        blockUI.SetActive(true);
+        shieldEffect.Play();
     }
 
     public override void TakeDamage(float dmg)
@@ -47,7 +45,7 @@ public class PlayerHealth : Health
 
         if (currentHp < 0)
         {
-            ResetHealth();
+            InitHealth();
         }
     }
 

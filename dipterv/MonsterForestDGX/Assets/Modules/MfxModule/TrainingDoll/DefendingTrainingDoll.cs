@@ -29,15 +29,7 @@ public class DefendingTrainingDoll : AiFighter
         return GetComponent<Health>();
     }
 
-    protected override void React()
-    {
-        float random = Random.Range(1, 101);
-
-        if (random <= blockChance)
-        {
-            dollHealth.SetDamageBlock();
-        }
-    }
+    protected override void React(){}
 
     protected override void ResetMonster(){}
 

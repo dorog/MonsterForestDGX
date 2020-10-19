@@ -30,7 +30,7 @@ Transform:
   - {fileID: 1036255597}
   - {fileID: 1885073600}
   m_Father: {fileID: 155212319384680742}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517022432
 GameObject:
@@ -41,9 +41,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 517022433}
-  - component: {fileID: 517022436}
-  - component: {fileID: 517022435}
-  - component: {fileID: 517022434}
+  - component: {fileID: 6013271730947436713}
+  - component: {fileID: 3210272280369657726}
+  - component: {fileID: 2304204847010207031}
   m_Layer: 0
   m_Name: BlueAttackChances
   m_TagString: Untagged
@@ -65,7 +65,7 @@ Transform:
   m_Father: {fileID: 3443360399461869363}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &517022436
+--- !u!114 &6013271730947436713
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 517022432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chance: 100
@@ -83,7 +83,7 @@ MonoBehaviour:
     time: 5
     activate:
     - {fileID: 8936889201540693147}
---- !u!114 &517022435
+--- !u!114 &3210272280369657726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 517022432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chance: 100
@@ -101,7 +101,7 @@ MonoBehaviour:
     time: 5
     activate:
     - {fileID: 3718970795649575142}
---- !u!114 &517022434
+--- !u!114 &2304204847010207031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 517022432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chance: 100
@@ -119,52 +119,6 @@ MonoBehaviour:
     time: 5
     activate:
     - {fileID: 5663505011645722713}
---- !u!1 &905187725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 905187726}
-  - component: {fileID: 905187727}
-  m_Layer: 0
-  m_Name: RedFighterTurn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &905187726
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905187725}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 155212320189471004}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &905187727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 905187725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d66b70509c4d24b9fc9600934dff30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  fighter: {fileID: 3160591800730181377}
-  battleManager: {fileID: 155212320021434484}
 --- !u!1 &1036255596
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +159,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1036255596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aca9c4aea1f8494a8f7a13c27fe1b05, type: 3}
+  m_Script: {fileID: 11500000, guid: ea724b44c2a13314799ab8cb07a1ce24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
@@ -220,9 +174,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1252488715}
-  - component: {fileID: 1252488718}
-  - component: {fileID: 1252488717}
-  - component: {fileID: 1252488716}
+  - component: {fileID: 7900997076097886573}
+  - component: {fileID: 8069028688109603428}
+  - component: {fileID: 6883137484317996558}
   m_Layer: 0
   m_Name: RedAttackChances
   m_TagString: Untagged
@@ -244,7 +198,7 @@ Transform:
   m_Father: {fileID: 1848182426983881443}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1252488718
+--- !u!114 &7900997076097886573
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -253,7 +207,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252488714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chance: 100
@@ -262,7 +216,7 @@ MonoBehaviour:
     time: 5
     activate:
     - {fileID: 8474843425361573919}
---- !u!114 &1252488717
+--- !u!114 &8069028688109603428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -271,7 +225,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252488714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chance: 100
@@ -280,7 +234,7 @@ MonoBehaviour:
     time: 5
     activate:
     - {fileID: 1087919083481288687}
---- !u!114 &1252488716
+--- !u!114 &6883137484317996558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,7 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1252488714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4ebfcf4553ee44e85acf71df8db770, type: 3}
+  m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   chance: 100
@@ -307,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1325244198}
-  - component: {fileID: 1325244199}
+  - component: {fileID: 7793208734862330695}
   m_Layer: 0
   m_Name: RedAttackCommand
   m_TagString: Untagged
@@ -329,7 +283,7 @@ Transform:
   m_Father: {fileID: 155212319608888565}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1325244199
+--- !u!114 &7793208734862330695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,13 +292,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1325244197}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea61a8a2513362f47a545c376ae0d506, type: 3}
+  m_Script: {fileID: 11500000, guid: dbf4036fe3ba4a644b26e0d0de1b708a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   extraAttackChances: []
-  attack: {fileID: 281418322586551693}
-  enemy: {fileID: 600076249024004244}
+  attack: {fileID: 6937350128805734532}
+  enemy: {fileID: 3036935206445535749}
   attackDelay: 2
 --- !u!1 &1630799139
 GameObject:
@@ -501,11 +455,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1885073599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aca9c4aea1f8494a8f7a13c27fe1b05, type: 3}
+  m_Script: {fileID: 11500000, guid: ea724b44c2a13314799ab8cb07a1ce24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  turnFill: {fileID: 155212319339886267}
+  turnFill: {fileID: 3471183603375180849}
   forward: 0
 --- !u!1 &17645886770957551
 GameObject:
@@ -548,7 +502,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5859030895544541150}
   - component: {fileID: 8729811179391832258}
-  - component: {fileID: 8443032922179623585}
+  - component: {fileID: 5105926741169745078}
   m_Layer: 10
   m_Name: Worm_Bone006
   m_TagString: Untagged
@@ -584,7 +538,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8443032922179623585
+--- !u!114 &5105926741169745078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -593,12 +547,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 75459981312540877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &127389781102602173
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,13 +784,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 155212319007671044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea61a8a2513362f47a545c376ae0d506, type: 3}
+  m_Script: {fileID: 11500000, guid: dbf4036fe3ba4a644b26e0d0de1b708a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   extraAttackChances: []
-  attack: {fileID: 559317818530127482}
-  enemy: {fileID: 3160591800730181377}
+  attack: {fileID: 3585162267218906816}
+  enemy: {fileID: 3388526762815950302}
   attackDelay: 2
 --- !u!1 &155212319257304609
 GameObject:
@@ -926,8 +883,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 155212319608888565}
-  - {fileID: 155212320189471004}
   - {fileID: 192249340}
+  - {fileID: 3828487584125868604}
   m_Father: {fileID: 155212320307190808}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1186,38 +1143,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: RedHP
---- !u!1 &155212320189470995
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 155212320189471004}
-  m_Layer: 0
-  m_Name: FighterTurnCommands
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &155212320189471004
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155212320189470995}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 155212320469528240}
-  - {fileID: 905187726}
-  m_Father: {fileID: 155212319384680742}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &155212320307190815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1335,52 +1260,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Blue HP
---- !u!1 &155212320469528247
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 155212320469528240}
-  - component: {fileID: 155212320469528241}
-  m_Layer: 0
-  m_Name: BlueFighterTurn
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &155212320469528240
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155212320469528247}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 155212320189471004}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &155212320469528241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155212320469528247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2d66b70509c4d24b9fc9600934dff30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 0}
-  fighter: {fileID: 600076249024004244}
-  battleManager: {fileID: 155212320021434484}
 --- !u!1 &156872372591789743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1453,7 +1332,7 @@ GameObject:
   m_Component:
   - component: {fileID: 315937010282544736}
   - component: {fileID: 7283614905540900649}
-  - component: {fileID: 147590431445737384}
+  - component: {fileID: 1927514578715187854}
   m_Layer: 10
   m_Name: Worm_Bone010
   m_TagString: Untagged
@@ -1489,7 +1368,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &147590431445737384
+--- !u!114 &1927514578715187854
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1498,12 +1377,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 212310767751964598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &251402756190747177
 GameObject:
   m_ObjectHideFlags: 0
@@ -6481,7 +6363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4571192347268859031}
   - component: {fileID: 5647639406786509745}
-  - component: {fileID: 816972096167468875}
+  - component: {fileID: 2615057344673932037}
   m_Layer: 10
   m_Name: Worm_Bone002
   m_TagString: Untagged
@@ -6517,7 +6399,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &816972096167468875
+--- !u!114 &2615057344673932037
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6526,12 +6408,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 722762094596407913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
+  monsterHitType: 1
+  health: {fileID: 8899694534060766969}
 --- !u!1 &724497039123966086
 GameObject:
   m_ObjectHideFlags: 0
@@ -11479,8 +11364,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5438040445275902958}
-  - component: {fileID: 5853339924011956825}
   - component: {fileID: 9024421658853686277}
+  - component: {fileID: 4808467972873341528}
   m_Layer: 11
   m_Name: HardAttack
   m_TagString: Untagged
@@ -11502,19 +11387,6 @@ Transform:
   m_Father: {fileID: 7438637961534110880}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5853339924011956825
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087919083481288687}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9024421658853686277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11528,7 +11400,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 20
-  ownHealth: {fileID: 2898458209247614460}
+--- !u!65 &4808467972873341528
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087919083481288687}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1093126990522748373
 GameObject:
   m_ObjectHideFlags: 0
@@ -11539,7 +11423,7 @@ GameObject:
   m_Component:
   - component: {fileID: 61727949383125738}
   - component: {fileID: 8953257324615702753}
-  - component: {fileID: 7676950088036212815}
+  - component: {fileID: 4725749210586433005}
   m_Layer: 10
   m_Name: Worm_Bone015
   m_TagString: Untagged
@@ -11576,7 +11460,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7676950088036212815
+--- !u!114 &4725749210586433005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11585,12 +11469,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1093126990522748373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &1114425303105006324
 GameObject:
   m_ObjectHideFlags: 0
@@ -11977,7 +11864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4357248485962764728}
   - component: {fileID: 170027421449576194}
-  - component: {fileID: 424619430577924746}
+  - component: {fileID: 6000373606034106406}
   m_Layer: 10
   m_Name: Worm_Bone009
   m_TagString: Untagged
@@ -12013,7 +11900,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &424619430577924746
+--- !u!114 &6000373606034106406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12022,12 +11909,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1581776933129143460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &1596631376593077566
 GameObject:
   m_ObjectHideFlags: 0
@@ -12442,15 +12332,16 @@ GameObject:
   - component: {fileID: 2515662893818341892}
   - component: {fileID: 5356193268580183153}
   - component: {fileID: 3134228109103505661}
-  - component: {fileID: 7076540035710939000}
-  - component: {fileID: 600076249024004244}
   - component: {fileID: 618491971620567022}
   - component: {fileID: 5704425070359094321}
-  - component: {fileID: 7834076164426547261}
   - component: {fileID: 6145232140461162790}
-  - component: {fileID: 559317818530127482}
   - component: {fileID: 155212319339886262}
   - component: {fileID: 155212319339886264}
+  - component: {fileID: 4238717755703360789}
+  - component: {fileID: 3036935206445535749}
+  - component: {fileID: 8899694534060766969}
+  - component: {fileID: 3524957359681291880}
+  - component: {fileID: 3585162267218906816}
   m_Layer: 10
   m_Name: Rudy
   m_TagString: Untagged
@@ -17992,56 +17883,6 @@ MonoBehaviour:
   - {fileID: 4118100455095903906}
   - {fileID: 6940216926359041843}
   - {fileID: 1681692097589825041}
---- !u!114 &7076540035710939000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021366217452211611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333e0ee7357afa94cb37fadc3bf0b014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
-  currentHp: 0
-  fighter: {fileID: 600076249024004244}
-  healEffect: {fileID: 2515662893818341892}
-  bodyHitAnimation: gotHitBody
-  headHitAnimation: gotHitHead
-  blockAnimation: quickBlock
-  animator: {fileID: 6145017799872034823}
-  monsterBodyDisappear: {fileID: 618491971620567022}
-  inBlock: 0
-  damageBlock: {fileID: 7834076164426547261}
-  healthShowerUI: {fileID: 5704425070359094321}
---- !u!114 &600076249024004244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021366217452211611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d260211b369344f8a384de562f9744, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6145017799872034823}
-  dieAnimation: death
-  health: {fileID: 7076540035710939000}
-  appearAnimation: appear
-  appearAnimationTime: 2
-  disappearAnimation: disappear
-  disappearAnimationTime: 2
-  blockChance: 0
-  extraObjects:
-  - {fileID: 3548754301275912345}
-  extraParticles:
-  - {fileID: 3899898857887249597}
-  EnemyDiedAutoController: {fileID: 7398355212405325121}
-  root: {fileID: 4020031985119386627}
 --- !u!114 &618491971620567022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18070,19 +17911,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 155212320442678866}
---- !u!114 &7834076164426547261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021366217452211611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9da471b4ef1d9428a732bb70bc98d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockValue: 15
 --- !u!199 &6145232140461162790
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -18149,21 +17977,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &559317818530127482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2021366217452211611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdf7841e543953e4c9b6c6bfd1e983bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 6145017799872034823}
-  attackChances: []
-  monster: {fileID: 600076249024004244}
 --- !u!54 &155212319339886262
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18199,6 +18012,97 @@ MonoBehaviour:
   appearAnimationTime: 2
   disapperAnimation: disappear
   disappearAnimationTime: 2
+--- !u!114 &4238717755703360789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021366217452211611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1633a8358684ca44bbd89c4954b7605c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgPercent: 100
+--- !u!114 &3036935206445535749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021366217452211611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2f04eed8fbaeb418f1effb561be36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 8899694534060766969}
+  blockChance: 0
+  extraObjects:
+  - {fileID: 3548754301275912345}
+  extraParticles:
+  - {fileID: 3899898857887249597}
+  root: {fileID: 2021366217452211611}
+  animator: {fileID: 6145017799872034823}
+  dieAnimation: death
+  appearAnimation: appear
+  appearAnimationTime: 2
+  disappearAnimation: disappear
+  disappearAnimationTime: 2
+  EnemyDiedAutoController: {fileID: 7398355212405325121}
+  shredding: {fileID: 618491971620567022}
+--- !u!114 &8899694534060766969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021366217452211611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3fc981e6dee1114aa2c95ede54114f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  currentHp: 0
+  fighter: {fileID: 3036935206445535749}
+  extraParts: []
+  damageBlock: {fileID: 3524957359681291880}
+  healthShowerUI: {fileID: 5704425070359094321}
+  healEffect: {fileID: 2515662893818341892}
+  bodyHitAnimation: gotHitBody
+  headHitAnimation: gotHitHead
+  blockAnimation: quickBlock
+  animator: {fileID: 6145017799872034823}
+--- !u!114 &3524957359681291880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021366217452211611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e82316ec874494c9abfa11026d8bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockValue: 15
+--- !u!114 &3585162267218906816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021366217452211611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c55d5ebad986c648ae3bab267a7d300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 6145017799872034823}
+  attackChances: []
+  monster: {fileID: 3036935206445535749}
 --- !u!1 &2050137488915311787
 GameObject:
   m_ObjectHideFlags: 0
@@ -22934,6 +22838,52 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!1 &2146820023837816788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6086578602709160625}
+  - component: {fileID: 8267752743718362628}
+  m_Layer: 0
+  m_Name: RedFighterTurn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6086578602709160625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146820023837816788}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3828487584125868604}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8267752743718362628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146820023837816788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d66b70509c4d24b9fc9600934dff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  fighter: {fileID: 3388526762815950302}
+  battleManager: {fileID: 155212320021434484}
 --- !u!1 &2148873243335081481
 GameObject:
   m_ObjectHideFlags: 0
@@ -22944,7 +22894,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2138623443448974914}
   - component: {fileID: 5792426821065055730}
-  - component: {fileID: 7137516054086132853}
+  - component: {fileID: 2978533569253090725}
   m_Layer: 10
   m_Name: Worm_Bone005
   m_TagString: Untagged
@@ -22980,7 +22930,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7137516054086132853
+--- !u!114 &2978533569253090725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22989,12 +22939,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2148873243335081481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &2223830688649114630
 GameObject:
   m_ObjectHideFlags: 0
@@ -23005,7 +22958,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4638887570078521006}
   - component: {fileID: 4339201844780140626}
-  - component: {fileID: 3706331451702545460}
+  - component: {fileID: 8249341895362034687}
   m_Layer: 10
   m_Name: Worm_Bone004
   m_TagString: Untagged
@@ -23041,7 +22994,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3706331451702545460
+--- !u!114 &8249341895362034687
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23050,12 +23003,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2223830688649114630}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &2246058177701217577
 GameObject:
   m_ObjectHideFlags: 0
@@ -23066,7 +23022,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1257407583556901314}
   - component: {fileID: 4680049502548599360}
-  - component: {fileID: 788271638069320949}
+  - component: {fileID: 8183015882858925813}
   m_Layer: 10
   m_Name: Worm_Bone001
   m_TagString: Untagged
@@ -23102,7 +23058,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &788271638069320949
+--- !u!114 &8183015882858925813
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23111,12 +23067,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2246058177701217577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
+  monsterHitType: 1
+  health: {fileID: 8899694534060766969}
 --- !u!1 &2272884252228817541
 GameObject:
   m_ObjectHideFlags: 0
@@ -23282,7 +23241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4193880525792144460}
   - component: {fileID: 2815016987493004561}
-  - component: {fileID: 4567174837668835453}
+  - component: {fileID: 5117444448142930539}
   m_Layer: 10
   m_Name: Worm_Bone009
   m_TagString: Untagged
@@ -23318,7 +23277,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4567174837668835453
+--- !u!114 &5117444448142930539
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23327,12 +23286,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2614112931676756082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &2631906528842999097
 GameObject:
   m_ObjectHideFlags: 0
@@ -23532,16 +23494,16 @@ GameObject:
   - component: {fileID: 5681557146325887285}
   - component: {fileID: 7449720970993805262}
   - component: {fileID: 4511607509519661639}
-  - component: {fileID: 2898458209247614460}
-  - component: {fileID: 3160591800730181377}
-  - component: {fileID: 2986370642888799137}
   - component: {fileID: 3995623787450068882}
-  - component: {fileID: 2276801873596120276}
   - component: {fileID: 2164245790178934072}
-  - component: {fileID: 281418322586551693}
   - component: {fileID: 2639363346583361871}
-  - component: {fileID: 155212319339886267}
-  - component: {fileID: 6131818386879023207}
+  - component: {fileID: 224573194339221534}
+  - component: {fileID: 4920180745290249347}
+  - component: {fileID: 3388526762815950302}
+  - component: {fileID: 4774459680395474159}
+  - component: {fileID: 6937350128805734532}
+  - component: {fileID: 3471183603375180849}
+  - component: {fileID: 651609791593726302}
   m_Layer: 10
   m_Name: Wormy
   m_TagString: Untagged
@@ -29083,71 +29045,6 @@ MonoBehaviour:
   - {fileID: 1440104868308829491}
   - {fileID: 384257683774972919}
   - {fileID: 581464096234932357}
---- !u!114 &2898458209247614460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691913527577701028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 333e0ee7357afa94cb37fadc3bf0b014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHp: 100
-  currentHp: 0
-  fighter: {fileID: 3160591800730181377}
-  healEffect: {fileID: 5681557146325887285}
-  bodyHitAnimation: gotHitBody
-  headHitAnimation: gotHitHead
-  blockAnimation: quickBlock
-  animator: {fileID: 7607963895032819206}
-  monsterBodyDisappear: {fileID: 2986370642888799137}
-  inBlock: 0
-  damageBlock: {fileID: 6131818386879023207}
-  healthShowerUI: {fileID: 3995623787450068882}
---- !u!114 &3160591800730181377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691913527577701028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d260211b369344f8a384de562f9744, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7607963895032819206}
-  dieAnimation: death
-  health: {fileID: 2898458209247614460}
-  appearAnimation: appear
-  appearAnimationTime: 2
-  disappearAnimation: disappear
-  disappearAnimationTime: 2
-  blockChance: 0
-  extraObjects:
-  - {fileID: 4567847175517872230}
-  extraParticles:
-  - {fileID: 6357983418304039612}
-  EnemyDiedAutoController: {fileID: 4411492073383312626}
-  root: {fileID: 4203028652202522142}
---- !u!114 &2986370642888799137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691913527577701028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d03e8eee2664cd42a53e047aacbddb6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 10
-  disappearTime: 2
-  delayTime: 4
 --- !u!114 &3995623787450068882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29161,19 +29058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp: {fileID: 155212320176410755}
---- !u!114 &2276801873596120276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691913527577701028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9da471b4ef1d9428a732bb70bc98d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockValue: 15
 --- !u!199 &2164245790178934072
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -29240,22 +29124,6 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &281418322586551693
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691913527577701028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdf7841e543953e4c9b6c6bfd1e983bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7607963895032819206}
-  attackChances:
-  - {fileID: 0}
-  monster: {fileID: 3160591800730181377}
 --- !u!54 &2639363346583361871
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -29272,7 +29140,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &155212319339886267
+--- !u!114 &224573194339221534
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29281,17 +29149,98 @@ MonoBehaviour:
   m_GameObject: {fileID: 2691913527577701028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7295a7e90ce193948b458bea8ac9a3ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 1633a8358684ca44bbd89c4954b7605c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgPercent: 100
+--- !u!114 &4920180745290249347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691913527577701028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 530364dcafa3bf448a96cb53f2878969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockValue: 15
+  durationTime: 5
+--- !u!114 &3388526762815950302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691913527577701028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2f04eed8fbaeb418f1effb561be36e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 651609791593726302}
+  blockChance: 0
+  extraObjects: []
+  extraParticles: []
+  root: {fileID: 2691913527577701028}
+  animator: {fileID: 7607963895032819206}
+  dieAnimation: death
+  appearAnimation: appear
+  appearAnimationTime: 2
+  disappearAnimation: disappear
+  disappearAnimationTime: 2
+  EnemyDiedAutoController: {fileID: 7398355212405325121}
+  shredding: {fileID: 4774459680395474159}
+--- !u!114 &4774459680395474159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691913527577701028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d03e8eee2664cd42a53e047aacbddb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 10
+  disappearTime: 2
+  delayTime: 4
+--- !u!114 &6937350128805734532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691913527577701028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c55d5ebad986c648ae3bab267a7d300, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7607963895032819206}
+  attackChances: []
+  monster: {fileID: 3388526762815950302}
+--- !u!114 &3471183603375180849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2691913527577701028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22191917b5e3f346889ae795bb92b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 10
   animator: {fileID: 7607963895032819206}
-  undergroundtime: 1
-  appearAnimation: appear
-  appearAnimationTime: 2
-  disapperAnimation: disappear
-  disappearAnimationTime: 2
---- !u!114 &6131818386879023207
+  movementTime: 5
+  movingAnimation: locomotion
+  forwardValue: 1
+  backwardValue: 1
+--- !u!114 &651609791593726302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29300,10 +29249,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2691913527577701028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9da471b4ef1d9428a732bb70bc98d9, type: 3}
+  m_Script: {fileID: 11500000, guid: d3fc981e6dee1114aa2c95ede54114f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockValue: 15
+  maxHp: 100
+  currentHp: 0
+  fighter: {fileID: 3388526762815950302}
+  extraParts: []
+  damageBlock: {fileID: 4920180745290249347}
+  healthShowerUI: {fileID: 3995623787450068882}
+  healEffect: {fileID: 5681557146325887285}
+  bodyHitAnimation: gotHitBody
+  headHitAnimation: gotHitHead
+  blockAnimation: quickBlock
+  animator: {fileID: 7607963895032819206}
 --- !u!1 &2705156465906204611
 GameObject:
   m_ObjectHideFlags: 0
@@ -29335,6 +29294,52 @@ Transform:
   m_Father: {fileID: 1895487772745871881}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2770261878786855849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7697905328875979328}
+  - component: {fileID: 3130359586229773161}
+  m_Layer: 0
+  m_Name: BlueFighterTurn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7697905328875979328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770261878786855849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3828487584125868604}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3130359586229773161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2770261878786855849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2d66b70509c4d24b9fc9600934dff30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 0}
+  fighter: {fileID: 3036935206445535749}
+  battleManager: {fileID: 155212320021434484}
 --- !u!1 &2772155062325063023
 GameObject:
   m_ObjectHideFlags: 0
@@ -29469,7 +29474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8818261810848507272}
   - component: {fileID: 8834588361972263525}
-  - component: {fileID: 4622844342145282310}
+  - component: {fileID: 5452972422890492732}
   m_Layer: 10
   m_Name: Worm_Bone004
   m_TagString: Untagged
@@ -29505,7 +29510,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4622844342145282310
+--- !u!114 &5452972422890492732
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29514,12 +29519,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3049090993046934138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &3113841760882106257
 GameObject:
   m_ObjectHideFlags: 0
@@ -29581,6 +29589,38 @@ Transform:
   - {fileID: 6302518016370765293}
   m_Father: {fileID: 5166278192393111987}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3174084092975291491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3828487584125868604}
+  m_Layer: 0
+  m_Name: FighterTurnCommands
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3828487584125868604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3174084092975291491}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7697905328875979328}
+  - {fileID: 6086578602709160625}
+  m_Father: {fileID: 155212319384680742}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3187466560256722296
 GameObject:
@@ -29844,7 +29884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1607892157642518486}
   - component: {fileID: 1203187937279413246}
-  - component: {fileID: 5394470266974540082}
+  - component: {fileID: 4586254993875478565}
   m_Layer: 10
   m_Name: Worm_Bone006
   m_TagString: Untagged
@@ -29880,7 +29920,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5394470266974540082
+--- !u!114 &4586254993875478565
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -29889,12 +29929,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3493572745990163095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &3537091932440534633
 GameObject:
   m_ObjectHideFlags: 0
@@ -34658,7 +34701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3850748041868925719}
   - component: {fileID: 8992133651974314304}
-  - component: {fileID: 3735011293783450101}
+  - component: {fileID: 1420807592193433719}
   m_Layer: 10
   m_Name: Worm_Bone012
   m_TagString: Untagged
@@ -34695,7 +34738,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3735011293783450101
+--- !u!114 &1420807592193433719
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34704,12 +34747,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3543702931045126267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &3545274796875058671
 GameObject:
   m_ObjectHideFlags: 0
@@ -34781,7 +34827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3529930725802428825}
   - component: {fileID: 1624804394548960788}
-  - component: {fileID: 2924333735406877315}
+  - component: {fileID: 5682814652186107609}
   m_Layer: 10
   m_Name: Worm_Bone003
   m_TagString: Untagged
@@ -34817,7 +34863,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2924333735406877315
+--- !u!114 &5682814652186107609
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34826,12 +34872,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3623904808201362354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &3715897950820552592
 GameObject:
   m_ObjectHideFlags: 0
@@ -34921,7 +34970,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 20
-  ownHealth: {fileID: 7076540035710939000}
 --- !u!1 &3790882617369654524
 GameObject:
   m_ObjectHideFlags: 0
@@ -34932,7 +34980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3544472981882604730}
   - component: {fileID: 2501750608099320531}
-  - component: {fileID: 7645201136794240200}
+  - component: {fileID: 2449235970937415302}
   m_Layer: 10
   m_Name: Worm_Bone014
   m_TagString: Untagged
@@ -34969,7 +35017,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7645201136794240200
+--- !u!114 &2449235970937415302
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34978,12 +35026,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3790882617369654524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &3816464577437022630
 GameObject:
   m_ObjectHideFlags: 0
@@ -35091,7 +35142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3399386853210775271}
   - component: {fileID: 2347400294625738613}
-  - component: {fileID: 5032918676311134052}
+  - component: {fileID: 2256707399064250329}
   m_Layer: 10
   m_Name: Worm_Bone016
   m_TagString: Untagged
@@ -35128,7 +35179,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5032918676311134052
+--- !u!114 &2256707399064250329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35137,12 +35188,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3824503568809258728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &3870900512647233319
 GameObject:
   m_ObjectHideFlags: 0
@@ -35153,7 +35207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 761449676678477297}
   - component: {fileID: 2310804916085947889}
-  - component: {fileID: 8874033231659383453}
+  - component: {fileID: 3357546073660208737}
   m_Layer: 10
   m_Name: Worm_Bone014
   m_TagString: Untagged
@@ -35190,7 +35244,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8874033231659383453
+--- !u!114 &3357546073660208737
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35199,12 +35253,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3870900512647233319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &3926742455670437581
 GameObject:
   m_ObjectHideFlags: 0
@@ -35246,7 +35303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8121206225581662638}
   - component: {fileID: 2444762441098376233}
-  - component: {fileID: 8004186880016513234}
+  - component: {fileID: 6885540490479766201}
   m_Layer: 10
   m_Name: Worm_Bone010
   m_TagString: Untagged
@@ -35282,7 +35339,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8004186880016513234
+--- !u!114 &6885540490479766201
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35291,12 +35348,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3933053486636839249}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &4020031985119386627
 GameObject:
   m_ObjectHideFlags: 0
@@ -35402,7 +35462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4403687709806904252}
   - component: {fileID: 4880042401375277376}
-  - component: {fileID: 814025818357130333}
+  - component: {fileID: 4414160612083789527}
   m_Layer: 10
   m_Name: Worm_Bone013
   m_TagString: Untagged
@@ -35439,7 +35499,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &814025818357130333
+--- !u!114 &4414160612083789527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35448,12 +35508,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4153128058971687002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &4176427773565675902
 GameObject:
   m_ObjectHideFlags: 0
@@ -35681,7 +35744,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1338612353924805491}
   - component: {fileID: 2192959116435171575}
-  - component: {fileID: 1848872709413278467}
+  - component: {fileID: 1613159430412951047}
   m_Layer: 10
   m_Name: Worm_Bone003
   m_TagString: Untagged
@@ -35717,7 +35780,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1848872709413278467
+--- !u!114 &1613159430412951047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35726,12 +35789,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4380522258111509283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &4429149203360615080
 GameObject:
   m_ObjectHideFlags: 0
@@ -45777,7 +45843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8061994262924182557}
   - component: {fileID: 996573142256782714}
-  - component: {fileID: 5206227188193524914}
+  - component: {fileID: 7497817997010377370}
   m_Layer: 10
   m_Name: Worm_Bone008
   m_TagString: Untagged
@@ -45813,7 +45879,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5206227188193524914
+--- !u!114 &7497817997010377370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45822,12 +45888,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5202638527949542707}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &5216421125008783274
 GameObject:
   m_ObjectHideFlags: 0
@@ -45932,7 +46001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6500833339125468506}
   - component: {fileID: 7688637364923775711}
-  - component: {fileID: 1803973188081562536}
+  - component: {fileID: 3651444905427088132}
   m_Layer: 10
   m_Name: Worm_Bone017
   m_TagString: Untagged
@@ -45967,7 +46036,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1803973188081562536
+--- !u!114 &3651444905427088132
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45976,12 +46045,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5273780625500962047}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &5276111397197493472
 GameObject:
   m_ObjectHideFlags: 0
@@ -51085,7 +51157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 30
-  ownHealth: {fileID: 7076540035710939000}
 --- !u!1 &5673415261507709883
 GameObject:
   m_ObjectHideFlags: 0
@@ -51190,7 +51261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6658390757004388265}
   - component: {fileID: 3678659852730781589}
-  - component: {fileID: 3268287642295361702}
+  - component: {fileID: 4419753878436799045}
   m_Layer: 10
   m_Name: Worm_Bone002
   m_TagString: Untagged
@@ -51226,7 +51297,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3268287642295361702
+--- !u!114 &4419753878436799045
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51235,12 +51306,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5879607353586558790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &5908610768959111315
 GameObject:
   m_ObjectHideFlags: 0
@@ -51559,7 +51633,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4297581874874864918}
   - component: {fileID: 7843932864152027350}
-  - component: {fileID: 1363440177322796208}
+  - component: {fileID: 8528326240397542246}
   m_Layer: 10
   m_Name: Worm_Bone008
   m_TagString: Untagged
@@ -51595,7 +51669,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1363440177322796208
+--- !u!114 &8528326240397542246
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51604,12 +51678,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6355758359010402219}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &6422617821981975764
 GameObject:
   m_ObjectHideFlags: 0
@@ -56450,7 +56527,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3842416446620065284}
   - component: {fileID: 9214404274426527283}
-  - component: {fileID: 3998585299659961520}
+  - component: {fileID: 7775589573977958044}
   m_Layer: 10
   m_Name: Worm_Bone012
   m_TagString: Untagged
@@ -56487,7 +56564,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3998585299659961520
+--- !u!114 &7775589573977958044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56496,12 +56573,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6609867879317073678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &6705221011927763622
 GameObject:
   m_ObjectHideFlags: 0
@@ -56824,7 +56904,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7038629627545239652}
   - component: {fileID: 2615475425524539651}
-  - component: {fileID: 6484014206764347178}
+  - component: {fileID: 3106339889669635592}
   m_Layer: 10
   m_Name: Worm_Bone017
   m_TagString: Untagged
@@ -56859,7 +56939,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6484014206764347178
+--- !u!114 &3106339889669635592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56868,12 +56948,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7024289922539432698}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &7027401316930485021
 GameObject:
   m_ObjectHideFlags: 0
@@ -61605,7 +61688,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1895487772745871881}
-  - component: {fileID: 501331718261296938}
   m_Layer: 10
   m_Name: Head Control
   m_TagString: Untagged
@@ -61636,21 +61718,6 @@ Transform:
   m_Father: {fileID: 4779206813427356324}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &501331718261296938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7073410868133516904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
-  monsterHitType: 1
-  dmgPercent: 100
 --- !u!1 &7084029301077036127
 GameObject:
   m_ObjectHideFlags: 0
@@ -66491,7 +66558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 141056991617766619}
   - component: {fileID: 5823953459704703891}
-  - component: {fileID: 743741364538577353}
+  - component: {fileID: 6627447760829428301}
   m_Layer: 10
   m_Name: Worm_Bone007
   m_TagString: Untagged
@@ -66527,7 +66594,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &743741364538577353
+--- !u!114 &6627447760829428301
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66536,12 +66603,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7255963180568638469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &7267508968137566854
 GameObject:
   m_ObjectHideFlags: 0
@@ -71425,7 +71495,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1802268935090213403}
   - component: {fileID: 4088814078264433008}
-  - component: {fileID: 1264748554763293948}
+  - component: {fileID: 7121644928411637135}
   m_Layer: 10
   m_Name: Worm_Bone011
   m_TagString: Untagged
@@ -71461,7 +71531,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1264748554763293948
+--- !u!114 &7121644928411637135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71470,12 +71540,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7425819620829545582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &7425989676647648782
 GameObject:
   m_ObjectHideFlags: 0
@@ -71534,7 +71607,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 30
-  ownHealth: {fileID: 2898458209247614460}
 --- !u!1 &7444141676546069848
 GameObject:
   m_ObjectHideFlags: 0
@@ -71762,7 +71834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1687696306548121144}
   - component: {fileID: 1967496267599215194}
-  - component: {fileID: 1710525944412681561}
+  - component: {fileID: 736439423714229956}
   m_Layer: 10
   m_Name: Worm_Bone015
   m_TagString: Untagged
@@ -71799,7 +71871,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1710525944412681561
+--- !u!114 &736439423714229956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71808,12 +71880,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7626083069832600566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &7657992461984097051
 GameObject:
   m_ObjectHideFlags: 0
@@ -71855,7 +71930,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1123519298904031000}
   - component: {fileID: 8947322856287460251}
-  - component: {fileID: 2904201050687529433}
+  - component: {fileID: 2961289019600556327}
   m_Layer: 10
   m_Name: Worm_Bone007
   m_TagString: Untagged
@@ -71891,7 +71966,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2904201050687529433
+--- !u!114 &2961289019600556327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71900,12 +71975,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7706357219649474900}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &7740829375734136528
 GameObject:
   m_ObjectHideFlags: 0
@@ -71916,7 +71994,7 @@ GameObject:
   m_Component:
   - component: {fileID: 601878348944393476}
   - component: {fileID: 7975352157936319411}
-  - component: {fileID: 1592396318706618273}
+  - component: {fileID: 4889375043643126553}
   m_Layer: 10
   m_Name: Worm_Bone016
   m_TagString: Untagged
@@ -71953,7 +72031,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1592396318706618273
+--- !u!114 &4889375043643126553
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -71962,12 +72040,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7740829375734136528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &7781040335641880253
 GameObject:
   m_ObjectHideFlags: 0
@@ -86510,7 +86591,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 10
-  ownHealth: {fileID: 2898458209247614460}
 --- !u!1 &8489358230741663019
 GameObject:
   m_ObjectHideFlags: 0
@@ -86521,7 +86601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 127089851255785721}
   - component: {fileID: 2998759167237969902}
-  - component: {fileID: 1110227446979751855}
+  - component: {fileID: 1992981696701160635}
   m_Layer: 10
   m_Name: Worm_Bone001
   m_TagString: Untagged
@@ -86557,7 +86637,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1110227446979751855
+--- !u!114 &1992981696701160635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86566,12 +86646,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8489358230741663019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &8672764419121871890
 GameObject:
   m_ObjectHideFlags: 0
@@ -86581,7 +86664,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7438637961534110880}
-  - component: {fileID: 6579464144108393424}
   m_Layer: 10
   m_Name: Head Control
   m_TagString: Untagged
@@ -86612,21 +86694,6 @@ Transform:
   m_Father: {fileID: 4682115201398690166}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6579464144108393424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8672764419121871890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 1
-  dmgPercent: 100
 --- !u!1 &8706752716655970680
 GameObject:
   m_ObjectHideFlags: 0
@@ -86637,7 +86704,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9112872558640084741}
   - component: {fileID: 136940836929282618}
-  - component: {fileID: 8156631271571660881}
+  - component: {fileID: 568547322459411417}
   m_Layer: 10
   m_Name: Worm_Bone013
   m_TagString: Untagged
@@ -86674,7 +86741,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8156631271571660881
+--- !u!114 &568547322459411417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -86683,12 +86750,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8706752716655970680}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &8719136758652348549
 GameObject:
   m_ObjectHideFlags: 0
@@ -86934,7 +87004,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 10
-  ownHealth: {fileID: 7076540035710939000}
 --- !u!1 &8976780098388152453
 GameObject:
   m_ObjectHideFlags: 0
@@ -87037,7 +87106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8977715170607011051}
   - component: {fileID: 1748435121082770211}
-  - component: {fileID: 7396717173865555687}
+  - component: {fileID: 4152132237563495063}
   m_Layer: 10
   m_Name: Worm_Bone005
   m_TagString: Untagged
@@ -87073,7 +87142,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7396717173865555687
+--- !u!114 &4152132237563495063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87082,12 +87151,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 9019159405936082910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 2898458209247614460}
-  monsterHitType: 0
-  dmgPercent: 100
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 224573194339221534}
+  monsterHitType: 1
+  health: {fileID: 651609791593726302}
 --- !u!1 &9100132878076971711
 GameObject:
   m_ObjectHideFlags: 0
@@ -87098,7 +87170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2149014208481677577}
   - component: {fileID: 5647919251282980771}
-  - component: {fileID: 2287294997324384585}
+  - component: {fileID: 3659098376714092336}
   m_Layer: 10
   m_Name: Worm_Bone011
   m_TagString: Untagged
@@ -87134,7 +87206,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2287294997324384585
+--- !u!114 &3659098376714092336
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87143,12 +87215,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 9100132878076971711}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14793ab1a6160a049bb108ec2135479b, type: 3}
+  m_Script: {fileID: 11500000, guid: 611babde5d6dc6843adb3c85c3fa0c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 7076540035710939000}
+  isRegenerating: 1
+  partCleaner: {fileID: 0}
+  maxHealth: 0
+  damageModifier: {fileID: 4238717755703360789}
   monsterHitType: 0
-  dmgPercent: 100
+  health: {fileID: 8899694534060766969}
 --- !u!1 &9140884040583888397
 GameObject:
   m_ObjectHideFlags: 0

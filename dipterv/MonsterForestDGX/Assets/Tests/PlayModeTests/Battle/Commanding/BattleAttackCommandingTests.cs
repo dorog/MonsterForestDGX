@@ -8,7 +8,7 @@ namespace Tests.BattleModule.Commanding
 {
     public class BattleAttackCommandingTests
     {
-        private MonsterAttackCommand monsterAttackCommand = null;
+        private AttackCommand monsterAttackCommand = null;
         private Controller controller = null;
 
         private MockAttack mockAttack = null;
@@ -21,7 +21,7 @@ namespace Tests.BattleModule.Commanding
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Battle/Commanding/Commanding.prefab");
             core = Object.Instantiate(coreGO);
 
-            monsterAttackCommand = core.GetComponentInChildren<MonsterAttackCommand>();
+            monsterAttackCommand = core.GetComponentInChildren<AttackCommand>();
             controller = core.GetComponentInChildren<Controller>();
 
             mockAttack = core.GetComponentInChildren<MockAttack>();
