@@ -20,7 +20,7 @@ public class AnimatedFighter : PassiveFighter
     public override void Die()
     {
         animator.SetTrigger(dieAnimation);
-        StartCoroutine(shredding.Disappear());
+        shredding.Disappear();
 
         base.Die();
     }

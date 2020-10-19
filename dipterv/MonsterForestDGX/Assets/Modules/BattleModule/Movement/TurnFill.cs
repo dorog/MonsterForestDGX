@@ -5,8 +5,15 @@ public abstract class TurnFill : MonoBehaviour
 {
     public float distance = 10;
 
-    public Animator animator;
+    public float delay = 0f;
 
-    public abstract IEnumerator Moving(bool forward);
+    public IEnumerator Move(MovingDirection direction)
+    {
+        yield return new WaitForSeconds(delay);
+
+        StartCoroutine(Moving(direction));
+    }
+
+    protected abstract IEnumerator Moving(MovingDirection direction);
     public abstract float GetNecessaryTimeForMoving();
 }

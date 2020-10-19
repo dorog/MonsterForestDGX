@@ -4,11 +4,11 @@ using UnityEngine;
 public class MoveCommand : AbstractCommand
 {
     public TurnFill turnFill;
-    public bool forward;
+    public MovingDirection direction;
 
     protected override IEnumerator ExecuteCommand()
     {
-        StartCoroutine(turnFill.Moving(forward));
+        StartCoroutine(turnFill.Move(direction));
 
         yield return new WaitForSeconds(turnFill.GetNecessaryTimeForMoving());
     }

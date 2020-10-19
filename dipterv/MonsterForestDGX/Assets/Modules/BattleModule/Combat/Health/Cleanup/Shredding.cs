@@ -7,12 +7,10 @@ public class Shredding : MonoBehaviour
     public float disappearTime = 10;
     public float delayTime = 6;
 
-    public IEnumerator Disappear()
+    public void Disappear()
     {
         Vector3 aimPosition = transform.position + amount * Vector3.down;
 
-        yield return new WaitForSeconds(delayTime);
-
-        StartCoroutine(EnumeratorMoving.MoveToPosition(transform, aimPosition, disappearTime));
+        StartCoroutine(EnumeratorMoving.MoveToPosition(transform, aimPosition, disappearTime, delayTime));
     }
 }

@@ -5,6 +5,8 @@ public class AppearTurnFill : TurnFill
 {
     public float undergroundtime;
 
+    public Animator animator;
+
     [Header ("Appear Settings")]
     public string appearAnimation;
     public float appearAnimationTime;
@@ -12,12 +14,12 @@ public class AppearTurnFill : TurnFill
     public string disapperAnimation;
     public float disappearAnimationTime;
 
-    public override IEnumerator Moving(bool forward)
+    protected override IEnumerator Moving(MovingDirection direction)
     {
         animator.SetTrigger(disapperAnimation);
         yield return new WaitForSeconds(disappearAnimationTime);
 
-        transform.position += transform.forward * distance * (forward ? 1 : -1);
+        transform.position += direction.GetDirection(transform) * distance;
         yield return new WaitForSeconds(undergroundtime);
 
         animator.SetTrigger(appearAnimation);

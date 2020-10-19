@@ -137,6 +137,40 @@ namespace Tests.BattleModule
         }
 
         [UnityTest]
+        public IEnumerator DoubleAttackTest([Values(0, 1)] int monsterIndex, [Values(0, 1, 2)] int monsterAttackChanceIndex)
+        {
+            Health enemyHealth = monsterAttackCommands[monsterIndex].attack.GetComponent<Health>();
+            Health ownHealth = monsterAttackCommands[Revert(monsterIndex)].attack.GetComponent<Health>();
+
+            AnimatedAttackChance[] attackChances = new AnimatedAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<AnimatedAttackChance>()[monsterAttackChanceIndex] };
+            monsterAttack[monsterIndex].attackChances = attackChances;
+
+            AnimatedAttackChance[] enemyAttackChances = new AnimatedAttackChance[] { fighters[Revert(monsterIndex)].GetComponentsInChildren<AnimatedAttackChance>()[monsterAttackChanceIndex] };
+            monsterAttack[Revert(monsterIndex)].attackChances = enemyAttackChances;
+
+            controller.looping = false;
+            controller.commands = new AbstractCommand[] {
+                fighterTurnCommands[monsterIndex], monsterAttackCommands[monsterIndex],
+                fighterTurnCommands[monsterIndex], monsterAttackCommands[monsterIndex]
+            };
+
+            controller.InitCommands();
+
+            battleManager.BattleStart();
+
+            yield return new WaitForSeconds(10);
+
+            float expectedHp = 100 - (1 + monsterAttackChanceIndex) * 10 * 2;
+            Assert.AreEqual(100, enemyHealth.currentHp);
+            Assert.AreEqual(expectedHp, ownHealth.currentHp);
+
+            Assert.AreEqual("100/100", textHealthShowerUIs[monsterIndex].hp.text);
+            Assert.AreEqual(expectedHp + "/100", textHealthShowerUIs[Revert(monsterIndex)].hp.text);
+
+            yield return null;
+        }
+
+        [UnityTest]
         public IEnumerator DieTest([Values(0, 1)] int monsterIndex)
         {
             Health enemyHealth = monsterAttackCommands[monsterIndex].enemy.GetComponent<Health>();
@@ -200,35 +234,6 @@ namespace Tests.BattleModule
             Assert.AreEqual(100, ownHealth.currentHp);
 
             Assert.AreEqual(expectedHp + "/100", textHealthShowerUIs[Revert(monsterIndex)].hp.text);
-            Assert.AreEqual("100/100", textHealthShowerUIs[monsterIndex].hp.text);
-
-            yield return null;
-        }
-
-        [UnityTest]
-        public IEnumerator MissAttackTest([Values(0, 1)] int monsterIndex)
-        {
-            Health enemyHealth = monsterAttackCommands[monsterIndex].enemy.GetComponent<Health>();
-            Health ownHealth = monsterAttackCommands[monsterIndex].attack.GetComponent<Health>();
-
-            AnimatedAttackChance[] attackChances = new AnimatedAttackChance[] { fighters[monsterIndex].GetComponentsInChildren<AnimatedAttackChance>()[0] };
-            monsterAttack[monsterIndex].attackChances = attackChances;
-
-            MoveCommand[] monsterMoveCommands = core.GetComponentsInChildren<MoveCommand>();
-
-            controller.looping = false;
-            controller.commands = new AbstractCommand[] { monsterMoveCommands[Revert(monsterIndex)], monsterAttackCommands[monsterIndex] };
-
-            controller.InitCommands();
-
-            battleManager.BattleStart();
-
-            yield return new WaitForSeconds(10);
-
-            Assert.AreEqual(100, enemyHealth.currentHp);
-            Assert.AreEqual(100, ownHealth.currentHp);
-
-            Assert.AreEqual("100/100", textHealthShowerUIs[Revert(monsterIndex)].hp.text);
             Assert.AreEqual("100/100", textHealthShowerUIs[monsterIndex].hp.text);
 
             yield return null;
