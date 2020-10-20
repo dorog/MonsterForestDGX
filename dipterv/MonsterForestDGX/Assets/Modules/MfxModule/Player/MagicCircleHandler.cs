@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class MagicCircleHandler : Resetable
+public class MagicCircleHandler : MfxResetable
 {
     public GameObject magicCircle;
 
@@ -15,8 +15,6 @@ public class MagicCircleHandler : Resetable
 
     public ParticleSystem cooldownParticleSystemEffect;
 
-    //TODO: Add connector
-    private CooldownResetPetAbility cooldownReset;
     public CastEffectHandler castEffectHandler;
 
     public IPressed magicCircleInput;
@@ -52,7 +50,7 @@ public class MagicCircleHandler : Resetable
         SpellAttack spellAttack = spell.GetComponent<SpellAttack>();
         spellAttack.coverage = spellResult.Coverage;
 
-        spellAttack.SetBattleManager(battleManager, experienceManager);
+        spellAttack.SetBattleManager(battleManager);
 
         cooldownShower.SetUpCoolDown(spellData.Cooldown);
         //Other option: Say: good, lame, awful etc

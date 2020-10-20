@@ -89,7 +89,7 @@ public class DataManager : MonoBehaviour, IExperienceIO
         return gameData.teleports;
     }
 
-    public List<BasePatternSpell> GetBasePatterns()
+    public List<PatternSpellData> GetBasePatterns()
     {
         return gameConfig.baseSpells.Select(x => x.basePatternSpell).ToList();
     }

@@ -325,7 +325,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleManager: {fileID: 0}
   player: {fileID: 0}
-  enemyType: 0
   id: 0
   battlePlace: {fileID: 0}
   enemy: {fileID: 0}
@@ -1168,6 +1167,10 @@ GameObject:
   - component: {fileID: 1647667248436770541}
   - component: {fileID: 660808588085176073}
   - component: {fileID: 6856537547132328263}
+  - component: {fileID: 467523450381552454}
+  - component: {fileID: 7224557850596282798}
+  - component: {fileID: 1601952692100220797}
+  - component: {fileID: 6175116414355968692}
   m_Layer: 0
   m_Name: RedMockFighter
   m_TagString: Untagged
@@ -1275,6 +1278,70 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2692be31a2214d241931f4b68288a06b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &467523450381552454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941542950283716527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072b9bebd5ee02f41a9f8f68c2056594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistant: {fileID: 11400000, guid: c8f59ccf0a66576499d4ad786ddb52de, type: 2}
+  fighterPart: {fileID: 0}
+  experienceManager: {fileID: 1089268920251631273}
+--- !u!114 &7224557850596282798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941542950283716527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8704fff73df196945be3d59ed016326c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 1601952692100220797}
+  blockChance: 0
+  extraObjects: []
+  extraParticles: []
+  root: {fileID: 2941542950283716527}
+--- !u!114 &1601952692100220797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941542950283716527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2af0a7af2f33a2349b22098e208ad1a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 100
+  currentHp: 0
+  fighter: {fileID: 7224557850596282798}
+  extraParts: []
+  damageBlock: {fileID: 6175116414355968692}
+  healthShowerUI: {fileID: 0}
+  healEffect: {fileID: 0}
+--- !u!114 &6175116414355968692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941542950283716527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1e82316ec874494c9abfa11026d8bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockValue: 10
 --- !u!1 &3689879574126236248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,15 +1628,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c522a12f3e1a39248ad742626f65b3fd, type: 3}
---- !u!198 &1089268919669632247 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19828848, guid: c522a12f3e1a39248ad742626f65b3fd,
-    type: 3}
-  m_PrefabInstance: {fileID: 1089268919654857863}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1089268919654425721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 432382, guid: c522a12f3e1a39248ad742626f65b3fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 1089268919654857863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1089268919669632247 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19828848, guid: c522a12f3e1a39248ad742626f65b3fd,
     type: 3}
   m_PrefabInstance: {fileID: 1089268919654857863}
   m_PrefabAsset: {fileID: 0}

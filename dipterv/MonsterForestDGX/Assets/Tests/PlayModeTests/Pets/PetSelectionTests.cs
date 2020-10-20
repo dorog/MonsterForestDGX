@@ -12,7 +12,7 @@ namespace Tests.PetModule
         private PetTab petTab;
         private PetUI[] petUIs;
         private MockDataIO mockDataIO;
-        private PetManager petManager;
+        private MfxPetManager petManager;
 
         private GameObject core;
 
@@ -26,7 +26,7 @@ namespace Tests.PetModule
 
             gameEvents = core.GetComponentInChildren<GameEvents>();
             petTab = core.GetComponentInChildren<PetTab>();
-            petManager = core.GetComponentInChildren<PetManager>();
+            petManager = core.GetComponentInChildren<MfxPetManager>();
             
             mockDataIO = core.GetComponentInChildren<MockDataIO>();
         }

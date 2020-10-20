@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   petSelectorComponent: {fileID: 5831617724541553890}
-  petManager: {fileID: 5831617723161240509}
+  petManager: {fileID: 7838097741337566236}
   petSelectorHandler: {fileID: 3026999252681665780}
   gameEvents: {fileID: 5831617723387109671}
 --- !u!1 &3930215365100752285
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcd59660f2e89f4c9cf7bc32d4aa758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  petManager: {fileID: 5831617723161240509}
+  petManager: {fileID: 7838097741337566236}
   petDataHandler: {fileID: 1737684377}
 --- !u!1 &5713829956239474041
 GameObject:
@@ -457,7 +457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5831617723161240506}
-  - component: {fileID: 5831617723161240509}
+  - component: {fileID: 7838097741337566236}
   m_Layer: 0
   m_Name: PetManager
   m_TagString: Untagged
@@ -479,7 +479,7 @@ Transform:
   m_Father: {fileID: 5831617724960489151}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5831617723161240509
+--- !u!114 &7838097741337566236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -488,7 +488,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5831617723161240507}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c113692d6c1844ca6c679e1b1b23f2, type: 3}
+  m_Script: {fileID: 11500000, guid: aa71b55fe9d27274580d21fa7c4a206f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5831617723387109668
@@ -536,7 +536,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleManager: {fileID: 0}
   player: {fileID: 0}
-  enemyType: 0
   id: 0
   battlePlace: {fileID: 0}
   enemy: {fileID: 0}

@@ -8,7 +8,7 @@ namespace Tests.PetModule
 {
     public class PetUiShowingTests
     {
-        private PetManager petManager;
+        private MfxPetManager petManager;
         private PetUiShowerComponent petUiShower;
         private PetAbilityDescriptionsUI petAbilityDescriptionsUI;
 
@@ -20,7 +20,7 @@ namespace Tests.PetModule
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Pets/PetUiShowing/PetUiShowing.prefab");
             core = Object.Instantiate(coreGO);
 
-            petManager = core.GetComponentInChildren<PetManager>();
+            petManager = core.GetComponentInChildren<MfxPetManager>();
             petUiShower = core.GetComponentInChildren<PetUiShowerComponent>();
         }
 

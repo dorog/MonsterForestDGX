@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcd59660f2e89f4c9cf7bc32d4aa758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  petManager: {fileID: 5119783021388135404}
+  petManager: {fileID: 4023844685831269747}
   petDataHandler: {fileID: 974789984362364123}
 --- !u!1 &5029852516574232958
 GameObject:
@@ -364,7 +364,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   battleManager: {fileID: 0}
   player: {fileID: 0}
-  enemyType: 0
   id: 0
   battlePlace: {fileID: 0}
   enemy: {fileID: 0}
@@ -382,7 +381,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5119783021388135403}
-  - component: {fileID: 5119783021388135404}
+  - component: {fileID: 4023844685831269747}
   m_Layer: 0
   m_Name: PetManager
   m_TagString: Untagged
@@ -404,7 +403,7 @@ Transform:
   m_Father: {fileID: 5119783021576955630}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5119783021388135404
+--- !u!114 &4023844685831269747
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -413,7 +412,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5119783021388135402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25c113692d6c1844ca6c679e1b1b23f2, type: 3}
+  m_Script: {fileID: 11500000, guid: aa71b55fe9d27274580d21fa7c4a206f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5119783021559244227
@@ -559,6 +558,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   position: {x: 0, y: 0, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
+  petOwner: {fileID: 0}
 --- !u!1 &5119783021595111878
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,11 +727,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   petInitializerComponent: {fileID: 5119783021579787476}
   gameEvents: {fileID: 5119783021143390582}
-  petManager: {fileID: 5119783021388135404}
+  petManager: {fileID: 4023844685831269747}
   petSelectorGO: {fileID: 8097246560536117052}
-  healable: {fileID: 0}
-  attackable: {fileID: 0}
-  resetable: {fileID: 0}
 --- !u!1 &8494175090993815563
 GameObject:
   m_ObjectHideFlags: 0

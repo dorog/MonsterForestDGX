@@ -55,7 +55,7 @@ public class TrainingCampUI : MonoBehaviour
     public void AskForGuide()
     {
         OptionData option = dropdown.options[dropdown.value];
-        BasePatternSpell basePatternSpell = mfxTraningCampPatternComponent.GetSpellPoints(option.text);
+        PatternSpellData basePatternSpell = mfxTraningCampPatternComponent.GetSpellPoints(option.text);
 
         ElementType elementType = ElementTypeExtensions.GetElementTypeByName(option.text);
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-public class MockResetable : Resetable
+public class MockResetable : MfxResetable
 {
     private event Action Reseting;
 

@@ -12,7 +12,6 @@ public class GameEvents : MonoBehaviour
     public event Action BattleEndDelegateEvent;
 
     [Header("Battle Settings")]
-    public EnemyType enemyType;
     public int id;
     public BattlePlace battlePlace;
     public Fighter enemy;

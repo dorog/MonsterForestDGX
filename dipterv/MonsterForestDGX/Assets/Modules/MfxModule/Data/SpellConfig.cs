@@ -4,5 +4,5 @@
 public class SpellConfig
 {
     public int startLevel;
-    public BasePatternSpell basePatternSpell;
+    public PatternSpellData basePatternSpell;
 }

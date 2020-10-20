@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1efa3327c1c03224e82c0988d5af0355, type: 3}
+  m_Script: {fileID: 11500000, guid: d1f30b1a71cde5c45aa02340c80c0eaa, type: 3}
   m_Name: Earth
   m_EditorClassIdentifier: 
-  icon: {fileID: 21300000, guid: 19a7582fb6a7f0745a2c7aaf34dc09e8, type: 3}
-  elementType: 7
+  icon: {fileID: 21300000, guid: 603e5457f898a0c429f47965a8bc6bd0, type: 3}
+  elementType: 2
   SpellPatternPoints: {fileID: 11400000, guid: 0bf9c23f7a1f29242a7d6d50502adbd2, type: 2}
   levelsSpell:
   - exp: 100
@@ -28,4 +28,3 @@ MonoBehaviour:
   - exp: 2000
     playerSpell: {fileID: 1998146334888700678, guid: da5b218f99284e34ab7f7865855c3675,
       type: 3}
-  ElementType: 7
