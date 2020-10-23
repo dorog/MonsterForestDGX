@@ -8,7 +8,8 @@
         "PatternModule",
         "BattleModule",
         "ExperienceModule",
-        "PetModule"
+        "PetModule",
+        "TeleportModule"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

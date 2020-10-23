@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
+  m_Name: TeleportGameConfig
+  m_EditorClassIdentifier: 
+  exp: 0
+  aliveMonsters: 0
+  gatesState: 0
+  teleports: 010100
+  lastLocation: 0
+  baseSpells: []
+  pets: []
+  lastSelectedPet: 0

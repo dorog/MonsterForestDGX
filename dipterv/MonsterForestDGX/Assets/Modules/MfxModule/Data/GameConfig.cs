@@ -13,7 +13,8 @@ public class GameConfig : ScriptableObject
     public int gatesState;
 
     [Header("Teleports Settings")]
-    public int teleports;
+    public bool[] teleports;
+    public int lastLocation = -1;
 
     [Header("Attack Spells Settings")]
     public SpellConfig[] baseSpells;

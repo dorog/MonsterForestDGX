@@ -20,11 +20,12 @@ public class GameData
     {
         aliveMonsters = gameConfig.aliveMonsters == 0 ? null : CreateArrayWithDefaultValue(gameConfig.aliveMonsters, true);
         gatesState = gameConfig.gatesState == 0 ? null : CreateArrayWithDefaultValue(gameConfig.gatesState, true);
-        teleports = gameConfig.teleports == 0 ? null : CreateArrayWithDefaultValue(gameConfig.teleports, false);
+        teleports = gameConfig.teleports.ToArray();
         basePatternSpellLevels = gameConfig.baseSpells.Select(x => x.startLevel).ToArray();
         availablePets = gameConfig.pets.Select(x => x.Available).ToArray();
         exp = gameConfig.exp;
         lastSelectedPet = gameConfig.lastSelectedPet;
+        lastLocation = gameConfig.lastLocation;
     }
 
     private T[] CreateArrayWithDefaultValue<T>(int count, T value)
