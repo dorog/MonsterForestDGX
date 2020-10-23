@@ -9,7 +9,8 @@
         "BattleModule",
         "ExperienceModule",
         "PetModule",
-        "TeleportModule"
+        "TeleportModule",
+        "SpellModule"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

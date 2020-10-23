@@ -14430,7 +14430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fe47b3db27d7e4b83c2163448b63fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0
   rb: {fileID: 3717284180710219723}
 --- !u!54 &3717284180710219723
 Rigidbody:
@@ -24324,7 +24324,7 @@ GameObject:
   - component: {fileID: 5367001892009648203}
   - component: {fileID: 5367001892009648196}
   m_Layer: 0
-  m_Name: ShadowMissileMegaDownMiddle
+  m_Name: ShadowMissileMegaMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29239,7 +29239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fe47b3db27d7e4b83c2163448b63fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0
   rb: {fileID: 5367001892009648196}
 --- !u!54 &5367001892009648196
 Rigidbody:
@@ -68403,7 +68403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44fe47b3db27d7e4b83c2163448b63fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 0
   rb: {fileID: 5367001893711192626}
 --- !u!54 &5367001893711192626
 Rigidbody:
