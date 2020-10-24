@@ -3,7 +3,6 @@ using UnityEngine;
 
 public abstract class AbstractPressed : MonoBehaviour, IPressed
 {
-    public string id;
     private bool pressing = false;
     private bool setted = false;
 

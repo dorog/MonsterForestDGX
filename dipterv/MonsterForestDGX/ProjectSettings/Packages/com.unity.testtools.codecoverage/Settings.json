@@ -16,7 +16,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "IncludeAssemblies",
-                "value": "{\"m_Value\":\"BattleModule,ExperienceModule,GateModule,InputModule,Mfx,MfxEditModeTests,Mock,PatternModule,PetModule,PlayModeTests,SpellModule,TeleportModule\"}"
+                "value": "{\"m_Value\":\"BattleModule,ExperienceModule,Mfx,MfxEditModeTests,Mock,PatternModule,PetModule,PlayModeTests,SpellModule,TeleportModule,VrModule\"}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",

@@ -2939,11 +2939,11 @@ MonoBehaviour:
   maxHp: 100
   currentHp: 100
   fighter: {fileID: 1220643221}
-  resistant: {fileID: 11400000, guid: 4fe9cc2d1942a334fa8bf19d0ccf4223, type: 2}
+  extraParts: []
+  damageBlock: {fileID: 0}
+  healthShowerUI: {fileID: 0}
   healEffect: {fileID: 1339854252}
-  hp: {fileID: 182605256}
-  block: {fileID: 2092707489}
-  timeDamageBlock: {fileID: 0}
+  shieldEffect: {fileID: 0}
 --- !u!114 &1220643221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2991,17 +2991,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484b68e2cb0a6084983a368267a2433c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 1220643220}
-  hand: {fileID: 4965013986553841895}
-  continuesDamageShieldMinAngle: 0
-  continuesDamageShieldMaxAngle: 25
-  continouesTimeDamageBlock: {fileID: 1220643227}
-  simpleDamageShieldMinAngle: 65
-  simpleDamageShieldMaxAngle: 90
-  simpleTimeDamageBlock: {fileID: 1220643226}
   battleManager: {fileID: 0}
   gameEvents: {fileID: 0}
   keyBindingManager: {fileID: 0}
+  playerHealth: {fileID: 1220643220}
+  hand: {fileID: 4965013986553841895}
+  playerShields: []
 --- !u!114 &1220643226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3016,8 +3011,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockValue: 100
   durationTime: 2
-  blockUI: {fileID: 2092707489}
-  shieldEffect: {fileID: 788531796}
 --- !u!114 &1220643227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3032,8 +3025,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockValue: 10
   durationTime: 10
-  blockUI: {fileID: 2092707489}
-  shieldEffect: {fileID: 352610226}
 --- !u!114 &1152169243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4038,12 +4029,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 338327666}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &352610226 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19800000, guid: 07b946e8833a0c84ca9861f4b43f29cf,
-    type: 3}
-  m_PrefabInstance: {fileID: 338327666}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &774772112
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4168,12 +4153,6 @@ PrefabInstance:
 --- !u!4 &774377236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: bc278c6224d1dc04997673c4c4cc8d82,
-    type: 3}
-  m_PrefabInstance: {fileID: 774772112}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &788531796 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 19800004, guid: bc278c6224d1dc04997673c4c4cc8d82,
     type: 3}
   m_PrefabInstance: {fileID: 774772112}
   m_PrefabAsset: {fileID: 0}
@@ -4516,15 +4495,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9bd119a84ddf4c4ca1ec702ad4679eb, type: 3}
---- !u!224 &2133249555 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 3814997830701077913, guid: e9bd119a84ddf4c4ca1ec702ad4679eb,
-    type: 3}
-  m_PrefabInstance: {fileID: 3814997828908096394}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2133249554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3814997830701077912, guid: e9bd119a84ddf4c4ca1ec702ad4679eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 3814997828908096394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &2133249555 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3814997830701077913, guid: e9bd119a84ddf4c4ca1ec702ad4679eb,
     type: 3}
   m_PrefabInstance: {fileID: 3814997828908096394}
   m_PrefabAsset: {fileID: 0}

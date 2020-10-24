@@ -38,6 +38,11 @@ public class Player : Fighter
         isStopped = !isStopped;
     }
 
+    public void EnableControlling()
+    {
+        Go?.Invoke();
+    }
+
     public void Run()
     {
         GoCall("Run");
@@ -48,8 +53,6 @@ public class Player : Fighter
     {
         GoCall("FT");
         //Go?.Invoke();
-
-        playerHealth.BlockDown();
     }
 
     public override void SetupForFight(Fighter fighter)
@@ -58,21 +61,10 @@ public class Player : Fighter
         StopCall("Battle");
     }
 
-    public override void Def()
-    {
-        base.Def();
-
-        playerHealth.Full();
-
-        DisableUI();
-    }
-
     public override void Win()
     {
         GoCall("BTE");
         //Go?.Invoke();
-
-        playerHealth.BlockDown();
 
         DisableUI();
     }

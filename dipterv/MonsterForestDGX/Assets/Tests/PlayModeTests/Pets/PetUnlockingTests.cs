@@ -37,8 +37,6 @@ namespace Tests.PetModule
         {
             unlockSpots[0].UnlockPet();
 
-            Debug.Log("Loc: " + mockDataIO.LocalGameData.availablePets.Length);
-
             Assert.AreEqual(true, mockDataIO.LocalGameData.availablePets[0]);
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[1]);
             Assert.AreEqual(false, mockDataIO.LocalGameData.availablePets[2]);

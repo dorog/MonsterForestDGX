@@ -1,14 +1,10 @@
-﻿using UnityEngine.XR;
-using System;
+﻿using System;
 using UnityEngine;
 
-public class AxisInput : MonoBehaviour
+public abstract class AxisInput : MonoBehaviour
 {
-    public XRNode device;
-    public AxisInputType axis;
-
-    private bool active = true;
     private event Action<Vector2> AxisChange;
+    private bool active = true;
 
     public void SubscibeToAxisChange(Action<Vector2> method)
     {
@@ -30,13 +26,7 @@ public class AxisInput : MonoBehaviour
         active = false;
     }
 
-    private Vector2 GetValue()
-    {
-        InputDevice inputDevice = InputDevices.GetDeviceAtXRNode(device);
-        inputDevice.TryGetFeatureValue(axis.GetUsage(), out Vector2 vector);
-
-        return vector;
-    }
+    protected abstract Vector2 GetValue();
 
     void Update()
     {

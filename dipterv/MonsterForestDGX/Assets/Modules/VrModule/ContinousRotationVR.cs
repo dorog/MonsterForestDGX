@@ -8,18 +8,16 @@ public class ContinousRotationVR : MonoBehaviour
 
     private AxisInput rotationInput;
 
-    public Player player;
-
-    public KeyBindingManager keyBindingManager;
-
-    private void Start()
+    public void SetInput(AxisInput _rotationInput)
     {
-        rotationInput = keyBindingManager.continousRotationAxisInput;
+        rotationInput = _rotationInput;
 
         rotationInput.SubscibeToAxisChange(Rotate);
 
+        Debug.Log("Commented");
+        /*
         player.Stopped += rotationInput.Deactivate;
-        player.Go += rotationInput.Activate;
+        player.Go += rotationInput.Activate;*/
     }
 
     private void Rotate(Vector2 axis)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class BattlePlace : MonoBehaviour
 {
@@ -7,47 +8,47 @@ public class BattlePlace : MonoBehaviour
     public AiFighter enemy;
     public Health enemyHealth;
 
-    //Merge them?
-    public HealableHandler healable;
-    public AttackableHandler attackable;
-
-    public GameObject go;
+    public GameObject battleTrigger;
 
     public GameEvents gameEvents;
 
-    public GameObject petPosition = null;
+    public BattleManager battleManager;
 
-    public bool petEnable = true;
+    [Header("Resistant Settings")]
+    public Resistant resistant;
     public bool resistantEnable = true;
 
-    public BattleManager battleManager;
-    public PetInitializerConnector petInitializer;
+    [Header ("Pet Settings")]
+    public AttackableHandler attackable;
+    public bool petEnable = true;
+    public GameObject petPosition = null;
 
     public void Triggered()
     {
         gameEvents.id = id;
-        gameEvents.battlePlace = this;
         gameEvents.enemy = enemy;
 
+        gameEvents.enemyResistant = resistant;
         gameEvents.resistantEnable = resistantEnable;
-        Debug.Log("Commented");
-        //gameEvents.enemyResistant = enemyHealth.resistant;
 
+        battleManager.Withdraw += ResetBattlePlaceState;
+        battleManager.RedFighterWon += ResetBattlePlaceState;
+
+        SetPetSettings();
+
+        gameEvents.EnteredLobby();
+    }
+
+    private void SetPetSettings()
+    {
+        attackable.health = enemyHealth;
+        attackable.fighter = enemy;
         gameEvents.petEnable = petEnable;
-
-        Debug.Log("Commented");
-        //petInitializer.attackable = attackable;
-
         if (petPosition != null)
         {
             gameEvents.petPosition = petPosition.transform.position;
             gameEvents.petRotation = petPosition.transform.rotation;
         }
-
-        battleManager.Withdraw += ResetBattlePlaceState;
-        battleManager.RedFighterWon += ResetBattlePlaceState;
-
-        gameEvents.EnteredLobby();
     }
 
     private void ResetBattlePlaceState()
@@ -68,11 +69,13 @@ public class BattlePlace : MonoBehaviour
 
     public void ResetBattlePlace()
     {
-        Invoke(nameof(EnableGo), 3f);
+        StartCoroutine(EnableGo());
     }
 
-    private void EnableGo()
+    private IEnumerator EnableGo()
     {
-        go.SetActive(true);
+        yield return new WaitForSeconds(3);
+
+        battleTrigger.SetActive(true);
     }
 }

@@ -1,27 +1,15 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerHealth : Health
 {
-    [Header ("Player Options")]
-    public Text hp;
-    public GameObject block;
-
-    [Header ("Time Damage Block Settings")]
-    public TimeDamageBlock timeDamageBlock;
-    public GameObject blockUI;
+    [Header ("Extra Damage Block Settings")]
     public ParticleSystem shieldEffect;
-
-    public void BlockDown()
-    {
-        block.SetActive(false);
-    }
 
     protected override float GetBlockedDamage(float dmg)
     {
-        if (timeDamageBlock != null)
+        if (damageBlock != null)
         {
-            return timeDamageBlock.GetCalculatedDamage(dmg);
+            return damageBlock.GetCalculatedDamage(dmg);
         }
         else
         {
@@ -33,7 +21,6 @@ public class PlayerHealth : Health
     {
         base.SetDamageBlock();
 
-        blockUI.SetActive(true);
         shieldEffect.Play();
     }
 
@@ -41,17 +28,9 @@ public class PlayerHealth : Health
     {
         base.TakeDamage(dmg);
 
-        hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
-
         if (currentHp < 0)
         {
             InitHealth();
         }
-    }
-
-    public void Full()
-    {
-        currentHp = maxHp;
-        hp.text = Mathf.Ceil(currentHp).ToString() + "/" + maxHp.ToString();
     }
 }

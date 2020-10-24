@@ -4,7 +4,7 @@ public class BattleConnector : MonoBehaviour
 {
     public BattleManager battleManager;
 
-    private GameEvents gameEvents;
+    public GameEvents gameEvents;
 
     public void Start()
     {

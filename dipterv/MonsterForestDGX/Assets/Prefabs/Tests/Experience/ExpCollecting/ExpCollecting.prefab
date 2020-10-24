@@ -162,12 +162,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1089268918921310662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38ae03ef335710c409262e8f60da2c72, type: 3}
+  m_Script: {fileID: 11500000, guid: 79333422d727f8540b05bf76348e3cb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: MagicCircleInput
-  device: 5
-  Button: 0
 --- !u!1 &1089268918951276476
 GameObject:
   m_ObjectHideFlags: 0
@@ -1064,6 +1061,7 @@ MonoBehaviour:
   experienceConnectors:
   - {fileID: 4519872354648390910}
   petConnectors: []
+  teleportConnectors: []
 --- !u!1 &1089268920850053910
 GameObject:
   m_ObjectHideFlags: 0

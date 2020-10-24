@@ -1,5 +1,5 @@
 ﻿
-public class TeleportTeleportConnector : AbstractConnector
+public class TeleporterConnector : AbstractConnector
 {
     public BattleManager battleManager;
     public TeleporterComponent teleport;

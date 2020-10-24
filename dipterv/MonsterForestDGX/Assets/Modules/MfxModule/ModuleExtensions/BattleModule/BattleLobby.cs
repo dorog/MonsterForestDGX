@@ -11,7 +11,7 @@ public class BattleLobby : MonoBehaviour
     public GameObject petTab;
     public GameObject resistantTab;
 
-    private GameEvents gameEvents;
+    public GameEvents gameEvents;
 
     public GameObject battleLobbyUI;
 

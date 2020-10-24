@@ -5,16 +5,16 @@ public class KeyBindingManager : MonoBehaviour
     public AxisInput continousMovementAxisInput;
     public AxisInput continousRotationAxisInput;
 
-    public ButtonInput shieldHandlerButtonInput;
+    public AbstractPressed shieldHandlerButtonInput;
 
-    public ButtonInput magicCircleInput;
+    public AbstractPressed magicCircleInput;
     
     public TriggerInput paintingTrigger;
 
-    public ButtonInput petCollectButton;
+    public AbstractPressed petCollectButton;
 
-    public ButtonInput shopCollectButton;
+    public AbstractPressed shopCollectButton;
 
-    public ButtonInput[] drawHelperInputs;
+    public AbstractPressed[] drawHelperInputs;
     public SwitchInput drawHelperInput;
 }

@@ -1,6 +1,4 @@
 ﻿
-using UnityEngine;
-
 public class HitBasedFighterPart : FighterPart
 {
     public HitType monsterHitType;

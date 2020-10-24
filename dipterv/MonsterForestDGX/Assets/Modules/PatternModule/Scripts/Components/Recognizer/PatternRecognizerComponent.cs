@@ -23,8 +23,6 @@ public class PatternRecognizerComponent : MonoBehaviour
     {
         patternDatas = _patternDatas;
         SetupRecognizeablePatterns();
-
-        Debug.Log("Set: " + recognizeablePatterns.Count);
     }
 
     private void SetupRecognizeablePatterns()
@@ -45,8 +43,6 @@ public class PatternRecognizerComponent : MonoBehaviour
 
     private void RefreshRecognizeablePatterns(PatternDataDifference patternDataDifference)
     {
-        Debug.Log("Ref: " + recognizeablePatterns.Count);
-
         if (patternDataDifference.NewState == PatternState.Available && patternDataDifference.OldState != PatternState.Available)
         {
             recognizeablePatterns.Add(new RecognizeablePattern()
@@ -59,8 +55,6 @@ public class PatternRecognizerComponent : MonoBehaviour
         {
             recognizeablePatterns.RemoveAll(x => patternDataDifference.Id == x.Id);
         }
-
-        Debug.Log("RefAf: " + recognizeablePatterns.Count);
     }
 
     public void Guess(Vector2 point)

@@ -1,10 +1,7 @@
-﻿using UnityEngine.XR.Interaction.Toolkit;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ContinousMovementVR : MonoBehaviour
 {
-    public Player player;
-
     private AxisInput axisInput;
     private Vector2 inputAxis;
     public CharacterController character;
@@ -13,23 +10,21 @@ public class ContinousMovementVR : MonoBehaviour
     public float gravity = -9.81f;
     private float fallingSpeed = 0f;
 
-    public GameObject body;
-    public XRRig rig;
-
-    private readonly float additionalHeight = 0.01f;
+    public VrControllable vrControllable;
 
     public LayerMask groundLayer;
 
-    public KeyBindingManager keyBindingManager;
-
-    private void Start()
+    public void SetInput(AxisInput _axisInput)
     {
-        axisInput = keyBindingManager.continousMovementAxisInput;
+        axisInput = _axisInput;
 
         axisInput.SubscibeToAxisChange(Move);
 
+        Debug.Log("Commented: add this fc + the calls below to 1-2 connector");
+        /*
         player.Stopped += axisInput.Deactivate;
         player.Go += axisInput.Activate;
+        */
     }
 
     private void Move(Vector2 axis)
@@ -41,7 +36,7 @@ public class ContinousMovementVR : MonoBehaviour
     {
         CapsuleFollowHeadset();
 
-        Quaternion headYaw = Quaternion.Euler(0, rig.cameraGameObject.transform.eulerAngles.y, 0);
+        Quaternion headYaw = Quaternion.Euler(0, vrControllable.GetHeadYawRotationY(), 0);
         Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
 
         character.Move(direction * Time.fixedDeltaTime * speed);
@@ -76,8 +71,8 @@ public class ContinousMovementVR : MonoBehaviour
 
     private void CapsuleFollowHeadset()
     {
-        character.height = rig.cameraInRigSpaceHeight + additionalHeight;
-        Vector3 capsuleCenter = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
+        character.height = vrControllable.GetCurrentHeight();
+        Vector3 capsuleCenter = transform.InverseTransformPoint(vrControllable.GetColliderCenter());
         character.center = new Vector3(capsuleCenter.x, character.height / 2 + character.skinWidth, capsuleCenter.z);
     }
 }

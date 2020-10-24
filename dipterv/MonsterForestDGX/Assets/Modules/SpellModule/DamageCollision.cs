@@ -8,8 +8,6 @@ public class DamageCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision hit)
     {
-        Debug.Log("Collision");
-        Debug.Log(hit.gameObject.name);
         DamageMonster(hit);
 
         Vector3 impactNormal = hit.contacts[0].normal;
