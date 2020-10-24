@@ -7,13 +7,11 @@ public class DamageTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ITarget target = other.GetComponent<ITarget>();
-        if(target == null)
+        if(target != null)
         {
-            return;
+            target.TakeDamage(dmg);
+
+            gameObject.SetActive(false);
         }
-
-        target.TakeDamage(dmg);
-
-        gameObject.SetActive(false);
     }
 }

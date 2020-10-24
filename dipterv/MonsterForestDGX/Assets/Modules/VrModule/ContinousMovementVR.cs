@@ -19,12 +19,6 @@ public class ContinousMovementVR : MonoBehaviour
         axisInput = _axisInput;
 
         axisInput.SubscibeToAxisChange(Move);
-
-        Debug.Log("Commented: add this fc + the calls below to 1-2 connector");
-        /*
-        player.Stopped += axisInput.Deactivate;
-        player.Go += axisInput.Activate;
-        */
     }
 
     private void Move(Vector2 axis)

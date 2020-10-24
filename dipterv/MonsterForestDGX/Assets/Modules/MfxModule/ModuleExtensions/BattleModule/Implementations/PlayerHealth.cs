@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerHealth : Health
+public class PlayerHealth : Health, ITarget
 {
     [Header ("Extra Damage Block Settings")]
     public ParticleSystem shieldEffect;

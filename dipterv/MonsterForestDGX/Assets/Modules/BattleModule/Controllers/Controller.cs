@@ -48,6 +48,10 @@ public class Controller : MonoBehaviour
             {
                 cmd.Execute();
             }
+            else
+            {
+                StopController();
+            }
         }
     }
 
