@@ -5,17 +5,14 @@ public class Paint : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public SpellCastingHandler spellCastingHandler;
-    public Player player;
 
-    public float scale = 0.1f;
-
-    public MagicCircleHandler magicCircleHandler;
+    public SpellCaster spellCaster;
 
     public IPressed drawingInput;
 
     public Transform hand;
 
-    private BattleManager battleManager;
+    public BattleManager battleManager;
 
     public bool circleOn = false;
 
@@ -31,8 +28,6 @@ public class Paint : MonoBehaviour
 
         gameEvents.BattleStartDelegateEvent += Fighting;
         gameEvents.BattleEndDelegateEvent += Exploring;
-
-        battleManager = gameEvents.battleManager;
     }
 
     private void Fighting()
@@ -55,13 +50,11 @@ public class Paint : MonoBehaviour
         {
             try
             {
-                Transform flat = magicCircleHandler.transform;
+                Vector3 relativPosition = hand.position - spellCaster.transform.position;
+                Vector3 projected = Vector3.ProjectOnPlane(relativPosition, spellCaster.transform.forward);
+                Vector3 flattenedVector = spellCaster.transform.position + projected;
 
-                Vector3 relativPosition = hand.position - flat.position;
-                Vector3 projected = Vector3.ProjectOnPlane(relativPosition, flat.forward);
-                Vector3 flattenedVector = flat.position + projected;
-
-                Vector2 guess = GetGuess(flattenedVector, flat) * 200;
+                Vector2 guess = GetGuess(flattenedVector, spellCaster.transform);
 
                 lineRenderer.positionCount += 1;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, flattenedVector);
@@ -103,15 +96,9 @@ public class Paint : MonoBehaviour
         if (lineRenderer.positionCount != 0)
         {
             lineRenderer.positionCount = 0;
-            SpellResult spellResult = spellCastingHandler.GetResult();
-            if (spellResult == null)
-            {
-                magicCircleHandler.CastFailed();
-            }
-            else
-            {
-                magicCircleHandler.CastSpell(spellResult);
-            }
+            RecognizingResult result = spellCastingHandler.GetResult();
+
+            spellCaster.CastBasedOnResult(result);
             spellCastingHandler.ResetHandler();
         }
     }

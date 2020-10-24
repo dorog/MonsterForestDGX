@@ -44,7 +44,7 @@ namespace Tests.ExperienceModule
         [UnityTest]
         public IEnumerator CastExperienceTest()
         {
-            SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
+            RecognizingResult spellResult = new RecognizingResult() { Index = 0, Coverage = 1 };
             magicCircleHandler.CastSpell(spellResult);
 
             battleManager.DrawFight();
@@ -59,7 +59,7 @@ namespace Tests.ExperienceModule
         {
             magicCircleHandler.transform.localRotation = Quaternion.Euler(0, 45, 0);
 
-            SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
+            RecognizingResult spellResult = new RecognizingResult() { Index = 0, Coverage = 1 };
             magicCircleHandler.CastSpell(spellResult);
 
             yield return new WaitForSeconds(10);
@@ -72,7 +72,7 @@ namespace Tests.ExperienceModule
         [UnityTest]
         public IEnumerator AllExperienceTest()
         {
-            SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
+            RecognizingResult spellResult = new RecognizingResult() { Index = 0, Coverage = 1 };
             magicCircleHandler.CastSpell(spellResult);
 
             yield return new WaitForSeconds(10);
@@ -85,7 +85,7 @@ namespace Tests.ExperienceModule
         [UnityTest]
         public IEnumerator CastButDieExperienceTest()
         {
-            SpellResult spellResult = new SpellResult() { Index = 0, Coverage = 1 };
+            RecognizingResult spellResult = new RecognizingResult() { Index = 0, Coverage = 1 };
             magicCircleHandler.CastSpell(spellResult);
 
             battleManager.BlueFighterDied();

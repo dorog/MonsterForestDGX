@@ -65,7 +65,7 @@ public class PatternRecognizerComponent : MonoBehaviour
         }
     }
 
-    public SpellResult GetSpell()
+    public RecognizingResult GetResult()
     {
         List<CoverageResult> coverageResults = new List<CoverageResult>();
 
@@ -89,7 +89,7 @@ public class PatternRecognizerComponent : MonoBehaviour
 
         if (index != defaultUnchangedValue)
         {
-            SpellResult spellResult = new SpellResult
+            RecognizingResult spellResult = new RecognizingResult
             {
                 Index = index,
                 Coverage = max,

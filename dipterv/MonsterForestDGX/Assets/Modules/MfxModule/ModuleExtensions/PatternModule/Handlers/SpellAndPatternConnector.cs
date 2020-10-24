@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MfxPatternDataHandler : AbstractConnector, ISpellHandler
+public class SpellAndPatternConnector : AbstractConnector, ISpellHandler
 {
     private readonly List<MfxPattern> uiPatterns = new List<MfxPattern>();
 

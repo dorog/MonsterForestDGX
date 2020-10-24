@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public BattleManager battleManager;
-
     public Fighter player;
 
     public event Action BattleLobbyEnteredDelegateEvent;

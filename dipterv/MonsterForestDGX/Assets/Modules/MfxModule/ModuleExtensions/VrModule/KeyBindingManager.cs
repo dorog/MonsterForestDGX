@@ -9,7 +9,7 @@ public class KeyBindingManager : MonoBehaviour
 
     public AbstractPressed magicCircleInput;
     
-    public TriggerInput paintingTrigger;
+    public AbstractPressed paintingTrigger;
 
     public AbstractPressed petCollectButton;
 

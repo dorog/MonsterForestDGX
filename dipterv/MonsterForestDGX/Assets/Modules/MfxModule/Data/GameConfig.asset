@@ -15,14 +15,15 @@ MonoBehaviour:
   exp: 20000
   aliveMonsters: 4
   gatesState: 3
-  teleports: 5
+  teleports: 
+  lastLocation: -1
   baseSpells:
   - startLevel: 0
-    basePatternSpell: {fileID: 11400000, guid: cb72dfd7c54184b42b8e4575db870678, type: 2}
+    basePatternSpell: {fileID: 11400000, guid: 14acb3cdaa39f2a468dc762c2abbc65e, type: 2}
   - startLevel: 0
-    basePatternSpell: {fileID: 11400000, guid: c033c4d8d72c18340ae1740555d01b91, type: 2}
+    basePatternSpell: {fileID: 11400000, guid: e3c42241db8c08349af3f6480af65e65, type: 2}
   - startLevel: 0
-    basePatternSpell: {fileID: 11400000, guid: e8b0832720fe931479a6860fa3618cb0, type: 2}
+    basePatternSpell: {fileID: 11400000, guid: 16a34390bb5f1404cbb9d63963ad2391, type: 2}
   - startLevel: 0
     basePatternSpell: {fileID: 11400000, guid: 98daaeb9848c2354799233c83004bbbf, type: 2}
   pets:

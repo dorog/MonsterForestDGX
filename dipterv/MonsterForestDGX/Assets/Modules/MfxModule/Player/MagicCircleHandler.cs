@@ -23,7 +23,6 @@ public class MagicCircleHandler : MfxResetable
 
     public KeyBindingManager keyBindingManager;
     public BattleManager battleManager;
-    public ExperienceManager experienceManager;
 
     public void Start()
     {
@@ -43,7 +42,7 @@ public class MagicCircleHandler : MfxResetable
         magicCircle.SetActive(false);
     }
 
-    public void CastSpell(SpellResult spellResult)
+    public void CastSpell(RecognizingResult spellResult)
     {
         SpellData spellData = spellHandler.GetSpellData(spellResult.Index);
         GameObject spell = Instantiate(spellData.Spell, magicCircle.transform.position, magicCircle.transform.rotation);

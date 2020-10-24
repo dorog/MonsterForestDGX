@@ -41,7 +41,7 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(-100, 0));
             patternRecognizer.Guess(new Vector2(0, 0));
 
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(null, spellResult);
 
@@ -51,7 +51,7 @@ namespace Tests.PatternModule
         [UnityTest]
         public IEnumerator GetWithoutGuessTest()
         {
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(null, spellResult);
 
@@ -68,7 +68,7 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(100, 0));
             patternRecognizer.Guess(new Vector2(0, 0));
 
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(null, spellResult);
 
@@ -85,7 +85,7 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(0, -100));
             patternRecognizer.Guess(new Vector2(0, 0));
 
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(2, spellResult.Index);
             Assert.AreEqual(1, spellResult.Coverage);
@@ -99,7 +99,7 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(0, 0));
             patternRecognizer.Guess(new Vector2(100, 0));
 
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(null, spellResult);
 
@@ -118,7 +118,7 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(100, 0));
             patternRecognizer.Guess(new Vector2(0, 0));
 
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(1, spellResult.Index);
             Assert.AreEqual(1, spellResult.Coverage);
@@ -138,7 +138,7 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(-100, 0));
             patternRecognizer.Guess(new Vector2(0, 0));
 
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(null, spellResult);
 
@@ -158,7 +158,7 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(-100, 0));
             patternRecognizer.Guess(new Vector2(0, 0));
 
-            SpellResult spellResult = patternRecognizer.GetSpell();
+            RecognizingResult spellResult = patternRecognizer.GetResult();
 
             Assert.AreEqual(0, spellResult.Index);
             Assert.AreEqual(1, spellResult.Coverage);
@@ -176,9 +176,9 @@ namespace Tests.PatternModule
             patternRecognizer.Guess(new Vector2(0, -100));
             patternRecognizer.Guess(new Vector2(0, 0));
 
-            patternRecognizer.GetSpell();
+            patternRecognizer.GetResult();
             patternRecognizer.ResetSpells();
-            SpellResult spellResultWithoutGuess = patternRecognizer.GetSpell();
+            RecognizingResult spellResultWithoutGuess = patternRecognizer.GetResult();
 
             Assert.AreEqual(null, spellResultWithoutGuess);
 
