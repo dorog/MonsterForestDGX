@@ -85,6 +85,7 @@ namespace Tests.Mfx
             yield return null;
         }
 
+
         [UnityTest]
         public IEnumerator MonsterAttacktWithoutShieldTest()
         {

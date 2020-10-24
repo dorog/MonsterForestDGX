@@ -4,7 +4,7 @@ using UnityEngine;
 public class Paint : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    public PatternRecognizerComponent SpellManager;
+    public SpellCastingHandler spellCastingHandler;
     public Player player;
 
     public float scale = 0.1f;
@@ -65,7 +65,7 @@ public class Paint : MonoBehaviour
 
                 lineRenderer.positionCount += 1;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, flattenedVector);
-                SpellManager.Guess(guess);
+                spellCastingHandler.Guess(guess);
 
             }
             catch (Exception) { }
@@ -103,7 +103,7 @@ public class Paint : MonoBehaviour
         if (lineRenderer.positionCount != 0)
         {
             lineRenderer.positionCount = 0;
-            SpellResult spellResult = SpellManager.GetSpell();
+            SpellResult spellResult = spellCastingHandler.GetResult();
             if (spellResult == null)
             {
                 magicCircleHandler.CastFailed();
@@ -112,13 +112,13 @@ public class Paint : MonoBehaviour
             {
                 magicCircleHandler.CastSpell(spellResult);
             }
-            SpellManager.ResetSpells();
+            spellCastingHandler.ResetHandler();
         }
     }
 
     public void OnDisable()
     {
         lineRenderer.positionCount = 0;
-        SpellManager.ResetSpells();
+        spellCastingHandler.ResetHandler();
     }
 }

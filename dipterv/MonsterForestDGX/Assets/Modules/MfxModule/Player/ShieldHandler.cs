@@ -11,6 +11,7 @@ public class ShieldHandler : MonoBehaviour
     public PlayerHealth playerHealth;
 
     public Transform hand;
+    public Transform body;
 
     [Header("Shields")]
     public PlayerShield[] playerShields;
@@ -46,7 +47,8 @@ public class ShieldHandler : MonoBehaviour
             return;
         }
 
-        float angle = Vector3.Angle(hand.forward, Vector3.up);
+        Vector3 handVector = Vector3.ProjectOnPlane(hand.forward, body.forward);
+        float angle = Vector3.SignedAngle(handVector, Vector3.forward, Vector3.right);
 
         foreach(var shield in playerShields)
         {

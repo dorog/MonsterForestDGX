@@ -16,5 +16,5 @@ public class KeyBindingManager : MonoBehaviour
     public AbstractPressed shopCollectButton;
 
     public AbstractPressed[] drawHelperInputs;
-    public SwitchInput drawHelperInput;
+    public AbstractPressed drawHelperInput;
 }
