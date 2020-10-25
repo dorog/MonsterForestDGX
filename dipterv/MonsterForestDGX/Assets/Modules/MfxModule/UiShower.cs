@@ -2,18 +2,20 @@
 
 public class UiShower : MonoBehaviour
 {
-    public MenuUI menuUI;
+    public Transform menu;
     public Vector3 offset = new Vector3(0, 4, 0);
 
-    public void ShowUI()
+    private void ShowUI()
     {
-        menuUI.gameObject.SetActive(true);
-        menuUI.ShowUI(transform.position + offset, transform.rotation);
+        menu.position = transform.position + offset;
+        menu.rotation = transform.rotation;
+
+        menu.gameObject.SetActive(true);
     }
 
     public void HideUI()
     {
-        menuUI.gameObject.SetActive(false);
+        menu.gameObject.SetActive(false);
     }
 
     public void OnTriggerEnter(Collider other)
