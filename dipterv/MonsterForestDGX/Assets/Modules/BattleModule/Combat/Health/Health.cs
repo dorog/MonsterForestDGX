@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
 
         if (currentHp <= 0)
         {
+            DisableHealth();
             fighter.Die();
         }
 
@@ -75,14 +76,6 @@ public class Health : MonoBehaviour
         if(healEffect != null)
         {
             healEffect.Play();
-        }
-    }
-
-    public virtual void DisappearHealth()
-    {
-        foreach (var extraPart in extraParts)
-        {
-            extraPart.Disable();
         }
     }
 

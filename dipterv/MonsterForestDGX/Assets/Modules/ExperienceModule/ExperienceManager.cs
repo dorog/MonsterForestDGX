@@ -7,7 +7,7 @@ public class ExperienceManager : MonoBehaviour
     private float exp = 0;
     private float stack = 0;
 
-    private event Action<float> ExpChanged;
+    public event Action<float> ExpChanged;
 
     public IExperienceIO ExperienceIO { get; set; }
 
@@ -39,15 +39,5 @@ public class ExperienceManager : MonoBehaviour
         ExperienceIO.SaveExp(exp);
 
         ExpChanged?.Invoke(exp);
-    }
-
-    public void SubscribeToExpChanged(Action<float> method)
-    {
-        ExpChanged += method;
-    }
-
-    public void UnsubscribeToExpChanged(Action<float> method)
-    {
-        ExpChanged += method;
     }
 }

@@ -9,7 +9,7 @@ public class MfxPatternCurrencyHandler : AbstractConnector, ICurrencyHandler
 
     public override void Setup()
     {
-        experienceManager.SubscribeToExpChanged(QuantityChangedMethod);
+        experienceManager.ExpChanged += QuantityChangedMethod;
 
         patternShopComponent.AddCurrencyHandler(this);
     }

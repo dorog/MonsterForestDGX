@@ -50,10 +50,4 @@ public class AnimatedHealth : Health
         base.DisableHealth();
         damageBlock.UnsubscribeToBlockDown(DamageBlockActivated);
     }
-
-    public override void DisappearHealth()
-    {
-        base.DisappearHealth();
-        damageBlock.UnsubscribeToBlockDown(DamageBlockActivated);
-    }
 }
