@@ -7,9 +7,9 @@ public class BattleManager : MonoBehaviour
     private Fighter blueFighter;
 
     public event Action BlueFighterTurnStartDelegateEvent;
-    public event Action BlueFighterTurnEndDelegateEvent;
+    //public event Action BlueFighterTurnEndDelegateEvent;
     public event Action RedFighterTurnStartDelegateEvent;
-    public event Action RedFighterTurnEndDelegateEvent;
+    //public event Action RedFighterTurnEndDelegateEvent;
 
     public event Action BlueFighterWon;
     public event Action RedFighterWon;
@@ -28,6 +28,12 @@ public class BattleManager : MonoBehaviour
 
         redFighter.SetupForFight(blueFighter);
         blueFighter.SetupForFight(redFighter);
+
+        BlueFighterTurnStartDelegateEvent += redFighter.Def;
+        BlueFighterTurnStartDelegateEvent += blueFighter.Fight;
+
+        RedFighterTurnStartDelegateEvent += redFighter.Fight;
+        RedFighterTurnStartDelegateEvent += blueFighter.Def;
     }
 
     public void BattleStart()
@@ -50,12 +56,12 @@ public class BattleManager : MonoBehaviour
     private void BlueFighterTurn()
     {
         BlueFighterTurnStartDelegateEvent?.Invoke();
-        RedFighterTurnEndDelegateEvent?.Invoke();
+        //RedFighterTurnEndDelegateEvent?.Invoke();
     }
 
     private void RedFighterTurn()
     {
-        BlueFighterTurnEndDelegateEvent?.Invoke();
+        //BlueFighterTurnEndDelegateEvent?.Invoke();
         RedFighterTurnStartDelegateEvent?.Invoke();
     }
 
@@ -81,6 +87,12 @@ public class BattleManager : MonoBehaviour
     {
         controller.StopController();
         UnsubscribeDieFromDieEvents();
+
+        BlueFighterTurnStartDelegateEvent -= redFighter.Def;
+        BlueFighterTurnStartDelegateEvent -= blueFighter.Fight;
+
+        RedFighterTurnStartDelegateEvent -= redFighter.Fight;
+        RedFighterTurnStartDelegateEvent -= blueFighter.Def;
     }
 
     private void UnsubscribeDieFromDieEvents()

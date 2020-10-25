@@ -19,6 +19,7 @@ public class SpellGuideDrawer : MonoBehaviour
     private IPressed pressInput;
 
     public KeyBindingManager keyBindingManager;
+    public BattleManager battleManager;
 
     private void Start()
     {
@@ -76,7 +77,7 @@ public class SpellGuideDrawer : MonoBehaviour
     {
         if (guideHelper != null)
         {
-            guideHelper.SetActive(!guideHelper.activeSelf);
+            Helper.gameObject.SetActive(!Helper.gameObject.activeSelf);
         }
     }
 }

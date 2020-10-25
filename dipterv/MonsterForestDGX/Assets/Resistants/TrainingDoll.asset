@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924d57a6e33051a42b089c881b5c2b6e, type: 3}
   m_Name: TrainingDoll
   m_EditorClassIdentifier: 
-  water: 0
-  earth: 0
-  fire: 0
-  air: 0
+  water: 100
+  earth: 100
+  fire: 100
+  air: 100

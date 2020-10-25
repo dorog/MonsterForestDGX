@@ -19,9 +19,7 @@ namespace Tests.BattleModule.Commanding
         private MockFighter redFighter = null;
 
         private CallChecker BlueFighterTurnStart;
-        private CallChecker BlueFighterTurnEnd;
         private CallChecker RedFighterTurnStart;
-        private CallChecker RedFighterTurnEnd;
 
         [SetUp]
         public void SetUp()
@@ -34,14 +32,10 @@ namespace Tests.BattleModule.Commanding
             controller = core.GetComponentInChildren<Controller>();
 
             BlueFighterTurnStart = new CallChecker();
-            BlueFighterTurnEnd = new CallChecker();
             RedFighterTurnStart = new CallChecker();
-            RedFighterTurnEnd = new CallChecker();
 
             battleManager.BlueFighterTurnStartDelegateEvent += BlueFighterTurnStart.Call;
-            battleManager.BlueFighterTurnEndDelegateEvent += BlueFighterTurnEnd.Call;
             battleManager.RedFighterTurnStartDelegateEvent += RedFighterTurnStart.Call;
-            battleManager.RedFighterTurnEndDelegateEvent += RedFighterTurnEnd.Call;
 
             var mockFighters = core.GetComponentsInChildren<MockFighter>();
             blueFighter = mockFighters[0];
@@ -65,7 +59,6 @@ namespace Tests.BattleModule.Commanding
             controller.StartController();
 
             Assert.AreEqual(1, BlueFighterTurnStart.Called);
-            Assert.AreEqual(1, RedFighterTurnEnd.Called);
 
             yield return null;
         }
@@ -85,7 +78,6 @@ namespace Tests.BattleModule.Commanding
             controller.StartController();
 
             Assert.AreEqual(2, BlueFighterTurnStart.Called);
-            Assert.AreEqual(2, RedFighterTurnEnd.Called);
 
             yield return null;
         }
@@ -98,7 +90,6 @@ namespace Tests.BattleModule.Commanding
             controller.InitCommands();
             controller.StartController();
 
-            Assert.AreEqual(1, BlueFighterTurnEnd.Called);
             Assert.AreEqual(1, RedFighterTurnStart.Called);
 
             yield return null;
@@ -118,7 +109,6 @@ namespace Tests.BattleModule.Commanding
 
             controller.StartController();
 
-            Assert.AreEqual(2, BlueFighterTurnEnd.Called);
             Assert.AreEqual(2, RedFighterTurnStart.Called);
 
             yield return null;
@@ -136,10 +126,8 @@ namespace Tests.BattleModule.Commanding
 
             controller.StartController();
 
-            Assert.AreEqual(1, BlueFighterTurnEnd.Called);
             Assert.AreEqual(1, RedFighterTurnStart.Called);
             Assert.AreEqual(1, BlueFighterTurnStart.Called);
-            Assert.AreEqual(1, RedFighterTurnEnd.Called);
 
             yield return null;
         }
@@ -156,10 +144,8 @@ namespace Tests.BattleModule.Commanding
 
             controller.StartController();
 
-            Assert.AreEqual(1, BlueFighterTurnEnd.Called);
             Assert.AreEqual(1, RedFighterTurnStart.Called);
             Assert.AreEqual(1, BlueFighterTurnStart.Called);
-            Assert.AreEqual(1, RedFighterTurnEnd.Called);
 
             yield return null;
         }
@@ -186,10 +172,8 @@ namespace Tests.BattleModule.Commanding
 
             controller.StartController();
 
-            Assert.AreEqual(2, BlueFighterTurnEnd.Called);
             Assert.AreEqual(2, RedFighterTurnStart.Called);
             Assert.AreEqual(2, BlueFighterTurnStart.Called);
-            Assert.AreEqual(2, RedFighterTurnEnd.Called);
 
             yield return null;
         }
@@ -216,10 +200,8 @@ namespace Tests.BattleModule.Commanding
 
             controller.StartController();
 
-            Assert.AreEqual(2, BlueFighterTurnEnd.Called);
             Assert.AreEqual(2, RedFighterTurnStart.Called);
             Assert.AreEqual(2, BlueFighterTurnStart.Called);
-            Assert.AreEqual(2, RedFighterTurnEnd.Called);
 
             yield return null;
         }

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
+  m_Name: Traning
+  m_EditorClassIdentifier: 
+  exp: 0
+  aliveMonsters: 0
+  gatesState: 0
+  teleports: 
+  lastLocation: -1
+  baseSpells:
+  - startLevel: 1
+    basePatternSpell: {fileID: 11400000, guid: 14acb3cdaa39f2a468dc762c2abbc65e, type: 2}
+  - startLevel: 2
+    basePatternSpell: {fileID: 11400000, guid: e3c42241db8c08349af3f6480af65e65, type: 2}
+  - startLevel: 0
+    basePatternSpell: {fileID: 11400000, guid: 16a34390bb5f1404cbb9d63963ad2391, type: 2}
+  - startLevel: 1
+    basePatternSpell: {fileID: 11400000, guid: 98daaeb9848c2354799233c83004bbbf, type: 2}
+  pets: []
+  lastSelectedPet: -1

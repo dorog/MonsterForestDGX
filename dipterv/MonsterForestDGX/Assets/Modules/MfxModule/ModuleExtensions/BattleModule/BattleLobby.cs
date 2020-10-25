@@ -49,6 +49,11 @@ public class BattleLobby : MonoBehaviour
 
     private void SetResistantValues(Resistant resistant)
     {
+        if (!gameEvents.resistantEnable)
+        {
+            return;
+        }
+
         water.SetValue(ElementType.Water.ToString(), resistant.water);
         earth.SetValue(ElementType.Earth.ToString(), resistant.earth);
         fire.SetValue(ElementType.Fire.ToString(), resistant.fire);

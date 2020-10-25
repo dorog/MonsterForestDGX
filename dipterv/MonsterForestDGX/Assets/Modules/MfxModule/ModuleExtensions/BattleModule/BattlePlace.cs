@@ -15,12 +15,12 @@ public class BattlePlace : MonoBehaviour
     public BattleManager battleManager;
 
     [Header("Resistant Settings")]
-    public Resistant resistant;
     public bool resistantEnable = true;
+    public Resistant resistant;
 
     [Header ("Pet Settings")]
-    public AttackableHandler attackable;
     public bool petEnable = true;
+    public AttackableHandler attackable;
     public GameObject petPosition = null;
 
     public void Triggered()

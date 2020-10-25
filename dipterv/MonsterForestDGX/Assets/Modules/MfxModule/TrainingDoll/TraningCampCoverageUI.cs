@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TraningCampCoverageUI : MonoBehaviour
 {
+    //TODO: Instantiate instead of reference
     public TraningCampCoverageElementUI[] traningCampCoverageElementUIs;
 
     public MfxTraningCampPatternComponent traningCampPatternComponent;
@@ -29,11 +30,11 @@ public class TraningCampCoverageUI : MonoBehaviour
 
     private void GetSpellCoverage(List<CoverageResult> coverageResults)
     {
-        Debug.Log("Comment");
-        /*for (int i = 0; i < coverageResults.Count; i++)
+        for (int i = 0; i < coverageResults.Count; i++)
         {
-            traningCampCoverageElementUIs[i].ShowResult(coverageResults[i].Result, coverageResults[i].Min, coverageResults[i].Name);
-        }*/
+            //TODO: Instead of ID use name
+            traningCampCoverageElementUIs[i].ShowResult(coverageResults[i].Result, coverageResults[i].Min, coverageResults[i].Id.ToString());
+        }
     }
 
     public void FilterSpellCoverage(ElementType elementType)

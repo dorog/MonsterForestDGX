@@ -265,7 +265,7 @@ public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
 
     public string GetName()
     {
-        return ElementType.GetType().ToString();
+        return ElementType.ToString();
     }
 
     public void InstantiateInfo(Transform root)

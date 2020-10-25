@@ -1,28 +1,17 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 
 public class DefendingTrainingDoll : AiFighter
 {
     public BattleManager battleManager;
 
-    public Player player;
-
     public TrainingCampUI trainingCampUI;
 
     public CooldownResetPetAbility cooldownReset;
 
-    [Range(0, 100)]
-    public float blockChance;
+    public ResetableHandler resetableHandler;
 
-    public DollHealth dollHealth;
-
-    public Controller controller;
-
-    protected override void Appear(){}
-
-    protected override void Disappear(){}
-
-    public MagicCircleHandler magicCircleHandler;
-    public ResetableHandler resetable;
+    public KeyBindingManager keyBindingManager;
 
     public Health GetHealth()
     {
@@ -33,27 +22,43 @@ public class DefendingTrainingDoll : AiFighter
 
     protected override void ResetMonster(){}
 
+    protected override void Appear() { }
+
+    protected override void Disappear() { }
+
     public void FinishedTraining()
     {
-        player.FinishedTraining();
-
         trainingCampUI.DisableUI();
 
-        magicCircleHandler.SuccessCastSpellDelegateEvent -= cooldownReset.ResetCooldown;
-
         battleManager.DrawFight();
+
+        battleManager.BlueFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Activate;
+        battleManager.RedFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Deactivate;
     }
 
-    public override void Fight()
+    public override void SetupForFight(Fighter fighter)
     {
-        base.Fight();
+        base.SetupForFight(fighter);
+
+        battleManager.BlueFighterTurnStartDelegateEvent += keyBindingManager.drawHelperInput.Activate;
+        battleManager.RedFighterTurnStartDelegateEvent += keyBindingManager.drawHelperInput.Deactivate;
+    }
+
+    public override void Withdraw()
+    {
+        base.Withdraw();
+
+        battleManager.BlueFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Activate;
+        battleManager.RedFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Deactivate;
+    }
+
+    public override void Def()
+    {
+        base.Def();
 
         trainingCampUI.EnableUI();
 
-        cooldownReset.Init(resetable.gameObject);
-        magicCircleHandler.SuccessCastSpellDelegateEvent += cooldownReset.ResetCooldown;
-
-        controller.StartController();
+        cooldownReset.Init(resetableHandler.gameObject);
     }
 
     public override void Disable(){}

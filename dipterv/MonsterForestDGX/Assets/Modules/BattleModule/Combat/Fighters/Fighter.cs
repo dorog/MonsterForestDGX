@@ -48,6 +48,7 @@ public abstract class Fighter : MonoBehaviour
     {
         StartTurn?.Invoke();
     }
+
     public virtual void Def()
     {
         EndTurn?.Invoke();
