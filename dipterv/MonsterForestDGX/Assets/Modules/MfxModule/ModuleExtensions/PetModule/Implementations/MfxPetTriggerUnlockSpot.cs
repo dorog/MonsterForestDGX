@@ -12,7 +12,6 @@ public class MfxPetTriggerUnlockSpot : PetUnlockSpot
 
     public GameObject availableSign;
     public Transform petPosition;
-    //public LayerMask layerMask;
 
     public string colliderTag = "Player";
 
@@ -62,7 +61,7 @@ public class MfxPetTriggerUnlockSpot : PetUnlockSpot
     }
 
     private void OnTriggerEnter(Collider other)
-    {        
+    {
         if (!collected && other.gameObject.CompareTag(colliderTag))
         {
             availableSign.SetActive(true);
