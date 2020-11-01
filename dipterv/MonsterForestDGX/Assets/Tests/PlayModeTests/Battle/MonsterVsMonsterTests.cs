@@ -216,7 +216,7 @@ namespace Tests.BattleModule
 
             AnimatedFighter[] monsters = core.GetComponentsInChildren<AnimatedFighter>();
 
-            monsters[Revert(monsterIndex)].blockChance = 100;
+            enemyHealth.blockChance = 100;
 
             controller.looping = true;
             controller.commands = new AbstractCommand[] { monsterAttackCommands[monsterIndex] };

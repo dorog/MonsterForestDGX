@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class MagicCircleHandler : MfxResetable
 {
     public GameObject magicCircle;
+    public GameObject circle;
+    private bool reseted = false;
 
     public event Action SuccessCastSpellDelegateEvent;
     public event Action<float> SuccessCastSpellWithCoverage;
@@ -52,6 +55,8 @@ public class MagicCircleHandler : MfxResetable
         spellAttack.SetBattleManager(battleManager);
 
         cooldownShower.SetUpCoolDown(spellData.Cooldown);
+        StartCoroutine(EnableCircle(spellData.Cooldown));
+
         //Other option: Say: good, lame, awful etc
         SuccessCastSpellWithCoverage?.Invoke(spellResult.Coverage);
         SuccessCastSpellDelegateEvent?.Invoke();
@@ -60,6 +65,22 @@ public class MagicCircleHandler : MfxResetable
         magicCircle.SetActive(false);
 
         castEffectHandler.CastSpellEffect(spellData.ElementType);
+    }
+
+    private IEnumerator EnableCircle(float time)
+    {
+        circle.SetActive(false);
+
+        reseted = false;
+        float remainingTime = time;
+        while(remainingTime > 0 && !reseted)
+        {
+            remainingTime -= Time.deltaTime;
+
+            yield return null;
+        }
+
+        circle.SetActive(true);
     }
 
     public void CastFailed()
@@ -88,6 +109,7 @@ public class MagicCircleHandler : MfxResetable
     public override void ResetAction()
     {
         cooldownShower.ResetCoolDown();
+
         cooldownParticleSystemEffect.Play();
     }
 

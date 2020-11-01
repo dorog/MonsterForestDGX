@@ -19321,10 +19321,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedb34d52050e1a4aba1bc3ca342a0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 6
   coverage: 0.75
   cd: 2
   dmg: 50
+  elementType: 3
   impactParticle: {fileID: 132198, guid: 57b65f580d44f4b4ca52904e92a6e73a, type: 3}
 --- !u!114 &-1079259894121221613
 MonoBehaviour:

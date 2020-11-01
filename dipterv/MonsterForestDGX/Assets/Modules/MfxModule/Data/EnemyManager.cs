@@ -1,19 +1,17 @@
-﻿
-public class EnemyManager
+﻿using UnityEngine;
+
+public class EnemyManager : MonoBehaviour
 {
-    public BattlePlace[] monsterBattlePlaces;
-    public BattlePlace[] gateBattlePlaces;
+    public BattlePlace[] battlePlaces;
 
     public GameEvents gameEvents;
     public DataManager dataManager;
 
     public void Start()
     {
-        bool[] aliveMonsters = dataManager.GetAliveMonsters();
-        bool[] gateStates = dataManager.GetGatesState();
+        bool[] enemys = dataManager.GetEnemies();
 
-        SetBattlePlacesState(aliveMonsters, monsterBattlePlaces);
-        SetBattlePlacesState(gateStates, gateBattlePlaces);
+        SetBattlePlacesState(enemys, battlePlaces);
 
         gameEvents.BattleStartDelegateEvent += SubscribeToMonsterDeath;
         gameEvents.BattleEndDelegateEvent += UnsubscribeToMonsterDeath;
@@ -40,6 +38,6 @@ public class EnemyManager
 
     public void Won()
     {
-        dataManager.SaveMonsterDeath(gameEvents.id);
+        dataManager.SaveEnemyDeath(gameEvents.id);
     }
 }

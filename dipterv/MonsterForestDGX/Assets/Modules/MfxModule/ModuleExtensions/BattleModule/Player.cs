@@ -47,18 +47,27 @@ public class Player : Fighter
     {
         GoCall("Run");
         //Go?.Invoke();
+
+        DisableUI();
     }
 
     public void FinishedTraining()
     {
         GoCall("FT");
         //Go?.Invoke();
+
+        DisableUI();
     }
 
     public override void SetupForFight(Fighter fighter)
     {
         Debug.Log("Got the enemy: Maybe warning when it attacks?");
         StopCall("Battle");
+
+        playerHealth.InitHealth();
+
+        leftHandCanvas.SetActive(true);
+        rightHandCanvas.SetActive(true);
     }
 
     public override void Win()

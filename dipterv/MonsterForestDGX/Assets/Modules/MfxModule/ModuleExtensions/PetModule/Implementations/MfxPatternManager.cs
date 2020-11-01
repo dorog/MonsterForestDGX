@@ -8,6 +8,8 @@ public class MfxPatternManager : MonoBehaviour, IPatternManager, IPatternInfoMan
     private event Action<UiPatternData[]> LoadedUiPatternData;
     private event Action<ShopUiPatternData[]> LoadedShopUiPatternData;
 
+    private event Action<MfxPatternData[]> LoadedMfxPatternData;
+
     private event Action<PatternDataDifference> ChangedPatternDataState;
     private event Action<int> ChangedPatternDataData;
     private event Action<int> SelectedPatternDataData;
@@ -18,6 +20,8 @@ public class MfxPatternManager : MonoBehaviour, IPatternManager, IPatternInfoMan
     public void LoadData()
     {
         patternDatas = patternDataHandler.LoadPatternDatas();
+
+        LoadedMfxPatternData?.Invoke(patternDatas);
         LoadedPatternData?.Invoke(patternDatas);
         LoadedUiPatternData?.Invoke(patternDatas.ToList().Select(x => new UiPatternData() { State = x.State, UiPattern = x.Pattern }).ToArray());
         LoadedShopUiPatternData?.Invoke(patternDatas.ToList().Select(x => new ShopUiPatternData() { State = x.State, ShopUiPattern = x.Pattern }).ToArray());
@@ -47,6 +51,16 @@ public class MfxPatternManager : MonoBehaviour, IPatternManager, IPatternInfoMan
     public void ChangedPatternData(int id)
     {
         ChangedPatternDataData?.Invoke(id);
+    }
+
+    public void SubscibeToPatternDataLoadedEvent(Action<MfxPatternData[]> method)
+    {
+        LoadedMfxPatternData += method;
+    }
+
+    public void UnsubscibeFromPatternDataLoadedEvent(Action<MfxPatternData[]> method)
+    {
+        LoadedMfxPatternData -= method;
     }
 
     public void SubscibeToPatternDataLoadedEvent(Action<PatternData[]> method)

@@ -13,6 +13,7 @@ public class BattlePlace : MonoBehaviour
     public GameEvents gameEvents;
 
     public BattleManager battleManager;
+    public Controller controller;
 
     [Header("Resistant Settings")]
     public bool resistantEnable = true;
@@ -22,6 +23,7 @@ public class BattlePlace : MonoBehaviour
     public bool petEnable = true;
     public AttackableHandler attackable;
     public GameObject petPosition = null;
+    public ParticleSystem petAttackEffect;
 
     public void Triggered()
     {
@@ -33,6 +35,7 @@ public class BattlePlace : MonoBehaviour
 
         battleManager.Withdraw += ResetBattlePlaceState;
         battleManager.RedFighterWon += ResetBattlePlaceState;
+        battleManager.controller = controller;
 
         SetPetSettings();
 
@@ -43,6 +46,8 @@ public class BattlePlace : MonoBehaviour
     {
         attackable.health = enemyHealth;
         attackable.fighter = enemy;
+        attackable.petAttackEffect = petAttackEffect;
+
         gameEvents.petEnable = petEnable;
         if (petPosition != null)
         {

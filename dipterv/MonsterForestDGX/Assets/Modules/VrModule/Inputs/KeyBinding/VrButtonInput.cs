@@ -1,6 +1,6 @@
 ﻿using UnityEngine.XR;
 
-public abstract class VrButtonInput : AbstractPressed
+public class VrButtonInput : AbstractPressed
 {
     public XRNode device;
     public ButtonInputType Button;

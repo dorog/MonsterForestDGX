@@ -47,6 +47,7 @@ public class ShieldHandler : MonoBehaviour
             return;
         }
 
+        Debug.Log("Body: if not rotate with controller it can be wrong!");
         Vector3 handVector = Vector3.ProjectOnPlane(hand.forward, body.forward);
         float angle = Vector3.SignedAngle(handVector, Vector3.forward, Vector3.right);
 
@@ -57,8 +58,16 @@ public class ShieldHandler : MonoBehaviour
                 playerHealth.damageBlock = shield.damageBlock;
                 playerHealth.SetDamageBlock();
 
+                shield.damageBlock.SubscribeToBlockDown(BlockDown);
+
                 break;
             }
         }
+    }
+
+    public void BlockDown()
+    {
+        playerHealth.damageBlock.UnsubscribeToBlockDown(BlockDown);
+        playerHealth.damageBlock = null;
     }
 }

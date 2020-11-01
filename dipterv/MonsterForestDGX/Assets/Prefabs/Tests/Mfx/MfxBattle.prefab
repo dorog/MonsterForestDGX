@@ -2992,8 +2992,7 @@ MonoBehaviour:
   gameConfig: {fileID: 11400000, guid: fcee6e84800bdcf489778acd439daaba, type: 2}
   LocalGameData:
     basePatternSpellLevels: 
-    aliveMonsters: 
-    gatesState: 
+    enemys: 
     teleports: 
     availablePets: 
     exp: 0
@@ -4484,6 +4483,7 @@ MonoBehaviour:
   currentHp: 100
   fighter: {fileID: 1484806396570965564}
   extraParts: []
+  blockChance: 10
   damageBlock: {fileID: 0}
   healthShowerUI: {fileID: 0}
   healEffect: {fileID: 1484806396586889733}
@@ -4522,7 +4522,6 @@ MonoBehaviour:
   castEffectHandler: {fileID: 0}
   keyBindingManager: {fileID: 7261872853237472370}
   battleManager: {fileID: 7261872853971857361}
-  experienceManager: {fileID: 7261872854026556043}
 --- !u!114 &8736417228928428757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9870,7 +9869,6 @@ MonoBehaviour:
   paintingTrigger: {fileID: 0}
   petCollectButton: {fileID: 0}
   shopCollectButton: {fileID: 0}
-  drawHelperInputs: []
   drawHelperInput: {fileID: 0}
 --- !u!1 &7261872853238753501
 GameObject:
@@ -20168,7 +20166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 134ca037e31e2b643b0f32b3aac847e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  battleManager: {fileID: 7261872853971857361}
   player: {fileID: 1484806396570965564}
   id: 0
   battlePlace: {fileID: 0}
@@ -27438,7 +27435,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 7261872853992985398}
-  blockChance: 0
   extraObjects:
   - {fileID: 7261872853288963081}
   extraParticles:
@@ -27468,6 +27464,7 @@ MonoBehaviour:
   currentHp: 0
   fighter: {fileID: 7261872853992985395}
   extraParts: []
+  blockChance: 10
   damageBlock: {fileID: 7261872853992985394}
   healthShowerUI: {fileID: 0}
   healEffect: {fileID: 7261872853992985396}
@@ -43909,11 +43906,12 @@ MonoBehaviour:
   battleTrigger: {fileID: 7261872853827182600}
   gameEvents: {fileID: 7261872853603374260}
   battleManager: {fileID: 7261872853971857361}
-  resistant: {fileID: 11400000, guid: 45fa85eae6868e045969c155787f35cb, type: 2}
   resistantEnable: 1
-  attackable: {fileID: 7261872853724254345}
+  resistant: {fileID: 11400000, guid: 45fa85eae6868e045969c155787f35cb, type: 2}
   petEnable: 1
+  attackable: {fileID: 7261872853724254345}
   petPosition: {fileID: 0}
+  petAttackEffect: {fileID: 0}
 --- !u!1 &7261872854767767897
 GameObject:
   m_ObjectHideFlags: 0
@@ -49028,6 +49026,7 @@ MonoBehaviour:
   keyBindingManager: {fileID: 7261872853237472370}
   playerHealth: {fileID: 1484806396570965565}
   hand: {fileID: 5799601024468899662}
+  body: {fileID: 0}
   playerShields:
   - minAngle: 0
     maxAngle: 25

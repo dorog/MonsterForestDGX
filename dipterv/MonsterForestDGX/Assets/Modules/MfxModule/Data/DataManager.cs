@@ -19,16 +19,9 @@ public class DataManager : MonoBehaviour, IExperienceIO
         gameData = dataIO.Read();
     }
 
-    public void SaveMonsterDeath(int id)
+    public void SaveEnemyDeath(int id)
     {
-        gameData.aliveMonsters[id] = false;
-
-        dataIO.Save(gameData);
-    }
-
-    public void SaveGateDeath(int id)
-    {
-        gameData.gatesState[id] = false;
+        gameData.enemys[id] = false;
 
         dataIO.Save(gameData);
     }
@@ -69,19 +62,15 @@ public class DataManager : MonoBehaviour, IExperienceIO
 
     public void SaveTeleportUnlock(int id)
     {
+        Debug.Log(id);
         gameData.teleports[id] = true;
 
         dataIO.Save(gameData);
     }
 
-    public bool[] GetAliveMonsters()
+    public bool[] GetEnemies()
     {
-        return gameData.aliveMonsters;
-    }
-
-    public bool[] GetGatesState()
-    {
-        return gameData.gatesState;
+        return gameData.enemys;
     }
 
     public bool[] GetTeleportsState()

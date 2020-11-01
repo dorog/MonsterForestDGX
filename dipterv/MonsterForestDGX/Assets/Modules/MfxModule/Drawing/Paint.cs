@@ -102,10 +102,4 @@ public class Paint : MonoBehaviour
             spellCastingHandler.ResetHandler();
         }
     }
-
-    public void OnDisable()
-    {
-        lineRenderer.positionCount = 0;
-        spellCastingHandler.ResetHandler();
-    }
 }

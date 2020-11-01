@@ -17,6 +17,8 @@ public class MfxPetTriggerUnlockSpot : PetUnlockSpot
 
     public IPressed collectInput;
 
+    public GameObject petUnlockTab;
+
     //TODO: Remove later
     public KeyBindingManager keyBindingManager;
 
@@ -78,5 +80,7 @@ public class MfxPetTriggerUnlockSpot : PetUnlockSpot
             collectInput.Deactivate();
             inArea = false;
         }
+
+        petUnlockTab.SetActive(false);
     }
 }

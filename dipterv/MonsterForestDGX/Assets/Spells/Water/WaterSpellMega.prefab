@@ -19261,6 +19261,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coverage: 0.75
   cd: 2
+  dmg: 50
+  elementType: 2
+  impactParticle: {fileID: 172476, guid: dd2bfeaf8bc82f342be9069747868860, type: 3}
 --- !u!54 &937600494204601970
 Rigidbody:
   m_ObjectHideFlags: 0

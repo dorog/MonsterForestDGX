@@ -9674,10 +9674,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedb34d52050e1a4aba1bc3ca342a0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 2
   coverage: 0.65
   cd: 2
   dmg: 10
+  elementType: 2
   impactParticle: {fileID: 100010, guid: 6f4e78305e3efcf44b142b5462ace375, type: 3}
 --- !u!54 &-5240768116554915873
 Rigidbody:

@@ -19,4 +19,9 @@ public class PatternSpellCastingHandler : SpellCastingHandler
     {
         patternRecognizer.ResetSpells();
     }
+
+    private void OnDisable()
+    {
+        ResetHandler();
+    }
 }

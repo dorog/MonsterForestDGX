@@ -6,8 +6,7 @@ using UnityEngine;
 public class GameData
 {
     public int[] basePatternSpellLevels;
-    public bool[] aliveMonsters;
-    public bool[] gatesState;
+    public bool[] enemys;
     public bool[] teleports;
     public bool[] availablePets;
     public float exp;
@@ -18,8 +17,7 @@ public class GameData
 
     public GameData(GameConfig gameConfig)
     {
-        aliveMonsters = gameConfig.aliveMonsters == 0 ? null : CreateArrayWithDefaultValue(gameConfig.aliveMonsters, true);
-        gatesState = gameConfig.gatesState == 0 ? null : CreateArrayWithDefaultValue(gameConfig.gatesState, true);
+        enemys = gameConfig.enemies == 0 ? null : CreateArrayWithDefaultValue(gameConfig.enemies, true);
         teleports = gameConfig.teleports.ToArray();
         basePatternSpellLevels = gameConfig.baseSpells.Select(x => x.startLevel).ToArray();
         availablePets = gameConfig.pets.Select(x => x.Available).ToArray();

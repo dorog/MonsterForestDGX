@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7581305930585522552}
-  - component: {fileID: 7581305930585522553}
+  - component: {fileID: 4669332611312038887}
   m_Layer: 10
   m_Name: MoveBackCommand
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 7581305931352485731}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7581305930585522553
+--- !u!114 &4669332611312038887
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,12 +40,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7581305930585522559}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aca9c4aea1f8494a8f7a13c27fe1b05, type: 3}
+  m_Script: {fileID: 11500000, guid: ea724b44c2a13314799ab8cb07a1ce24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   turnFill: {fileID: 0}
-  forward: 0
+  direction: 1
 --- !u!1 &7581305930748272816
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,13 +191,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commands:
   - {fileID: 7581305931609427510}
-  - {fileID: 7581305932275254062}
+  - {fileID: 0}
   - {fileID: 7581305931006410486}
-  - {fileID: 7581305931461413393}
+  - {fileID: 0}
   - {fileID: 7581305930748272818}
-  - {fileID: 7581305930585522553}
+  - {fileID: 0}
   - {fileID: 7581305932037537628}
   - {fileID: 7581305931851439375}
+  looping: 1
 --- !u!1 &7581305931461413398
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +208,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7581305931461413399}
-  - component: {fileID: 7581305931461413393}
+  - component: {fileID: 5202062122028002863}
   m_Layer: 10
   m_Name: Attacking
   m_TagString: Untagged
@@ -229,7 +230,7 @@ Transform:
   m_Father: {fileID: 7581305931352485731}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7581305931461413393
+--- !u!114 &5202062122028002863
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,14 +239,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7581305931461413398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea61a8a2513362f47a545c376ae0d506, type: 3}
+  m_Script: {fileID: 11500000, guid: dbf4036fe3ba4a644b26e0d0de1b708a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  extraAttackChances:
-  - 50
-  - 10
+  extraAttackChances: []
   attack: {fileID: 0}
+  enemy: {fileID: 0}
+  attackDelay: 2
 --- !u!1 &7581305931609427508
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  playerTurn: 0
+  fighter: {fileID: 0}
   battleManager: {fileID: 0}
 --- !u!1 &7581305931851439373
 GameObject:
@@ -382,7 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
-  playerTurn: 1
+  fighter: {fileID: 0}
   battleManager: {fileID: 0}
 --- !u!1 &7581305932275254060
 GameObject:
@@ -393,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7581305932275254061}
-  - component: {fileID: 7581305932275254062}
+  - component: {fileID: 103131785516445556}
   m_Layer: 10
   m_Name: MoveForwardCommand
   m_TagString: Untagged
@@ -415,7 +416,7 @@ Transform:
   m_Father: {fileID: 7581305931352485731}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7581305932275254062
+--- !u!114 &103131785516445556
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -424,9 +425,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7581305932275254060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aca9c4aea1f8494a8f7a13c27fe1b05, type: 3}
+  m_Script: {fileID: 11500000, guid: ea724b44c2a13314799ab8cb07a1ce24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 0}
   turnFill: {fileID: 0}
-  forward: 1
+  direction: 0

@@ -20,6 +20,8 @@ public class PatternBuyUI : MonoBehaviour
     public void Refresh()
     {
         spellNameText.text = mfxPattern.GetElementType().ToString();
+        spellNameText.color = mfxPattern.GetElementType().GetElementTypeColor();
+
         difficultyValueText.text = mfxPattern.GetDifficulty()[0];
         difficultyValueText.color = mfxPattern.GetDifficultyColor()[0];
         valueTitleText.text = mfxPattern.GetSpellTypeUI() + ":";

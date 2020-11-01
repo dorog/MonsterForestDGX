@@ -4,9 +4,6 @@ public class PassiveFighter : AiFighter
 {
     public Health health;
 
-    [Range(0, 100)]
-    public float blockChance = 10f;
-
     public GameObject[] extraObjects;
     public ParticleSystem[] extraParticles;
 
@@ -14,12 +11,7 @@ public class PassiveFighter : AiFighter
 
     protected override void React()
     {
-        float random = Random.Range(1, 101);
-
-        if (random <= blockChance)
-        {
-            health.SetDamageBlock();
-        }
+        health.SetDamageBlock();
     }
 
     protected override void Appear()
@@ -32,7 +24,7 @@ public class PassiveFighter : AiFighter
 
     protected override void Disappear()
     {
-        health.DisableHealth();
+        health.DisapperHealth();
         DisableExtras();
     }
 

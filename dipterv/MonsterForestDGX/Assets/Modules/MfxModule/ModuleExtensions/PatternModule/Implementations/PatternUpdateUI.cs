@@ -29,6 +29,7 @@ public class PatternUpdateUI : MonoBehaviour
     public void Refresh()
     {
         spellNameTextUpdate.text = mfxPattern.GetElementType().ToString();
+        spellNameTextUpdate.color = mfxPattern.GetElementType().GetElementTypeColor();
 
         string[] difficulties = mfxPattern.GetDifficulty();
         difficultyValueTextActual.text = difficulties[0];
@@ -43,6 +44,8 @@ public class PatternUpdateUI : MonoBehaviour
         valueTitleTextUpdate.text = mfxPattern.GetSpellTypeUI() + ":";
 
         string[] values = mfxPattern.GetTypeValueUI();
+        Debug.Log(values[0]);
+        Debug.Log(values[1]);
         valueValueTextActual.text = values[0];
         valueValueTextNext.text = values[1];
 

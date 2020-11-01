@@ -28,6 +28,8 @@ public class UpdateablePatternUI : PatternUI
     {
         iconImage.sprite = uiPattern.GetIcon();
         spellNameText.text = uiPattern.GetElementType().ToString();
+        spellNameText.color = uiPattern.GetElementType().GetElementTypeColor();
+
         requiredExpValue.text = uiPattern.GetRequiredExp();
 
         if (uiPattern.GetLevelValue() == 0)

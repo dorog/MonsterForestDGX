@@ -25,6 +25,6 @@ public static class MovingDirectionExtension
                 return transform.right;
             default:
                 return Vector3.zero;
-        }
+        };
     }
 }

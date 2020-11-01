@@ -41,6 +41,7 @@ public class AnimatedFighter : PassiveFighter
 
     protected override void ResetMonster()
     {
+        Debug.Log("Rest monster");
         base.ResetMonster();
 
         EnemyDiedAutoController.StartController();

@@ -13,7 +13,5 @@ public class KeyBindingManager : MonoBehaviour
 
     public AbstractPressed petCollectButton;
 
-    public AbstractPressed shopCollectButton;
-
     public AbstractPressed drawHelperInput;
 }

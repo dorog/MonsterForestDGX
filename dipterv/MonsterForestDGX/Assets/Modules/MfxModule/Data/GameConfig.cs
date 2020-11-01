@@ -6,11 +6,8 @@ public class GameConfig : ScriptableObject
     [Header("Player Settings")]
     public float exp;
 
-    [Header("Monster Settings")]
-    public int aliveMonsters;
-
-    [Header("Gate Settings")]
-    public int gatesState;
+    [Header("Enemy Settings")]
+    public int enemies;
 
     [Header("Teleports Settings")]
     public bool[] teleports;

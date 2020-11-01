@@ -26,7 +26,7 @@ public class Resistant : ScriptableObject
             case ElementType.Water:
                 return water;
             case ElementType.Earth:
-                return water;
+                return earth;
             case ElementType.Fire:
                 return fire;
             case ElementType.Air:

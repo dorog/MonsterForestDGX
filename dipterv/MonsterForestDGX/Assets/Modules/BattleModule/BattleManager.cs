@@ -7,9 +7,7 @@ public class BattleManager : MonoBehaviour
     private Fighter blueFighter;
 
     public event Action BlueFighterTurnStartDelegateEvent;
-    //public event Action BlueFighterTurnEndDelegateEvent;
     public event Action RedFighterTurnStartDelegateEvent;
-    //public event Action RedFighterTurnEndDelegateEvent;
 
     public event Action BlueFighterWon;
     public event Action RedFighterWon;
@@ -56,12 +54,10 @@ public class BattleManager : MonoBehaviour
     private void BlueFighterTurn()
     {
         BlueFighterTurnStartDelegateEvent?.Invoke();
-        //RedFighterTurnEndDelegateEvent?.Invoke();
     }
 
     private void RedFighterTurn()
     {
-        //BlueFighterTurnEndDelegateEvent?.Invoke();
         RedFighterTurnStartDelegateEvent?.Invoke();
     }
 

@@ -8,8 +8,10 @@ public class BattlePlaceTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.transform.position = transform.position;
-            other.gameObject.transform.rotation = transform.rotation;
+            //TODO: Rotate body, but headset not rotating
+
+            other.transform.position = transform.position;
+            other.transform.rotation = transform.rotation;
 
             battlePlace.Triggered();
 

@@ -23807,10 +23807,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedb34d52050e1a4aba1bc3ca342a0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 2
   coverage: 0.7
   cd: 2
   dmg: 25
+  elementType: 2
   impactParticle: {fileID: 100010, guid: 3622df40ebe443f48b3c761801bbc51c, type: 3}
 --- !u!54 &4106984508865021780
 Rigidbody:

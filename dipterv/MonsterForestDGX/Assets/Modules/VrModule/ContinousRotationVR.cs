@@ -8,16 +8,13 @@ public class ContinousRotationVR : MonoBehaviour
 
     private AxisInput rotationInput;
 
+    public Transform target;
+
     public void SetInput(AxisInput _rotationInput)
     {
         rotationInput = _rotationInput;
 
         rotationInput.SubscibeToAxisChange(Rotate);
-
-        Debug.Log("Commented");
-        /*
-        player.Stopped += rotationInput.Deactivate;
-        player.Go += rotationInput.Activate;*/
     }
 
     private void Rotate(Vector2 axis)
@@ -25,9 +22,9 @@ public class ContinousRotationVR : MonoBehaviour
         rotation += new Vector3(0, axis.x * rotationSpeed * Time.deltaTime, 0);
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
-        transform.Rotate(rotation);
+        target.Rotate(rotation);
         rotation = Vector3.zero;
     }
 }

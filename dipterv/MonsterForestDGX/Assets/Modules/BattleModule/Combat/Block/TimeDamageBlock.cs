@@ -7,14 +7,21 @@ public class TimeDamageBlock : DamageBlock
     private bool working = false;
     private float actualDurationTime = 0;
 
+    [Header("(Optional)")]
+    public ParticleSystem effect;
+
     public override void StartBlocking()
     {
         actualDurationTime = durationTime;
 
+        if (effect != null)
+        {
+            effect.Play();
+        }
         working = true;
     }
 
-    private void Update()
+    public void Update()
     {
         if (working)
         {
@@ -23,6 +30,10 @@ public class TimeDamageBlock : DamageBlock
             if (actualDurationTime <= 0)
             {
                 working = false;
+                if(effect != null)
+                {
+                    effect.Stop();
+                }
                 BlockDowned();
             }
         }

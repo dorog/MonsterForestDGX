@@ -4820,10 +4820,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedb34d52050e1a4aba1bc3ca342a0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 2
   coverage: 0.6
   cd: 2
   dmg: 5
+  elementType: 2
   impactParticle: {fileID: 126790, guid: 3c882a5553977f644823c4468aae67c3, type: 3}
 --- !u!54 &2352094987165873297
 Rigidbody:

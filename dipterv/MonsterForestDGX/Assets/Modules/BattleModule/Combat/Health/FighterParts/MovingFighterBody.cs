@@ -1,10 +1,7 @@
 ﻿
-using UnityEngine;
-
 public class MovingFighterBody : ExtraFighterPart
 {
     public TurnFill positionTurnFill;
-    public TurnFill negativTurnFill;
     public TurnFill disableTurnFill;
 
     public MovingAxis axis;
@@ -17,11 +14,11 @@ public class MovingFighterBody : ExtraFighterPart
 
     public override void Disappear()
     {
-        StartCoroutine(negativTurnFill.Move(axis.GetNegtivDirection(revert)));
+        StartCoroutine(positionTurnFill.Move(axis.GetNegtivDirection(revert)));
     }
 
     public override void Disable()
     {
-        StartCoroutine(disableTurnFill.Move(axis.GetNegtivDirection()));
+        StartCoroutine(disableTurnFill.Move(axis.GetPositiveDirection(revert)));
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpellAndPatternConnector : AbstractConnector, ISpellHandler
 {
-    private readonly List<MfxPattern> uiPatterns = new List<MfxPattern>();
+    private readonly List<MfxPattern> mfxPatterns = new List<MfxPattern>();
 
     [Header("Connector dependencies")]
     public MagicCircleHandler magicCircleHandler;
@@ -13,21 +13,31 @@ public class SpellAndPatternConnector : AbstractConnector, ISpellHandler
 
     public override void Setup()
     {
-
-        traningCampPatternComponent.AddPatternManager(patternManager);
+        Debug.Log("Commented out!");
+        //traningCampPatternComponent.AddPatternManager(patternManager);
 
         magicCircleHandler.spellHandler = this;
+
+        patternManager.SubscibeToPatternDataLoadedEvent(PatternDataLoaded);
     }
 
-    public override void Load(){}
+    public override void Load() { }
+
+    private void PatternDataLoaded(MfxPatternData[] patternDatas)
+    {
+        foreach (var pattern in patternDatas)
+        {
+            mfxPatterns.Add(pattern.Pattern);
+        }
+    }
 
     public SpellData GetSpellData(int index)
     {
         SpellData spellData = new SpellData()
         {
-            Spell = uiPatterns[index].GetSpell(),
-            Cooldown = uiPatterns[index].GetCooldown(),
-            ElementType = uiPatterns[index].GetElementType()
+            Spell = mfxPatterns[index].GetSpell(),
+            Cooldown = mfxPatterns[index].GetCooldown(),
+            ElementType = mfxPatterns[index].GetElementType()
         };
 
         return spellData;

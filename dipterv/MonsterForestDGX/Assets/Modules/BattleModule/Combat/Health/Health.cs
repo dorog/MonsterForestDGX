@@ -8,6 +8,8 @@ public class Health : MonoBehaviour
 
     public ExtraFighterPart[] extraParts;
 
+    [Range(0, 100)]
+    public float blockChance = 10f;
     public DamageBlock damageBlock;
 
     public HealthShowerUI healthShowerUI;
@@ -54,7 +56,12 @@ public class Health : MonoBehaviour
 
     public virtual void SetDamageBlock()
     {
-        damageBlock.StartBlocking();
+        float random = Random.Range(1, 101);
+
+        if (random <= blockChance)
+        {
+            damageBlock.StartBlocking();
+        }
     }
 
     public bool IsFull()
@@ -76,6 +83,14 @@ public class Health : MonoBehaviour
         if(healEffect != null)
         {
             healEffect.Play();
+        }
+    }
+
+    public virtual void DisapperHealth()
+    {
+        foreach (var extraPart in extraParts)
+        {
+            extraPart.Disappear();
         }
     }
 
