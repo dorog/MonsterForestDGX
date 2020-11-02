@@ -58,4 +58,6 @@ public class PassiveFighter : AiFighter
         base.SetupForFight(fighter);
         health.InitHealth();
     }
+
+    public override void FightStarted(){}
 }

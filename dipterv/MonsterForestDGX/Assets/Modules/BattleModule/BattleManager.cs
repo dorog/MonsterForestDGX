@@ -36,6 +36,9 @@ public class BattleManager : MonoBehaviour
 
     public void BattleStart()
     {
+        redFighter.FightStarted();
+        blueFighter.FightStarted();
+
         controller.StartController();
     }
 

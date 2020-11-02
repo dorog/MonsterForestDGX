@@ -32,8 +32,7 @@ public class TraningCampCoverageUI : MonoBehaviour
     {
         for (int i = 0; i < coverageResults.Count; i++)
         {
-            //TODO: Instead of ID use name
-            traningCampCoverageElementUIs[i].ShowResult(coverageResults[i].Result, coverageResults[i].Min, coverageResults[i].Id.ToString());
+            traningCampCoverageElementUIs[i].ShowResult(coverageResults[i].Result, coverageResults[i].Min);
         }
     }
 

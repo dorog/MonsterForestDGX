@@ -2,7 +2,7 @@
 
 public class GuideElement : MonoBehaviour
 {
-    public void Set(Vector2 startPosition, Vector2 endPosition, float width, float scale)
+    public void Set(Vector2 startPosition, Vector2 endPosition, float width)
     {
         Vector3 direction = endPosition - startPosition;
 
@@ -12,7 +12,7 @@ public class GuideElement : MonoBehaviour
 
         RectTransform rt = GetComponent<RectTransform>();
 
-        rt.localPosition = new Vector3(startPosition.x * scale, startPosition.y * scale, 0);
+        rt.localPosition = new Vector3(startPosition.x, startPosition.y, 0);
 
         rt.localRotation = Quaternion.Euler(0, 0, angle);
         rt.sizeDelta = new Vector2(length, width);

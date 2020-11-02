@@ -44,6 +44,8 @@ public abstract class Fighter : MonoBehaviour
         SetEnemy(fighter);
     }
 
+    public abstract void FightStarted();
+
     public virtual void Fight()
     {
         StartTurn?.Invoke();

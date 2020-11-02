@@ -941,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484b68e2cb0a6084983a368267a2433c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 0}
   battleManager: {fileID: 0}
   gameEvents: {fileID: 0}
   keyBindingManager: {fileID: 0}

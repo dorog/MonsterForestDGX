@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class ShieldHandler : MonoBehaviour
 {
+    public Text ui;
+
     private IPressed shieldActivateButton;
 
     public BattleManager battleManager;
@@ -51,7 +54,9 @@ public class ShieldHandler : MonoBehaviour
         Vector3 handVector = Vector3.ProjectOnPlane(hand.forward, body.forward);
         float angle = Vector3.SignedAngle(handVector, Vector3.forward, Vector3.right);
 
-        foreach(var shield in playerShields)
+        ui.text = angle.ToString();
+
+        foreach (var shield in playerShields)
         {
             if (angle <= shield.maxAngle && angle >= shield.minAngle)
             {

@@ -5,7 +5,7 @@ public class Player : Fighter
 {
     public PlayerHealth playerHealth;
 
-    public event Action Stopped;
+    public event Action Stop;
     public event Action Go;
 
     [Header("UI")]
@@ -16,7 +16,7 @@ public class Player : Fighter
 
     public override void Die()
     {
-        GoCall("Player Die");
+        Go?.Invoke();
 
         base.Die();
     }
@@ -26,13 +26,11 @@ public class Player : Fighter
     {
         if (!isStopped)
         {
-            GoCall("MenuS");
-            //Stopped?.Invoke();
+            Go?.Invoke();
         }
         else
         {
-            GoCall("MenuG");
-            //Go?.Invoke();
+            Stop?.Invoke();
         }
 
         isStopped = !isStopped;
@@ -45,16 +43,14 @@ public class Player : Fighter
 
     public void Run()
     {
-        GoCall("Run");
-        //Go?.Invoke();
+        Go?.Invoke();
 
         DisableUI();
     }
 
     public void FinishedTraining()
     {
-        GoCall("FT");
-        //Go?.Invoke();
+        Go?.Invoke();
 
         DisableUI();
     }
@@ -62,7 +58,7 @@ public class Player : Fighter
     public override void SetupForFight(Fighter fighter)
     {
         Debug.Log("Got the enemy: Maybe warning when it attacks?");
-        StopCall("Battle");
+        Stop?.Invoke();
 
         playerHealth.InitHealth();
 
@@ -70,24 +66,13 @@ public class Player : Fighter
         rightHandCanvas.SetActive(true);
     }
 
+    public override void FightStarted(){}
+
     public override void Win()
     {
-        GoCall("BTE");
-        //Go?.Invoke();
+        Go?.Invoke();
 
         DisableUI();
-    }
-
-    private void GoCall(string name)
-    {
-        Debug.Log(name);
-        Go?.Invoke();
-    }
-
-    private void StopCall(string name)
-    {
-        Debug.Log(name);
-        Stopped?.Invoke();
     }
 
     public override void Withdraw()

@@ -1,21 +1,14 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 public class SpellAndPatternConnector : AbstractConnector, ISpellHandler
 {
     private readonly List<MfxPattern> mfxPatterns = new List<MfxPattern>();
 
-    [Header("Connector dependencies")]
     public MagicCircleHandler magicCircleHandler;
     public MfxPatternManager patternManager;
 
-    public MfxTraningCampPatternComponent traningCampPatternComponent;
-
     public override void Setup()
     {
-        Debug.Log("Commented out!");
-        //traningCampPatternComponent.AddPatternManager(patternManager);
-
         magicCircleHandler.spellHandler = this;
 
         patternManager.SubscibeToPatternDataLoadedEvent(PatternDataLoaded);

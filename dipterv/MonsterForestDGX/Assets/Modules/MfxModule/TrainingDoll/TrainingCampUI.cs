@@ -30,14 +30,8 @@ public class TrainingCampUI : MonoBehaviour
         SetCooldownChance();
     }
 
-    public void EnableUI()
-    {
-        root.SetActive(true);
-    }
-
     public void DisableUI()
     {
-        root.SetActive(false);
         spellGuideDrawer.ClearGuide();
     }
 

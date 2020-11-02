@@ -27,14 +27,14 @@ public class SpellGuideDrawer : MonoBehaviour
         pressInput.SubscribeToPressed(Pressed);
     }
 
-    public void DrawGuide(List<SpellPatternPoint> spellPatternPoints, float width = 10, float scale = 0.01f)
+    public void DrawGuide(List<SpellPatternPoint> spellPatternPoints, float width = 10, float scale = 0.0025f)
     {
         ClearGuide();
 
         for (int i = 0; i < spellPatternPoints.Count - 1; i++)
         {
             GuideElement guideElementInstance = Instantiate(guideElement, Root);
-            guideElementInstance.Set(spellPatternPoints[i].Point, spellPatternPoints[i + 1].Point, width, scale);
+            guideElementInstance.Set(spellPatternPoints[i].Point * scale, spellPatternPoints[i + 1].Point * scale, width * scale);
             if (i == 0)
             {
                 startPoint = guideElementInstance.transform;
@@ -54,6 +54,8 @@ public class SpellGuideDrawer : MonoBehaviour
         guideDrawHelperGO.Init(guidePoints, startPoint);
 
         guideHelper = guideDrawHelperGO.gameObject;
+
+        pressInput.Activate();
     }
 
     public void ClearGuide()
@@ -71,10 +73,13 @@ public class SpellGuideDrawer : MonoBehaviour
         guideHelper = null;
 
         guidePoints.Clear();
+
+        pressInput.Deactivate();
     }
 
     public void Pressed()
     {
+        Debug.Log("gimme helpör");
         if (guideHelper != null)
         {
             Helper.gameObject.SetActive(!Helper.gameObject.activeSelf);

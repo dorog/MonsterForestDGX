@@ -5,10 +5,8 @@ public class DollHealth : Health
     [Header ("Doll settings")]
     public TraningCampDamageUI damageUI;
 
-    protected override float GetBlockedDamage(float dmg)
+    public override void TakeDamage(float dmg)
     {
         damageUI.ShowDamage(dmg);
-
-        return 0;
     }
 }

@@ -1,39 +1,20 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DefendingTrainingDoll : AiFighter
+public class DefendingTrainingDoll : PassiveFighter
 {
+    public GameObject uis;
+
+    [Header ("Managers")]
     public BattleManager battleManager;
-
-    public TrainingCampUI trainingCampUI;
-
-    public CooldownResetPetAbility cooldownReset;
-
-    public ResetableHandler resetableHandler;
-
     public KeyBindingManager keyBindingManager;
 
-    public Health GetHealth()
-    {
-        return GetComponent<Health>();
-    }
-
-    protected override void React(){}
-
-    protected override void ResetMonster(){}
-
-    protected override void Appear() { }
-
-    protected override void Disappear() { }
+    [Header ("Reset Settings")]
+    public CooldownResetPetAbility cooldownReset;
+    public ResetableHandler resetableHandler;
 
     public void FinishedTraining()
     {
-        trainingCampUI.DisableUI();
-
         battleManager.DrawFight();
-
-        battleManager.BlueFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Activate;
-        battleManager.RedFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Deactivate;
     }
 
     public override void SetupForFight(Fighter fighter)
@@ -52,14 +33,22 @@ public class DefendingTrainingDoll : AiFighter
         battleManager.RedFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Deactivate;
     }
 
-    public override void Def()
+    public override void FightStarted()
     {
-        base.Def();
+        base.FightStarted();
 
-        trainingCampUI.EnableUI();
+        uis.SetActive(true);
 
         cooldownReset.Init(resetableHandler.gameObject);
     }
 
-    public override void Disable(){}
+    public override void Draw()
+    {
+        base.Draw();
+
+        uis.SetActive(false);
+
+        battleManager.BlueFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Activate;
+        battleManager.RedFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Deactivate;
+    }
 }

@@ -14,12 +14,12 @@ public class VrAndInputConnector : MonoBehaviour
         AxisInput movementAxisInput = keyBindingManager.continousMovementAxisInput;
         continousMovement.SetInput(movementAxisInput);
         player.Go += movementAxisInput.Activate;
-        player.Stopped += movementAxisInput.Deactivate;
+        player.Stop += movementAxisInput.Deactivate;
 
         AxisInput rotationAxisInput = keyBindingManager.continousRotationAxisInput;
         continousRotation.SetInput(rotationAxisInput);
         player.Go += rotationAxisInput.Activate;
-        player.Stopped += rotationAxisInput.Deactivate;
+        player.Stop += rotationAxisInput.Deactivate;
 
         player.EnableControlling();
     }
