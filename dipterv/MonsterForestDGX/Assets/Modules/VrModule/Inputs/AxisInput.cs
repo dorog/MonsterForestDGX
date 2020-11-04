@@ -4,7 +4,7 @@ using UnityEngine;
 public abstract class AxisInput : MonoBehaviour
 {
     private event Action<Vector2> AxisChange;
-    private bool active = true;
+    private bool active = false;
 
     public void SubscibeToAxisChange(Action<Vector2> method)
     {

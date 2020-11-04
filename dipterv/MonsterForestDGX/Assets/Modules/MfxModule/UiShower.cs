@@ -14,11 +14,9 @@ public class UiShower : UiLocationChanger
         menu.gameObject.SetActive(false);
     }
 
-    public void OnTriggerExit(Collider other)
+    public override void TriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            HideUI();
-        }
+        base.TriggerExit(other);
+        HideUI();
     }
 }

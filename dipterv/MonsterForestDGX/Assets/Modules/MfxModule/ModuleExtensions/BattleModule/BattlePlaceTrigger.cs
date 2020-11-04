@@ -1,21 +1,20 @@
 ﻿using UnityEngine;
 
-public class BattlePlaceTrigger : MonoBehaviour
+public class BattlePlaceTrigger : TriggerEvent
 {
     public BattlePlace battlePlace;
 
-    public void OnTriggerEnter(Collider other)
+    public override void TriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            //TODO: Rotate body, but headset not rotating
+        //TODO: Rotate body, but headset not rotating
 
-            other.transform.position = transform.position;
-            other.transform.rotation = transform.rotation;
+        other.transform.position = transform.position;
+        other.transform.rotation = transform.rotation;
 
-            battlePlace.Triggered();
+        battlePlace.Triggered();
 
-            gameObject.SetActive(false);
-        }
+        gameObject.SetActive(false);
     }
+
+    public override void TriggerExit(Collider other){}
 }

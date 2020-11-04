@@ -12,28 +12,11 @@ public class Player : Fighter
     public GameObject leftHandCanvas;
     public GameObject rightHandCanvas;
 
-    private bool isStopped = false;
-
     public override void Die()
     {
         Go?.Invoke();
 
         base.Die();
-    }
-
-    //Refactor
-    public void MenuState()
-    {
-        if (!isStopped)
-        {
-            Go?.Invoke();
-        }
-        else
-        {
-            Stop?.Invoke();
-        }
-
-        isStopped = !isStopped;
     }
 
     public void EnableControlling()

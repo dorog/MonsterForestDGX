@@ -12,6 +12,7 @@ public class GameData
     public float exp;
     public int lastLocation = -1;
     public int lastSelectedPet = -1;
+    public bool traningFinished = false;
 
     public GameData() { }
 
@@ -24,6 +25,7 @@ public class GameData
         exp = gameConfig.exp;
         lastSelectedPet = gameConfig.lastSelectedPet;
         lastLocation = gameConfig.lastLocation;
+        traningFinished = gameConfig.traningFinished;
     }
 
     private T[] CreateArrayWithDefaultValue<T>(int count, T value)

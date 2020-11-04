@@ -9,6 +9,8 @@ public class VrAndInputConnector : MonoBehaviour
 
     public Player player;
 
+    public DataManager dataManager;
+
     private void Start()
     {
         AxisInput movementAxisInput = keyBindingManager.continousMovementAxisInput;
@@ -21,6 +23,9 @@ public class VrAndInputConnector : MonoBehaviour
         player.Go += rotationAxisInput.Activate;
         player.Stop += rotationAxisInput.Deactivate;
 
-        player.EnableControlling();
+        if (dataManager.IsTraningFinished())
+        {
+            player.EnableControlling();
+        }
     }
 }

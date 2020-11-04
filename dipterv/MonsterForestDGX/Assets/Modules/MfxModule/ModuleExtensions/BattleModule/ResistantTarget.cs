@@ -5,6 +5,7 @@ public class ResistantTarget : MonoBehaviour, ISpellTarget
     public Resistant resistant;
     public FighterPart fighterPart;
     public ExperienceManager experienceManager;
+    public float hitExp = 10;
 
     public void TakeDamage(float dmg, ElementType elementType)
     {
@@ -17,7 +18,7 @@ public class ResistantTarget : MonoBehaviour, ISpellTarget
         PatternSpell playerSpell = collision.gameObject.GetComponent<PatternSpell>();
         if (playerSpell != null)
         {
-            experienceManager.AddExp(ExpType.Hit.GetExp() * playerSpell.coverage);
+            experienceManager.AddExp(hitExp * playerSpell.coverage);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEngine;
 
 public class FighterTurnCommand : AbstractCommand
 {
@@ -8,6 +9,8 @@ public class FighterTurnCommand : AbstractCommand
 
     protected override IEnumerator ExecuteCommand()
     {
+        Debug.Log(fighter.gameObject.name);
+
         battleManager.TurnChange(fighter);
 
         return null;

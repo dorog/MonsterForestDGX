@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class UiLocationChanger : MonoBehaviour
+public class UiLocationChanger : TriggerEvent
 {
     public Transform menu;
     public Vector3 offset = new Vector3(0, 4, 0);
@@ -11,11 +11,10 @@ public class UiLocationChanger : MonoBehaviour
         menu.rotation = transform.rotation;
     }
 
-    public void OnTriggerEnter(Collider other)
+    public override void TriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
-        {
-            ChangeLocation();
-        }
+        ChangeLocation();
     }
+
+    public override void TriggerExit(Collider other){}
 }

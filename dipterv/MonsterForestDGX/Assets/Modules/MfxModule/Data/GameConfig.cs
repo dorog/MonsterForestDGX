@@ -3,6 +3,8 @@
 [CreateAssetMenu(fileName = "new GameConfig", menuName = "GameConfig")]
 public class GameConfig : ScriptableObject
 {
+    public bool traningFinished = false;
+
     [Header("Player Settings")]
     public float exp;
 

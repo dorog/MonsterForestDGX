@@ -21,6 +21,11 @@ public class DataManager : MonoBehaviour, IExperienceIO
 
     public void SaveEnemyDeath(int id)
     {
+        if(id < 0)
+        {
+            return;
+        }
+
         gameData.enemys[id] = false;
 
         dataIO.Save(gameData);
@@ -62,7 +67,6 @@ public class DataManager : MonoBehaviour, IExperienceIO
 
     public void SaveTeleportUnlock(int id)
     {
-        Debug.Log(id);
         gameData.teleports[id] = true;
 
         dataIO.Save(gameData);
@@ -127,5 +131,18 @@ public class DataManager : MonoBehaviour, IExperienceIO
     public float LoadExp()
     {
         return gameData.exp;
+    }
+
+    //Traning
+
+    public void TutorialFinished()
+    {
+        gameData.traningFinished = true;
+        dataIO.Save(gameData);
+    }
+
+    public bool IsTraningFinished()
+    {
+        return gameData.traningFinished;
     }
 }

@@ -25,7 +25,12 @@ public class FileDataIO : DataIO
         }
     }
 
-    private GameData Create()
+    public bool HasFile()
+    {
+        return File.Exists(deviceFileLocation);
+    }
+
+    public GameData Create()
     {
         GameData gameData = new GameData(gameConfig);
 

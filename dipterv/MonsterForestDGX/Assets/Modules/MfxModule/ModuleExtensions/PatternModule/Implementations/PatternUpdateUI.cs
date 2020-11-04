@@ -44,8 +44,6 @@ public class PatternUpdateUI : MonoBehaviour
         valueTitleTextUpdate.text = mfxPattern.GetSpellTypeUI() + ":";
 
         string[] values = mfxPattern.GetTypeValueUI();
-        Debug.Log(values[0]);
-        Debug.Log(values[1]);
         valueValueTextActual.text = values[0];
         valueValueTextNext.text = values[1];
 

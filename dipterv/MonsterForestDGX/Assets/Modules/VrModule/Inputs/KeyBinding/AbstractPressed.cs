@@ -24,6 +24,7 @@ public abstract class AbstractPressed : MonoBehaviour, IPressed
             {
                 if(!setted)
                 {
+                    Debug.Log("Pressed");
                     PressedAction?.Invoke();
                     setted = true;
                 }
