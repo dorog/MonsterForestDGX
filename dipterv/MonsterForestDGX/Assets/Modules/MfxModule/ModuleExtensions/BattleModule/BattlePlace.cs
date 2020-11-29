@@ -4,8 +4,10 @@ using UnityEngine;
 public class BattlePlace : MonoBehaviour
 {
     public int id;
+    public string group;
 
     public AiFighter enemy;
+    public Player player;
     public Health enemyHealth;
 
     public GameObject battleTrigger;
@@ -28,6 +30,7 @@ public class BattlePlace : MonoBehaviour
     public void Triggered()
     {
         gameEvents.id = id;
+        gameEvents.group = group;
         gameEvents.enemy = enemy;
 
         gameEvents.enemyResistant = resistant;
@@ -45,7 +48,6 @@ public class BattlePlace : MonoBehaviour
     private void SetPetSettings()
     {
         attackable.health = enemyHealth;
-        attackable.fighter = enemy;
         attackable.petAttackEffect = petAttackEffect;
 
         gameEvents.petEnable = petEnable;

@@ -1,7 +1,7 @@
 ﻿
 public class PetSelectorConnector : AbstractConnector
 {
-    public PetSelectorComponent petSelectorComponent;
+    public MfxPetSelector petSelectorComponent;
     public MfxPetManager petManager;
     public MfxPetSelectorHandler petSelectorHandler;
     public GameEvents gameEvents;

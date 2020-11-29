@@ -8,8 +8,7 @@ public class MfxTeleportManager : MonoBehaviour, ITeleporterManager, IUiTeleport
 
     private event Action<List<ITeleporterPoint>> LoadedTeleportTeleports;
     private event Action<List<IUiTeleportPoint>> LoadedUiTeleports;
-    private event Action<List<IUnlockableTeleportPoint>> LoadedUnlockableTeleports;
-    private event Action<int> LoadedLastPosition;
+    private event Action<List<bool>> LoadedUnlockableTeleports;
     private event Action<int> Changed;
     private event Action<int> ChangedLocation;
 
@@ -17,37 +16,32 @@ public class MfxTeleportManager : MonoBehaviour, ITeleporterManager, IUiTeleport
 
     public void Load()
     {
-        teleportPoints = teleportHandler.GetTeleportPoints();
-        int lastPositionId = teleportHandler.GetLastPositionId();
-
         List<ITeleporterPoint> teleportTeleportPoints = new List<ITeleporterPoint>();
         List<IUiTeleportPoint> uiTeleportPoints = new List<IUiTeleportPoint>();
-        List<IUnlockableTeleportPoint> unlockableTeleportPoints = new List<IUnlockableTeleportPoint>();
+        List<bool> unlockableTeleportPoints = new List<bool>();
 
         foreach(var item in teleportPoints)
         {
             teleportTeleportPoints.Add(item);
             uiTeleportPoints.Add(item);
-            unlockableTeleportPoints.Add(item);
+            unlockableTeleportPoints.Add(item.GetState());
         }
 
         LoadedTeleportTeleports?.Invoke(teleportTeleportPoints);
         LoadedUiTeleports?.Invoke(uiTeleportPoints);
         LoadedUnlockableTeleports?.Invoke(unlockableTeleportPoints);
-        LoadedLastPosition?.Invoke(lastPositionId);
     }
 
     public void LocationChanged(int id)
     {
-        teleportHandler.SaveLastLocation(id);
-
         ChangedLocation?.Invoke(id);
     }
 
-    public void UnlockLocation(int id)
+    public void ChangeLocationState(int id)
     {
-        teleportPoints[id].available = true;
-        teleportHandler.UnlockLocation(id);
+        teleportPoints[id].SetState(!teleportPoints[id].GetState());
+
+        teleportHandler.UnlockLocation(id, teleportPoints[id].GetState());
 
         Changed?.Invoke(id);
     }
@@ -55,11 +49,6 @@ public class MfxTeleportManager : MonoBehaviour, ITeleporterManager, IUiTeleport
     public void SubscribeToLoad(Action<List<ITeleporterPoint>> method)
     {
         LoadedTeleportTeleports += method;
-    }
-
-    public void SubscribeToLastPositionIdLoad(Action<int> method)
-    {
-        LoadedLastPosition += method;
     }
 
     public void SubscribeToChanged(Action<int> method)
@@ -77,7 +66,7 @@ public class MfxTeleportManager : MonoBehaviour, ITeleporterManager, IUiTeleport
         LoadedUiTeleports += method;
     }
 
-    public void SubscribeToLoad(Action<List<IUnlockableTeleportPoint>> method)
+    public void SubscribeToLoad(Action<List<bool>> method)
     {
         LoadedUnlockableTeleports += method;
     }

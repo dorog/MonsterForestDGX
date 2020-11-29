@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 
 public class PetUnlockerComponent : PetComponent
 {
@@ -30,6 +29,6 @@ public class PetUnlockerComponent : PetComponent
 
     public void CollectPet(int id)
     {
-        petManager.UnlockPet(id);
+        petManager.ChangePetFunction(id);
     }
 }

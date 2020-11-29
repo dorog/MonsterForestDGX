@@ -22,7 +22,6 @@ namespace Tests.PatternModule
             patternFormula = null;
         }
 
-        // A Test behaves as an ordinary method
         [Test]
         public void OneCorrectGuessTest()
         {

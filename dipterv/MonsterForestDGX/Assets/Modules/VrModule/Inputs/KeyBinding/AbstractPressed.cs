@@ -6,7 +6,7 @@ public abstract class AbstractPressed : MonoBehaviour, IPressed
     private bool pressing = false;
     private bool setted = false;
 
-    private bool isActive = false;
+    public bool isActive = false;
 
     private event Action PressingAction;
     private int actionIndex = -1;
@@ -24,7 +24,6 @@ public abstract class AbstractPressed : MonoBehaviour, IPressed
             {
                 if(!setted)
                 {
-                    Debug.Log("Pressed");
                     PressedAction?.Invoke();
                     setted = true;
                 }
@@ -46,7 +45,7 @@ public abstract class AbstractPressed : MonoBehaviour, IPressed
 
     public void Activate()
     {
-        Reset();
+        ResetPressed();
         isActive = true;
     }
 
@@ -85,7 +84,7 @@ public abstract class AbstractPressed : MonoBehaviour, IPressed
         ReleasedAction -= method;
     }
 
-    public void Reset()
+    public void ResetPressed()
     {
         pressing = false;
         setted = false;

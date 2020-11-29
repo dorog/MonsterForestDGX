@@ -1,12 +1,12 @@
 ﻿
 public class PlayerMoveEnableCommand : TutorialCommand
 {
-    public Player player;
+    public MovingHandler movingHandler;
 
     protected override void SetupStep()
     {
         base.SetupStep();
 
-        player.EnableControlling();
+        movingHandler.EnableMovement();
     }
 }

@@ -60,11 +60,16 @@ public class PatternManagerConnector : AbstractConnector, IMfxPatternDataHandler
 
         MfxPattern uiPatternInstance = Instantiate(uiPattern, transform);
         uiPatternInstance.Init(id, points, basePaternSpell.icon);
-        uiPatternInstance.Connect(patternManager, experienceManager);
+        uiPatternInstance.Connect(patternManager);
         uiPatternInstance.ElementType = basePaternSpell.elementType;
-        uiPatternInstance.level = level;
         uiPatternInstance.Spells = basePaternSpell.GetSpells();
+        uiPatternInstance.level = level;
         uiPatternInstance.RequiredExps = basePaternSpell.GetRequiredExps();
+
+        if (level > uiPatternInstance.Spells.Length)
+        {
+            Debug.LogWarning("MfxPattern: Level is too high!");
+        }
 
         SpellPatterns.Add(uiPatternInstance);
     }

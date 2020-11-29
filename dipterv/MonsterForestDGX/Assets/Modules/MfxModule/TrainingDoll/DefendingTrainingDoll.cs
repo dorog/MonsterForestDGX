@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
-public class DefendingTrainingDoll : PassiveFighter
+public class DefendingTrainingDoll : AiFighter
 {
     public GameObject uis;
 
     [Header ("Managers")]
+    public RoundHandler roundHandler;
     public BattleManager battleManager;
     public KeyBindingManager keyBindingManager;
 
@@ -21,16 +22,16 @@ public class DefendingTrainingDoll : PassiveFighter
     {
         base.SetupForFight(fighter);
 
-        battleManager.BlueFighterTurnStartDelegateEvent += keyBindingManager.drawHelperInput.Activate;
-        battleManager.RedFighterTurnStartDelegateEvent += keyBindingManager.drawHelperInput.Deactivate;
+        roundHandler.SubscribeToStartTurn(keyBindingManager.drawHelperInput.Activate);
+        roundHandler.SubscribeToEndTurn(keyBindingManager.drawHelperInput.Deactivate);
     }
 
     public override void Withdraw()
     {
         base.Withdraw();
 
-        battleManager.BlueFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Activate;
-        battleManager.RedFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Deactivate;
+        roundHandler.SubscribeToStartTurn(keyBindingManager.drawHelperInput.Activate);
+        roundHandler.SubscribeToEndTurn(keyBindingManager.drawHelperInput.Deactivate);
     }
 
     public override void FightStarted()
@@ -48,7 +49,7 @@ public class DefendingTrainingDoll : PassiveFighter
 
         uis.SetActive(false);
 
-        battleManager.BlueFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Activate;
-        battleManager.RedFighterTurnStartDelegateEvent -= keyBindingManager.drawHelperInput.Deactivate;
+        roundHandler.SubscribeToStartTurn(keyBindingManager.drawHelperInput.Activate);
+        roundHandler.SubscribeToEndTurn(keyBindingManager.drawHelperInput.Deactivate);
     }
 }

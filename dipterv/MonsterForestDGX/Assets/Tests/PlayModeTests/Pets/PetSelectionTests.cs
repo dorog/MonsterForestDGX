@@ -220,7 +220,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator UnlockPetTest()
         {
-            petManager.UnlockPet(0);
+            petManager.ChangePetFunction(0);
 
             gameEvents.petEnable = true;
             gameEvents.EnteredLobby();
@@ -250,7 +250,7 @@ namespace Tests.PetModule
             petUIs = core.GetComponentsInChildren<PetUI>();
 
             petUIs[1].ChangePet();
-            petManager.UnlockPet(0);
+            petManager.ChangePetFunction(0);
 
             Assert.AreEqual(true, petUIs[0].root.activeSelf);
             Assert.AreEqual(false, petUIs[0].selectedGo.activeSelf);

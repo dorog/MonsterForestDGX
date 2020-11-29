@@ -3,11 +3,8 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    private Fighter redFighter;
-    private Fighter blueFighter;
-
-    public event Action BlueFighterTurnStartDelegateEvent;
-    public event Action RedFighterTurnStartDelegateEvent;
+    protected Fighter redFighter;
+    protected Fighter blueFighter;
 
     public event Action BlueFighterWon;
     public event Action RedFighterWon;
@@ -16,7 +13,7 @@ public class BattleManager : MonoBehaviour
 
     public Controller controller;
 
-    public void BattleLobby(Fighter _redFighter, Fighter _blueFighter)
+    public virtual void BattleLobby(Fighter _redFighter, Fighter _blueFighter)
     {
         redFighter = _redFighter;
         blueFighter = _blueFighter;
@@ -26,12 +23,6 @@ public class BattleManager : MonoBehaviour
 
         redFighter.SetupForFight(blueFighter);
         blueFighter.SetupForFight(redFighter);
-
-        BlueFighterTurnStartDelegateEvent += redFighter.Def;
-        BlueFighterTurnStartDelegateEvent += blueFighter.Fight;
-
-        RedFighterTurnStartDelegateEvent += redFighter.Fight;
-        RedFighterTurnStartDelegateEvent += blueFighter.Def;
     }
 
     public void BattleStart()
@@ -42,29 +33,7 @@ public class BattleManager : MonoBehaviour
         controller.StartController();
     }
 
-    public void TurnChange(Fighter fighter)
-    {
-        if(redFighter == fighter)
-        {
-            RedFighterTurn();
-        }
-        else if(blueFighter == fighter)
-        {
-            BlueFighterTurn();
-        }
-    }
-
-    private void BlueFighterTurn()
-    {
-        BlueFighterTurnStartDelegateEvent?.Invoke();
-    }
-
-    private void RedFighterTurn()
-    {
-        RedFighterTurnStartDelegateEvent?.Invoke();
-    }
-
-    public void RedFighterDied()
+    public virtual void RedFighterDied()
     {
         blueFighter.Win();
 
@@ -73,7 +42,7 @@ public class BattleManager : MonoBehaviour
         FightOver();
     }
 
-    public void BlueFighterDied()
+    public virtual void BlueFighterDied()
     {
         redFighter.Win();
 
@@ -86,12 +55,6 @@ public class BattleManager : MonoBehaviour
     {
         controller.StopController();
         UnsubscribeDieFromDieEvents();
-
-        BlueFighterTurnStartDelegateEvent -= redFighter.Def;
-        BlueFighterTurnStartDelegateEvent -= blueFighter.Fight;
-
-        RedFighterTurnStartDelegateEvent -= redFighter.Fight;
-        RedFighterTurnStartDelegateEvent -= blueFighter.Def;
     }
 
     private void UnsubscribeDieFromDieEvents()
@@ -108,7 +71,7 @@ public class BattleManager : MonoBehaviour
         Withdraw?.Invoke();
     }
 
-    public void DrawFight()
+    public virtual void DrawFight()
     {
         redFighter.Draw();
         blueFighter.Draw();

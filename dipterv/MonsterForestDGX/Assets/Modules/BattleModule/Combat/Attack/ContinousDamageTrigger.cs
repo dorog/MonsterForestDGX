@@ -5,7 +5,7 @@ public class ContinousDamageTrigger : MonoBehaviour
     public float dmg = 2;
     private float time = 0;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         ITarget target = other.GetComponent<ITarget>();
         if (target != null)

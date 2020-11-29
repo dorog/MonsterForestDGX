@@ -24,7 +24,7 @@ public class MfxPetTriggerUnlockSpot : PetUnlockSpot
 
     public void Start()
     {
-        collectInput = keyBindingManager.petCollectButton;
+        collectInput = keyBindingManager.itemCollectButton;
     }
 
     private void Collect()
@@ -43,7 +43,7 @@ public class MfxPetTriggerUnlockSpot : PetUnlockSpot
         collected = _petData.available;
         if (!collected)
         {
-            collectInput = keyBindingManager.petCollectButton;
+            collectInput = keyBindingManager.itemCollectButton;
             collectInput.SubscribeToPressed(Collect);
         }
 

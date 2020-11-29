@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2352094987165873297}
   - component: {fileID: 7551133517098699665}
   - component: {fileID: -2837604896045214544}
+  - component: {fileID: -3335642435796871640}
   m_Layer: 9
   m_Name: WaterSpellTiny
   m_TagString: Untagged
@@ -4868,6 +4869,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3335642435796871640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a544c4a4012fb42b1cc3571943d13b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &168632
 GameObject:
   m_ObjectHideFlags: 0

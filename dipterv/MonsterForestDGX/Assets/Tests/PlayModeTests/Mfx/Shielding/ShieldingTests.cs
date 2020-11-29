@@ -11,6 +11,7 @@ namespace Tests.Mfx
         private MockButtonInput buttonInput;
         private GameEvents gameEvents;
         private BattleManager battleManager;
+        private RoundHandler roundHandler;
 
         private MockFighter redFighter;
         private MockFighter blueFighter;
@@ -36,6 +37,7 @@ namespace Tests.Mfx
             shieldHandler = core.GetComponentInChildren<ShieldHandler>();
 
             battleManager = core.GetComponentInChildren<BattleManager>();
+            roundHandler = core.GetComponentInChildren<RoundHandler>();
             var mockFighters = core.GetComponentsInChildren<MockFighter>();
             redFighter = mockFighters[0];
             blueFighter = mockFighters[1];
@@ -96,7 +98,7 @@ namespace Tests.Mfx
             gameEvents.Fight();
             battleManager.BattleStart();
 
-            battleManager.TurnChange(blueFighter);
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(1);
 
@@ -132,7 +134,7 @@ namespace Tests.Mfx
             gameEvents.Fight();
             battleManager.BattleStart();
 
-            battleManager.TurnChange(redFighter);
+            roundHandler.Def();
 
             shieldHandler.transform.rotation = Quaternion.Euler(parameters.rotation);
 

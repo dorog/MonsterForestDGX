@@ -36,15 +36,15 @@ namespace Tests.TeleportModule
         [UnityTest]
         public IEnumerator VisitAlreadyUnlockedLocationTest()
         {
-            Assert.AreEqual(true, teleportPoints[0].available);
-            Assert.AreEqual(true, teleportPoints[1].available);
-            Assert.AreEqual(false, teleportPoints[2].available);
+            Assert.AreEqual(true, teleportPoints[0].GetState());
+            Assert.AreEqual(true, teleportPoints[1].GetState());
+            Assert.AreEqual(false, teleportPoints[2].GetState());
 
             teleportPoints[1].TeleportTarget(player.transform);
 
-            Assert.AreEqual(true, teleportPoints[0].available);
-            Assert.AreEqual(true, teleportPoints[1].available);
-            Assert.AreEqual(false, teleportPoints[2].available);
+            Assert.AreEqual(true, teleportPoints[0].GetState());
+            Assert.AreEqual(true, teleportPoints[1].GetState());
+            Assert.AreEqual(false, teleportPoints[2].GetState());
 
             yield return null;
         }
@@ -52,17 +52,17 @@ namespace Tests.TeleportModule
         [UnityTest]
         public IEnumerator VisitNotUnlockedLocationTest()
         {
-            Assert.AreEqual(true, teleportPoints[0].available);
-            Assert.AreEqual(true, teleportPoints[1].available);
-            Assert.AreEqual(false, teleportPoints[2].available);
+            Assert.AreEqual(true, teleportPoints[0].GetState());
+            Assert.AreEqual(true, teleportPoints[1].GetState());
+            Assert.AreEqual(false, teleportPoints[2].GetState());
 
             teleportPoints[2].TeleportTarget(player.transform);
 
             yield return new WaitForSeconds(1);
 
-            Assert.AreEqual(true, teleportPoints[0].available);
-            Assert.AreEqual(true, teleportPoints[1].available);
-            Assert.AreEqual(true, teleportPoints[2].available);
+            Assert.AreEqual(true, teleportPoints[0].GetState());
+            Assert.AreEqual(true, teleportPoints[1].GetState());
+            Assert.AreEqual(true, teleportPoints[2].GetState());
 
             Assert.AreEqual(true, mockDataIO.LocalGameData.teleports[0]);
             Assert.AreEqual(true, mockDataIO.LocalGameData.teleports[1]);

@@ -1,6 +1,5 @@
-﻿using UnityEngine;
-
-public class MfxTeleportHandler : MonoBehaviour
+﻿
+public class MfxTeleportHandler : TeleportLocationSaveHandler
 {
     public DataManager dataManager;
 
@@ -12,25 +11,25 @@ public class MfxTeleportHandler : MonoBehaviour
 
         for(int i = 0; i < ports.Length; i++)
         {
-            teleportPoints[i].available = ports[i];
+            teleportPoints[i].SetState(ports[i]);
             teleportPoints[i].id = i;
         }
 
         return teleportPoints;
     }
 
-    public int GetLastPositionId()
+    public override int GetLastPositionId()
     {
         return dataManager.GetLastLocation();
     }
 
-    public void SaveLastLocation(int id)
+    public override void SaveLastLocation(int id)
     {
         dataManager.SavePortLocation(id);
     }
 
-    public void UnlockLocation(int id)
+    public void UnlockLocation(int id, bool state)
     {
-        dataManager.SaveTeleportUnlock(id);
+        dataManager.SaveTeleportUnlock(id, state);
     }
 }

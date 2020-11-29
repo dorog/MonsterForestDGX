@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924d57a6e33051a42b089c881b5c2b6e, type: 3}
   m_Name: RockMonster
   m_EditorClassIdentifier: 
-  water: -50
-  earth: 80
+  water: -45
+  earth: 30
   fire: 20
   air: -20

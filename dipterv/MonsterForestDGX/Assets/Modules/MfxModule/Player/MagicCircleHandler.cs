@@ -25,12 +25,24 @@ public class MagicCircleHandler : MfxResetable
     public ICooldownShower cooldownShower;
 
     public KeyBindingManager keyBindingManager;
+    public RoundHandler roundHandler;
     public BattleManager battleManager;
+    public GameEvents gameEvents;
 
     public void Start()
     {
         magicCircleInput = keyBindingManager.magicCircleInput;
         magicCircleInput.SubscribeToPressed(new Action[] { MagicCircleStatePositive, MagicCircleStateNegativ });
+
+        gameEvents.BattleEndDelegateEvent += Explore;
+
+        roundHandler.SubscribeToStartTurn(AttackTurn);
+        roundHandler.SubscribeToEndTurn(DefTurn);
+    }
+
+    private void Explore()
+    {
+        DisableCasting();
     }
 
     private void MagicCircleStatePositive()
@@ -52,7 +64,7 @@ public class MagicCircleHandler : MfxResetable
         SpellAttack spellAttack = spell.GetComponent<SpellAttack>();
         spellAttack.coverage = spellResult.Coverage;
 
-        spellAttack.SetBattleManager(battleManager);
+        spellAttack.SetBattleManager(roundHandler, battleManager);
 
         cooldownShower.SetUpCoolDown(spellData.Cooldown);
         StartCoroutine(EnableCircle(spellData.Cooldown));
@@ -61,7 +73,7 @@ public class MagicCircleHandler : MfxResetable
         SuccessCastSpellWithCoverage?.Invoke(spellResult.Coverage);
         SuccessCastSpellDelegateEvent?.Invoke();
 
-        magicCircleInput.Reset();
+        magicCircleInput.ResetPressed();
         magicCircle.SetActive(false);
 
         castEffectHandler.CastSpellEffect(spellData.ElementType);

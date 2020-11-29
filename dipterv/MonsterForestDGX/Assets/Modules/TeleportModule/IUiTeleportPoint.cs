@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public interface IUiTeleportPoint
+public interface IUiTeleportPoint : ITeleportItem
 {
-    void InstantiateUI(Transform parent);
-    void ChangedUi();
+    void InstantiateUI();
     void ReachedUiLocation();
     void LeftUiLocation();
 }

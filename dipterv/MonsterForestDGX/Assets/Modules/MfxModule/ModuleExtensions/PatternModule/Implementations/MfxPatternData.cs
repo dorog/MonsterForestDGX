@@ -1,10 +1,6 @@
 ﻿
-public class MfxPatternData : PatternData
+public class MfxPatternData
 {
+    public PatternState State;
     public MfxPattern Pattern;
-
-    public override IPattern GetPattern()
-    {
-        return Pattern;
-    }
 }

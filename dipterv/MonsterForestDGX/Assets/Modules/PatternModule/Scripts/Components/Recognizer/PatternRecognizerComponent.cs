@@ -29,13 +29,13 @@ public class PatternRecognizerComponent : MonoBehaviour
     {
         for(int i = 0; i < patternDatas.Length; i++)
         {
-            PatternState patternState = patternDatas[i].GetPattern().GetState();
+            PatternState patternState = patternDatas[i].State;
             if (patternState == PatternState.Available)
             {
                 recognizeablePatterns.Add(new RecognizeablePattern() 
                 { 
                     Id = i,
-                    Pattern = patternDatas[i].GetPattern()
+                    Pattern = patternDatas[i].Pattern
                 });
             }
         }
@@ -48,7 +48,7 @@ public class PatternRecognizerComponent : MonoBehaviour
             recognizeablePatterns.Add(new RecognizeablePattern()
             {
                 Id = patternDataDifference.Id,
-                Pattern = patternDatas[patternDataDifference.Id].GetPattern()
+                Pattern = patternDatas[patternDataDifference.Id].Pattern
             });
         }
         else if (patternDataDifference.NewState != PatternState.Available && patternDataDifference.OldState == PatternState.Available)

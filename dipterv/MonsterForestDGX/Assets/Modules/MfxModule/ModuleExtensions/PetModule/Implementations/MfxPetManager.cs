@@ -22,28 +22,20 @@ public class MfxPetManager : MonoBehaviour, IPetManager
         LoadedPetData?.Invoke(petDatas);
     }
 
-    //TODO: Add LockPet function
-    public void UnlockPet(int id)
+    public void ChangePetFunction(int id)
     {
-        Debug.Log("Add LockPet function");
-        bool originalValue = petDatas[id].available;
-
-        petDatas[id].available = true;
+        petDatas[id].available = !petDatas[id].available;
         petDataHandler.SavePetDatas(petDatas);
 
-        if (!originalValue)
+        ChangedPetData?.Invoke(new List<PetDataDifference>()
         {
-
-            ChangedPetData?.Invoke(new List<PetDataDifference>()
+            new PetDataDifference()
             {
-                new PetDataDifference()
-                {
-                    Id = id,
-                    OldAvailability = false,
-                    NewAvailability = true
-                }
-            });
-        }
+                Id = id,
+                OldAvailability = !petDatas[id].available,
+                NewAvailability = petDatas[id].available
+            }
+        });
     }
 
     public void SubscibeToPetDataLoadedEvent(Action<PetData[]> method)

@@ -1,21 +1,21 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MfxTraningCampPatternComponent : PatternComponent
+public class MfxTraningCampPatternComponent : MonoBehaviour
 {
-    private UiPatternData[] patternDatas;
+    private MfxPatternData[] patternDatas;
 
-    private IPatternInfoManager patternManager;
+    private MfxPatternManager patternManager;
 
     public DataManager dataManager;
 
-    public void AddPatternManager(IPatternInfoManager _patternManager)
+    public void AddPatternManager(MfxPatternManager _patternManager)
     {
         patternManager = _patternManager;
         patternManager.SubscibeToPatternDataLoadedEvent(SetUp);
     }
 
-    private void SetUp(UiPatternData[] _patternDatas)
+    private void SetUp(MfxPatternData[] _patternDatas)
     {
         patternDatas = _patternDatas;
     }
@@ -26,7 +26,7 @@ public class MfxTraningCampPatternComponent : PatternComponent
 
         foreach (var patternData in patternDatas)
         {
-            if (patternData.GetPattern().GetState() != PatternState.Available)
+            if (patternData.State != PatternState.Available)
             {
                 states.Add(false);
             }
@@ -45,9 +45,9 @@ public class MfxTraningCampPatternComponent : PatternComponent
 
         foreach (var patternData in patternDatas)
         {
-            if (patternData.GetPattern().GetState() == PatternState.Available)
+            if (patternData.State == PatternState.Available)
             {
-                names.Add(patternData.UiPattern.GetName());
+                names.Add(patternData.Pattern.GetElementType().ToString());
             }
         }
 
@@ -59,7 +59,7 @@ public class MfxTraningCampPatternComponent : PatternComponent
         for (int i = 0; i < patternDatas.Length; i++)
         {
             //TODO: Change this
-            if (patternDatas[i].UiPattern.GetState() == PatternState.Available && patternDatas[i].UiPattern.GetName() == elementType.ToString())
+            if (patternDatas[i].State == PatternState.Available && patternDatas[i].Pattern.GetElementType().ToString() == elementType.ToString())
             {
                 return i;
             }

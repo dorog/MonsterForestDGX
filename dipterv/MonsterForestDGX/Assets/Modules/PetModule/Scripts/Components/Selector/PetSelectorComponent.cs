@@ -3,12 +3,10 @@ using UnityEngine;
 
 public class PetSelectorComponent : PetComponent, IPetSelector
 {
-    public PetTab petTab;
-    private GameObject selectedPetGO = null;
     private static readonly int notSelectedPetValue = -1;
     private int selectedPet = notSelectedPetValue;
 
-    private IPetSelectorHandler petSelectorHandler;
+    private IPetSelectorHandler petSelectorHandler = null;
 
     public int GetPet()
     {
@@ -34,7 +32,10 @@ public class PetSelectorComponent : PetComponent, IPetSelector
 
     private void Refresh(List<PetDataDifference> petDataDifferences)
     {
-        petTab.Refresh(petDataDifferences);
+        if(petDataDifferences[0].Id == selectedPet && !petDataDifferences[0].NewAvailability)
+        {
+            selectedPet = notSelectedPetValue;
+        }
     }
 
     private void SetupPets(PetData[] petDatas)
@@ -45,49 +46,32 @@ public class PetSelectorComponent : PetComponent, IPetSelector
         }
         else
         {
-            selectedPet = petSelectorHandler.GetLastSelectedPet();
-            if (selectedPet >= petDatas.Length || selectedPet < 0)
+            if(petSelectorHandler != null)
+            {
+                selectedPet = petSelectorHandler.GetLastSelectedPet();
+            }
+
+            if (selectedPet >= petDatas.Length || selectedPet < 0 || !petDatas[selectedPet].available)
             {
                 selectedPet = notSelectedPetValue;
-                petTab.SetUpUI(petDatas, this);
-            }
-            else
-            {
-                petTab.SetUpUI(petDatas, this, selectedPet);
             }
         }
     }
 
-    public void Select(GameObject select, int number)
+    public void Select(int number)
     {
-        if (selectedPetGO != null)
-        {
-            selectedPetGO.SetActive(false);
-        }
-
         if(selectedPet == number)
         {
-            selectedPetGO = null;
             selectedPet = -1;
         }
-        else
+        else if(selectedPet < petDatas.Length && selectedPet >= 0 && petDatas[number].available)
         {
-            selectedPetGO = select;
-            selectedPetGO.SetActive(true);
             selectedPet = number;
+
+            if (petSelectorHandler != null)
+            {
+                petSelectorHandler.Select(selectedPet);
+            }
         }
-
-
-        petSelectorHandler.Select(selectedPet);
-    }
-
-    public void ShowSelectorTab()
-    {
-        petTab.ShowTab();
-    }
-
-    public void HideSelectorTab()
-    {
-        petTab.HideTab();
     }
 }

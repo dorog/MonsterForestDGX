@@ -12,4 +12,5 @@ public class MockFighter : AiFighter
     protected override void React(){}
 
     protected override void ResetMonster() {}
+
 }

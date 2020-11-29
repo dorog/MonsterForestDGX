@@ -7,7 +7,7 @@ public class ShieldHandler : MonoBehaviour
 
     private IPressed shieldActivateButton;
 
-    public BattleManager battleManager;
+    public RoundHandler roundHandler;
     public GameEvents gameEvents;
     public KeyBindingManager keyBindingManager;
 
@@ -31,14 +31,14 @@ public class ShieldHandler : MonoBehaviour
 
     private void Fighting()
     {
-        battleManager.RedFighterTurnStartDelegateEvent += shieldActivateButton.Activate;
-        battleManager.BlueFighterTurnStartDelegateEvent += shieldActivateButton.Deactivate;
+        roundHandler.SubscribeToEndTurn(shieldActivateButton.Activate);
+        roundHandler.SubscribeToStartTurn(shieldActivateButton.Deactivate);
     }
 
     private void Exploring()
     {
-        battleManager.RedFighterTurnStartDelegateEvent -= shieldActivateButton.Activate;
-        battleManager.BlueFighterTurnStartDelegateEvent -= shieldActivateButton.Deactivate;
+        roundHandler.SubscribeToEndTurn(shieldActivateButton.Activate);
+        roundHandler.SubscribeToStartTurn(shieldActivateButton.Deactivate);
 
         shieldActivateButton.Deactivate();
     }

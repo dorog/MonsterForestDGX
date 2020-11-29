@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateablePatternUI : PatternUI
+public class UpdateablePatternUI : MonoBehaviour
 {
     public Image iconImage;
     public Text spellNameText;
@@ -9,11 +9,15 @@ public class UpdateablePatternUI : PatternUI
     public Text buttonText;
     public Button button;
 
+    private int id;
     private MfxPattern uiPattern;
+    private ShopComponent shopComponent;
 
-    public void Init(MfxPattern _uiPattern, int quantity = 0)
+    public void Init(ShopComponent _shopComponent, int _id, MfxPattern _uiPattern, int quantity = 0)
     {
         uiPattern = _uiPattern;
+        shopComponent = _shopComponent;
+        id = _id;
 
         Refresh(quantity);
     }
@@ -56,7 +60,7 @@ public class UpdateablePatternUI : PatternUI
 
     public void BuyOrUpdate()
     {
-        uiPattern.Increase();
+        shopComponent.BuyOrUpdate(id);
     }
 
     public void ShowInfo()

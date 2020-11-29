@@ -4,7 +4,7 @@ using UnityEngine;
 public class AttackableHandler : MonoBehaviour, IAttackable
 {
     public Health health;
-    public Fighter fighter;
+    public RoundHandler roundHandler;
 
     [Header ("Optional")]
     public ParticleSystem petAttackEffect;
@@ -20,13 +20,13 @@ public class AttackableHandler : MonoBehaviour, IAttackable
 
     public void SubscribeToAttackEvents(Action activate, Action deactivate)
     {
-        fighter.SubscribeToStartTurn(activate);
-        fighter.SubscribeToEndTurn(deactivate);
+        roundHandler.SubscribeToStartTurn(activate);
+        roundHandler.SubscribeToEndTurn(deactivate);
     }
 
     public void UnsubscribeFromAttackEvents(Action activate, Action deactivate)
     {
-        fighter.UnsubscribeToStartTurn(activate);
-        fighter.UnsubscribeToEndTurn(deactivate);
+        roundHandler.UnsubscribeToStartTurn(activate);
+        roundHandler.UnsubscribeToEndTurn(deactivate);
     }
 }

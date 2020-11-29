@@ -12,9 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72130d91d366e5449a73bd4c165e0c0d, type: 3}
   m_Name: GameConfig
   m_EditorClassIdentifier: 
+  traningFinished: 0
   exp: 20000
-  enemies: 5
-  teleports: 0000000000
+  enemies:
+  - group: Plants
+    enemies: 1
+  - group: Mushrooms
+    enemies: 1
+  - group: Trolls
+    enemies: 1
+  - group: Spiders
+    enemies: 1
+  - group: Rocks
+    enemies: 1
+  - group: Minos
+    enemies: 1
+  - group: Worms
+    enemies: 1
+  - group: Puzzles
+    enemies: 3
+  battleRewards: 00000000
+  teleports: 000000000000000000
   lastLocation: -1
   baseSpells:
   - startLevel: 1

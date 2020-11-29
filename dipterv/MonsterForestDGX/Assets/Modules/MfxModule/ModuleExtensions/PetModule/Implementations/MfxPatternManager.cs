@@ -22,9 +22,9 @@ public class MfxPatternManager : MonoBehaviour, IPatternManager, IPatternInfoMan
         patternDatas = patternDataHandler.LoadPatternDatas();
 
         LoadedMfxPatternData?.Invoke(patternDatas);
-        LoadedPatternData?.Invoke(patternDatas);
+        LoadedPatternData?.Invoke(patternDatas.ToList().Select(x => new PatternData() { State = x.State, Pattern = x.Pattern }).ToArray());
         LoadedUiPatternData?.Invoke(patternDatas.ToList().Select(x => new UiPatternData() { State = x.State, UiPattern = x.Pattern }).ToArray());
-        LoadedShopUiPatternData?.Invoke(patternDatas.ToList().Select(x => new ShopUiPatternData() { State = x.State, ShopUiPattern = x.Pattern }).ToArray());
+        LoadedShopUiPatternData?.Invoke(patternDatas.ToList().Select(x => new ShopUiPatternData() { State = x.State, Pattern = x.Pattern }).ToArray());
     }
 
     //TODO: Not necessary code? Unlock function?

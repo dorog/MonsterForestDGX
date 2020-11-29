@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     public float maxHp = 100f;
     public float currentHp;
-    public Fighter fighter;
+    public event Action Die;
 
     public ExtraFighterPart[] extraParts;
 
@@ -40,7 +41,8 @@ public class Health : MonoBehaviour
         if (currentHp <= 0)
         {
             DisableHealth();
-            fighter.Die();
+
+            Die?.Invoke();
         }
 
         if (healthShowerUI != null)
@@ -56,7 +58,7 @@ public class Health : MonoBehaviour
 
     public virtual void SetDamageBlock()
     {
-        float random = Random.Range(1, 101);
+        float random = UnityEngine.Random.Range(1, 101);
 
         if (random <= blockChance)
         {

@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class Tutorial : MonoBehaviour
 {
     public Player player;
+    public MovingHandler movingHandler;
     public DataManager dataManager;
     public MfxTeleportPoint baseTeleportPoint;
     public Controller controller;
@@ -17,7 +18,7 @@ public class Tutorial : MonoBehaviour
 
     public void EndTutorial()
     {
-        player.EnableControlling();
+        movingHandler.EnableMovement();
         dataManager.TutorialFinished();
         baseTeleportPoint.TeleportTarget(player.transform);
         runButton.enabled = true;

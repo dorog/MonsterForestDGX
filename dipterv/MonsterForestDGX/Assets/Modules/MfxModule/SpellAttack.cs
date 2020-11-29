@@ -1,18 +1,18 @@
-﻿using UnityEngine;
-
+﻿
 //TODO: Rename it
 public class SpellAttack : PatternSpell
 {
+    private RoundHandler roundHandler;
     private BattleManager battleManager;
 
-    public float dmg = 10;
-    public ElementType elementType;
-    public GameObject impactParticle;
+    public SpellDamage spellDamage;
 
-    public void SetBattleManager(BattleManager battleManager)
+    public void SetBattleManager(RoundHandler roundHandler, BattleManager battleManager)
     {
+        this.roundHandler = roundHandler;
         this.battleManager = battleManager;
-        battleManager.RedFighterTurnStartDelegateEvent += VanishSpell;
+
+        roundHandler.SubscribeToEndTurn(VanishSpell);
         battleManager.Draw += VanishSpell;
         battleManager.RedFighterWon += VanishSpell;
         battleManager.BlueFighterWon += VanishSpell;
@@ -25,7 +25,7 @@ public class SpellAttack : PatternSpell
 
     public override float GetSpellTypeValue()
     {
-        return dmg;
+        return spellDamage.dmg;
     }
 
     private void VanishSpell()
@@ -35,30 +35,9 @@ public class SpellAttack : PatternSpell
 
     private void OnDestroy()
     {
-        battleManager.RedFighterTurnStartDelegateEvent -= VanishSpell;
+        roundHandler.UnsubscribeToEndTurn(VanishSpell);
         battleManager.Draw -= VanishSpell;
         battleManager.RedFighterWon -= VanishSpell;
         battleManager.BlueFighterWon -= VanishSpell;
-    }
-
-    private void OnCollisionEnter(Collision hit)
-    {
-        DamageTarget(hit);
-
-        Vector3 impactNormal = hit.contacts[0].normal;
-
-        impactParticle = Instantiate(impactParticle, transform.position, Quaternion.FromToRotation(Vector3.up, impactNormal)) as GameObject;
-
-        Destroy(impactParticle, 3f);
-        Destroy(gameObject);
-    }
-
-    private void DamageTarget(Collision hit)
-    {
-        ISpellTarget target = hit.gameObject.GetComponent<ISpellTarget>();
-        if (target != null)
-        {
-            target.TakeDamage(dmg, elementType);
-        }
     }
 }

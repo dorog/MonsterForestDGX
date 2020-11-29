@@ -9813,7 +9813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cedb34d52050e1a4aba1bc3ca342a0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coverage: 0.6
+  coverage: 0.65
   cd: 2
   dmg: 5
   elementType: 3

@@ -11,6 +11,7 @@ public class GameEvents : MonoBehaviour
 
     [Header("Battle Settings")]
     public int id;
+    public string group;
     public BattlePlace battlePlace;
     public Fighter enemy;
 

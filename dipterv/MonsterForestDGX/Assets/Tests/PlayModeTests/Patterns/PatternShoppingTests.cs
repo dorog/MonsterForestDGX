@@ -8,7 +8,7 @@ namespace Tests.PatternModule
 {
     public class PatternShoppingTests
     {
-        private PatternShopComponent patternShopComponent;
+        private ShopComponent patternShopComponent;
         private ExperienceManager experienceManager;
 
         private GameObject core;
@@ -19,7 +19,7 @@ namespace Tests.PatternModule
             GameObject coreGO = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Tests/Patterns/PatternShopping/PatternShopping.prefab");
             core = Object.Instantiate(coreGO);
 
-            patternShopComponent = core.GetComponentInChildren<PatternShopComponent>();
+            patternShopComponent = core.GetComponentInChildren<ShopComponent>();
             experienceManager = core.GetComponentInChildren<ExperienceManager>();
         }
 

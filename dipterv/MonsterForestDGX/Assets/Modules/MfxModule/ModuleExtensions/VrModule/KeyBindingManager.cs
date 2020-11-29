@@ -11,7 +11,7 @@ public class KeyBindingManager : MonoBehaviour
     
     public AbstractPressed paintingTrigger;
 
-    public AbstractPressed petCollectButton;
+    public AbstractPressed itemCollectButton;
 
     public AbstractPressed drawHelperInput;
 }

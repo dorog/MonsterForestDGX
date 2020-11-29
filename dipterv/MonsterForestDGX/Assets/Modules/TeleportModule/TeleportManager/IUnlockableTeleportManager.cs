@@ -1,5 +1,5 @@
 ﻿
-public interface IUnlockableTeleportManager : ITeleportManager<IUnlockableTeleportPoint>
+public interface IUnlockableTeleportManager : ITeleportManager<bool>
 {
-    void UnlockLocation(int id);
+    void ChangeLocationState(int id);
 }

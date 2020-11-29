@@ -7,30 +7,31 @@ public class TeleporterComponent : MonoBehaviour
     private List<ITeleporterPoint> teleportPoints;
     private ITeleporterManager teleportManager;
 
+    public TeleportLocationSaveHandler teleportLocationSaveHandler;
+
     public Transform target;
 
     public void AddManager(ITeleporterManager _teleportManager)
     {
         teleportManager = _teleportManager;
         teleportManager.SubscribeToLoad(SetTeleportPoints);
-        teleportManager.SubscribeToLastPositionIdLoad(SetTeleportLastPositionId);
-        teleportManager.SubscribeToLastPositionIdLoad(TeleportTarget);
-        teleportManager.SubscribeToTargetLocationChanged(SetTeleportLastPositionId);
     }
 
     private void SetTeleportPoints(List<ITeleporterPoint> _teleportPoints)
     {
         teleportPoints = _teleportPoints;
-    }
 
-    private void SetTeleportLastPositionId(int id)
-    {
-        lastTeleportId = id;
+        if(teleportLocationSaveHandler != null)
+        {
+            lastTeleportId = teleportLocationSaveHandler.GetLastPositionId();
+
+            TeleportTarget(lastTeleportId);
+        }
     }
 
     public void TeleportTarget(int locationId)
     {
-        if (locationId != -1)
+        if (locationId != -1 && locationId < teleportPoints.Count && teleportPoints[locationId].GetState())
         {
             teleportPoints[locationId].TeleportTarget(target);
         }

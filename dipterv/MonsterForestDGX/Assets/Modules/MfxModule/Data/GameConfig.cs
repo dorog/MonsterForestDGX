@@ -9,7 +9,8 @@ public class GameConfig : ScriptableObject
     public float exp;
 
     [Header("Enemy Settings")]
-    public int enemies;
+    public EnemyConfig[] enemies;
+    public RewardState[] battleRewards;
 
     [Header("Teleports Settings")]
     public bool[] teleports;

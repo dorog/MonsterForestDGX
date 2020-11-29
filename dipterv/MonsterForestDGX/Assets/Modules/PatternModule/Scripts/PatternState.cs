@@ -1,5 +1,5 @@
 ﻿
 public enum PatternState
 {
-    Unavailable, Showable, Available
+    Unavailable, Showable, Available, Maxed
 }

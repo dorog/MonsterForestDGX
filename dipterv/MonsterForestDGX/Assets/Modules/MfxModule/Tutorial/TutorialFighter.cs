@@ -1,5 +1,5 @@
 ﻿
-public class TutorialFighter : PassiveFighter
+public class TutorialFighter : AiFighter
 {
     public Controller tutorialController;
     public Controller endController;

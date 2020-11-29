@@ -12,5 +12,5 @@ public interface IPressed
     void UnsubscribeFromPressed(Action[] methods);
     void SubscribeToReleased(Action method);
     void UnsubscribeFromReleased(Action method);
-    void Reset();
+    void ResetPressed();
 }

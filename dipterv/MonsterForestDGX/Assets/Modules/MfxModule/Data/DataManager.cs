@@ -19,16 +19,19 @@ public class DataManager : MonoBehaviour, IExperienceIO
         gameData = dataIO.Read();
     }
 
-    public void SaveEnemyDeath(int id)
+    public void SaveEnemyDeath(string group, int id)
     {
         if(id < 0)
         {
             return;
         }
 
-        gameData.enemys[id] = false;
-
-        dataIO.Save(gameData);
+        EnemyGroupData enemyGroupData = gameData.enemys.Find(x => x.group == group);
+        if (enemyGroupData != null) 
+        {
+            enemyGroupData.enemyStates[id] = true;
+            dataIO.Save(gameData);
+        }
     }
 
     public void Won(float exp)
@@ -65,14 +68,14 @@ public class DataManager : MonoBehaviour, IExperienceIO
         dataIO.Save(gameData);
     }
 
-    public void SaveTeleportUnlock(int id)
+    public void SaveTeleportUnlock(int id, bool state)
     {
-        gameData.teleports[id] = true;
+        gameData.teleports[id] = state;
 
         dataIO.Save(gameData);
     }
 
-    public bool[] GetEnemies()
+    public List<EnemyGroupData> GetEnemies()
     {
         return gameData.enemys;
     }
@@ -144,5 +147,18 @@ public class DataManager : MonoBehaviour, IExperienceIO
     public bool IsTraningFinished()
     {
         return gameData.traningFinished;
+    }
+
+    //Reward
+
+    public RewardState[] GetRewardStates()
+    {
+        return gameData.rewardStates;
+    }
+
+    public void RewardStateChanged(int id, RewardState rewardState) 
+    {
+        gameData.rewardStates[id] = rewardState;
+        dataIO.Save(gameData);
     }
 }

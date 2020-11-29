@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
+public class MfxPattern : MonoBehaviour, IShopUiPattern, IInfoPattern, IPattern
 {
     private PatternFormula patternFormula;
 
     private int id;
-    private ExperienceManager experienceManager;
     private MfxPatternManager patternManager;
 
     [Header ("Settings")]
@@ -33,10 +32,9 @@ public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
         patternFormula = new PatternFormula(points, width);
     }
 
-    public void Connect(MfxPatternManager _patternManager, ExperienceManager _experienceManager)
+    public void Connect(MfxPatternManager _patternManager)
     {
         patternManager = _patternManager;
-        experienceManager = _experienceManager;
     }
 
     public GameObject GetSpell()
@@ -196,17 +194,20 @@ public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
         {
             return PatternState.Showable;
         }
-        else
+        else if(level < Spells.Length - 1)
         {
             return PatternState.Available;
         }
+        else
+        {
+            return PatternState.Maxed;
+        }
     }
 
-    //TODO: Test Instantiating with unavailable UI
-    public void InstantiateUiElement(Transform root, int quantity)
+    public void InstantiateUiElement(Transform root, int quantity, ShopComponent shopComponent)
     {
         ui = Instantiate(patternUI, root);
-        ui.Init(this, quantity);
+        ui.Init(shopComponent, id, this, quantity);
         
         if(GetState() == PatternState.Unavailable)
         {
@@ -241,13 +242,10 @@ public class MfxPattern : MonoBehaviour, IShopUiPattern, IUiPattern
 
     public void Increase()
     {
-        experienceManager.RemoveExp(GetRequiredExpValue());
-
         PatternState oldState = GetState();
         level++;
         PatternState newState = GetState();
 
-        experienceManager.Save();
         if(oldState != newState)
         {
             patternManager.ChangePatternDataState(id, newState);

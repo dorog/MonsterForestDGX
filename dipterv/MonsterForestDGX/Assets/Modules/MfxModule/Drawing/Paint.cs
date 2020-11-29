@@ -12,7 +12,7 @@ public class Paint : MonoBehaviour
 
     public Transform hand;
 
-    public BattleManager battleManager;
+    public RoundHandler roundHandler;
 
     public bool circleOn = false;
 
@@ -32,14 +32,14 @@ public class Paint : MonoBehaviour
 
     private void Fighting()
     {
-        battleManager.BlueFighterTurnStartDelegateEvent += drawingInput.Activate;
-        battleManager.RedFighterTurnStartDelegateEvent += drawingInput.Deactivate;
+        roundHandler.SubscribeToStartTurn(drawingInput.Activate);
+        roundHandler.SubscribeToEndTurn(drawingInput.Deactivate);
     }
 
     private void Exploring()
     {
-        battleManager.BlueFighterTurnStartDelegateEvent -= drawingInput.Activate;
-        battleManager.RedFighterTurnStartDelegateEvent -= drawingInput.Deactivate;
+        roundHandler.SubscribeToStartTurn(drawingInput.Activate);
+        roundHandler.SubscribeToEndTurn(drawingInput.Deactivate);
 
         drawingInput.Deactivate();
     }

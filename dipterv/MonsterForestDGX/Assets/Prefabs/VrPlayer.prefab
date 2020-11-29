@@ -942,7 +942,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 0}
-  battleManager: {fileID: 0}
+  roundHandler: {fileID: 0}
   gameEvents: {fileID: 0}
   keyBindingManager: {fileID: 0}
   playerHealth: {fileID: 1220643220}
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
-  fighter: {fileID: 0}
+  roundHandler: {fileID: 0}
   petAttackEffect: {fileID: 0}
 --- !u!114 &1754249620
 MonoBehaviour:
@@ -1160,7 +1160,9 @@ MonoBehaviour:
   cooldownParticleSystemEffect: {fileID: 6407921427351328199}
   castEffectHandler: {fileID: 2080358971}
   keyBindingManager: {fileID: 0}
+  roundHandler: {fileID: 0}
   battleManager: {fileID: 0}
+  gameEvents: {fileID: 0}
 --- !u!114 &2080358971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1513,7 +1515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 100
   currentHp: 100
-  fighter: {fileID: 1220643221}
   extraParts: []
   blockChance: 10
   damageBlock: {fileID: 0}

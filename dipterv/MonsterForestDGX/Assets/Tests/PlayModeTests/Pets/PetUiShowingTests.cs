@@ -41,7 +41,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator CheckUnlockActivesTest()
         {
-            petManager.UnlockPet(0);
+            petManager.ChangePetFunction(0);
 
             yield return new WaitForSeconds(1);
 
@@ -56,7 +56,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator UnlockPetWithAllAbilityTest()
         {
-            petManager.UnlockPet(0);
+            petManager.ChangePetFunction(0);
 
             yield return new WaitForSeconds(1);
 
@@ -69,7 +69,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator UnlockPetWithOneUpdateAndOneNormalAbilityTest()
         {
-            petManager.UnlockPet(1);
+            petManager.ChangePetFunction(1);
 
             yield return new WaitForSeconds(1);
 
@@ -82,7 +82,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator UnlockPetWithOneUpdataAndZeroNormalAbilityTest()
         {
-            petManager.UnlockPet(2);
+            petManager.ChangePetFunction(2);
 
             yield return new WaitForSeconds(1);
 
@@ -95,7 +95,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator UnlockPetWithZeroUpdataAndOneNormalAbilityTest()
         {
-            petManager.UnlockPet(3);
+            petManager.ChangePetFunction(3);
 
             yield return new WaitForSeconds(1);
 
@@ -108,7 +108,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator UnlockPetWithTwoUpdataAndZeroNormalAbilityTest()
         {
-            petManager.UnlockPet(4);
+            petManager.ChangePetFunction(4);
 
             yield return new WaitForSeconds(1);
 
@@ -121,7 +121,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator UnlockPetWithZeroAbilityTest()
         {
-            petManager.UnlockPet(5);
+            petManager.ChangePetFunction(5);
 
             yield return new WaitForSeconds(1);
 
@@ -134,7 +134,7 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator HideUiTest()
         {
-            petManager.UnlockPet(0);
+            petManager.ChangePetFunction(0);
 
             petUiShower.HideUI();
 
@@ -146,11 +146,11 @@ namespace Tests.PetModule
         [UnityTest]
         public IEnumerator TwoUnlockTest()
         {
-            petManager.UnlockPet(0);
+            petManager.ChangePetFunction(0);
 
             petUiShower.HideUI();
 
-            petManager.UnlockPet(1);
+            petManager.ChangePetFunction(1);
 
             yield return new WaitForSeconds(1);
 

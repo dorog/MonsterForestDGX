@@ -12,6 +12,7 @@ namespace Tests.TeleportModule
         private MfxTeleportPoint[] teleportPoints;
         private CharacterController player;
         private TeleportUiComponent teleportUI;
+        private Transform teleportParent;
 
         private GameObject core;
 
@@ -23,6 +24,7 @@ namespace Tests.TeleportModule
 
             player = core.GetComponentInChildren<CharacterController>();
             teleportUI = core.GetComponentInChildren<TeleportUiComponent>();
+            teleportParent = GameObject.Find("teleportParent").transform;
             teleportPoints = core.GetComponentsInChildren<MfxTeleportPoint>();
 
             yield return null;
@@ -39,10 +41,10 @@ namespace Tests.TeleportModule
         {
             yield return new WaitForSeconds(1);
 
-            Assert.AreEqual(3, teleportUI.teleportsParent.childCount);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(0).gameObject.activeSelf);
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(1).gameObject.activeSelf);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(2).gameObject.activeSelf);
+            Assert.AreEqual(3, teleportParent.childCount);
+            Assert.AreEqual(false, teleportParent.GetChild(0).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(1).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(2).gameObject.activeSelf);
 
             yield return null;
         }
@@ -54,17 +56,17 @@ namespace Tests.TeleportModule
 
             yield return new WaitForSeconds(1);
 
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(0).gameObject.activeSelf);
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(1).gameObject.activeSelf);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(2).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(0).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(1).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(2).gameObject.activeSelf);
 
             player.transform.position = teleportPoints[0].transform.position;
 
             yield return new WaitForSeconds(1);
 
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(0).gameObject.activeSelf);
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(1).gameObject.activeSelf);
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(2).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(0).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(1).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(2).gameObject.activeSelf);
 
             yield return null;
         }
@@ -74,17 +76,17 @@ namespace Tests.TeleportModule
         {
             yield return new WaitForSeconds(1);
 
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(0).gameObject.activeSelf);
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(1).gameObject.activeSelf);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(2).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(0).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(1).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(2).gameObject.activeSelf);
 
             teleportPoints[1].TeleportTarget(player.transform);
 
             yield return new WaitForSeconds(1);
 
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(0).gameObject.activeSelf);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(1).gameObject.activeSelf);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(2).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(0).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(1).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(2).gameObject.activeSelf);
 
             yield return null;
         }
@@ -100,9 +102,9 @@ namespace Tests.TeleportModule
             yield return new WaitForSeconds(1);
 
             Assert.IsTrue(0.1 > (player.transform.position - teleportPoints[1].transform.position).magnitude);
-            Assert.AreEqual(true, teleportUI.teleportsParent.GetChild(0).gameObject.activeSelf);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(1).gameObject.activeSelf);
-            Assert.AreEqual(false, teleportUI.teleportsParent.GetChild(2).gameObject.activeSelf);
+            Assert.AreEqual(true, teleportParent.GetChild(0).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(1).gameObject.activeSelf);
+            Assert.AreEqual(false, teleportParent.GetChild(2).gameObject.activeSelf);
 
             yield return null;
         }

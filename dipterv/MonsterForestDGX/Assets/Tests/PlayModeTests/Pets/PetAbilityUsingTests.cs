@@ -9,7 +9,8 @@ namespace Tests.PetModule
     public class PetAbilityUsingTests
     {
         private Pet[] pets;
-        private MockFighter[] fighters;
+        private Player player;
+        private RoundHandler roundHandler;
         private Health[] healths;
         private MockResetable resetable;
 
@@ -26,7 +27,8 @@ namespace Tests.PetModule
             yield return new WaitForSeconds(2);
 
             pets = core.GetComponentsInChildren<Pet>();
-            fighters = core.GetComponentsInChildren<MockFighter>();
+            player = core.GetComponentInChildren<Player>();
+            roundHandler = core.GetComponentInChildren<RoundHandler>();
             healths = core.GetComponentsInChildren<Health>();
             resetable = core.GetComponentInChildren<MockResetable>();
 
@@ -60,7 +62,7 @@ namespace Tests.PetModule
         public IEnumerator AttackAbilityTest()
         {
             pets[1].Init(handlers);
-            fighters[0].Fight();
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(5);
 
@@ -73,7 +75,7 @@ namespace Tests.PetModule
         public IEnumerator AttackAbilitySwitchingTest()
         {
             pets[1].Init(handlers);
-            fighters[0].Fight();
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(5);
 
@@ -129,7 +131,7 @@ namespace Tests.PetModule
         {
             healths[0].currentHp -= 50;
             pets[3].Init(handlers);
-            fighters[0].Fight();
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(5);
 
@@ -142,7 +144,7 @@ namespace Tests.PetModule
         {
             healths[0].currentHp -= 50;
             pets[4].Init(handlers);
-            fighters[0].Fight();
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(5);
 

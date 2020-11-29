@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public class AnimatedFighter : PassiveFighter
+public class AnimatedFighter : AiFighter
 {
     public Animator animator;
-    public string dieAnimation;
 
     [Header ("Appear Settings")]
     public string appearAnimation;
@@ -14,16 +13,6 @@ public class AnimatedFighter : PassiveFighter
     public float disappearAnimationTime = 2;
 
     public AutoController EnemyDiedAutoController;
-
-    public Shredding shredding;
-
-    public override void Die()
-    {
-        animator.SetTrigger(dieAnimation);
-        shredding.Disappear();
-
-        base.Die();
-    }
 
     protected override void Appear()
     {
@@ -41,7 +30,6 @@ public class AnimatedFighter : PassiveFighter
 
     protected override void ResetMonster()
     {
-        Debug.Log("Rest monster");
         base.ResetMonster();
 
         EnemyDiedAutoController.StartController();

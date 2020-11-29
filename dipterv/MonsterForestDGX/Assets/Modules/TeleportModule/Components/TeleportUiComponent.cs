@@ -6,14 +6,13 @@ public class TeleportUiComponent : MonoBehaviour
     private List<IUiTeleportPoint> teleportPoints;
     private IUiTeleportManager teleportManager;
 
-    public Transform teleportsParent;
-
     private int lastTargetLocation = -1;
 
     public void AddManager(IUiTeleportManager _teleportManager)
     {
         teleportManager = _teleportManager;
         teleportManager.SubscribeToLoad(SetTeleportPoints);
+        teleportManager.SubscribeToChanged(RefreshUI);
         teleportManager.SubscribeToTargetLocationChanged(SetPortUI);
     }
 
@@ -27,8 +26,17 @@ public class TeleportUiComponent : MonoBehaviour
     {
         for (int i = 0; i < teleportPoints.Count; i++)
         {
-            teleportPoints[i].InstantiateUI(teleportsParent);
+            teleportPoints[i].InstantiateUI();
         }
+    }
+
+    private void RefreshUI(int id)
+    {
+        if(lastTargetLocation == id && teleportPoints[id].GetState())
+        {
+            return;
+        }
+        teleportPoints[id].SetState(teleportPoints[id].GetState());
     }
 
     private void SetPortUI(int id)

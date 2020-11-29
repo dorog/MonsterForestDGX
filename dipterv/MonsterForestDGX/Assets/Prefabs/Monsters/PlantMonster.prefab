@@ -284,6 +284,22 @@ MonoBehaviour:
   damageModifier: {fileID: 3050649179563377875}
   monsterHitType: 0
   health: {fileID: 555012508875112519}
+--- !u!114 &571508317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029147133929900826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072b9bebd5ee02f41a9f8f68c2056594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistant: {fileID: 11400000, guid: 4f4f52b427eff9547abc552944b1333f, type: 2}
+  fighterPart: {fileID: 250524693712856284}
+  experienceManager: {fileID: 0}
+  hitExp: 10
 --- !u!114 &555012508875112519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,9 +366,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chance: 34
+  chance: 66
   monsterAttacks:
-  - animation: 
+  - animation: attack1
     time: 0
     activate:
     - {fileID: 5449196950483051575}
@@ -389,9 +405,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9219b1b1fc6b5db45b77cf4cd89e65bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chance: 66
+  chance: 34
   monsterAttacks:
-  - animation: 
+  - animation: attack2
     time: 0
     activate:
     - {fileID: 5449196949896177307}
@@ -465,6 +481,22 @@ MonoBehaviour:
   damageModifier: {fileID: 1756739367848827104}
   monsterHitType: 1
   health: {fileID: 555012508875112519}
+--- !u!114 &503229793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3029147133930046208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 072b9bebd5ee02f41a9f8f68c2056594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resistant: {fileID: 11400000, guid: 4f4f52b427eff9547abc552944b1333f, type: 2}
+  fighterPart: {fileID: 5476138922031212326}
+  experienceManager: {fileID: 0}
+  hitExp: 10
 --- !u!1 &3748799671801368767
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +508,7 @@ GameObject:
   - component: {fileID: 3748799671801368766}
   - component: {fileID: 3748799671801368753}
   m_Layer: 10
-  m_Name: MonsterController
+  m_Name: PlantMonsterController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -518,11 +550,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   commands:
   - {fileID: 3748799673669104107}
-  - {fileID: 0}
+  - {fileID: 6655820191458627753}
   - {fileID: 3748799672260690219}
-  - {fileID: 0}
+  - {fileID: 1513547106655113714}
   - {fileID: 3748799672539537263}
-  - {fileID: 0}
+  - {fileID: 2160762065183525946}
   - {fileID: 3748799673291849857}
   - {fileID: 3748799673374139090}
   looping: 1
@@ -941,11 +973,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  enemy: {fileID: 0}
-  enemyHealth: {fileID: 0}
+  group: 
+  enemy: {fileID: 8357294411510195276}
+  enemyHealth: {fileID: 555012508875112519}
   battleTrigger: {fileID: 5449196950964811645}
   gameEvents: {fileID: 0}
   battleManager: {fileID: 0}
+  controller: {fileID: 3748799671801368753}
   resistantEnable: 1
   resistant: {fileID: 11400000, guid: 4f4f52b427eff9547abc552944b1333f, type: 2}
   petEnable: 1
@@ -1117,6 +1151,7 @@ GameObject:
   - component: {fileID: 5449196950964811641}
   - component: {fileID: 5449196950964811646}
   - component: {fileID: 2554897198035646259}
+  - component: {fileID: 5449196949439721121}
   m_Layer: 0
   m_Name: BattlePlaceTrigger
   m_TagString: Untagged
@@ -1213,6 +1248,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battlePlace: {fileID: 6866405001845491460}
+--- !u!114 &5449196949439721121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5449196950964811645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718037ab07725d340a6f629c31d936ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - {fileID: 2554897198035646259}
 --- !u!1 &5933135902766878572
 GameObject:
   m_ObjectHideFlags: 0
@@ -1992,24 +2041,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d66e56637f050474989d6340baeca55c, type: 3}
---- !u!4 &3029147133930141124 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7032052533955690071, guid: d66e56637f050474989d6340baeca55c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5449196950372748179}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3029147133930046208 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7032052533956118675, guid: d66e56637f050474989d6340baeca55c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5449196950372748179}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3029147133929955126 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7032052533956023461, guid: d66e56637f050474989d6340baeca55c,
-    type: 3}
-  m_PrefabInstance: {fileID: 5449196950372748179}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3029147133930115562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7032052533955664505, guid: d66e56637f050474989d6340baeca55c,
@@ -2022,9 +2053,27 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 5449196950372748179}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &3029147133930141124 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7032052533955690071, guid: d66e56637f050474989d6340baeca55c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5449196950372748179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3029147133930046208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7032052533956118675, guid: d66e56637f050474989d6340baeca55c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5449196950372748179}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3029147133929900826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7032052533955969161, guid: d66e56637f050474989d6340baeca55c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5449196950372748179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3029147133929955126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7032052533956023461, guid: d66e56637f050474989d6340baeca55c,
     type: 3}
   m_PrefabInstance: {fileID: 5449196950372748179}
   m_PrefabAsset: {fileID: 0}

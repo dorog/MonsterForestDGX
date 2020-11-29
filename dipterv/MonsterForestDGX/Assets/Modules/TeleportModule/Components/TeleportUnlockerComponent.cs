@@ -5,25 +5,38 @@ public class TeleportUnlockerComponent : MonoBehaviour
 {
     private IUnlockableTeleportManager teleportManager;
 
-    private List<IUnlockableTeleportPoint> teleportPoints;
+    private List<bool> teleportPoints;
 
     public void AddManager(IUnlockableTeleportManager _teleportManager)
     {
         teleportManager = _teleportManager;
         teleportManager.SubscribeToLoad(SetTeleportPoints);
-        teleportManager.SubscribeToTargetLocationChanged(UnlockLocation);
+        teleportManager.SubscribeToChanged(Refresh);
     }
 
-    private void SetTeleportPoints(List<IUnlockableTeleportPoint> _teleportPoints)
+    private void SetTeleportPoints(List<bool> _teleportPoints)
     {
         teleportPoints = _teleportPoints;
     }
 
+    private void Refresh(int id)
+    {
+        teleportPoints[id] = !teleportPoints[id];
+    }
+
     public void UnlockLocation(int id)
     {
-        if (!teleportPoints[id].IsUnlocked())
+        if (!teleportPoints[id])
         {
-            teleportManager.UnlockLocation(id);
+            teleportManager.ChangeLocationState(id);
+        }
+    }
+
+    public void LockLocation(int id)
+    {
+        if (teleportPoints[id])
+        {
+            teleportManager.ChangeLocationState(id);
         }
     }
 }

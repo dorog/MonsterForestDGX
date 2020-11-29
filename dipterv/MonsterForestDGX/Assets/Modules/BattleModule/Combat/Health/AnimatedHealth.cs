@@ -7,6 +7,9 @@ public class AnimatedHealth : Health
     public string headHitAnimation;
     public string blockAnimation;
     public Animator animator;
+    public string dieAnimation;
+
+    public Shredding shredding;
 
     private string actualHitAnimation;
 
@@ -37,6 +40,11 @@ public class AnimatedHealth : Health
         else if(currentHp > 0)
         {
             animator.SetTrigger(actualHitAnimation);
+        }
+        else
+        {
+            animator.SetTrigger(dieAnimation);
+            shredding.Disappear();
         }
     }
 

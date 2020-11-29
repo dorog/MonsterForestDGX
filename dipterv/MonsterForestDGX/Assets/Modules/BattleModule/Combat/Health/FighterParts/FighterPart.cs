@@ -2,7 +2,7 @@
 
 public abstract class FighterPart : MonoBehaviour, ITarget
 {
-    public bool isRegenerating = true;
+    public RegenerationType regenerationType = RegenerationType.Nothing;
     public FighterPartCleaner partCleaner;
 
     public float maxHealth = 1;
@@ -24,11 +24,11 @@ public abstract class FighterPart : MonoBehaviour, ITarget
             float realDmg = CalculateDamage(remainingDmg);
 
             FighterTakeDamage(realDmg);
-            if (isRegenerating)
+            if (regenerationType == RegenerationType.Regenerating)
             {
                 currentHealth = maxHealth;
             }
-            else
+            else if(regenerationType == RegenerationType.Die)
             {
                 partCleaner.CleanUp();
             }
@@ -43,6 +43,16 @@ public abstract class FighterPart : MonoBehaviour, ITarget
 
     private float CalculateDamage(float dmg)
     {
-        return damageModifier.CalculateDamage(dmg);
+        if(damageModifier != null)
+        {
+            return damageModifier.CalculateDamage(dmg);
+        }
+
+        return dmg;
+    }
+
+    public enum RegenerationType
+    {
+        Regenerating, Die, Nothing
     }
 }

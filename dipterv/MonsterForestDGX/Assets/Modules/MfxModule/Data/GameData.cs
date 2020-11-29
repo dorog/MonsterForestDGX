@@ -1,24 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 [Serializable]
 public class GameData
 {
     public int[] basePatternSpellLevels;
-    public bool[] enemys;
+    public List<EnemyGroupData> enemys;
     public bool[] teleports;
     public bool[] availablePets;
     public float exp;
     public int lastLocation = -1;
     public int lastSelectedPet = -1;
     public bool traningFinished = false;
-
+    public RewardState[] rewardStates;
     public GameData() { }
 
     public GameData(GameConfig gameConfig)
     {
-        enemys = gameConfig.enemies == 0 ? null : CreateArrayWithDefaultValue(gameConfig.enemies, true);
+        enemys = CreateEnemyList(gameConfig.enemies);
         teleports = gameConfig.teleports.ToArray();
         basePatternSpellLevels = gameConfig.baseSpells.Select(x => x.startLevel).ToArray();
         availablePets = gameConfig.pets.Select(x => x.Available).ToArray();
@@ -26,24 +26,18 @@ public class GameData
         lastSelectedPet = gameConfig.lastSelectedPet;
         lastLocation = gameConfig.lastLocation;
         traningFinished = gameConfig.traningFinished;
+        rewardStates = gameConfig.battleRewards;
     }
 
-    private T[] CreateArrayWithDefaultValue<T>(int count, T value)
+    private List<EnemyGroupData> CreateEnemyList(EnemyConfig[] enemyConfigs)
     {
-        if (count == 0)
-        {
-            Debug.LogWarning(nameof(CreateArrayWithDefaultValue) + " Warning!");
-            return new T[1];
-        }
-        else
-        {
-            T[] array = new T[count];
-            for (int i = 0; i < count; i++)
-            {
-                array[i] = value;
-            }
+        List<EnemyGroupData> enemies = new List<EnemyGroupData>();
 
-            return array;
+        foreach(var config in enemyConfigs)
+        {
+            enemies.Add(new EnemyGroupData() { group = config.group, enemyStates = new bool[config.enemies] });
         }
+
+        return enemies;
     }
 }

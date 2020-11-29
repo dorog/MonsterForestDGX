@@ -5,7 +5,7 @@ public class MfxPatternCurrencyHandler : AbstractConnector, ICurrencyHandler
     private event Action<float> QuantityChanged;
 
     public ExperienceManager experienceManager;
-    public PatternShopComponent patternShopComponent;
+    public ShopComponent patternShopComponent;
 
     public override void Setup()
     {

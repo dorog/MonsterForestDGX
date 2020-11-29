@@ -1,15 +1,17 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    public BattlePlace[] battlePlaces;
+    public EnemyGroup[] battlePlaces;
 
     public GameEvents gameEvents;
     public DataManager dataManager;
 
     public void Start()
     {
-        bool[] enemys = dataManager.GetEnemies();
+        List<EnemyGroupData> enemys = dataManager.GetEnemies();
 
         SetBattlePlacesState(enemys, battlePlaces);
 
@@ -17,12 +19,17 @@ public class EnemyManager : MonoBehaviour
         gameEvents.BattleEndDelegateEvent += UnsubscribeToMonsterDeath;
     }
 
-    private void SetBattlePlacesState(bool[] states, BattlePlace[] battlePlaces)
+    private void SetBattlePlacesState(List<EnemyGroupData> states, EnemyGroup[] battlePlaces)
     {
-        for (int i = 0; i < states.Length; i++)
+        for(int i = 0; i < states.Count; i++)
         {
-            battlePlaces[i].id = i;
-            battlePlaces[i].SetAlive(states[i]);
+            var enemyGroup = states.ElementAt(i);
+            for (int j = 0; j < enemyGroup.enemyStates.Length; j++)
+            {
+                battlePlaces[i].battlePlaces[j].id = j;
+                battlePlaces[i].battlePlaces[j].group = enemyGroup.group;
+                battlePlaces[i].battlePlaces[j].SetAlive(!enemyGroup.enemyStates[j]);
+            }
         }
     }
 
@@ -38,6 +45,6 @@ public class EnemyManager : MonoBehaviour
 
     public void Won()
     {
-        dataManager.SaveEnemyDeath(gameEvents.id);
+        dataManager.SaveEnemyDeath(gameEvents.group, gameEvents.id);
     }
 }

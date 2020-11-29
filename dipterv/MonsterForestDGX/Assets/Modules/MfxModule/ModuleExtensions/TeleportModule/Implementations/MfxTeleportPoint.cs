@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 
-public class MfxTeleportPoint : MonoBehaviour, IUiTeleportPoint, ITeleporterPoint, IUnlockableTeleportPoint
+public class MfxTeleportPoint : MonoBehaviour, IUiTeleportPoint, ITeleporterPoint
 {
     public string title;
-    public bool available;
     public Transform point;
     public int id;
     public TeleporterComponent teleporter;
@@ -11,13 +10,16 @@ public class MfxTeleportPoint : MonoBehaviour, IUiTeleportPoint, ITeleporterPoin
     public MfxTeleportUI mfxTeleportUI;
     private GameObject teleportUI;
 
+    private bool available;
 
-    public void ChangedUi()
+    public Transform parent;
+
+    public bool GetState()
     {
-        teleportUI.SetActive(available);
+        return available;
     }
 
-    public void InstantiateUI(Transform parent)
+    public void InstantiateUI()
     {
         MfxTeleportUI mfxTeleportUiInstance = Instantiate(mfxTeleportUI, parent);
         mfxTeleportUiInstance.Init(id, title, teleporter);
@@ -29,11 +31,6 @@ public class MfxTeleportPoint : MonoBehaviour, IUiTeleportPoint, ITeleporterPoin
         }
     }
 
-    public bool IsUnlocked()
-    {
-        return available;
-    }
-
     public void LeftUiLocation()
     {
         teleportUI.SetActive(available);
@@ -42,6 +39,12 @@ public class MfxTeleportPoint : MonoBehaviour, IUiTeleportPoint, ITeleporterPoin
     public void ReachedUiLocation()
     {
         teleportUI.SetActive(false);
+    }
+
+    public void SetState(bool available)
+    {
+        this.available = available;
+        teleportUI.SetActive(available);
     }
 
     public void TeleportTarget(Transform target)

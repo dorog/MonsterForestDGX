@@ -34,9 +34,6 @@ namespace Tests.BattleModule.Commanding
             BlueFighterTurnStart = new CallChecker();
             RedFighterTurnStart = new CallChecker();
 
-            battleManager.BlueFighterTurnStartDelegateEvent += BlueFighterTurnStart.Call;
-            battleManager.RedFighterTurnStartDelegateEvent += RedFighterTurnStart.Call;
-
             var mockFighters = core.GetComponentsInChildren<MockFighter>();
             blueFighter = mockFighters[0];
             redFighter = mockFighters[1];

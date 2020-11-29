@@ -7,7 +7,7 @@ public class VrAndInputConnector : MonoBehaviour
 
     public KeyBindingManager keyBindingManager;
 
-    public Player player;
+    public MovingHandler movingHandler;
 
     public DataManager dataManager;
 
@@ -15,17 +15,17 @@ public class VrAndInputConnector : MonoBehaviour
     {
         AxisInput movementAxisInput = keyBindingManager.continousMovementAxisInput;
         continousMovement.SetInput(movementAxisInput);
-        player.Go += movementAxisInput.Activate;
-        player.Stop += movementAxisInput.Deactivate;
+        movingHandler.Go += movementAxisInput.Activate;
+        movingHandler.Stop += movementAxisInput.Deactivate;
 
         AxisInput rotationAxisInput = keyBindingManager.continousRotationAxisInput;
         continousRotation.SetInput(rotationAxisInput);
-        player.Go += rotationAxisInput.Activate;
-        player.Stop += rotationAxisInput.Deactivate;
+        movingHandler.Go += rotationAxisInput.Activate;
+        movingHandler.Stop += rotationAxisInput.Deactivate;
 
         if (dataManager.IsTraningFinished())
         {
-            player.EnableControlling();
+            movingHandler.EnableMovement();
         }
     }
 }

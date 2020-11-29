@@ -23808,7 +23808,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coverage: 0.7
-  cd: 2
+  cd: 1.5
   dmg: 25
   elementType: 2
   impactParticle: {fileID: 100010, guid: 3622df40ebe443f48b3c761801bbc51c, type: 3}

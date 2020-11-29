@@ -22,6 +22,8 @@ namespace Tests.Mfx
 
         private GameObject core;
 
+        private RoundHandler roundHandler;
+
         [UnitySetUp]
         public IEnumerator SetUp()
         {
@@ -37,6 +39,7 @@ namespace Tests.Mfx
             magicCircleHandler = core.GetComponentInChildren<MagicCircleHandler>();
 
             battleManager = core.GetComponentInChildren<BattleManager>();
+            roundHandler = core.GetComponentInChildren<RoundHandler>();
             var mockFighters = core.GetComponentsInChildren<MockFighter>();
             redFighter = mockFighters[0];
             blueFighter = mockFighters[1];
@@ -79,7 +82,7 @@ namespace Tests.Mfx
 
             yield return new WaitForSeconds(1);
 
-            battleManager.TurnChange(redFighter);
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(1);
 
@@ -102,7 +105,7 @@ namespace Tests.Mfx
 
             yield return new WaitForSeconds(1);
 
-            battleManager.TurnChange(blueFighter);
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(1);
 
@@ -136,7 +139,7 @@ namespace Tests.Mfx
 
             yield return new WaitForSeconds(1);
 
-            battleManager.TurnChange(blueFighter);
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(1);
 
@@ -171,7 +174,7 @@ namespace Tests.Mfx
 
             yield return new WaitForSeconds(1);
 
-            battleManager.TurnChange(blueFighter);
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(1);
 
@@ -207,7 +210,7 @@ namespace Tests.Mfx
 
             yield return new WaitForSeconds(1);
 
-            battleManager.TurnChange(blueFighter);
+            roundHandler.Fight();
 
             yield return new WaitForSeconds(1);
 
@@ -224,7 +227,7 @@ namespace Tests.Mfx
 
             Assert.IsTrue(0 < lineRenderer.positionCount);
 
-            battleManager.TurnChange(redFighter);
+            roundHandler.Def();
 
             yield return new WaitForSeconds(2);
 
