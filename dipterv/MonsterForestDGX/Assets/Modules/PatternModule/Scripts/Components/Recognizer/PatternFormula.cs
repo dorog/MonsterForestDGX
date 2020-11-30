@@ -7,6 +7,8 @@ public class PatternFormula
     private readonly float step = 10;
     private int lastId = int.MinValue;
 
+    private Vector2 previous = Vector2.zero;
+
     public PatternFormula(List<Vector2> points, float width = 10)
     {
         int id = 0;
@@ -24,11 +26,12 @@ public class PatternFormula
         bool hit = false;
         for(int i = 0; i < rectangles.Count; i++)
         {
-            int resultId = rectangles[i].Guess(point, lastId);
-            if (resultId != -1 && minId > resultId)
+            HitResult resultId = rectangles[i].Guess(previous, point, lastId);
+            if (resultId.Hit != false && minId > resultId.Id)
             {
-                minId = resultId;
+                minId = resultId.Id;
                 hit = true;
+                previous = resultId.LastPoint;
             }
         }
 
@@ -36,6 +39,8 @@ public class PatternFormula
         {
             lastId = minId;
         }
+
+        previous = point;
     }
 
     public float GetResult()

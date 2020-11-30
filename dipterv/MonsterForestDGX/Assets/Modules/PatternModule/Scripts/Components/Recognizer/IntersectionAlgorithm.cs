@@ -169,4 +169,5 @@ public class IntersectionAlgorithm
         {
             return (Point - from).magnitude;
         }
-    }}
+    }
+}

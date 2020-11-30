@@ -19,7 +19,7 @@ public class Rectangle
     private Vector2 distancePoint;
     private Vector2 direction;
 
-    private HitResult lastHitResult = null;
+    private bool? lastHitResult = null;
 
     public Rectangle(int id, float step, Vector2 startPoint, Vector2 endPoint, float width)
     {
@@ -87,25 +87,28 @@ public class Rectangle
         return (point.y >= minValueY && point.y <= maxValueY) && (point.x <= maxValueX && point.x >= minValueX);
     }
 
-    public int Guess(Vector2 point, int lastId)
+    public HitResult Guess(Vector2 previous, Vector2 point, int lastId)
     {
         if (id + maxHit <= lastId)
         {
-            return -1;
+            return new HitResult()
+            {
+                Hit = false
+            };
         }
 
         if (lastHitResult != null)
         {
             List<IntersectionResult> results = new List<IntersectionResult>
             {
-                LineIntersection(minX.P1, minX.P2, lastHitResult.Point, point),
-                LineIntersection(minY.P1, minY.P2, lastHitResult.Point, point),
-                LineIntersection(maxX.P1, maxX.P2, lastHitResult.Point, point),
-                LineIntersection(maxY.P1, maxY.P2, lastHitResult.Point, point)
+                LineIntersection(minX.P1, minX.P2, previous, point),
+                LineIntersection(minY.P1, minY.P2, previous, point),
+                LineIntersection(maxX.P1, maxX.P2, previous, point),
+                LineIntersection(maxY.P1, maxY.P2, previous, point)
             };
 
             results.RemoveAll(x => !x.Intersected);
-            results = results.Distinct().ToList();
+            results = Distinct(results);
 
             if (results.Count > 0)
             {
@@ -126,8 +129,7 @@ public class Rectangle
                     int actualIndex = indexes[1];
 
                     //Same #1
-                    lastHitResult.Included = true;
-                    lastHitResult.Point = point;
+                    lastHitResult = true;
 
                     if (actualIndex > lastIndex)
                     {
@@ -139,11 +141,19 @@ public class Rectangle
                             }
                         }
 
-                        return actualIndex + id;
+                        return new HitResult()
+                        {
+                            Hit = true,
+                            Id = actualIndex + id,
+                            LastPoint = results[1].Point
+                        };
                     }
                     else
                     {
-                        return -1;
+                        return new HitResult()
+                        {
+                            Hit = false,
+                        };
                     }
                 }
                 else
@@ -151,9 +161,9 @@ public class Rectangle
                     int lastIndex = -1;
                     int actualIndex = -2;
 
-                    if (lastHitResult.Included)
+                    if (lastHitResult == true)
                     {
-                        lastIndex = GetCell(lastHitResult.Point);
+                        lastIndex = GetCell(previous);
                         actualIndex = GetCell(results[0].Point);
                     }
                     else
@@ -163,8 +173,7 @@ public class Rectangle
                     }
 
                     //Same #3
-                    lastHitResult.Included = true;
-                    lastHitResult.Point = point;
+                    lastHitResult = true;
 
                     if (actualIndex > lastIndex)
                     {
@@ -176,24 +185,31 @@ public class Rectangle
                             }
                         }
 
-                        return actualIndex + id;
+                        return new HitResult()
+                        {
+                            Hit = true,
+                            Id = actualIndex + id,
+                            LastPoint = results[0].Point
+                        };
                     }
                     else
                     {
-                        return -1;
+                        return new HitResult()
+                        {
+                            Hit = false
+                        };
                     }
                 }
             }
             else
             {
-                if (Include(point) && lastHitResult.Included)
+                if (Include(point) && lastHitResult == true)
                 {
-                    int lastIndex = GetCell(lastHitResult.Point);
+                    int lastIndex = GetCell(previous);
                     int actualIndex = GetCell(point);
 
                     //Same #2
-                    lastHitResult.Included = true;
-                    lastHitResult.Point = point;
+                    lastHitResult = true;
 
                     if (actualIndex > lastIndex)
                     {
@@ -205,22 +221,29 @@ public class Rectangle
                             }
                         }
 
-                        return actualIndex + id;
+                        return new HitResult()
+                        {
+                            Hit = true,
+                            Id = actualIndex + id,
+                            LastPoint = point
+                        };
                     }
                     else
                     {
-                        return -1;
+                        return new HitResult()
+                        {
+                            Hit = false
+                        };
                     }
                 }
                 else
                 {
-                    lastHitResult = new HitResult()
-                    {
-                        Included = false,
-                        Point = point
-                    };
+                    lastHitResult = false;
 
-                    return -1;
+                    return new HitResult()
+                    {
+                        Hit = false
+                    };
                 }
             }
         }
@@ -228,29 +251,46 @@ public class Rectangle
         {
             if (Include(point))
             {
-                lastHitResult = new HitResult()
-                {
-                    Included = true,
-                    Point = point
-                };
+                lastHitResult = true;
 
                 int calculatedLastId = GetCell(point);
 
                 dones[calculatedLastId] = true;
 
-                return calculatedLastId + id;
+                return new HitResult()
+                {
+                    Hit = true,
+                    Id = calculatedLastId + id,
+                    LastPoint = point
+                };
             }
             else
             {
-                lastHitResult = new HitResult()
-                {
-                    Included = false,
-                    Point = point
-                };
+                lastHitResult = false;
 
-                return -1;
+                return new HitResult()
+                {
+                    Hit = false,
+                };
             }
         }
+    }
+
+    private List<IntersectionResult> Distinct(List<IntersectionResult> source)
+    {
+        List<IntersectionResult> result = new List<IntersectionResult>();
+
+        HashSet<Vector2> keys = new HashSet<Vector2>();
+        foreach (IntersectionResult element in source)
+        {
+            if (!keys.Contains(element.Point))
+            {
+                result.Add(element);
+                keys.Add(element.Point);
+            }
+        }
+
+        return result;
     }
 
     private int GetCell(Vector2 point)
@@ -292,11 +332,5 @@ public class Rectangle
         {
             dones[i] = false;
         }
-    }
-
-    private class HitResult
-    {
-        public bool Included { get; set; }
-        public Vector2 Point { get; set; }
     }
 }
