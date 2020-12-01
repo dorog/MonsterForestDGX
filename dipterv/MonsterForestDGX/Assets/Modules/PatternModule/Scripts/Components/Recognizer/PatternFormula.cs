@@ -8,6 +8,10 @@ public class PatternFormula
     private int lastId = int.MinValue;
 
     private Vector2 previous = Vector2.zero;
+    private bool notFirstGuess = false;
+
+    public float PatternLength { get; private set; } = 0;
+    public float MissLength { get; private set; } = 0;
 
     public PatternFormula(List<Vector2> points, float width = 10)
     {
@@ -16,35 +20,57 @@ public class PatternFormula
         {
             int maxHit = Mathf.CeilToInt((points[i + 1] - points[i]).magnitude / step);
             rectangles.Add(new Rectangle(id, step, points[i], points[i + 1], width));
+            PatternLength += (points[i] - points[i + 1]).magnitude;
             id += maxHit;
         }
     }
 
     public void Guess(Vector2 point)
     {
-        int minId = int.MaxValue;
         bool hit = false;
         for(int i = 0; i < rectangles.Count; i++)
         {
-            HitResult resultId = rectangles[i].Guess(previous, point, lastId);
-            if (resultId.Hit != false && minId > resultId.Id)
+            HitResult hitResult = rectangles[i].Guess(previous, point, lastId);
+            if (hitResult.Hit != false)
             {
-                minId = resultId.Id;
                 hit = true;
-                previous = resultId.LastPoint;
+                lastId = hitResult.Id;
+
+                if (hitResult.Full)
+                {
+                    break;
+                }
+                else
+                {
+                    MissLength += (hitResult.StartPoint - previous).magnitude;
+
+                    if(i == rectangles.Count - 1)
+                    {
+                        MissLength += (point - hitResult.LastPoint).magnitude;
+                    }
+                }
+
+                previous = hitResult.LastPoint;
             }
         }
 
-        if (hit)
+        if (!hit && notFirstGuess)
         {
-            lastId = minId;
+            MissLength += (point - previous).magnitude;
         }
 
+        notFirstGuess = true;
         previous = point;
     }
 
     public float GetResult()
     {
+        Debug.Log("Miss(%): " + (MissLength / PatternLength));
+        if(MissLength / PatternLength > 0.2)
+        {
+            return 0;
+        }
+
         int correct = 0;
         int max = 0;
         for(int i = 0; i < rectangles.Count; i++)
@@ -63,5 +89,7 @@ public class PatternFormula
         {
             rectangles[i].Reset();
         }
+
+        MissLength = 0;
     }
 }

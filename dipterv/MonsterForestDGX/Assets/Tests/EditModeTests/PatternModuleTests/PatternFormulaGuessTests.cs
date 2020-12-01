@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Tests.PatternModule
 {
-    public class PatternFormulaTests
+    public class PatternFormulaGuessTests
     {
 
         private static List<Vector2> points = new List<Vector2>() { new Vector2(0, 0), new Vector2(0, 100) };

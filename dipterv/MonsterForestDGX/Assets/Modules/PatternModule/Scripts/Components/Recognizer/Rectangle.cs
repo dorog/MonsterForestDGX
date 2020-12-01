@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using static IntersectionAlgorithm;
 
@@ -99,6 +98,8 @@ public class Rectangle
 
         if (lastHitResult != null)
         {
+            lastHitResult = Include(previous);
+
             List<IntersectionResult> results = new List<IntersectionResult>
             {
                 LineIntersection(minX.P1, minX.P2, previous, point),
@@ -114,8 +115,6 @@ public class Rectangle
             {
                 if (results.Count > 1)
                 {
-                    //results.Sort((x, y) => IntersectionResult.SortByDistance(x, y, lastHitResult.Point));
-
                     List<int> indexes = new List<int>();
                     foreach (var result in results)
                     {
@@ -145,7 +144,8 @@ public class Rectangle
                         {
                             Hit = true,
                             Id = actualIndex + id,
-                            LastPoint = results[1].Point
+                            LastPoint = results[1].Point,
+                            StartPoint = results[0].Point
                         };
                     }
                     else
@@ -161,13 +161,22 @@ public class Rectangle
                     int lastIndex = -1;
                     int actualIndex = -2;
 
+                    Vector2 startPoint;
+                    Vector2 lastPoint;
+
                     if (lastHitResult == true)
                     {
+                        startPoint = previous;
+                        lastPoint = results[0].Point;
+
                         lastIndex = GetCell(previous);
                         actualIndex = GetCell(results[0].Point);
                     }
                     else
                     {
+                        startPoint = results[0].Point;
+                        lastPoint = point;
+
                         lastIndex = GetCell(results[0].Point);
                         actualIndex = GetCell(point);
                     }
@@ -189,7 +198,8 @@ public class Rectangle
                         {
                             Hit = true,
                             Id = actualIndex + id,
-                            LastPoint = results[0].Point
+                            LastPoint = lastPoint,
+                            StartPoint = startPoint
                         };
                     }
                     else
@@ -225,7 +235,9 @@ public class Rectangle
                         {
                             Hit = true,
                             Id = actualIndex + id,
-                            LastPoint = point
+                            LastPoint = point,
+                            StartPoint = previous,
+                            Full = true,
                         };
                     }
                     else
@@ -293,11 +305,17 @@ public class Rectangle
         return result;
     }
 
-    private int GetCell(Vector2 point)
+    public int GetCell(Vector2 point)
     {
         Vector2 dir = point - distancePoint;
+
         float angle = Vector2.Angle(dir, direction);
         float length = dir.magnitude;
+
+        if (dir.magnitude < 0.1)
+        {
+            return 0;
+        }
 
         float distance = Mathf.Abs(Mathf.Cos(Mathf.Deg2Rad * angle) * length);
 

@@ -141,11 +141,11 @@ public class IntersectionAlgorithm
 
         // compute intersection coordinates //
         num = d * Ax; // numerator //
-        offset = same_sign(num, f) ? f * 0.5f : -f * 0.5f;   // round direction //
+        offset = same_sign(num, f) ? f * 0.01f : -f * 0.01f;   // round direction //
         intersection.x = p1.x + (num + offset) / f;
 
         num = d * Ay;
-        offset = same_sign(num, f) ? f * 0.5f : -f * 0.5f;
+        offset = same_sign(num, f) ? f * 0.01f : -f * 0.01f;
         intersection.y = p1.y + (num + offset) / f;
 
         return new IntersectionResult()

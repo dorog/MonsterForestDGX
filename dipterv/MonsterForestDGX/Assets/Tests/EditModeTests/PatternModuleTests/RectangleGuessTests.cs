@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Tests.PatternModule
 {
-    public class RectangleTests
+    public class RectangleGuessTests
     {
         [Test]
         public void OneMissGuess()
